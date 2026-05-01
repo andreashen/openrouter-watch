@@ -1,0 +1,134 @@
+{
+  "data": [
+    {
+      "id": "openai/gpt-4o",
+      "name": "OpenAI: GPT-4o",
+      "context_length": 128000,
+      "pricing": {
+        "prompt": "0.0000025",
+        "completion": "0.00001",
+        "image": "0.003613",
+        "request": "0"
+      },
+      "top_provider": {
+        "max_completion_tokens": 16384,
+        "is_moderated": true
+      },
+      "architecture": {
+        "modality": "text+image->text",
+        "tokenizer": "GPT",
+        "instruct_type": "gpt"
+      },
+      "supported_parameters": [
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "tools",
+        "tool_choice",
+        "frequency_penalty",
+        "presence_penalty",
+        "logit_bias",
+        "seed",
+        "response_format",
+        "stream"
+      ]
+    },
+    {
+      "id": "anthropic/claude-3-5-sonnet",
+      "name": "Anthropic: Claude 3.5 Sonnet",
+      "context_length": 200000,
+      "pricing": {
+        "prompt": "0.000003",
+        "completion": "0.000015",
+        "image": "0.0048",
+        "request": "0"
+      },
+      "top_provider": {
+        "max_completion_tokens": 8096,
+        "is_moderated": false
+      },
+      "architecture": {
+        "modality": "text+image->text",
+        "tokenizer": "Claude",
+        "instruct_type": "claude"
+      },
+      "supported_parameters": [
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "tools",
+        "tool_choice",
+        "reasoning",
+        "stream"
+      ]
+    },
+    {
+      "id": "google/gemini-2-0-flash",
+      "name": "Google: Gemini 2.0 Flash",
+      "context_length": 1048576,
+      "pricing": {
+        "prompt": "0.0000001",
+        "completion": "0.0000004",
+        "image": "0",
+        "request": "0"
+      },
+      "top_provider": {
+        "max_completion_tokens": 8192,
+        "is_moderated": false
+      },
+      "architecture": {
+        "modality": "text->text",
+        "tokenizer": "Gemini",
+        "instruct_type": "gemini"
+      },
+      "supported_parameters": [
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "stream"
+      ]
+    },
+    {
+      "id": "meta-llama/llama-3-70b-instruct",
+      "name": "Meta: Llama 3 70B Instruct",
+      "context_length": 8192,
+      "pricing": {
+        "prompt": "0.00000059",
+        "completion": "0.00000079",
+        "image": "0",
+        "request": "0"
+      },
+      "top_provider": {
+        "max_completion_tokens": 4096,
+        "is_moderated": false
+      },
+      "architecture": {
+        "modality": "text->text",
+        "tokenizer": "Llama3",
+        "instruct_type": "llama3"
+      },
+      "supported_parameters": [
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "tools",
+        "tool_choice",
+        "stream"
+      ]
+    },
+    {
+      "id": "noslash-model",
+      "name": "Model Without Slash",
+      "context_length": 4096,
+      "pricing": {
+        "prompt": "0",
+        "completion": "0",
+        "image": "0",
+        "request": "0"
+      },
+      "top_provider": null,
+      "architecture": null,
+      "supported_parameters": []
+    }
+  ]
+}

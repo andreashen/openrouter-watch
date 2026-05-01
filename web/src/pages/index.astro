@@ -1,0 +1,77 @@
+---
+import modelsData from "../../../data/derived/models_latest.json";
+import ModelTable from "../components/ModelTable.astro";
+import Base from "../layouts/Base.astro";
+
+type ModelRecord = {
+  fetched_at: string;
+  vendor_name: string;
+};
+
+if (!Array.isArray(modelsData) || modelsData.length === 0) {
+  throw new Error("data/derived/models_latest.json must contain a non-empty array");
+}
+
+for (const [index, model] of modelsData.entries()) {
+  if (!model || typeof model !== "object") {
+    throw new Error(`models_latest.json row ${index} must be an object`);
+  }
+
+  const record = model as Partial<ModelRecord>;
+  if (!record.vendor_name) {
+    throw new Error(`models_latest.json row ${index} is missing vendor_name`);
+  }
+}
+
+const models = modelsData as ModelRecord[];
+const latestFetchedAt = models
+  .map((model) => Date.parse(model.fetched_at))
+  .filter((timestamp) => Number.isFinite(timestamp))
+  .sort((a, b) => b - a)[0];
+const latestFetchedAtLabel = latestFetchedAt
+  ? new Intl.DateTimeFormat("en-CA", {
+      timeZone: "UTC",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    })
+      .format(new Date(latestFetchedAt))
+      .replace(",", "") + " UTC"
+  : "Unknown";
+---
+
+<Base
+  title="OpenRouter Watch"
+  description="Static OpenRouter model table generated from derived model data."
+>
+  <main class="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
+    <header class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+        OpenRouter Watch
+      </p>
+      <div class="mt-3 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+            模型信息表
+          </h1>
+          <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+            基于 M1 派生数据构建，展示全部模型字段，并支持按厂商筛选。
+          </p>
+        </div>
+        <div class="rounded-2xl bg-slate-100 px-4 py-3 text-sm text-slate-700">
+          数据更新时间：
+          <span class="font-semibold text-slate-950">{latestFetchedAtLabel}</span>
+        </div>
+      </div>
+    </header>
+
+    <ModelTable models={modelsData} />
+
+    <footer class="pb-4 text-sm text-slate-500">
+      数据来源：OpenRouter API。前端只读取 `data/derived/models_latest.json` 派生产物。
+    </footer>
+  </main>
+</Base>

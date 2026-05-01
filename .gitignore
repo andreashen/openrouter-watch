@@ -1,0 +1,16 @@
+data/raw/
+data/normalized/
+__pycache__/
+.env
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+node_modules/
+.astro/
+.DS_Store
+uv.lock

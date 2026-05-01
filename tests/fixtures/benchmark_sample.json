@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "permaslug": "anthropic/claude-3-haiku",
+      "benchmark_data": {
+        "evaluations": {
+          "artificial_analysis_intelligence_index": 72.5,
+          "artificial_analysis_coding_index": 68.3,
+          "artificial_analysis_agentic_index": 55.1
+        }
+      }
+    }
+  ]
+}
