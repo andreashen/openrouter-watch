@@ -5,14 +5,10 @@
 ### Architecture
 
 OpenRouter Watch has two components:
-1. **Python data pipeline** (`src/openrouter_tracker/`) — fetches model data from the OpenRouter API, normalizes, and derives CSV/JSON outputs into `data/derived/`.
+1. **Python data pipeline** (`src/openrouter_watch/`) — fetches model data from the OpenRouter API, normalizes, and derives CSV/JSON outputs into `data/derived/`.
 2. **Astro static frontend** (`web/`) — renders a model comparison table from `data/derived/models_latest.json`.
 
 No databases, Docker, or background services are required.
-
-### Known issue: package naming mismatch
-
-The Python package directory is `src/openrouter_tracker/` but all imports (scripts, tests) reference `openrouter_watch`. A symlink `src/openrouter_watch -> openrouter_tracker` is needed for imports to resolve. The update script handles this automatically. If tests fail with `ModuleNotFoundError: No module named 'openrouter_watch'`, verify the symlink exists.
 
 ### Running the project
 
