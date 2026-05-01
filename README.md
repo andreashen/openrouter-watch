@@ -8,6 +8,55 @@ English | [中文](#中文说明)
 
 ## Quick Start
 
+```bash
+pip install -e ".[dev]"
+
+python scripts/fetch.py
+python scripts/normalize.py
+python scripts/derive.py
+```
+
+## Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `OPENROUTER_API_KEY` | No | Increases API rate limits when set |
+
+Copy `.env.example` to `.env` and fill in your key if needed.
+
+## Directory Structure
+
+```
+scripts/           # Entry-point scripts (fetch, normalize, derive)
+src/openrouter_tracker/  # Core library
+tests/             # pytest tests
+data/raw/          # Raw API snapshots (gitignored)
+data/normalized/   # Pydantic-validated records (gitignored)
+data/derived/      # CSV + JSON products (committed)
+web/               # Astro frontend for the model table
+docs/              # Milestone specs and task lists
+```
+
+## Development
+
+```bash
+# Run tests
+pytest
+
+# Lint / format
+ruff check .
+ruff format .
+```
+
+## Frontend
+
+```bash
+cd web
+npm install
+npm run dev
+npm run build
+```
+
 ## Data Source
 
 See [NOTICE](NOTICE) for data sources and third-party terms.
