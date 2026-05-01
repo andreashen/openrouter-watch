@@ -1,0 +1,372 @@
+﻿model_id,author,slug,vendor_name,name,context_length,max_completion_tokens,input_price_usd_per_1m,output_price_usd_per_1m,supports_reasoning,supports_tools,supports_vision,intelligence_index,coding_index,agentic_index,fetched_at
+ai21/jamba-large-1.7,ai21,jamba-large-1.7,AI21,AI21: Jamba Large 1.7,256000,4096,2.0,8.0,False,True,False,10.9,7.8,4.5,2026-05-01T13:31:35Z
+aion-labs/aion-1.0,aion-labs,aion-1.0,AionLabs,AionLabs: Aion-1.0,131072,32768,4.0,8.0,True,False,False,,,,2026-05-01T13:31:35Z
+aion-labs/aion-1.0-mini,aion-labs,aion-1.0-mini,AionLabs,AionLabs: Aion-1.0-Mini,131072,32768,0.7,1.4,True,False,False,,,,2026-05-01T13:31:35Z
+aion-labs/aion-2.0,aion-labs,aion-2.0,AionLabs,AionLabs: Aion-2.0,131072,32768,0.8,1.6,True,False,False,,,,2026-05-01T13:31:35Z
+aion-labs/aion-rp-llama-3.1-8b,aion-labs,aion-rp-llama-3.1-8b,AionLabs,AionLabs: Aion-RP 1.0 (8B),32768,32768,0.8,1.6,False,False,False,,,,2026-05-01T13:31:35Z
+alfredpros/codellama-7b-instruct-solidity,alfredpros,codellama-7b-instruct-solidity,AlfredPros,AlfredPros: CodeLLaMa 7B Instruct Solidity,4096,4096,0.8,1.2,False,False,False,,,,2026-05-01T13:31:35Z
+allenai/olmo-3-32b-think,allenai,olmo-3-32b-think,AllenAI,AllenAI: Olmo 3 32B Think,65536,65536,0.15,0.5,True,False,False,12.1,10.5,0,2026-05-01T13:31:35Z
+allenai/olmo-3.1-32b-instruct,allenai,olmo-3.1-32b-instruct,AllenAI,AllenAI: Olmo 3.1 32B Instruct,65536,16384,0.2,0.6,False,True,False,12.2,5.6,7.1,2026-05-01T13:31:35Z
+amazon/nova-2-lite-v1,amazon,nova-2-lite-v1,Amazon,Amazon: Nova 2 Lite,1000000,65535,0.3,2.5,True,True,True,29.7,23.9,32.9,2026-05-01T13:31:35Z
+amazon/nova-lite-v1,amazon,nova-lite-v1,Amazon,Amazon: Nova Lite 1.0,300000,5120,0.06,0.24,False,True,True,12.7,5.1,5.8,2026-05-01T13:31:35Z
+amazon/nova-micro-v1,amazon,nova-micro-v1,Amazon,Amazon: Nova Micro 1.0,128000,5120,0.035,0.14,False,True,False,10.3,4.1,4.7,2026-05-01T13:31:35Z
+amazon/nova-premier-v1,amazon,nova-premier-v1,Amazon,Amazon: Nova Premier 1.0,1000000,32000,2.5,12.5,False,True,True,19,13.8,16.4,2026-05-01T13:31:35Z
+amazon/nova-pro-v1,amazon,nova-pro-v1,Amazon,Amazon: Nova Pro 1.0,300000,5120,0.8,3.2,False,True,True,13.5,11,4.7,2026-05-01T13:31:35Z
+anthropic/claude-3-haiku,anthropic,claude-3-haiku,Anthropic,Anthropic: Claude 3 Haiku,200000,4096,0.25,1.25,False,True,True,12.3,6.7,7,2026-05-01T13:31:35Z
+anthropic/claude-3.5-haiku,anthropic,claude-3.5-haiku,Anthropic,Anthropic: Claude 3.5 Haiku,200000,8192,0.8,4.0,False,True,True,18.7,10.7,17.7,2026-05-01T13:31:35Z
+anthropic/claude-3.7-sonnet,anthropic,claude-3.7-sonnet,Anthropic,Anthropic: Claude 3.7 Sonnet,200000,128000,3.0,15.0,True,True,True,34.7,27.6,37,2026-05-01T13:31:35Z
+anthropic/claude-3.7-sonnet:thinking,anthropic,claude-3.7-sonnet:thinking,Anthropic,Anthropic: Claude 3.7 Sonnet (thinking),200000,64000,3.0,15.0,True,True,True,,,,2026-05-01T13:31:35Z
+anthropic/claude-haiku-4.5,anthropic,claude-haiku-4.5,Anthropic,Anthropic: Claude Haiku 4.5,200000,64000,1.0,5.0,True,True,True,37.1,32.6,40.2,2026-05-01T13:31:35Z
+anthropic/claude-opus-4,anthropic,claude-opus-4,Anthropic,Anthropic: Claude Opus 4,200000,32000,15.0,75.0,True,True,True,,34,,2026-05-01T13:31:35Z
+anthropic/claude-opus-4.1,anthropic,claude-opus-4.1,Anthropic,Anthropic: Claude Opus 4.1,200000,32000,15.0,75.0,True,True,True,,36.5,,2026-05-01T13:31:35Z
+anthropic/claude-opus-4.5,anthropic,claude-opus-4.5,Anthropic,Anthropic: Claude Opus 4.5,200000,64000,5.0,25.0,True,True,True,49.7,47.8,59.6,2026-05-01T13:31:35Z
+anthropic/claude-opus-4.6,anthropic,claude-opus-4.6,Anthropic,Anthropic: Claude Opus 4.6,1000000,128000,5.0,25.0,True,True,True,53,48.1,67.6,2026-05-01T13:31:35Z
+anthropic/claude-opus-4.6-fast,anthropic,claude-opus-4.6-fast,Anthropic,Anthropic: Claude Opus 4.6 (Fast),1000000,128000,30.0,150.0,True,True,True,,,,2026-05-01T13:31:35Z
+anthropic/claude-opus-4.7,anthropic,claude-opus-4.7,Anthropic,Anthropic: Claude Opus 4.7,1000000,128000,5.0,25.0,True,True,True,57.3,52.5,71.3,2026-05-01T13:31:35Z
+anthropic/claude-sonnet-4,anthropic,claude-sonnet-4,Anthropic,Anthropic: Claude Sonnet 4,1000000,64000,3.0,15.0,True,True,True,38.7,34.1,43,2026-05-01T13:31:35Z
+anthropic/claude-sonnet-4.5,anthropic,claude-sonnet-4.5,Anthropic,Anthropic: Claude Sonnet 4.5,1000000,64000,3.0,15.0,True,True,True,43,38.6,51.7,2026-05-01T13:31:35Z
+anthropic/claude-sonnet-4.6,anthropic,claude-sonnet-4.6,Anthropic,Anthropic: Claude Sonnet 4.6,1000000,128000,3.0,15.0,True,True,True,51.7,50.9,63,2026-05-01T13:31:35Z
+~anthropic/claude-opus-latest,~anthropic,claude-opus-latest,Anthropic,Anthropic: Claude Opus Latest,1000000,128000,5.0,25.0,True,True,True,,,,2026-05-01T13:31:35Z
+arcee-ai/coder-large,arcee-ai,coder-large,Arcee AI,Arcee AI: Coder Large,32768,,0.5,0.8,False,False,False,,,,2026-05-01T13:31:35Z
+arcee-ai/maestro-reasoning,arcee-ai,maestro-reasoning,Arcee AI,Arcee AI: Maestro Reasoning,131072,32000,0.9,3.3,False,False,False,,,,2026-05-01T13:31:35Z
+arcee-ai/spotlight,arcee-ai,spotlight,Arcee AI,Arcee AI: Spotlight,131072,65537,0.18,0.18,False,False,True,,,,2026-05-01T13:31:35Z
+arcee-ai/trinity-large-preview,arcee-ai,trinity-large-preview,Arcee AI,Arcee AI: Trinity Large Preview,131000,,0.15,0.45,False,True,False,,,,2026-05-01T13:31:35Z
+arcee-ai/trinity-large-thinking,arcee-ai,trinity-large-thinking,Arcee AI,Arcee AI: Trinity Large Thinking,262144,262144,0.22,0.85,True,True,False,31.9,27.2,42.6,2026-05-01T13:31:35Z
+arcee-ai/trinity-mini,arcee-ai,trinity-mini,Arcee AI,Arcee AI: Trinity Mini,131072,131072,0.045,0.15,True,True,False,,,,2026-05-01T13:31:35Z
+arcee-ai/virtuoso-large,arcee-ai,virtuoso-large,Arcee AI,Arcee AI: Virtuoso Large,131072,64000,0.75,1.2,False,True,False,,,,2026-05-01T13:31:35Z
+baidu/ernie-4.5-21b-a3b,baidu,ernie-4.5-21b-a3b,Baidu,Baidu: ERNIE 4.5 21B A3B,120000,8000,0.07,0.28,False,True,False,,,,2026-05-01T13:31:35Z
+baidu/ernie-4.5-21b-a3b-thinking,baidu,ernie-4.5-21b-a3b-thinking,Baidu,Baidu: ERNIE 4.5 21B A3B Thinking,131072,65536,0.07,0.28,True,False,False,,,,2026-05-01T13:31:35Z
+baidu/ernie-4.5-300b-a47b,baidu,ernie-4.5-300b-a47b,Baidu,Baidu: ERNIE 4.5 300B A47B ,123000,12000,0.28,1.1,False,False,False,15,14.5,0,2026-05-01T13:31:35Z
+baidu/ernie-4.5-vl-28b-a3b,baidu,ernie-4.5-vl-28b-a3b,Baidu,Baidu: ERNIE 4.5 VL 28B A3B,30000,8000,0.14,0.56,True,True,True,,,,2026-05-01T13:31:35Z
+baidu/ernie-4.5-vl-424b-a47b,baidu,ernie-4.5-vl-424b-a47b,Baidu,Baidu: ERNIE 4.5 VL 424B A47B ,123000,16000,0.42,1.25,True,False,True,,,,2026-05-01T13:31:35Z
+baidu/qianfan-ocr-fast:free,baidu,qianfan-ocr-fast:free,Baidu,Baidu: Qianfan-OCR-Fast (free),65536,28672,0.0,0.0,True,False,True,,,,2026-05-01T13:31:35Z
+bytedance/ui-tars-1.5-7b,bytedance,ui-tars-1.5-7b,ByteDance,ByteDance: UI-TARS 7B ,128000,2048,0.1,0.2,False,False,True,,,,2026-05-01T13:31:35Z
+bytedance-seed/seed-1.6,bytedance-seed,seed-1.6,ByteDance Seed,ByteDance Seed: Seed 1.6,262144,32768,0.25,2.0,True,True,True,,,,2026-05-01T13:31:35Z
+bytedance-seed/seed-1.6-flash,bytedance-seed,seed-1.6-flash,ByteDance Seed,ByteDance Seed: Seed 1.6 Flash,262144,32768,0.075,0.3,True,True,True,,,,2026-05-01T13:31:35Z
+bytedance-seed/seed-2.0-lite,bytedance-seed,seed-2.0-lite,ByteDance Seed,ByteDance Seed: Seed-2.0-Lite,262144,131072,0.25,2.0,True,True,True,,,,2026-05-01T13:31:35Z
+bytedance-seed/seed-2.0-mini,bytedance-seed,seed-2.0-mini,ByteDance Seed,ByteDance Seed: Seed-2.0-Mini,262144,131072,0.1,0.4,True,True,True,,,,2026-05-01T13:31:35Z
+cohere/command-a,cohere,command-a,Cohere,Cohere: Command A,256000,8192,2.5,10.0,False,False,False,13.5,9.9,5.1,2026-05-01T13:31:35Z
+cohere/command-r-08-2024,cohere,command-r-08-2024,Cohere,Cohere: Command R (08-2024),128000,4000,0.15,0.6,False,True,False,,,,2026-05-01T13:31:35Z
+cohere/command-r-plus-08-2024,cohere,command-r-plus-08-2024,Cohere,Cohere: Command R+ (08-2024),128000,4000,2.5,10.0,False,True,False,,,,2026-05-01T13:31:35Z
+cohere/command-r7b-12-2024,cohere,command-r7b-12-2024,Cohere,Cohere: Command R7B (12-2024),128000,4000,0.0375,0.15,False,False,False,,,,2026-05-01T13:31:35Z
+deepcogito/cogito-v2.1-671b,deepcogito,cogito-v2.1-671b,Deep Cogito,Deep Cogito: Cogito v2.1 671B,128000,,1.25,1.25,True,False,False,,,,2026-05-01T13:31:35Z
+deepseek/deepseek-chat,deepseek,deepseek-chat,DeepSeek,DeepSeek: DeepSeek V3,163840,16384,0.32,0.89,False,True,False,16.5,16.4,8.8,2026-05-01T13:31:35Z
+deepseek/deepseek-chat-v3-0324,deepseek,deepseek-chat-v3-0324,DeepSeek,DeepSeek: DeepSeek V3 0324,163840,16384,0.2,0.77,False,True,False,22.3,22,16.3,2026-05-01T13:31:35Z
+deepseek/deepseek-chat-v3.1,deepseek,deepseek-chat-v3.1,DeepSeek,DeepSeek: DeepSeek V3.1,32768,7168,0.15,0.75,True,True,False,28.1,28.4,31.9,2026-05-01T13:31:35Z
+deepseek/deepseek-r1,deepseek,deepseek-r1,DeepSeek,DeepSeek: R1,64000,16000,0.7,2.5,True,True,False,18.8,15.9,3.8,2026-05-01T13:31:35Z
+deepseek/deepseek-r1-0528,deepseek,deepseek-r1-0528,DeepSeek,DeepSeek: R1 0528,163840,32768,0.5,2.15,True,True,False,27.1,24,20.8,2026-05-01T13:31:35Z
+deepseek/deepseek-r1-distill-llama-70b,deepseek,deepseek-r1-distill-llama-70b,DeepSeek,DeepSeek: R1 Distill Llama 70B,131072,16384,0.7,0.8,True,False,False,,11.4,,2026-05-01T13:31:35Z
+deepseek/deepseek-r1-distill-qwen-32b,deepseek,deepseek-r1-distill-qwen-32b,DeepSeek,DeepSeek: R1 Distill Qwen 32B,32768,32768,0.29,0.29,True,False,False,,,,2026-05-01T13:31:35Z
+deepseek/deepseek-v3.1-terminus,deepseek,deepseek-v3.1-terminus,DeepSeek,DeepSeek: DeepSeek V3.1 Terminus,163840,32768,0.21,0.79,True,True,False,33.9,33.7,29.8,2026-05-01T13:31:35Z
+deepseek/deepseek-v3.2,deepseek,deepseek-v3.2,DeepSeek,DeepSeek: DeepSeek V3.2,131072,65536,0.252,0.378,True,True,False,41.7,36.7,52.9,2026-05-01T13:31:35Z
+deepseek/deepseek-v3.2-exp,deepseek,deepseek-v3.2-exp,DeepSeek,DeepSeek: DeepSeek V3.2 Exp,163840,65536,0.27,0.41,True,True,False,32.9,33.3,28.7,2026-05-01T13:31:35Z
+deepseek/deepseek-v3.2-speciale,deepseek,deepseek-v3.2-speciale,DeepSeek,DeepSeek: DeepSeek V3.2 Speciale,163840,163840,0.4,1.2,True,False,False,29.4,37.9,0,2026-05-01T13:31:35Z
+deepseek/deepseek-v4-flash,deepseek,deepseek-v4-flash,DeepSeek,DeepSeek: DeepSeek V4 Flash,1048576,384000,0.14,0.28,True,True,False,46.5,38.7,61.3,2026-05-01T13:31:35Z
+deepseek/deepseek-v4-pro,deepseek,deepseek-v4-pro,DeepSeek,DeepSeek: DeepSeek V4 Pro,1048576,384000,0.435,0.87,True,True,False,51.5,47.5,67.2,2026-05-01T13:31:35Z
+essentialai/rnj-1-instruct,essentialai,rnj-1-instruct,EssentialAI,EssentialAI: Rnj 1 Instruct,32768,,0.15,0.15,False,True,False,,,,2026-05-01T13:31:35Z
+google/gemini-2.0-flash-001,google,gemini-2.0-flash-001,Google,Google: Gemini 2.0 Flash,1000000,8192,0.1,0.4,False,True,True,18.5,13.6,15.8,2026-05-01T13:31:35Z
+google/gemini-2.0-flash-lite-001,google,gemini-2.0-flash-lite-001,Google,Google: Gemini 2.0 Flash Lite,1048576,8192,0.075,0.3,False,True,True,,,,2026-05-01T13:31:35Z
+google/gemini-2.5-flash,google,gemini-2.5-flash,Google,Google: Gemini 2.5 Flash,1048576,65535,0.3,2.5,True,True,True,20.6,17.8,15,2026-05-01T13:31:35Z
+google/gemini-2.5-flash-image,google,gemini-2.5-flash-image,Google,Google: Nano Banana (Gemini 2.5 Flash Image),32768,32768,0.3,2.5,False,False,True,,,,2026-05-01T13:31:35Z
+google/gemini-2.5-flash-lite,google,gemini-2.5-flash-lite,Google,Google: Gemini 2.5 Flash Lite,1048576,65535,0.1,0.4,True,True,True,17.6,9.5,6.1,2026-05-01T13:31:35Z
+google/gemini-2.5-flash-lite-preview-09-2025,google,gemini-2.5-flash-lite-preview-09-2025,Google,Google: Gemini 2.5 Flash Lite Preview 09-2025,1048576,65535,0.1,0.4,True,True,True,21.6,18.1,11.7,2026-05-01T13:31:35Z
+google/gemini-2.5-pro,google,gemini-2.5-pro,Google,Google: Gemini 2.5 Pro,1048576,65536,1.25,10.0,True,True,True,,,,2026-05-01T13:31:35Z
+google/gemini-2.5-pro-preview,google,gemini-2.5-pro-preview,Google,Google: Gemini 2.5 Pro Preview 06-05,1048576,65536,1.25,10.0,True,True,True,34.6,31.9,32.7,2026-05-01T13:31:35Z
+google/gemini-2.5-pro-preview-05-06,google,gemini-2.5-pro-preview-05-06,Google,Google: Gemini 2.5 Pro Preview 05-06,1048576,65535,1.25,10.0,True,True,True,,,,2026-05-01T13:31:35Z
+google/gemini-3-flash-preview,google,gemini-3-flash-preview,Google,Google: Gemini 3 Flash Preview,1048576,65536,0.5,3.0,True,True,True,46.4,42.6,49.7,2026-05-01T13:31:35Z
+google/gemini-3-pro-image-preview,google,gemini-3-pro-image-preview,Google,Google: Nano Banana Pro (Gemini 3 Pro Image Preview),65536,32768,2.0,12.0,True,False,True,,,,2026-05-01T13:31:35Z
+google/gemini-3.1-flash-image-preview,google,gemini-3.1-flash-image-preview,Google,Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview),65536,65536,0.5,3.0,True,False,True,,,,2026-05-01T13:31:35Z
+google/gemini-3.1-flash-lite-preview,google,gemini-3.1-flash-lite-preview,Google,Google: Gemini 3.1 Flash Lite Preview,1048576,65536,0.25,1.5,True,True,True,33.5,30.1,25.7,2026-05-01T13:31:35Z
+google/gemini-3.1-pro-preview,google,gemini-3.1-pro-preview,Google,Google: Gemini 3.1 Pro Preview,1048576,65536,2.0,12.0,True,True,True,57.2,55.5,59.1,2026-05-01T13:31:35Z
+google/gemini-3.1-pro-preview-customtools,google,gemini-3.1-pro-preview-customtools,Google,Google: Gemini 3.1 Pro Preview Custom Tools,1048576,65536,2.0,12.0,True,True,True,,,,2026-05-01T13:31:35Z
+google/gemma-2-27b-it,google,gemma-2-27b-it,Google,Google: Gemma 2 27B,8192,2048,0.65,0.65,False,False,False,,,,2026-05-01T13:31:35Z
+google/gemma-3-12b-it,google,gemma-3-12b-it,Google,Google: Gemma 3 12B,131072,16384,0.04,0.13,False,True,True,8.8,6.3,3.6,2026-05-01T13:31:35Z
+google/gemma-3-12b-it:free,google,gemma-3-12b-it:free,Google,Google: Gemma 3 12B (free),32768,8192,0.0,0.0,False,False,True,,,,2026-05-01T13:31:35Z
+google/gemma-3-27b-it,google,gemma-3-27b-it,Google,Google: Gemma 3 27B,131072,16384,0.08,0.16,False,True,True,10.3,9.6,3.5,2026-05-01T13:31:35Z
+google/gemma-3-27b-it:free,google,gemma-3-27b-it:free,Google,Google: Gemma 3 27B (free),131072,8192,0.0,0.0,False,False,True,,,,2026-05-01T13:31:35Z
+google/gemma-3-4b-it,google,gemma-3-4b-it,Google,Google: Gemma 3 4B,131072,16384,0.04,0.08,False,False,True,6.3,2.9,1.7,2026-05-01T13:31:35Z
+google/gemma-3-4b-it:free,google,gemma-3-4b-it:free,Google,Google: Gemma 3 4B (free),32768,8192,0.0,0.0,False,False,True,,,,2026-05-01T13:31:35Z
+google/gemma-3n-e2b-it:free,google,gemma-3n-e2b-it:free,Google,Google: Gemma 3n 2B (free),8192,2048,0.0,0.0,False,False,False,,,,2026-05-01T13:31:35Z
+google/gemma-3n-e4b-it,google,gemma-3n-e4b-it,Google,Google: Gemma 3n 4B,32768,,0.06,0.12,False,False,False,6.4,4.2,1.7,2026-05-01T13:31:35Z
+google/gemma-3n-e4b-it:free,google,gemma-3n-e4b-it:free,Google,Google: Gemma 3n 4B (free),8192,2048,0.0,0.0,False,False,False,,,,2026-05-01T13:31:35Z
+google/gemma-4-26b-a4b-it,google,gemma-4-26b-a4b-it,Google,Google: Gemma 4 26B A4B ,262144,,0.06,0.33,True,True,True,31.2,22.4,32.1,2026-05-01T13:31:35Z
+google/gemma-4-26b-a4b-it:free,google,gemma-4-26b-a4b-it:free,Google,Google: Gemma 4 26B A4B  (free),262144,32768,0.0,0.0,True,True,True,,,,2026-05-01T13:31:35Z
+google/gemma-4-31b-it,google,gemma-4-31b-it,Google,Google: Gemma 4 31B,262144,16384,0.13,0.38,True,True,True,39.2,38.7,40.9,2026-05-01T13:31:35Z
+google/gemma-4-31b-it:free,google,gemma-4-31b-it:free,Google,Google: Gemma 4 31B (free),262144,32768,0.0,0.0,True,True,True,,,,2026-05-01T13:31:35Z
+google/lyria-3-clip-preview,google,lyria-3-clip-preview,Google,Google: Lyria 3 Clip Preview,1048576,65536,0.0,0.0,False,False,True,,,,2026-05-01T13:31:35Z
+google/lyria-3-pro-preview,google,lyria-3-pro-preview,Google,Google: Lyria 3 Pro Preview,1048576,65536,0.0,0.0,False,False,True,,,,2026-05-01T13:31:35Z
+ibm-granite/granite-4.0-h-micro,ibm-granite,granite-4.0-h-micro,IBM,IBM: Granite 4.0 Micro,131000,,0.017,0.11,False,False,False,7.7,5,4.2,2026-05-01T13:31:35Z
+ibm-granite/granite-4.1-8b,ibm-granite,granite-4.1-8b,IBM,IBM: Granite 4.1 8B,131072,131072,0.05,0.1,False,True,False,12.4,7.3,10.7,2026-05-01T13:31:35Z
+inception/mercury-2,inception,mercury-2,Inception,Inception: Mercury 2,128000,50000,0.25,0.75,True,True,False,32.8,30.6,39.7,2026-05-01T13:31:35Z
+inflection/inflection-3-pi,inflection,inflection-3-pi,Inflection,Inflection: Inflection 3 Pi,8000,1024,2.5,10.0,False,False,False,,,,2026-05-01T13:31:35Z
+inflection/inflection-3-productivity,inflection,inflection-3-productivity,Inflection,Inflection: Inflection 3 Productivity,8000,1024,2.5,10.0,False,False,False,,,,2026-05-01T13:31:35Z
+kwaipilot/kat-coder-pro-v2,kwaipilot,kat-coder-pro-v2,Kwaipilot,Kwaipilot: KAT-Coder-Pro V2,256000,80000,0.3,1.2,False,True,False,,,,2026-05-01T13:31:35Z
+liquid/lfm-2-24b-a2b,liquid,lfm-2-24b-a2b,LiquidAI,LiquidAI: LFM2-24B-A2B,32768,,0.03,0.12,False,False,False,10.5,3.6,3.7,2026-05-01T13:31:35Z
+liquid/lfm-2.5-1.2b-instruct:free,liquid,lfm-2.5-1.2b-instruct:free,LiquidAI,LiquidAI: LFM2.5-1.2B-Instruct (free),32768,,0.0,0.0,False,False,False,8,0.8,3.6,2026-05-01T13:31:35Z
+liquid/lfm-2.5-1.2b-thinking:free,liquid,lfm-2.5-1.2b-thinking:free,LiquidAI,LiquidAI: LFM2.5-1.2B-Thinking (free),32768,,0.0,0.0,True,False,False,8.1,1.4,6.5,2026-05-01T13:31:35Z
+mancer/weaver,mancer,weaver,Mancer,Mancer: Weaver (alpha),8000,2000,0.75,1.0,False,False,False,,,,2026-05-01T13:31:35Z
+meta-llama/llama-3-70b-instruct,meta-llama,llama-3-70b-instruct,Meta,Meta: Llama 3 70B Instruct,8192,8000,0.51,0.74,False,False,False,8.9,6.8,0,2026-05-01T13:31:35Z
+meta-llama/llama-3-8b-instruct,meta-llama,llama-3-8b-instruct,Meta,Meta: Llama 3 8B Instruct,8192,16384,0.03,0.04,False,True,False,6.4,4,0,2026-05-01T13:31:35Z
+meta-llama/llama-3.1-70b-instruct,meta-llama,llama-3.1-70b-instruct,Meta,Meta: Llama 3.1 70B Instruct,131072,16384,0.4,0.4,False,True,False,12.5,10.9,5.1,2026-05-01T13:31:35Z
+meta-llama/llama-3.1-8b-instruct,meta-llama,llama-3.1-8b-instruct,Meta,Meta: Llama 3.1 8B Instruct,16384,16384,0.02,0.05,False,True,False,11.8,4.9,5.5,2026-05-01T13:31:35Z
+meta-llama/llama-3.2-11b-vision-instruct,meta-llama,llama-3.2-11b-vision-instruct,Meta,Meta: Llama 3.2 11B Vision Instruct,131072,16384,0.245,0.245,False,False,True,8.7,4.3,4.9,2026-05-01T13:31:35Z
+meta-llama/llama-3.2-1b-instruct,meta-llama,llama-3.2-1b-instruct,Meta,Meta: Llama 3.2 1B Instruct,60000,,0.027,0.2,False,False,False,6.3,0.6,0,2026-05-01T13:31:35Z
+meta-llama/llama-3.2-3b-instruct,meta-llama,llama-3.2-3b-instruct,Meta,Meta: Llama 3.2 3B Instruct,80000,,0.051,0.34,False,False,False,,,,2026-05-01T13:31:35Z
+meta-llama/llama-3.2-3b-instruct:free,meta-llama,llama-3.2-3b-instruct:free,Meta,Meta: Llama 3.2 3B Instruct (free),131072,,0.0,0.0,False,False,False,,,,2026-05-01T13:31:35Z
+meta-llama/llama-3.3-70b-instruct,meta-llama,llama-3.3-70b-instruct,Meta,Meta: Llama 3.3 70B Instruct,131072,16384,0.1,0.32,False,True,False,14.5,10.7,9.1,2026-05-01T13:31:35Z
+meta-llama/llama-3.3-70b-instruct:free,meta-llama,llama-3.3-70b-instruct:free,Meta,Meta: Llama 3.3 70B Instruct (free),65536,,0.0,0.0,False,True,False,,,,2026-05-01T13:31:35Z
+meta-llama/llama-4-maverick,meta-llama,llama-4-maverick,Meta,Meta: Llama 4 Maverick,1048576,16384,0.15,0.6,False,False,True,18.4,15.6,7.2,2026-05-01T13:31:35Z
+meta-llama/llama-4-scout,meta-llama,llama-4-scout,Meta,Meta: Llama 4 Scout,327680,16384,0.08,0.3,False,True,True,13.5,6.7,5.2,2026-05-01T13:31:35Z
+meta-llama/llama-guard-4-12b,meta-llama,llama-guard-4-12b,Meta,Meta: Llama Guard 4 12B,163840,16384,0.18,0.18,False,False,True,,,,2026-05-01T13:31:35Z
+microsoft/phi-4,microsoft,phi-4,Microsoft,Microsoft: Phi 4,16384,16384,0.065,0.14,False,False,False,,,,2026-05-01T13:31:35Z
+minimax/minimax-01,minimax,minimax-01,MiniMax,MiniMax: MiniMax-01,1000192,1000192,0.2,1.1,False,False,True,,,,2026-05-01T13:31:35Z
+minimax/minimax-m1,minimax,minimax-m1,MiniMax,MiniMax: MiniMax M1,1000000,40000,0.4,2.2,True,True,False,,14.1,,2026-05-01T13:31:35Z
+minimax/minimax-m2,minimax,minimax-m2,MiniMax,MiniMax: MiniMax M2,196608,196608,0.255,1.0,True,True,False,36.1,29.2,47.5,2026-05-01T13:31:35Z
+minimax/minimax-m2-her,minimax,minimax-m2-her,MiniMax,MiniMax: MiniMax M2-her,65536,2048,0.3,1.2,False,False,False,,,,2026-05-01T13:31:35Z
+minimax/minimax-m2.1,minimax,minimax-m2.1,MiniMax,MiniMax: MiniMax M2.1,196608,196608,0.29,0.95,True,True,False,39.4,32.8,47.4,2026-05-01T13:31:35Z
+minimax/minimax-m2.5,minimax,minimax-m2.5,MiniMax,MiniMax: MiniMax M2.5,196608,131072,0.15,1.15,True,True,False,41.9,37.4,55.6,2026-05-01T13:31:35Z
+minimax/minimax-m2.5:free,minimax,minimax-m2.5:free,MiniMax,MiniMax: MiniMax M2.5 (free),196608,8192,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+minimax/minimax-m2.7,minimax,minimax-m2.7,MiniMax,MiniMax: MiniMax M2.7,196608,,0.3,1.2,True,True,False,49.6,41.9,61.5,2026-05-01T13:31:35Z
+mistralai/codestral-2508,mistralai,codestral-2508,Mistral,Mistral: Codestral 2508,256000,,0.3,0.9,False,True,False,,,,2026-05-01T13:31:35Z
+mistralai/devstral-2512,mistralai,devstral-2512,Mistral,Mistral: Devstral 2 2512,262144,,0.4,2.0,False,True,False,22,23.7,21.9,2026-05-01T13:31:35Z
+mistralai/devstral-medium,mistralai,devstral-medium,Mistral,Mistral: Devstral Medium,131072,,0.4,2.0,False,True,False,18.7,15.9,15.8,2026-05-01T13:31:35Z
+mistralai/devstral-small,mistralai,devstral-small,Mistral,Mistral: Devstral Small 1.1,131072,,0.1,0.3,False,True,False,19.5,20.7,20.8,2026-05-01T13:31:35Z
+mistralai/ministral-14b-2512,mistralai,ministral-14b-2512,Mistral,Mistral: Ministral 3 14B 2512,262144,,0.2,0.2,False,True,True,16,10.9,17.4,2026-05-01T13:31:35Z
+mistralai/ministral-3b-2512,mistralai,ministral-3b-2512,Mistral,Mistral: Ministral 3 3B 2512,131072,,0.1,0.1,False,True,True,11.2,4.8,11.4,2026-05-01T13:31:35Z
+mistralai/ministral-8b-2512,mistralai,ministral-8b-2512,Mistral,Mistral: Ministral 3 8B 2512,262144,,0.15,0.15,False,True,True,14.8,10,16.7,2026-05-01T13:31:35Z
+mistralai/mistral-7b-instruct-v0.1,mistralai,mistral-7b-instruct-v0.1,Mistral,Mistral: Mistral 7B Instruct v0.1,2824,,0.11,0.19,False,False,False,,,,2026-05-01T13:31:35Z
+mistralai/mistral-large-2512,mistralai,mistral-large-2512,Mistral,Mistral: Mistral Large 3 2512,262144,,0.5,1.5,False,True,True,22.8,22.7,21.7,2026-05-01T13:31:35Z
+mistralai/mistral-medium-3,mistralai,mistral-medium-3,Mistral,Mistral: Mistral Medium 3,131072,,0.4,2.0,False,True,True,18.8,13.6,13.7,2026-05-01T13:31:35Z
+mistralai/mistral-medium-3.1,mistralai,mistral-medium-3.1,Mistral,Mistral: Mistral Medium 3.1,131072,,0.4,2.0,False,True,True,21.3,18.3,25.3,2026-05-01T13:31:35Z
+mistralai/mistral-nemo,mistralai,mistral-nemo,Mistral,Mistral: Mistral Nemo,131072,,0.02,0.03,False,True,False,,,,2026-05-01T13:31:35Z
+mistralai/mistral-saba,mistralai,mistral-saba,Mistral,Mistral: Saba,32768,,0.2,0.6,False,True,False,,,,2026-05-01T13:31:35Z
+mistralai/mistral-small-24b-instruct-2501,mistralai,mistral-small-24b-instruct-2501,Mistral,Mistral: Mistral Small 3,32768,16384,0.05,0.08,False,False,False,,,,2026-05-01T13:31:35Z
+mistralai/mistral-small-2603,mistralai,mistral-small-2603,Mistral,Mistral: Mistral Small 4,262144,,0.15,0.6,True,True,True,27.8,24.3,25.9,2026-05-01T13:31:35Z
+mistralai/mistral-small-3.1-24b-instruct,mistralai,mistral-small-3.1-24b-instruct,Mistral,Mistral: Mistral Small 3.1 24B,128000,,0.35,0.56,False,False,True,14.5,13.9,8.4,2026-05-01T13:31:35Z
+mistralai/mistral-small-3.2-24b-instruct,mistralai,mistral-small-3.2-24b-instruct,Mistral,Mistral: Mistral Small 3.2 24B,128000,16384,0.075,0.2,False,True,True,15.1,13.3,9.8,2026-05-01T13:31:35Z
+mistralai/mixtral-8x22b-instruct,mistralai,mixtral-8x22b-instruct,Mistral,Mistral: Mixtral 8x22B Instruct,65536,,2.0,6.0,False,True,False,,,,2026-05-01T13:31:35Z
+mistralai/mixtral-8x7b-instruct,mistralai,mixtral-8x7b-instruct,Mistral,Mistral: Mixtral 8x7B Instruct,32768,16384,0.54,0.54,False,True,False,,,,2026-05-01T13:31:35Z
+mistralai/pixtral-large-2411,mistralai,pixtral-large-2411,Mistral,Mistral: Pixtral Large 2411,131072,,2.0,6.0,False,True,True,,,,2026-05-01T13:31:35Z
+mistralai/voxtral-small-24b-2507,mistralai,voxtral-small-24b-2507,Mistral,Mistral: Voxtral Small 24B 2507,32000,,0.1,0.3,False,True,False,,,,2026-05-01T13:31:35Z
+moonshotai/kimi-k2,moonshotai,kimi-k2,MoonshotAI,MoonshotAI: Kimi K2 0711,131072,32768,0.57,2.3,False,True,False,26.3,22.1,24.3,2026-05-01T13:31:35Z
+moonshotai/kimi-k2-0905,moonshotai,kimi-k2-0905,MoonshotAI,MoonshotAI: Kimi K2 0905,262144,262144,0.4,2.0,False,True,False,30.9,25.9,37.7,2026-05-01T13:31:35Z
+moonshotai/kimi-k2-thinking,moonshotai,kimi-k2-thinking,MoonshotAI,MoonshotAI: Kimi K2 Thinking,262144,262144,0.6,2.5,True,True,False,40.9,34.8,47.9,2026-05-01T13:31:35Z
+moonshotai/kimi-k2.5,moonshotai,kimi-k2.5,MoonshotAI,MoonshotAI: Kimi K2.5,262144,65535,0.44,2.0,True,True,True,46.8,39.5,58.9,2026-05-01T13:31:35Z
+moonshotai/kimi-k2.6,moonshotai,kimi-k2.6,MoonshotAI,MoonshotAI: Kimi K2.6,262142,262142,0.74,3.49,True,True,True,53.9,47.1,66,2026-05-01T13:31:35Z
+morph/morph-v3-fast,morph,morph-v3-fast,Morph,Morph: Morph V3 Fast,81920,38000,0.8,1.2,False,False,False,,,,2026-05-01T13:31:35Z
+morph/morph-v3-large,morph,morph-v3-large,Morph,Morph: Morph V3 Large,262144,131072,0.9,1.9,False,False,False,,,,2026-05-01T13:31:35Z
+nvidia/llama-3.1-nemotron-70b-instruct,nvidia,llama-3.1-nemotron-70b-instruct,NVIDIA,NVIDIA: Llama 3.1 Nemotron 70B Instruct,131072,16384,1.2,1.2,False,True,False,13.4,10.8,7.7,2026-05-01T13:31:35Z
+nvidia/llama-3.3-nemotron-super-49b-v1.5,nvidia,llama-3.3-nemotron-super-49b-v1.5,NVIDIA,NVIDIA: Llama 3.3 Nemotron Super 49B V1.5,131072,16384,0.1,0.4,True,True,False,18.7,15.2,9.4,2026-05-01T13:31:35Z
+nvidia/nemotron-3-nano-30b-a3b,nvidia,nemotron-3-nano-30b-a3b,NVIDIA,NVIDIA: Nemotron 3 Nano 30B A3B,262144,228000,0.05,0.2,True,True,False,24.3,19,19.1,2026-05-01T13:31:35Z
+nvidia/nemotron-3-nano-30b-a3b:free,nvidia,nemotron-3-nano-30b-a3b:free,NVIDIA,NVIDIA: Nemotron 3 Nano 30B A3B (free),256000,,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,nvidia,nemotron-3-nano-omni-30b-a3b-reasoning:free,NVIDIA,NVIDIA: Nemotron 3 Nano Omni (free),256000,65536,0.0,0.0,True,True,True,,,,2026-05-01T13:31:35Z
+nvidia/nemotron-3-super-120b-a12b,nvidia,nemotron-3-super-120b-a12b,NVIDIA,NVIDIA: Nemotron 3 Super,262144,,0.09,0.45,True,True,False,36,31.2,40.2,2026-05-01T13:31:35Z
+nvidia/nemotron-3-super-120b-a12b:free,nvidia,nemotron-3-super-120b-a12b:free,NVIDIA,NVIDIA: Nemotron 3 Super (free),262144,262144,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+nvidia/nemotron-nano-12b-v2-vl,nvidia,nemotron-nano-12b-v2-vl,NVIDIA,NVIDIA: Nemotron Nano 12B 2 VL,131072,16384,0.2,0.6,True,False,True,14.9,11.8,7.1,2026-05-01T13:31:35Z
+nvidia/nemotron-nano-12b-v2-vl:free,nvidia,nemotron-nano-12b-v2-vl:free,NVIDIA,NVIDIA: Nemotron Nano 12B 2 VL (free),128000,128000,0.0,0.0,True,True,True,,,,2026-05-01T13:31:35Z
+nvidia/nemotron-nano-9b-v2,nvidia,nemotron-nano-9b-v2,NVIDIA,NVIDIA: Nemotron Nano 9B V2,131072,16384,0.04,0.16,True,True,False,14.8,8.3,9.4,2026-05-01T13:31:35Z
+nvidia/nemotron-nano-9b-v2:free,nvidia,nemotron-nano-9b-v2:free,NVIDIA,NVIDIA: Nemotron Nano 9B V2 (free),128000,,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+nex-agi/deepseek-v3.1-nex-n1,nex-agi,deepseek-v3.1-nex-n1,Nex AGI,Nex AGI: DeepSeek V3.1 Nex N1,131072,163840,0.135,0.5,False,True,False,,,,2026-05-01T13:31:35Z
+nousresearch/hermes-3-llama-3.1-405b,nousresearch,hermes-3-llama-3.1-405b,Nous,Nous: Hermes 3 405B Instruct,131072,16384,1.0,1.0,False,False,False,17.6,18.1,11.8,2026-05-01T13:31:35Z
+nousresearch/hermes-3-llama-3.1-405b:free,nousresearch,hermes-3-llama-3.1-405b:free,Nous,Nous: Hermes 3 405B Instruct (free),131072,,0.0,0.0,False,False,False,,,,2026-05-01T13:31:35Z
+nousresearch/hermes-3-llama-3.1-70b,nousresearch,hermes-3-llama-3.1-70b,Nous,Nous: Hermes 3 70B Instruct,131072,16384,0.3,0.3,False,False,False,12.6,9.2,10,2026-05-01T13:31:35Z
+nousresearch/hermes-4-405b,nousresearch,hermes-4-405b,Nous,Nous: Hermes 4 405B,131072,,1.0,3.0,True,False,False,,,,2026-05-01T13:31:35Z
+nousresearch/hermes-4-70b,nousresearch,hermes-4-70b,Nous,Nous: Hermes 4 70B,131072,,0.13,0.4,True,False,False,,,,2026-05-01T13:31:35Z
+nousresearch/hermes-2-pro-llama-3-8b,nousresearch,hermes-2-pro-llama-3-8b,NousResearch,NousResearch: Hermes 2 Pro - Llama-3 8B,8192,8192,0.14,0.14,False,False,False,,,,2026-05-01T13:31:35Z
+openai/gpt-3.5-turbo,openai,gpt-3.5-turbo,OpenAI,OpenAI: GPT-3.5 Turbo,16385,4096,0.5,1.5,False,True,False,,10.7,,2026-05-01T13:31:35Z
+openai/gpt-3.5-turbo-0613,openai,gpt-3.5-turbo-0613,OpenAI,OpenAI: GPT-3.5 Turbo (older v0613),4095,4096,1.0,2.0,False,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-3.5-turbo-16k,openai,gpt-3.5-turbo-16k,OpenAI,OpenAI: GPT-3.5 Turbo 16k,16385,4096,3.0,4.0,False,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-3.5-turbo-instruct,openai,gpt-3.5-turbo-instruct,OpenAI,OpenAI: GPT-3.5 Turbo Instruct,4095,4096,1.5,2.0,False,False,False,,,,2026-05-01T13:31:35Z
+openai/gpt-4,openai,gpt-4,OpenAI,OpenAI: GPT-4,8191,4096,30.0,60.0,False,True,False,,13.1,,2026-05-01T13:31:35Z
+openai/gpt-4-0314,openai,gpt-4-0314,OpenAI,OpenAI: GPT-4 (older v0314),8191,4096,30.0,60.0,False,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-4-1106-preview,openai,gpt-4-1106-preview,OpenAI,OpenAI: GPT-4 Turbo (older v1106),128000,4096,10.0,30.0,False,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-4-turbo,openai,gpt-4-turbo,OpenAI,OpenAI: GPT-4 Turbo,128000,4096,10.0,30.0,False,True,True,,21.5,,2026-05-01T13:31:35Z
+openai/gpt-4-turbo-preview,openai,gpt-4-turbo-preview,OpenAI,OpenAI: GPT-4 Turbo Preview,128000,4096,10.0,30.0,False,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-4.1,openai,gpt-4.1,OpenAI,OpenAI: GPT-4.1,1047576,,2.0,8.0,False,True,True,26.3,21.8,27.3,2026-05-01T13:31:35Z
+openai/gpt-4.1-mini,openai,gpt-4.1-mini,OpenAI,OpenAI: GPT-4.1 Mini,1047576,32768,0.4,1.6,False,True,True,22.9,18.5,25.1,2026-05-01T13:31:35Z
+openai/gpt-4.1-nano,openai,gpt-4.1-nano,OpenAI,OpenAI: GPT-4.1 Nano,1047576,32768,0.1,0.4,False,True,True,13,11.2,5.8,2026-05-01T13:31:35Z
+openai/gpt-4o,openai,gpt-4o,OpenAI,OpenAI: GPT-4o,128000,16384,2.5,10.0,False,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-4o-2024-05-13,openai,gpt-4o-2024-05-13,OpenAI,OpenAI: GPT-4o (2024-05-13),128000,4096,5.0,15.0,False,True,True,,24.2,,2026-05-01T13:31:35Z
+openai/gpt-4o-2024-08-06,openai,gpt-4o-2024-08-06,OpenAI,OpenAI: GPT-4o (2024-08-06),128000,16384,2.5,10.0,False,True,True,18.6,16.6,9.7,2026-05-01T13:31:35Z
+openai/gpt-4o-2024-11-20,openai,gpt-4o-2024-11-20,OpenAI,OpenAI: GPT-4o (2024-11-20),128000,16384,2.5,10.0,False,True,True,17.3,16.7,8.4,2026-05-01T13:31:35Z
+openai/gpt-4o-audio-preview,openai,gpt-4o-audio-preview,OpenAI,OpenAI: GPT-4o Audio,128000,16384,2.5,10.0,False,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-4o-mini,openai,gpt-4o-mini,OpenAI,OpenAI: GPT-4o-mini,128000,16384,0.15,0.6,False,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-4o-mini-2024-07-18,openai,gpt-4o-mini-2024-07-18,OpenAI,OpenAI: GPT-4o-mini (2024-07-18),128000,16384,0.15,0.6,False,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-4o-mini-search-preview,openai,gpt-4o-mini-search-preview,OpenAI,OpenAI: GPT-4o-mini Search Preview,128000,16384,0.15,0.6,False,False,False,,,,2026-05-01T13:31:35Z
+openai/gpt-4o-search-preview,openai,gpt-4o-search-preview,OpenAI,OpenAI: GPT-4o Search Preview,128000,16384,2.5,10.0,False,False,False,,,,2026-05-01T13:31:35Z
+openai/gpt-5,openai,gpt-5,OpenAI,OpenAI: GPT-5,400000,128000,1.25,10.0,True,True,True,44.6,36,54.6,2026-05-01T13:31:35Z
+openai/gpt-5-chat,openai,gpt-5-chat,OpenAI,OpenAI: GPT-5 Chat,128000,16384,1.25,10.0,False,False,True,,21.2,,2026-05-01T13:31:35Z
+openai/gpt-5-codex,openai,gpt-5-codex,OpenAI,OpenAI: GPT-5 Codex,400000,128000,1.25,10.0,True,True,True,44.6,38.9,52.7,2026-05-01T13:31:35Z
+openai/gpt-5-image,openai,gpt-5-image,OpenAI,OpenAI: GPT-5 Image,400000,128000,10.0,10.0,True,False,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5-image-mini,openai,gpt-5-image-mini,OpenAI,OpenAI: GPT-5 Image Mini,400000,128000,2.5,2.0,True,False,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5-mini,openai,gpt-5-mini,OpenAI,OpenAI: GPT-5 Mini,400000,128000,0.25,2.0,True,True,True,41.2,35.3,45.5,2026-05-01T13:31:35Z
+openai/gpt-5-nano,openai,gpt-5-nano,OpenAI,OpenAI: GPT-5 Nano,400000,,0.05,0.4,True,True,True,26.8,20.3,23.3,2026-05-01T13:31:35Z
+openai/gpt-5-pro,openai,gpt-5-pro,OpenAI,OpenAI: GPT-5 Pro,400000,128000,15.0,120.0,True,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5.1,openai,gpt-5.1,OpenAI,OpenAI: GPT-5.1,400000,128000,1.25,10.0,True,True,True,47.7,44.7,51.3,2026-05-01T13:31:35Z
+openai/gpt-5.1-chat,openai,gpt-5.1-chat,OpenAI,OpenAI: GPT-5.1 Chat,128000,16384,1.25,10.0,False,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5.1-codex,openai,gpt-5.1-codex,OpenAI,OpenAI: GPT-5.1-Codex,400000,128000,1.25,10.0,True,True,True,43.1,36.6,50.7,2026-05-01T13:31:35Z
+openai/gpt-5.1-codex-max,openai,gpt-5.1-codex-max,OpenAI,OpenAI: GPT-5.1-Codex-Max,400000,128000,1.25,10.0,True,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5.1-codex-mini,openai,gpt-5.1-codex-mini,OpenAI,OpenAI: GPT-5.1-Codex-Mini,400000,128000,0.25,2.0,True,True,True,38.6,36.4,38.7,2026-05-01T13:31:35Z
+openai/gpt-5.2,openai,gpt-5.2,OpenAI,OpenAI: GPT-5.2,400000,128000,1.75,14.0,True,True,True,51.3,48.7,60.2,2026-05-01T13:31:35Z
+openai/gpt-5.2-chat,openai,gpt-5.2-chat,OpenAI,OpenAI: GPT-5.2 Chat,128000,32000,1.75,14.0,False,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5.2-codex,openai,gpt-5.2-codex,OpenAI,OpenAI: GPT-5.2-Codex,400000,128000,1.75,14.0,True,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5.2-pro,openai,gpt-5.2-pro,OpenAI,OpenAI: GPT-5.2 Pro,400000,128000,21.0,168.0,True,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5.3-chat,openai,gpt-5.3-chat,OpenAI,OpenAI: GPT-5.3 Chat,128000,16384,1.75,14.0,False,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5.3-codex,openai,gpt-5.3-codex,OpenAI,OpenAI: GPT-5.3-Codex,400000,128000,1.75,14.0,True,True,True,53.6,53.1,60.5,2026-05-01T13:31:35Z
+openai/gpt-5.4,openai,gpt-5.4,OpenAI,OpenAI: GPT-5.4,1050000,128000,2.5,15.0,True,True,True,56.8,57.3,68,2026-05-01T13:31:35Z
+openai/gpt-5.4-image-2,openai,gpt-5.4-image-2,OpenAI,OpenAI: GPT-5.4 Image 2,272000,128000,8.0,15.0,True,False,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5.4-mini,openai,gpt-5.4-mini,OpenAI,OpenAI: GPT-5.4 Mini,400000,128000,0.75,4.5,True,True,True,48.9,51.5,58.9,2026-05-01T13:31:35Z
+openai/gpt-5.4-nano,openai,gpt-5.4-nano,OpenAI,OpenAI: GPT-5.4 Nano,400000,128000,0.2,1.25,True,True,True,44,43.9,47.6,2026-05-01T13:31:35Z
+openai/gpt-5.4-pro,openai,gpt-5.4-pro,OpenAI,OpenAI: GPT-5.4 Pro,1050000,128000,30.0,180.0,True,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-5.5,openai,gpt-5.5,OpenAI,OpenAI: GPT-5.5,1050000,128000,5.0,30.0,True,True,True,60.2,59.1,74.1,2026-05-01T13:31:35Z
+openai/gpt-5.5-pro,openai,gpt-5.5-pro,OpenAI,OpenAI: GPT-5.5 Pro,1050000,128000,30.0,180.0,True,True,True,,,,2026-05-01T13:31:35Z
+openai/gpt-audio,openai,gpt-audio,OpenAI,OpenAI: GPT Audio,128000,16384,2.5,10.0,False,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-audio-mini,openai,gpt-audio-mini,OpenAI,OpenAI: GPT Audio Mini,128000,16384,0.6,2.4,False,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-oss-120b,openai,gpt-oss-120b,OpenAI,OpenAI: gpt-oss-120b,131072,,0.039,0.18,True,True,False,33.3,28.6,37.9,2026-05-01T13:31:35Z
+openai/gpt-oss-120b:free,openai,gpt-oss-120b:free,OpenAI,OpenAI: gpt-oss-120b (free),131072,131072,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-oss-20b,openai,gpt-oss-20b,OpenAI,OpenAI: gpt-oss-20b,131072,131072,0.03,0.14,True,True,False,24.5,18.5,27.6,2026-05-01T13:31:35Z
+openai/gpt-oss-20b:free,openai,gpt-oss-20b:free,OpenAI,OpenAI: gpt-oss-20b (free),131072,8192,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+openai/gpt-oss-safeguard-20b,openai,gpt-oss-safeguard-20b,OpenAI,OpenAI: gpt-oss-safeguard-20b,131072,65536,0.075,0.3,True,True,False,,,,2026-05-01T13:31:35Z
+openai/o1,openai,o1,OpenAI,OpenAI: o1,200000,100000,15.0,60.0,True,True,True,30.8,20.5,31.1,2026-05-01T13:31:35Z
+openai/o1-pro,openai,o1-pro,OpenAI,OpenAI: o1-pro,200000,100000,150.0,600.0,True,False,True,,,,2026-05-01T13:31:35Z
+openai/o3,openai,o3,OpenAI,OpenAI: o3,200000,100000,2.0,8.0,True,True,True,38.4,38.4,36.1,2026-05-01T13:31:35Z
+openai/o3-deep-research,openai,o3-deep-research,OpenAI,OpenAI: o3 Deep Research,200000,100000,10.0,40.0,True,True,True,,,,2026-05-01T13:31:35Z
+openai/o3-mini,openai,o3-mini,OpenAI,OpenAI: o3 Mini,200000,100000,1.1,4.4,True,True,False,25.2,17.3,20.9,2026-05-01T13:31:35Z
+openai/o3-mini-high,openai,o3-mini-high,OpenAI,OpenAI: o3 Mini High,200000,100000,1.1,4.4,True,True,False,,,,2026-05-01T13:31:35Z
+openai/o3-pro,openai,o3-pro,OpenAI,OpenAI: o3 Pro,200000,100000,20.0,80.0,True,True,True,,,,2026-05-01T13:31:35Z
+openai/o4-mini,openai,o4-mini,OpenAI,OpenAI: o4 Mini,200000,100000,1.1,4.4,True,True,True,33.1,25.6,36.1,2026-05-01T13:31:35Z
+openai/o4-mini-deep-research,openai,o4-mini-deep-research,OpenAI,OpenAI: o4 Mini Deep Research,200000,100000,2.0,8.0,True,True,True,,,,2026-05-01T13:31:35Z
+openai/o4-mini-high,openai,o4-mini-high,OpenAI,OpenAI: o4 Mini High,200000,100000,1.1,4.4,True,True,True,,,,2026-05-01T13:31:35Z
+perplexity/sonar,perplexity,sonar,Perplexity,Perplexity: Sonar,127072,,1.0,1.0,False,False,True,,,,2026-05-01T13:31:35Z
+perplexity/sonar-deep-research,perplexity,sonar-deep-research,Perplexity,Perplexity: Sonar Deep Research,128000,,2.0,8.0,True,False,False,,,,2026-05-01T13:31:35Z
+perplexity/sonar-pro,perplexity,sonar-pro,Perplexity,Perplexity: Sonar Pro,200000,8000,3.0,15.0,False,False,True,,,,2026-05-01T13:31:35Z
+perplexity/sonar-pro-search,perplexity,sonar-pro-search,Perplexity,Perplexity: Sonar Pro Search,200000,8000,3.0,15.0,True,False,True,,,,2026-05-01T13:31:35Z
+perplexity/sonar-reasoning-pro,perplexity,sonar-reasoning-pro,Perplexity,Perplexity: Sonar Reasoning Pro,128000,,2.0,8.0,True,False,True,,,,2026-05-01T13:31:35Z
+poolside/laguna-m.1:free,poolside,laguna-m.1:free,Poolside,Poolside: Laguna M.1 (free),131072,8192,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+poolside/laguna-xs.2:free,poolside,laguna-xs.2:free,Poolside,Poolside: Laguna XS.2 (free),131072,8192,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+prime-intellect/intellect-3,prime-intellect,intellect-3,Prime Intellect,Prime Intellect: INTELLECT-3,131072,131072,0.2,1.1,True,True,False,22.2,19.1,19.8,2026-05-01T13:31:35Z
+qwen/qwen-2.5-7b-instruct,qwen,qwen-2.5-7b-instruct,Qwen,Qwen: Qwen2.5 7B Instruct,32768,32768,0.04,0.1,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen-max,qwen,qwen-max,Qwen,Qwen: Qwen-Max ,32768,8192,1.04,4.16,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen-plus,qwen,qwen-plus,Qwen,Qwen: Qwen-Plus,1000000,32768,0.26,0.78,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen-plus-2025-07-28,qwen,qwen-plus-2025-07-28,Qwen,Qwen: Qwen Plus 0728,1000000,32768,0.26,0.78,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen-plus-2025-07-28:thinking,qwen,qwen-plus-2025-07-28:thinking,Qwen,Qwen: Qwen Plus 0728 (thinking),1000000,32768,0.26,0.78,True,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen-turbo,qwen,qwen-turbo,Qwen,Qwen: Qwen-Turbo,131072,8192,0.0325,0.13,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen-vl-max,qwen,qwen-vl-max,Qwen,Qwen: Qwen VL Max,131072,32768,0.52,2.08,False,True,True,,,,2026-05-01T13:31:35Z
+qwen/qwen-vl-plus,qwen,qwen-vl-plus,Qwen,Qwen: Qwen VL Plus,131072,8192,0.1365,0.4095,False,False,True,,,,2026-05-01T13:31:35Z
+qwen/qwen2.5-vl-72b-instruct,qwen,qwen2.5-vl-72b-instruct,Qwen,Qwen: Qwen2.5 VL 72B Instruct,32000,,0.25,0.75,False,False,True,,,,2026-05-01T13:31:35Z
+qwen/qwen3-14b,qwen,qwen3-14b,Qwen,Qwen: Qwen3 14B,40960,40960,0.06,0.24,True,True,False,16.2,13.1,14.4,2026-05-01T13:31:35Z
+qwen/qwen3-235b-a22b,qwen,qwen3-235b-a22b,Qwen,Qwen: Qwen3 235B A22B,131072,8192,0.455,1.82,True,True,False,19.8,17.4,18.4,2026-05-01T13:31:35Z
+qwen/qwen3-235b-a22b-2507,qwen,qwen3-235b-a22b-2507,Qwen,Qwen: Qwen3 235B A22B Instruct 2507,262144,16384,0.071,0.1,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen3-235b-a22b-thinking-2507,qwen,qwen3-235b-a22b-thinking-2507,Qwen,Qwen: Qwen3 235B A22B Thinking 2507,131072,,0.1495,1.495,True,True,False,29.5,23.2,29.7,2026-05-01T13:31:35Z
+qwen/qwen3-30b-a3b,qwen,qwen3-30b-a3b,Qwen,Qwen: Qwen3 30B A3B,40960,16384,0.08,0.28,True,True,False,15.3,11,12.1,2026-05-01T13:31:35Z
+qwen/qwen3-30b-a3b-instruct-2507,qwen,qwen3-30b-a3b-instruct-2507,Qwen,Qwen: Qwen3 30B A3B Instruct 2507,262144,262144,0.09,0.3,False,True,False,15,14.2,7.1,2026-05-01T13:31:35Z
+qwen/qwen3-30b-a3b-thinking-2507,qwen,qwen3-30b-a3b-thinking-2507,Qwen,Qwen: Qwen3 30B A3B Thinking 2507,131072,131072,0.08,0.4,True,True,False,22.4,14.7,17.7,2026-05-01T13:31:35Z
+qwen/qwen3-32b,qwen,qwen3-32b,Qwen,Qwen: Qwen3 32B,40960,40960,0.08,0.24,True,True,False,16.5,13.8,13.4,2026-05-01T13:31:35Z
+qwen/qwen3-8b,qwen,qwen3-8b,Qwen,Qwen: Qwen3 8B,40960,8192,0.05,0.4,True,True,False,13.2,9,12.6,2026-05-01T13:31:35Z
+qwen/qwen3-coder,qwen,qwen3-coder,Qwen,Qwen: Qwen3 Coder 480B A35B,262144,65536,0.22,1.8,False,True,False,24.8,24.6,18.3,2026-05-01T13:31:35Z
+qwen/qwen3-coder-30b-a3b-instruct,qwen,qwen3-coder-30b-a3b-instruct,Qwen,Qwen: Qwen3 Coder 30B A3B Instruct,160000,32768,0.07,0.27,False,True,False,20,19.4,21.1,2026-05-01T13:31:35Z
+qwen/qwen3-coder-flash,qwen,qwen3-coder-flash,Qwen,Qwen: Qwen3 Coder Flash,1000000,65536,0.195,0.975,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen3-coder-next,qwen,qwen3-coder-next,Qwen,Qwen: Qwen3 Coder Next,262144,262144,0.12,0.8,False,True,False,28.3,22.9,42.1,2026-05-01T13:31:35Z
+qwen/qwen3-coder-plus,qwen,qwen3-coder-plus,Qwen,Qwen: Qwen3 Coder Plus,1000000,65536,0.65,3.25,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen3-coder:free,qwen,qwen3-coder:free,Qwen,Qwen: Qwen3 Coder 480B A35B (free),262000,262000,0.0,0.0,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen3-max,qwen,qwen3-max,Qwen,Qwen: Qwen3 Max,262144,32768,0.78,3.9,False,True,False,31.4,26.4,43,2026-05-01T13:31:35Z
+qwen/qwen3-max-thinking,qwen,qwen3-max-thinking,Qwen,Qwen: Qwen3 Max Thinking,262144,32768,0.78,3.9,True,True,False,39.9,30.5,50.1,2026-05-01T13:31:35Z
+qwen/qwen3-next-80b-a3b-instruct,qwen,qwen3-next-80b-a3b-instruct,Qwen,Qwen: Qwen3 Next 80B A3B Instruct,262144,16384,0.09,1.1,False,True,False,20.1,15.3,14.2,2026-05-01T13:31:35Z
+qwen/qwen3-next-80b-a3b-instruct:free,qwen,qwen3-next-80b-a3b-instruct:free,Qwen,Qwen: Qwen3 Next 80B A3B Instruct (free),262144,,0.0,0.0,False,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen3-next-80b-a3b-thinking,qwen,qwen3-next-80b-a3b-thinking,Qwen,Qwen: Qwen3 Next 80B A3B Thinking,131072,32768,0.0975,0.78,True,True,False,26.7,19.5,23.6,2026-05-01T13:31:35Z
+qwen/qwen3-vl-235b-a22b-instruct,qwen,qwen3-vl-235b-a22b-instruct,Qwen,Qwen: Qwen3 VL 235B A22B Instruct,262144,16384,0.2,0.88,False,True,True,20.8,16.5,19.1,2026-05-01T13:31:35Z
+qwen/qwen3-vl-235b-a22b-thinking,qwen,qwen3-vl-235b-a22b-thinking,Qwen,Qwen: Qwen3 VL 235B A22B Thinking,131072,32768,0.26,2.6,True,True,True,27.6,20.9,27,2026-05-01T13:31:35Z
+qwen/qwen3-vl-30b-a3b-instruct,qwen,qwen3-vl-30b-a3b-instruct,Qwen,Qwen: Qwen3 VL 30B A3B Instruct,131072,32768,0.13,0.52,False,True,True,16.1,14.3,9.5,2026-05-01T13:31:35Z
+qwen/qwen3-vl-30b-a3b-thinking,qwen,qwen3-vl-30b-a3b-thinking,Qwen,Qwen: Qwen3 VL 30B A3B Thinking,131072,32768,0.13,1.56,True,True,True,19.7,13.1,14.9,2026-05-01T13:31:35Z
+qwen/qwen3-vl-32b-instruct,qwen,qwen3-vl-32b-instruct,Qwen,Qwen: Qwen3 VL 32B Instruct,131072,32768,0.104,0.416,False,True,True,24.7,14.5,23.4,2026-05-01T13:31:35Z
+qwen/qwen3-vl-8b-instruct,qwen,qwen3-vl-8b-instruct,Qwen,Qwen: Qwen3 VL 8B Instruct,131072,32768,0.08,0.5,False,True,True,14.3,7.3,18.4,2026-05-01T13:31:35Z
+qwen/qwen3-vl-8b-thinking,qwen,qwen3-vl-8b-thinking,Qwen,Qwen: Qwen3 VL 8B Thinking,131072,32768,0.117,1.365,True,True,True,16.7,9.8,15.6,2026-05-01T13:31:35Z
+qwen/qwen3.5-122b-a10b,qwen,qwen3.5-122b-a10b,Qwen,Qwen: Qwen3.5-122B-A10B,262144,65536,0.26,2.08,True,True,True,41.6,34.7,53,2026-05-01T13:31:35Z
+qwen/qwen3.5-27b,qwen,qwen3.5-27b,Qwen,Qwen: Qwen3.5-27B,262144,65536,0.195,1.56,True,True,True,42.1,34.9,54.6,2026-05-01T13:31:35Z
+qwen/qwen3.5-35b-a3b,qwen,qwen3.5-35b-a3b,Qwen,Qwen: Qwen3.5-35B-A3B,262144,65536,0.1625,1.3,True,True,True,37.1,30.3,44.1,2026-05-01T13:31:35Z
+qwen/qwen3.5-397b-a17b,qwen,qwen3.5-397b-a17b,Qwen,Qwen: Qwen3.5 397B A17B,262144,65536,0.39,2.34,True,True,True,45,41.3,55.8,2026-05-01T13:31:35Z
+qwen/qwen3.5-9b,qwen,qwen3.5-9b,Qwen,Qwen: Qwen3.5-9B,262144,,0.1,0.15,True,True,True,32.4,25.3,37.4,2026-05-01T13:31:35Z
+qwen/qwen3.5-flash-02-23,qwen,qwen3.5-flash-02-23,Qwen,Qwen: Qwen3.5-Flash,1000000,65536,0.065,0.26,True,True,True,,,,2026-05-01T13:31:35Z
+qwen/qwen3.5-plus-02-15,qwen,qwen3.5-plus-02-15,Qwen,Qwen: Qwen3.5 Plus 2026-02-15,1000000,65536,0.26,1.56,True,True,True,,,,2026-05-01T13:31:35Z
+qwen/qwen3.5-plus-20260420,qwen,qwen3.5-plus-20260420,Qwen,Qwen: Qwen3.5 Plus 2026-04-20,1000000,65536,0.4,2.4,True,True,True,,,,2026-05-01T13:31:35Z
+qwen/qwen3.6-27b,qwen,qwen3.6-27b,Qwen,Qwen: Qwen3.6 27B,256000,65536,0.325,3.25,True,True,True,45.8,36.5,62.9,2026-05-01T13:31:35Z
+qwen/qwen3.6-35b-a3b,qwen,qwen3.6-35b-a3b,Qwen,Qwen: Qwen3.6 35B A3B,262144,65536,0.1612,0.96525,True,False,True,43.5,35.1,58.3,2026-05-01T13:31:35Z
+qwen/qwen3.6-flash,qwen,qwen3.6-flash,Qwen,Qwen: Qwen3.6 Flash,1000000,65536,0.25,1.5,True,True,True,,,,2026-05-01T13:31:35Z
+qwen/qwen3.6-max-preview,qwen,qwen3.6-max-preview,Qwen,Qwen: Qwen3.6 Max Preview,262144,65536,1.04,6.24,True,True,False,,,,2026-05-01T13:31:35Z
+qwen/qwen3.6-plus,qwen,qwen3.6-plus,Qwen,Qwen: Qwen3.6 Plus,1000000,65536,0.325,1.95,True,True,True,,,,2026-05-01T13:31:35Z
+relace/relace-apply-3,relace,relace-apply-3,Relace,Relace: Relace Apply 3,256000,128000,0.85,1.25,False,False,False,,,,2026-05-01T13:31:35Z
+relace/relace-search,relace,relace-search,Relace,Relace: Relace Search,256000,128000,1.0,3.0,False,True,False,,,,2026-05-01T13:31:35Z
+sao10k/l3-lunaris-8b,sao10k,l3-lunaris-8b,Sao10K,Sao10K: Llama 3 8B Lunaris,8192,16384,0.04,0.05,False,False,False,,,,2026-05-01T13:31:35Z
+sao10k/l3.1-70b-hanami-x1,sao10k,l3.1-70b-hanami-x1,Sao10K,Sao10K: Llama 3.1 70B Hanami x1,16000,,3.0,3.0,False,False,False,,,,2026-05-01T13:31:35Z
+sao10k/l3.1-euryale-70b,sao10k,l3.1-euryale-70b,Sao10K,Sao10K: Llama 3.1 Euryale 70B v2.2,131072,16384,0.85,0.85,False,True,False,,,,2026-05-01T13:31:35Z
+sao10k/l3.3-euryale-70b,sao10k,l3.3-euryale-70b,Sao10K,Sao10K: Llama 3.3 Euryale 70B,131072,16384,0.65,0.75,False,False,False,,,,2026-05-01T13:31:35Z
+sao10k/l3-euryale-70b,sao10k,l3-euryale-70b,Sao10k,Sao10k: Llama 3 Euryale 70B v2.1,8192,8192,1.48,1.48,False,True,False,,,,2026-05-01T13:31:35Z
+stepfun/step-3.5-flash,stepfun,step-3.5-flash,StepFun,StepFun: Step 3.5 Flash,262144,65536,0.1,0.3,True,True,False,37.8,31.6,52,2026-05-01T13:31:35Z
+tngtech/deepseek-r1t2-chimera,tngtech,deepseek-r1t2-chimera,TNG,TNG: DeepSeek R1T2 Chimera,163840,163840,0.3,1.1,True,True,False,,,,2026-05-01T13:31:35Z
+tencent/hunyuan-a13b-instruct,tencent,hunyuan-a13b-instruct,Tencent,Tencent: Hunyuan A13B Instruct,131072,131072,0.14,0.57,True,False,False,,,,2026-05-01T13:31:35Z
+tencent/hy3-preview:free,tencent,hy3-preview:free,Tencent,Tencent: Hy3 preview (free),262144,262144,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+thedrummer/cydonia-24b-v4.1,thedrummer,cydonia-24b-v4.1,TheDrummer,TheDrummer: Cydonia 24B V4.1,131072,131072,0.3,0.5,False,False,False,,,,2026-05-01T13:31:35Z
+thedrummer/rocinante-12b,thedrummer,rocinante-12b,TheDrummer,TheDrummer: Rocinante 12B,32768,32768,0.17,0.43,False,True,False,,,,2026-05-01T13:31:35Z
+thedrummer/skyfall-36b-v2,thedrummer,skyfall-36b-v2,TheDrummer,TheDrummer: Skyfall 36B V2,32768,32768,0.55,0.8,False,False,False,,,,2026-05-01T13:31:35Z
+thedrummer/unslopnemo-12b,thedrummer,unslopnemo-12b,TheDrummer,TheDrummer: UnslopNemo 12B,32768,32768,0.4,0.4,False,True,False,,,,2026-05-01T13:31:35Z
+upstage/solar-pro-3,upstage,solar-pro-3,Upstage,Upstage: Solar Pro 3,128000,,0.15,0.6,True,True,False,25.9,13.3,34.9,2026-05-01T13:31:35Z
+cognitivecomputations/dolphin-mistral-24b-venice-edition:free,cognitivecomputations,dolphin-mistral-24b-venice-edition:free,Venice,Venice: Uncensored (free),32768,,0.0,0.0,False,False,False,,,,2026-05-01T13:31:35Z
+writer/palmyra-x5,writer,palmyra-x5,Writer,Writer: Palmyra X5,1040000,8192,0.6,6.0,False,False,False,,,,2026-05-01T13:31:35Z
+xiaomi/mimo-v2-flash,xiaomi,mimo-v2-flash,Xiaomi,Xiaomi: MiMo-V2-Flash,262144,65536,0.09,0.29,True,True,False,41.5,33.5,48.8,2026-05-01T13:31:35Z
+xiaomi/mimo-v2-omni,xiaomi,mimo-v2-omni,Xiaomi,Xiaomi: MiMo-V2-Omni,262144,65536,0.4,2.0,True,True,True,43.4,35.5,58.6,2026-05-01T13:31:35Z
+xiaomi/mimo-v2-pro,xiaomi,mimo-v2-pro,Xiaomi,Xiaomi: MiMo-V2-Pro,1048576,131072,1.0,3.0,True,True,False,49.2,41.4,62.8,2026-05-01T13:31:35Z
+xiaomi/mimo-v2.5,xiaomi,mimo-v2.5,Xiaomi,Xiaomi: MiMo-V2.5,1048576,131072,0.4,2.0,True,True,True,,,,2026-05-01T13:31:35Z
+xiaomi/mimo-v2.5-pro,xiaomi,mimo-v2.5-pro,Xiaomi,Xiaomi: MiMo-V2.5-Pro,1048576,131072,1.0,3.0,True,True,False,53.8,45.5,67.4,2026-05-01T13:31:35Z
+z-ai/glm-4-32b,z-ai,glm-4-32b,Z.ai,Z.ai: GLM 4 32B ,128000,,0.1,0.1,False,True,False,,,,2026-05-01T13:31:35Z
+z-ai/glm-4.5,z-ai,glm-4.5,Z.ai,Z.ai: GLM 4.5,131072,98304,0.6,2.2,True,True,False,26.4,26.3,16.2,2026-05-01T13:31:35Z
+z-ai/glm-4.5-air,z-ai,glm-4.5-air,Z.ai,Z.ai: GLM 4.5 Air,131072,98304,0.13,0.85,True,True,False,23.2,23.8,21,2026-05-01T13:31:35Z
+z-ai/glm-4.5-air:free,z-ai,glm-4.5-air:free,Z.ai,Z.ai: GLM 4.5 Air (free),131072,96000,0.0,0.0,True,True,False,,,,2026-05-01T13:31:35Z
+z-ai/glm-4.5v,z-ai,glm-4.5v,Z.ai,Z.ai: GLM 4.5V,65536,16384,0.6,1.8,True,True,True,15.1,10.9,10.9,2026-05-01T13:31:35Z
+z-ai/glm-4.6,z-ai,glm-4.6,Z.ai,Z.ai: GLM 4.6,204800,204800,0.39,1.9,True,True,False,32.5,29.5,41.6,2026-05-01T13:31:35Z
+z-ai/glm-4.6v,z-ai,glm-4.6v,Z.ai,Z.ai: GLM 4.6V,131072,24000,0.3,0.9,True,True,True,23.4,19.7,17.5,2026-05-01T13:31:35Z
+z-ai/glm-4.7,z-ai,glm-4.7,Z.ai,Z.ai: GLM 4.7,202752,,0.38,1.74,True,True,False,42.1,36.3,55,2026-05-01T13:31:35Z
+z-ai/glm-4.7-flash,z-ai,glm-4.7-flash,Z.ai,Z.ai: GLM 4.7 Flash,202752,16384,0.06,0.4,True,True,False,30.1,25.9,46,2026-05-01T13:31:35Z
+z-ai/glm-5,z-ai,glm-5,Z.ai,Z.ai: GLM 5,202752,16384,0.6,2.08,True,True,False,49.8,44.2,63.1,2026-05-01T13:31:35Z
+z-ai/glm-5-turbo,z-ai,glm-5-turbo,Z.ai,Z.ai: GLM 5 Turbo,202752,131072,1.2,4.0,True,True,False,46.8,36.8,66.1,2026-05-01T13:31:35Z
+z-ai/glm-5.1,z-ai,glm-5.1,Z.ai,Z.ai: GLM 5.1,202752,65535,1.05,3.5,True,True,False,51.4,43.4,67,2026-05-01T13:31:35Z
+z-ai/glm-5v-turbo,z-ai,glm-5v-turbo,Z.ai,Z.ai: GLM 5V Turbo,202752,131072,1.2,4.0,True,True,True,42.9,36.2,61.1,2026-05-01T13:31:35Z
+alibaba/tongyi-deepresearch-30b-a3b,alibaba,tongyi-deepresearch-30b-a3b,alibaba,Tongyi DeepResearch 30B A3B,131072,131072,0.09,0.45,True,True,False,,,,2026-05-01T13:31:35Z
+alpindale/goliath-120b,alpindale,goliath-120b,alpindale,Goliath 120B,6144,1024,3.75,7.5,False,False,False,,,,2026-05-01T13:31:35Z
+anthracite-org/magnum-v4-72b,anthracite-org,magnum-v4-72b,anthracite-org,Magnum v4 72B,16384,2048,3.0,5.0,False,False,False,,,,2026-05-01T13:31:35Z
+gryphe/mythomax-l2-13b,gryphe,mythomax-l2-13b,gryphe,MythoMax 13B,4096,4096,0.06,0.06,False,False,False,,,,2026-05-01T13:31:35Z
+inclusionai/ling-2.6-1t:free,inclusionai,ling-2.6-1t:free,inclusionAI,inclusionAI: Ling-2.6-1T (free),262144,32768,0.0,0.0,False,True,False,,,,2026-05-01T13:31:35Z
+inclusionai/ling-2.6-flash,inclusionai,ling-2.6-flash,inclusionAI,inclusionAI: Ling-2.6-flash,262144,32768,0.08,0.24,False,True,False,26.2,23.2,38.1,2026-05-01T13:31:35Z
+meta-llama/llama-guard-3-8b,meta-llama,llama-guard-3-8b,meta-llama,Llama Guard 3 8B,131072,,0.48,0.03,False,False,False,,,,2026-05-01T13:31:35Z
+microsoft/wizardlm-2-8x22b,microsoft,wizardlm-2-8x22b,microsoft,WizardLM-2 8x22B,65535,8000,0.62,0.62,False,False,False,,,,2026-05-01T13:31:35Z
+mistralai/mistral-large,mistralai,mistral-large,mistralai,Mistral Large,128000,,2.0,6.0,False,True,False,,,,2026-05-01T13:31:35Z
+mistralai/mistral-large-2407,mistralai,mistral-large-2407,mistralai,Mistral Large 2407,131072,,2.0,6.0,False,True,False,15.1,13.8,10.2,2026-05-01T13:31:35Z
+mistralai/mistral-large-2411,mistralai,mistral-large-2411,mistralai,Mistral Large 2411,131072,,2.0,6.0,False,True,False,,,,2026-05-01T13:31:35Z
+openrouter/auto,openrouter,auto,openrouter,Auto Router,2000000,,-1000000.0,-1000000.0,True,True,True,,,,2026-05-01T13:31:35Z
+openrouter/bodybuilder,openrouter,bodybuilder,openrouter,Body Builder (beta),128000,,-1000000.0,-1000000.0,False,False,False,,,,2026-05-01T13:31:35Z
+openrouter/free,openrouter,free,openrouter,Free Models Router,200000,,0.0,0.0,True,True,True,,,,2026-05-01T13:31:35Z
+openrouter/owl-alpha,openrouter,owl-alpha,openrouter,Owl Alpha,1048756,262144,0.0,0.0,False,True,False,,,,2026-05-01T13:31:35Z
+openrouter/pareto-code,openrouter,pareto-code,openrouter,Pareto Code Router,200000,,-1000000.0,-1000000.0,False,False,False,,,,2026-05-01T13:31:35Z
+qwen/qwen-2.5-72b-instruct,qwen,qwen-2.5-72b-instruct,qwen,Qwen2.5 72B Instruct,32768,16384,0.36,0.4,False,True,False,,11.9,,2026-05-01T13:31:35Z
+qwen/qwen-2.5-coder-32b-instruct,qwen,qwen-2.5-coder-32b-instruct,qwen,Qwen2.5 Coder 32B Instruct,32768,,0.66,1.0,False,False,False,,,,2026-05-01T13:31:35Z
+rekaai/reka-edge,rekaai,reka-edge,rekaai,Reka Edge,16384,16384,0.1,0.1,False,True,True,,,,2026-05-01T13:31:35Z
+rekaai/reka-flash-3,rekaai,reka-flash-3,rekaai,Reka Flash 3,65536,65536,0.1,0.2,True,False,False,9.5,8.9,0,2026-05-01T13:31:35Z
+switchpoint/router,switchpoint,router,switchpoint,Switchpoint Router,131072,,0.85,3.4,True,False,False,,,,2026-05-01T13:31:35Z
+undi95/remm-slerp-l2-13b,undi95,remm-slerp-l2-13b,undi95,ReMM SLERP 13B,6144,4096,0.45,0.65,False,False,False,,,,2026-05-01T13:31:35Z
+x-ai/grok-3,x-ai,grok-3,xAI,xAI: Grok 3,131072,,3.0,15.0,False,True,False,,,,2026-05-01T13:31:35Z
+x-ai/grok-3-beta,x-ai,grok-3-beta,xAI,xAI: Grok 3 Beta,131072,,3.0,15.0,False,True,False,25.2,19.8,24.6,2026-05-01T13:31:35Z
+x-ai/grok-3-mini,x-ai,grok-3-mini,xAI,xAI: Grok 3 Mini,131072,,0.3,0.5,True,True,False,,,,2026-05-01T13:31:35Z
+x-ai/grok-3-mini-beta,x-ai,grok-3-mini-beta,xAI,xAI: Grok 3 Mini Beta,131072,,0.3,0.5,True,True,False,32.1,25.2,31.1,2026-05-01T13:31:35Z
+x-ai/grok-4,x-ai,grok-4,xAI,xAI: Grok 4,256000,,3.0,15.0,True,True,True,41.5,40.5,41.5,2026-05-01T13:31:35Z
+x-ai/grok-4-fast,x-ai,grok-4-fast,xAI,xAI: Grok 4 Fast,2000000,30000,0.2,0.5,True,True,True,35.1,27.4,39.5,2026-05-01T13:31:35Z
+x-ai/grok-4.1-fast,x-ai,grok-4.1-fast,xAI,xAI: Grok 4.1 Fast,2000000,30000,0.2,0.5,True,True,True,38.6,30.9,49.3,2026-05-01T13:31:35Z
+x-ai/grok-4.20,x-ai,grok-4.20,xAI,xAI: Grok 4.20,2000000,,1.25,2.5,True,True,True,,,,2026-05-01T13:31:35Z
+x-ai/grok-4.20-multi-agent,x-ai,grok-4.20-multi-agent,xAI,xAI: Grok 4.20 Multi-Agent,2000000,,2.0,6.0,True,False,True,,,,2026-05-01T13:31:35Z
+x-ai/grok-4.3,x-ai,grok-4.3,xAI,xAI: Grok 4.3,1000000,,1.25,2.5,True,True,True,53.2,41,65.9,2026-05-01T13:31:35Z
+x-ai/grok-code-fast-1,x-ai,grok-code-fast-1,xAI,xAI: Grok Code Fast 1,256000,10000,0.2,1.5,True,True,False,28.7,23.7,35.6,2026-05-01T13:31:35Z
+~anthropic/claude-haiku-latest,~anthropic,claude-haiku-latest,~anthropic,Anthropic Claude Haiku Latest,200000,64000,1.0,5.0,True,True,True,,,,2026-05-01T13:31:35Z
+~anthropic/claude-sonnet-latest,~anthropic,claude-sonnet-latest,~anthropic,Anthropic Claude Sonnet Latest,1000000,128000,3.0,15.0,True,True,True,,,,2026-05-01T13:31:35Z
+~google/gemini-flash-latest,~google,gemini-flash-latest,~google,Google Gemini Flash Latest,1048576,65536,0.5,3.0,True,True,True,,,,2026-05-01T13:31:35Z
+~google/gemini-pro-latest,~google,gemini-pro-latest,~google,Google Gemini Pro Latest,1048576,65536,2.0,12.0,True,True,True,,,,2026-05-01T13:31:35Z
+~moonshotai/kimi-latest,~moonshotai,kimi-latest,~moonshotai,MoonshotAI Kimi Latest,262142,262142,0.74,3.49,True,True,True,,,,2026-05-01T13:31:35Z
+~openai/gpt-latest,~openai,gpt-latest,~openai,OpenAI GPT Latest,1050000,128000,5.0,30.0,True,True,True,,,,2026-05-01T13:31:35Z
+~openai/gpt-mini-latest,~openai,gpt-mini-latest,~openai,OpenAI GPT Mini Latest,400000,128000,0.75,4.5,True,True,True,,,,2026-05-01T13:31:35Z
