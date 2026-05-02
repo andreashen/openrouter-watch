@@ -27,3 +27,8 @@ line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+markers = [
+    "live: real OpenRouter HTTP; use with RUN_LIVE_API=1 (see tests/test_live_api.py)",
+]
