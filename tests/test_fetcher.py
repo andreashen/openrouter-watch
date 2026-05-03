@@ -79,3 +79,15 @@ def test_fetch_benchmark_returns_none_on_network_error(httpx_mock: HTTPXMock) ->
     httpx_mock.add_exception(httpx.ConnectError("timeout"))
     result = fetch_benchmark("openai/gpt-4o")
     assert result is None
+
+
+def test_fetch_benchmark_returns_none_on_timeout(httpx_mock: HTTPXMock) -> None:
+    httpx_mock.add_exception(httpx.ReadTimeout("timed out"))
+    result = fetch_benchmark("openai/gpt-4o")
+    assert result is None
+
+
+def test_fetch_benchmark_returns_none_on_invalid_json(httpx_mock: HTTPXMock) -> None:
+    httpx_mock.add_response(text="not json {")
+    result = fetch_benchmark("openai/gpt-4o")
+    assert result is None

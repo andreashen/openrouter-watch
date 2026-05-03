@@ -1,8 +1,6 @@
 # OpenRouter Watch
 
-**Status:** Work in progress — implementation not available yet.
-
-Track OpenRouter model metadata, pricing, rankings, and historical changes, then publish them as a static website.
+Python pipeline fetches OpenRouter model metadata, normalizes and derives CSV/JSON under `data/derived/`, and an Astro site in `web/` renders the model table from `models_latest.json`.
 
 English | [中文](#中文说明)
 
@@ -28,7 +26,7 @@ Copy `.env.example` to `.env` and fill in your key if needed.
 
 ```
 scripts/           # Entry-point scripts (fetch, normalize, derive)
-src/openrouter_tracker/  # Core library
+src/openrouter_watch/    # Core library (fetcher, normalizer, deriver, schema)
 tests/             # pytest tests
 data/raw/          # Raw API snapshots (gitignored)
 data/normalized/   # Pydantic-validated records (gitignored)
@@ -40,8 +38,11 @@ docs/              # Milestone specs and task lists
 ## Development
 
 ```bash
-# Run tests
+# Run tests (offline; no network)
 pytest
+
+# Optional: live OpenRouter HTTP checks (set OPENROUTER_API_KEY if needed)
+RUN_LIVE_API=1 pytest tests/test_live_api.py -v
 
 # Lint / format
 ruff check .
@@ -69,9 +70,19 @@ The source code of this project is licensed under the Apache License 2.0.
 
 ## 中文说明
 
-OpenRouter Watch 是一个用于监控 OpenRouter 模型数据的工具，它可以自动从 OpenRouter 获取模型数据，记录模型的元数据、定价、排名和历史变化，然后将这些数据发布为一个静态网站。
+OpenRouter Watch 从 OpenRouter 拉取模型数据，经规范化与派生后产出 `data/derived/` 下的 CSV/JSON，并由 `web/` 中的 Astro 站点读取 `models_latest.json` 展示模型表。
 
 ### 快速开始
+
+```bash
+pip install -e ".[dev]"
+
+python scripts/fetch.py
+python scripts/normalize.py
+python scripts/derive.py
+```
+
+`derive.py` 会为每个模型请求 benchmark 接口并节流，完整运行可能需数分钟。M1 数据验收与闭环说明见 [docs/m1/m1_acceptance.md](docs/m1/m1_acceptance.md)。
 
 ### 数据来源
 
