@@ -120,7 +120,7 @@ export default defineConfig({
 
 ## GitHub Actions（后续部署阶段）
 
-### `.github/workflows/deploy.yml`
+### `.github/workflows/deploy-pages.yml`
 
 触发条件：
 - `data/derived/` 目录有新 commit 推送到 `main`
@@ -131,15 +131,15 @@ export default defineConfig({
 2. `cd web && npm ci && npm run build`
 3. 使用 GitHub 官方 Pages Actions 上传并部署 `web/dist/`
 
-> M2 本地开发阶段先不提交 Pages workflow；仓库 Settings → Pages 后续需由维护者设置为 GitHub Actions。
+> 当前仓库已提交 Pages workflow；仓库 Settings → Pages 需由维护者设置为 GitHub Actions。
 
 ---
 
 ## M2 完成标准
 
-- [ ] `cd web && npm run build` 成功生成 `web/dist/`
-- [ ] 本地 `npm run dev` 可正常访问，表格有数据
-- [ ] 基于 `vendor_name` 的厂商下拉筛选可用
-- [ ] `null` 值正确显示为 `—`，bool 值显示为 `✓` / `—`
-- [ ] `models_latest.json` 缺失、为空或 JSON 错误时构建失败
-- [ ] 后续部署阶段 GitHub Pages 地址可真实访问
+- [x] `cd web && npm run build` 成功生成 `web/dist/`
+- [x] 本地 `npm run dev` 可正常访问，表格有数据
+- [x] 基于 `vendor_name` 的厂商下拉筛选可用
+- [x] `null` 值正确显示为 `—`，bool 值显示为 `✓` / `—`
+- [x] `models_latest.json` 缺失、为空或 JSON 错误时构建失败
+- [x] 后续部署阶段 GitHub Pages 地址可真实访问
