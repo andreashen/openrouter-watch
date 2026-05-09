@@ -58,10 +58,6 @@ function formatIndex(value: number | null): string {
   return value === null ? "—" : value.toFixed(1);
 }
 
-function formatBoolean(value: boolean): string {
-  return value ? "✓" : "—";
-}
-
 function formatFetchedAt(value: string): string {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
@@ -101,43 +97,44 @@ const rangeFields = [
 ];
 ---
 
-<section class="rounded-2xl border border-slate-200 bg-white shadow-sm">
-  <div class="flex flex-col gap-4 border-b border-slate-200 p-4">
-    <div class="grid gap-3 lg:grid-cols-2">
+<section class="rounded-3xl border border-slate-800 bg-slate-900/40 shadow-2xl backdrop-blur-xl overflow-hidden">
+  <div class="flex flex-col gap-6 border-b border-slate-800 p-6">
+    <div class="grid gap-6 lg:grid-cols-2">
       <div>
-        <label for="model-search" class="text-sm font-medium text-slate-700">模型搜索</label>
-        <input
-          id="model-search"
-          type="search"
-          placeholder="搜索 model_id / vendor / name / author / slug"
-          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
-        />
+        <label for="model-search" class="text-sm font-medium text-slate-300">模型搜索</label>
+        <div class="relative mt-2">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <svg class="h-5 w-5 text-slate-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <input
+            id="model-search"
+            type="search"
+            placeholder="搜索 model_id / vendor / name / author / slug"
+            class="block w-full rounded-xl border border-slate-700 bg-slate-800/50 py-2.5 pl-10 pr-3 text-sm text-slate-200 placeholder:text-slate-500 focus:border-sky-500 focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
+          />
+        </div>
       </div>
       <div>
-        <p class="text-sm font-medium text-slate-700">能力筛选（AND）</p>
-        <div class="mt-2 flex flex-wrap gap-4 text-sm text-slate-700">
-          <label class="inline-flex items-center gap-2">
-            <input id="cap-reasoning" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-300" />
-            <span>Reasoning</span>
-          </label>
-          <label class="inline-flex items-center gap-2">
-            <input id="cap-tools" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-300" />
-            <span>Tools</span>
-          </label>
-          <label class="inline-flex items-center gap-2">
-            <input id="cap-vision" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-300" />
-            <span>Vision</span>
-          </label>
+        <p class="text-sm font-medium text-slate-300">能力筛选（AND）</p>
+        <div class="mt-3 flex flex-wrap gap-4 text-sm text-slate-300">
+          {['reasoning', 'tools', 'vision'].map((cap) => (
+            <label class="group relative flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/30 px-3 py-2 transition-colors hover:bg-slate-800">
+              <input id={`cap-${cap}`} type="checkbox" class="peer h-4 w-4 rounded border-slate-600 bg-slate-900 text-sky-500 focus:ring-sky-500/50 focus:ring-offset-slate-900" />
+              <span class="capitalize">{cap}</span>
+            </label>
+          ))}
         </div>
       </div>
     </div>
 
     <div>
-      <p class="text-sm font-medium text-slate-700">关键数值范围（AND）</p>
-      <div class="mt-2 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+      <p class="text-sm font-medium text-slate-300">关键数值范围（AND）</p>
+      <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {rangeFields.map((field) => (
-          <div class="rounded-lg border border-slate-200 p-3">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-600">{field.label}</p>
+          <div class="rounded-xl border border-slate-700/50 bg-slate-800/20 p-3 transition-colors hover:border-slate-600">
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">{field.label}</p>
             <div class="mt-2 grid grid-cols-2 gap-2">
               <input
                 type="number"
@@ -146,7 +143,7 @@ const rangeFields = [
                 placeholder="min"
                 data-range-key={field.key}
                 data-range-bound="min"
-                class="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                class="w-full rounded-lg border border-slate-700 bg-slate-900/50 px-2.5 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
               />
               <input
                 type="number"
@@ -155,7 +152,7 @@ const rangeFields = [
                 placeholder="max"
                 data-range-key={field.key}
                 data-range-bound="max"
-                class="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                class="w-full rounded-lg border border-slate-700 bg-slate-900/50 px-2.5 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
               />
             </div>
           </div>
@@ -163,12 +160,12 @@ const rangeFields = [
       </div>
     </div>
 
-    <div class="grid gap-3 sm:max-w-xl sm:grid-cols-2">
+    <div class="grid gap-4 sm:max-w-2xl sm:grid-cols-2">
       <div>
-        <label for="sort-field" class="text-sm font-medium text-slate-700">排序字段</label>
+        <label for="sort-field" class="text-sm font-medium text-slate-300">排序字段</label>
         <select
           id="sort-field"
-          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+          class="mt-2 block w-full rounded-xl border border-slate-700 bg-slate-800/50 px-3 py-2.5 text-sm text-slate-200 focus:border-sky-500 focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
         >
           <option value="">不排序</option>
           <option value="context_length">上下文</option>
@@ -182,10 +179,10 @@ const rangeFields = [
         </select>
       </div>
       <div>
-        <label for="sort-direction" class="text-sm font-medium text-slate-700">排序方向</label>
+        <label for="sort-direction" class="text-sm font-medium text-slate-300">排序方向</label>
         <select
           id="sort-direction"
-          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+          class="mt-2 block w-full rounded-xl border border-slate-700 bg-slate-800/50 px-3 py-2.5 text-sm text-slate-200 focus:border-sky-500 focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
         >
           <option value="none">无</option>
           <option value="asc">升序</option>
@@ -194,47 +191,45 @@ const rangeFields = [
       </div>
     </div>
 
-    <p id="model-count" class="text-sm text-slate-500" aria-live="polite">
-      共 {models.length} 个模型
-    </p>
+    <div class="flex items-center justify-between">
+      <p id="model-count" class="text-sm font-medium text-sky-400" aria-live="polite">
+        共 {models.length} 个模型
+      </p>
+    </div>
   </div>
 
-  <div class="overflow-x-auto overflow-y-auto max-h-[70vh]">
-    <table class="min-w-max border-collapse text-left text-sm">
-      <thead class="bg-slate-100 text-xs uppercase tracking-wide text-slate-600">
+  <div class="overflow-x-auto overflow-y-auto max-h-[70vh] custom-scrollbar">
+    <table class="min-w-max border-collapse text-left text-sm w-full">
+      <thead class="sticky top-0 z-20 bg-slate-900/80 backdrop-blur-md text-xs uppercase tracking-wider text-slate-400 shadow-sm">
         <tr>
           {columns.map((column) => (
-            <th class="sticky top-0 z-10 whitespace-nowrap border-b border-slate-200 bg-slate-100 px-4 py-3 font-semibold">{column}</th>
+            <th class="whitespace-nowrap border-b border-slate-800 px-5 py-4 font-semibold">{column}</th>
           ))}
         </tr>
       </thead>
-      <tbody id="model-table-body" class="divide-y divide-slate-100">
-        {models.map((model) => (
-          <tr class="hover:bg-sky-50/70">
-            <td class="whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-700">{model.model_id}</td>
-            <td class="whitespace-nowrap px-4 py-3 tabular-nums">{formatCompact(model.context_length)}</td>
-            <td class="whitespace-nowrap px-4 py-3 tabular-nums">
-              {formatCompact(model.max_completion_tokens)}
-            </td>
-            <td class="whitespace-nowrap px-4 py-3 tabular-nums">
-              {formatPrice(model.input_price_usd_per_1m)}
-            </td>
-            <td class="whitespace-nowrap px-4 py-3 tabular-nums">
-              {formatPrice(model.output_price_usd_per_1m)}
-            </td>
-            <td class="whitespace-nowrap px-4 py-3 text-center">{formatBoolean(model.supports_reasoning)}</td>
-            <td class="whitespace-nowrap px-4 py-3 text-center">{formatBoolean(model.supports_tools)}</td>
-            <td class="whitespace-nowrap px-4 py-3 text-center">{formatBoolean(model.supports_vision)}</td>
-            <td class="whitespace-nowrap px-4 py-3 tabular-nums">{formatIndex(model.intelligence_index)}</td>
-            <td class="whitespace-nowrap px-4 py-3 tabular-nums">{formatIndex(model.coding_index)}</td>
-            <td class="whitespace-nowrap px-4 py-3 tabular-nums">{formatIndex(model.agentic_index)}</td>
-            <td class="whitespace-nowrap px-4 py-3 tabular-nums">{formatFetchedAt(model.fetched_at)}</td>
-          </tr>
-        ))}
+      <tbody id="model-table-body" class="divide-y divide-slate-800/50">
+        {/* Rendered by JS */}
       </tbody>
     </table>
   </div>
 </section>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(51, 65, 85, 0.8);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(71, 85, 105, 0.8);
+  }
+</style>
 
 <script define:vars={{ models }} is:inline>
   const tableBody = document.querySelector("#model-table-body");
@@ -263,47 +258,58 @@ const rangeFields = [
 
   function formatCompact(value) {
     if (value === null) {
-      return "—";
+      return '<span class="text-slate-600">—</span>';
     }
     const absValue = Math.abs(value);
+    let formatted = "";
     if (absValue >= 1_000_000) {
-      return `${truncateToOneDecimal(value / 1_000_000)}M`;
+      formatted = `${truncateToOneDecimal(value / 1_000_000)}M`;
+    } else if (absValue >= 1_000) {
+      formatted = `${truncateToOneDecimal(value / 1_000)}K`;
+    } else {
+      formatted = new Intl.NumberFormat("en-US").format(value);
     }
-    if (absValue >= 1_000) {
-      return `${truncateToOneDecimal(value / 1_000)}K`;
-    }
-    return new Intl.NumberFormat("en-US").format(value);
+    return `<span class="text-slate-300">${formatted}</span>`;
   }
 
   function formatPrice(value) {
     if (value === null) {
-      return "—";
+      return '<span class="text-slate-600">—</span>';
     }
     if (value === 0) {
-      return "0";
+      return '<span class="text-slate-300">0</span>';
     }
-    return value.toFixed(4).replace(/0+$/, "").replace(/\.$/, "");
+    const formatted = value.toFixed(4).replace(/0+$/, "").replace(/\.$/, "");
+    return `<span class="text-slate-300">${formatted}</span>`;
   }
 
   function formatIndex(value) {
-    return value === null ? "—" : value.toFixed(1);
+    if (value === null) return '<span class="text-slate-600">—</span>';
+    const num = value.toFixed(1);
+    // Add a subtle color based on value for index
+    let colorClass = "text-slate-300";
+    if (value >= 80) colorClass = "text-emerald-400 font-medium";
+    else if (value >= 50) colorClass = "text-sky-400";
+    return `<span class="${colorClass}">${num}</span>`;
   }
 
   function formatBoolean(value) {
-    return value ? "✓" : "—";
+    return value 
+      ? `<span class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 ring-1 ring-inset ring-emerald-500/20">✓</span>` 
+      : `<span class="text-slate-600">—</span>`;
   }
 
   function formatFetchedAt(value) {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) {
-      return value;
+      return `<span class="text-slate-400">${value}</span>`;
     }
     const year = date.getUTCFullYear();
     const month = String(date.getUTCMonth() + 1).padStart(2, "0");
     const day = String(date.getUTCDate()).padStart(2, "0");
     const hour = String(date.getUTCHours()).padStart(2, "0");
     const minute = String(date.getUTCMinutes()).padStart(2, "0");
-    return `${year}-${month}-${day} ${hour}:${minute} UTC`;
+    return `<span class="text-slate-400">${year}-${month}-${day} ${hour}:${minute}</span>`;
   }
 
   function parseRangeValue(input) {
@@ -387,10 +393,10 @@ const rangeFields = [
       : parsedRight.timestamp - parsedLeft.timestamp;
   }
 
-  function createCell(text, className) {
+  function createCellHTML(html, className) {
     const cell = document.createElement("td");
     cell.className = className;
-    cell.textContent = text;
+    cell.innerHTML = html;
     return cell;
   }
 
@@ -403,49 +409,51 @@ const rangeFields = [
 
     for (const model of rows) {
       const row = document.createElement("tr");
-      row.className = "hover:bg-sky-50/70";
+      row.className = "group transition-colors hover:bg-slate-800/50";
+      
+      // Model ID with a subtle gradient text or just bright color
       row.appendChild(
-        createCell(model.model_id, "whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-700"),
+        createCellHTML(`<span class="font-semibold text-sky-400 group-hover:text-sky-300 transition-colors">${model.model_id}</span>`, "whitespace-nowrap px-5 py-3 font-mono text-xs"),
       );
       row.appendChild(
-        createCell(formatCompact(model.context_length), "whitespace-nowrap px-4 py-3 tabular-nums"),
+        createCellHTML(formatCompact(model.context_length), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCell(formatCompact(model.max_completion_tokens), "whitespace-nowrap px-4 py-3 tabular-nums"),
+        createCellHTML(formatCompact(model.max_completion_tokens), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCell(formatPrice(model.input_price_usd_per_1m), "whitespace-nowrap px-4 py-3 tabular-nums"),
+        createCellHTML(formatPrice(model.input_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCell(formatPrice(model.output_price_usd_per_1m), "whitespace-nowrap px-4 py-3 tabular-nums"),
+        createCellHTML(formatPrice(model.output_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCell(formatBoolean(model.supports_reasoning), "whitespace-nowrap px-4 py-3 text-center"),
+        createCellHTML(formatBoolean(model.supports_reasoning), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCell(formatBoolean(model.supports_tools), "whitespace-nowrap px-4 py-3 text-center"),
+        createCellHTML(formatBoolean(model.supports_tools), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCell(formatBoolean(model.supports_vision), "whitespace-nowrap px-4 py-3 text-center"),
+        createCellHTML(formatBoolean(model.supports_vision), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCell(formatIndex(model.intelligence_index), "whitespace-nowrap px-4 py-3 tabular-nums"),
+        createCellHTML(formatIndex(model.intelligence_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCell(formatIndex(model.coding_index), "whitespace-nowrap px-4 py-3 tabular-nums"),
+        createCellHTML(formatIndex(model.coding_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCell(formatIndex(model.agentic_index), "whitespace-nowrap px-4 py-3 tabular-nums"),
+        createCellHTML(formatIndex(model.agentic_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCell(formatFetchedAt(model.fetched_at), "whitespace-nowrap px-4 py-3 tabular-nums"),
+        createCellHTML(formatFetchedAt(model.fetched_at), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       fragment.appendChild(row);
     }
     tableBody.appendChild(fragment);
 
     if (count) {
-      count.textContent = `显示 ${rows.length} / ${totalRows} 个模型`;
+      count.innerHTML = `显示 <span class="text-white">${rows.length}</span> / ${totalRows} 个模型`;
     }
   }
 
