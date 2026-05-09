@@ -236,25 +236,32 @@ const rangeFields = [
   </div>
 </section>
 
-<script define:vars={{ models }}>
-  const tableBody = document.querySelector<HTMLTableSectionElement>("#model-table-body");
-  const count = document.querySelector<HTMLElement>("#model-count");
-  const searchInput = document.querySelector<HTMLInputElement>("#model-search");
-  const capReasoning = document.querySelector<HTMLInputElement>("#cap-reasoning");
-  const capTools = document.querySelector<HTMLInputElement>("#cap-tools");
-  const capVision = document.querySelector<HTMLInputElement>("#cap-vision");
-  const sortField = document.querySelector<HTMLSelectElement>("#sort-field");
-  const sortDirection = document.querySelector<HTMLSelectElement>("#sort-direction");
-  const rangeInputs = Array.from(
-    document.querySelectorAll<HTMLInputElement>("input[data-range-key][data-range-bound]"),
-  );
+<script define:vars={{ models }} is:inline>
+  const tableBody = document.querySelector("#model-table-body");
+  const count = document.querySelector("#model-count");
+  const searchInput = document.querySelector("#model-search");
+  const capReasoning = document.querySelector("#cap-reasoning");
+  const capTools = document.querySelector("#cap-tools");
+  const capVision = document.querySelector("#cap-vision");
+  const sortField = document.querySelector("#sort-field");
+  const sortDirection = document.querySelector("#sort-direction");
+  const rangeInputs = Array.from(document.querySelectorAll("input[data-range-key][data-range-bound]"));
   const totalRows = models.length;
+  const numericRangeKeys = [
+    "context_length",
+    "max_completion_tokens",
+    "input_price_usd_per_1m",
+    "output_price_usd_per_1m",
+    "intelligence_index",
+    "coding_index",
+    "agentic_index",
+  ];
 
-  function truncateToOneDecimal(value: number): string {
+  function truncateToOneDecimal(value) {
     return (Math.trunc(value * 10) / 10).toFixed(1);
   }
 
-  function formatCompact(value: number | null): string {
+  function formatCompact(value) {
     if (value === null) {
       return "—";
     }
@@ -268,7 +275,7 @@ const rangeFields = [
     return new Intl.NumberFormat("en-US").format(value);
   }
 
-  function formatPrice(value: number | null): string {
+  function formatPrice(value) {
     if (value === null) {
       return "—";
     }
@@ -278,15 +285,15 @@ const rangeFields = [
     return value.toFixed(4).replace(/0+$/, "").replace(/\.$/, "");
   }
 
-  function formatIndex(value: number | null): string {
+  function formatIndex(value) {
     return value === null ? "—" : value.toFixed(1);
   }
 
-  function formatBoolean(value: boolean): string {
+  function formatBoolean(value) {
     return value ? "✓" : "—";
   }
 
-  function formatFetchedAt(value: string): string {
+  function formatFetchedAt(value) {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) {
       return value;
@@ -299,7 +306,7 @@ const rangeFields = [
     return `${year}-${month}-${day} ${hour}:${minute} UTC`;
   }
 
-  function parseRangeValue(input: HTMLInputElement | null): number | null {
+  function parseRangeValue(input) {
     if (!input) {
       return null;
     }
@@ -311,11 +318,11 @@ const rangeFields = [
     return Number.isFinite(parsed) ? parsed : null;
   }
 
-  function getRangeByKey(key: string): { min: number | null; max: number | null } {
-    const minInput = document.querySelector<HTMLInputElement>(
+  function getRangeByKey(key) {
+    const minInput = document.querySelector(
       `input[data-range-key="${key}"][data-range-bound="min"]`,
     );
-    const maxInput = document.querySelector<HTMLInputElement>(
+    const maxInput = document.querySelector(
       `input[data-range-key="${key}"][data-range-bound="max"]`,
     );
     return {
@@ -324,7 +331,7 @@ const rangeFields = [
     };
   }
 
-  function toSearchText(model: (typeof models)[number]): string {
+  function toSearchText(model) {
     return [
       model.model_id,
       model.vendor_name,
@@ -336,11 +343,7 @@ const rangeFields = [
       .toLowerCase();
   }
 
-  function compareNullableNumber(
-    left: number | null,
-    right: number | null,
-    direction: "asc" | "desc",
-  ): number {
+  function compareNullableNumber(left, right, direction) {
     if (left === null && right === null) {
       return 0;
     }
@@ -353,7 +356,7 @@ const rangeFields = [
     return direction === "asc" ? left - right : right - left;
   }
 
-  function parseFetchedAtValue(value: string): { valid: boolean; timestamp: number; text: string } {
+  function parseFetchedAtValue(value) {
     if (!value) {
       return { valid: false, timestamp: 0, text: "" };
     }
@@ -364,11 +367,7 @@ const rangeFields = [
     return { valid: true, timestamp, text: value };
   }
 
-  function compareFetchedAt(
-    left: string,
-    right: string,
-    direction: "asc" | "desc",
-  ): number {
+  function compareFetchedAt(left, right, direction) {
     const parsedLeft = parseFetchedAtValue(left);
     const parsedRight = parseFetchedAtValue(right);
 
@@ -388,14 +387,14 @@ const rangeFields = [
       : parsedRight.timestamp - parsedLeft.timestamp;
   }
 
-  function createCell(text: string, className: string): HTMLTableCellElement {
+  function createCell(text, className) {
     const cell = document.createElement("td");
     cell.className = className;
     cell.textContent = text;
     return cell;
   }
 
-  function renderRows(rows: Array<(typeof models)[number]>): void {
+  function renderRows(rows) {
     if (!tableBody) {
       return;
     }
@@ -450,14 +449,20 @@ const rangeFields = [
     }
   }
 
-  function applyFiltersAndSort(): void {
+  function getNumericValue(model, key) {
+    const rawValue = model[key];
+    return typeof rawValue === "number" ? rawValue : null;
+  }
+
+  function applyFiltersAndSort() {
     const search = searchInput?.value.trim().toLowerCase() ?? "";
     const needsReasoning = capReasoning?.checked ?? false;
     const needsTools = capTools?.checked ?? false;
     const needsVision = capVision?.checked ?? false;
     const directionValue = sortDirection?.value;
     const field = sortField?.value ?? "";
-    const direction = directionValue === "asc" || directionValue === "desc" ? directionValue : "none";
+    const direction =
+      directionValue === "asc" || directionValue === "desc" ? directionValue : "none";
     const numericRanges = {
       context_length: getRangeByKey("context_length"),
       max_completion_tokens: getRangeByKey("max_completion_tokens"),
@@ -484,9 +489,9 @@ const rangeFields = [
           return false;
         }
 
-        for (const [key, range] of Object.entries(numericRanges)) {
-          const rawValue = model[key as keyof typeof numericRanges];
-          const value = typeof rawValue === "number" ? rawValue : null;
+        for (const key of numericRangeKeys) {
+          const range = numericRanges[key];
+          const value = getNumericValue(model, key);
           if ((range.min !== null || range.max !== null) && value === null) {
             return false;
           }
@@ -506,13 +511,9 @@ const rangeFields = [
         if (field === "fetched_at") {
           result = compareFetchedAt(left.model.fetched_at, right.model.fetched_at, direction);
         } else {
-          const leftValue = left.model[field as keyof typeof numericRanges];
-          const rightValue = right.model[field as keyof typeof numericRanges];
-          result = compareNullableNumber(
-            typeof leftValue === "number" ? leftValue : null,
-            typeof rightValue === "number" ? rightValue : null,
-            direction,
-          );
+          const leftValue = getNumericValue(left.model, field);
+          const rightValue = getNumericValue(right.model, field);
+          result = compareNullableNumber(leftValue, rightValue, direction);
         }
         if (result !== 0) {
           return result;
