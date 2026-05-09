@@ -1,185 +1,122 @@
-# M3 规格说明书 — 后端增强 + 前端完善
+# M3 规格说明书 — 前端主表增强（字段总表不变）
 
 ## 阶段目标
 
-1. **后端**：新增 Rankings 数据采集，实现周榜周环比 diff
-2. **前端**：新增列排序、多条件筛选、搜索框、模型详情页、独立榜单页
+在 **不改变 M1 派生模型字段总表**（`data/derived/models_latest.json` 的行字段集合不新增、不删减、不改名）的前提下，优化 M2 的主表展示与交互：
+
+1. **展示去重**：主表仅展示 `model_id` 作为模型标识列，不再单独展示 `author` / `slug` / `vendor_name` / `name` 作为列。
+2. **搜索与筛选**：新增统一搜索框 + 能力复选 + 数值范围筛选，组合逻辑为 AND。
+3. **排序**：对关键数值字段提供升/降/无排序，null 始终排在最后。
+
+> 注：原 M3 中的 rankings 采集/diff、榜单页与详情页整体延期到 M4，想法池见 `docs/m4/m4_ideas.md`。
 
 ---
 
-## 后端增强
+## 约束与定义
 
-### 3.1 Rankings 采集
+### 字段总表不变
 
-**数据来源**：`https://openrouter.ai/rankings`（需带浏览器 UA，否则 403）
+- 本阶段不修改 Python 数据管道产物字段集合。
+- 主表所有交互（搜索/筛选/排序）均基于 `models_latest.json` 现有字段完成。
 
-**采集内容**：
-| 字段 | 说明 |
-|------|------|
-| `week_start` | 本周周一日期，格式 `YYYYMMDD` |
-| `rank` | 当前榜单排名（1-N） |
-| `model_id` | 映射后的完整 model id（如 `openai/gpt-4o`） |
-| `token_volume` | 页面原始字符串（如 `1.75T`、`890B`） |
-| `fetched_at` | 采集时间 UTC |
+### “模型 id 筛选”的含义
 
-**slug 映射规则**（页面上是 slug，需还原为 model_id）：
-1. 精确匹配 `data/derived/models_latest.json` 中的 model_id
-2. 去掉日期后缀后匹配（如 `gpt-4o-20260211` → `gpt-4o`）
-3. 按 author + name 相似度兜底；匹配失败则保留原始 slug，标记 `unmatched: true`
+- 主表只展示 `model_id` 列，但筛选/搜索应覆盖用户心智里的“模型相关信息”，因此统一搜索框匹配范围定义为：
+  - `model_id`
+  - `vendor_name`（厂商）
+  - `name`（模型名称）
+  - （可选）`author`、`slug` 也参与匹配，但不单独展示为列
 
-**产物文件**：
-```
-data/derived/
-  rankings_YYYYMMDD.json     # 当周榜单（按采集日期命名）
-  rankings_latest.json       # 覆盖写：始终为最新一份
-```
+> 上述将“厂商、模型名称筛选合并为模型 id 筛选”的诉求落为一个统一入口：**一框搜全域**。
 
 ---
 
-### 3.2 Rankings 周环比 Diff
+## 前端增强范围
 
-**触发时机**：每次采集 rankings 后自动计算
+### 页面
 
-**对比逻辑**：当前运行结果与上一个 `rankings_*.json`（按文件名排序最新）做对比
+- 保持 M2 结构：唯一页面 `/`（模型列表主表）。
+- 不新增 `/rankings`、不新增 `/models/[slug]` 等页面（延期到 M4）。
 
-**Diff 内容**：
-| 变化类型 | 说明 |
-|----------|------|
-| `new_entry` | 本周新进榜（上周不存在） |
-| `dropped` | 本周跌出榜单（上周存在，本周无） |
-| `rank_up` | 排名上升（数字变小） |
-| `rank_down` | 排名下降（数字变大） |
-| `rank_unchanged` | 排名不变 |
+### 3.1 主表列展示（去重）
 
-**产物文件**：
-```
-data/derived/
-  rankings_diff_YYYYMMDD.json   # 本次 diff 结果
-  rankings_diff_latest.json     # 覆盖写：始终为最新一份
-```
-
----
-
-### 3.3 代码结构新增
-
-```
-src/openrouter_watch/
-  rankings_fetcher.py   # fetch_rankings() -> list[dict]（含 slug 映射）
-  rankings_differ.py    # diff_rankings(current, previous) -> list[dict]
-scripts/
-  fetch_rankings.py     # 采集 rankings → 保存 raw + derived
-  diff_rankings.py      # 读最新两份 rankings，生成 diff
-tests/
-  test_rankings_fetcher.py
-  test_rankings_differ.py
-  fixtures/
-    rankings_sample.html    # rankings 页面 HTML 片段（离线测试用）
-    rankings_prev.json      # 上周榜单 fixture
-    rankings_curr.json      # 本周榜单 fixture
-```
+- 必须展示列：
+  - `model_id`
+  - `context_length`
+  - `max_completion_tokens`
+  - `input_price_usd_per_1m`
+  - `output_price_usd_per_1m`
+  - `supports_reasoning`
+  - `supports_tools`
+  - `supports_vision`
+  - `intelligence_index`
+  - `coding_index`
+  - `agentic_index`
+  - `fetched_at`
+- 不再单独展示为列（但可用于搜索匹配）：
+  - `author`、`slug`、`vendor_name`、`name`
 
 ---
 
-## 前端完善
+### 3.2 搜索与筛选（AND 组合）
 
-### 新增页面
+#### 统一搜索框（“模型 id 筛选”入口）
 
-| 路由 | 说明 |
-|------|------|
-| `/rankings` | 独立榜单页 |
-| `/models/[model_id]` | 模型详情页（动态路由，Astro SSG） |
-
----
-
-### 3.4 主表格新增特性
-
-#### 列排序
-- 点击任意列表头切换升序 / 降序 / 无排序
-- 数值列（价格、context、benchmark index）按数值排序；null 排最后
-- 当前排序列表头显示 ↑ / ↓ 指示符
-
-#### 多条件筛选
-- 厂商下拉（原有，保留）
-- Reasoning / Tools / Vision 三个复选框，勾选则只显示该能力为 `true` 的行
-- 多个筛选条件为 AND 关系
-
-#### 搜索框
-- 输入时实时过滤
-- 匹配范围：`model_id`、`name`（大小写不敏感）
-- 与厂商/能力筛选为 AND 关系
+- 输入实时过滤（debounce 可选）
+- 大小写不敏感
+- 匹配字段：`model_id`、`vendor_name`、`name`（可选含 `author`、`slug`）
+- 与其它筛选条件为 AND
 
 ---
 
-### 3.5 榜单页 `/rankings`
+#### 能力筛选（复选框）
 
-```
-┌──────────────────────────────────┐
-│  页头：周榜（周一日期）            │
-├──────────────────────────────────┤
-│  本周 Top N 表格：                 │
-│  排名 | 模型名 | token量 | 环比变化 │
-├──────────────────────────────────┤
-│  环比变化说明（新进/跌出/涨跌幅）   │
-└──────────────────────────────────┘
-```
+- Reasoning / Tools / Vision 三个复选框
+- 勾选即要求对应字段为 `true`
+- 多个复选框为 AND
 
-数据来源：`rankings_latest.json` + `rankings_diff_latest.json`
+#### 数值范围筛选（关键数值字段）
 
-环比变化展示：
-- 新进榜：绿色 `NEW`
-- 跌出：不在表格中（或灰色标记）
-- 排名上升：绿色 `↑N`（N 为上升位数）
-- 排名下降：红色 `↓N`
-- 不变：`—`
+为以下字段提供 min/max（可空）：
+- `context_length`
+- `max_completion_tokens`
+- `input_price_usd_per_1m`
+- `output_price_usd_per_1m`
+- `intelligence_index`
+- `coding_index`
+- `agentic_index`
 
----
-
-### 3.6 模型详情页 `/models/[model_id]`
-
-**路由生成**：Astro `getStaticPaths()` 遍历 `models_latest.json`
-
-**展示内容**：
-- 所有 M1 字段（完整展示，不截断）
-- `description` 字段完整展示（主表格中可能被截断）
-- 如果该模型在最新榜单中，显示当前排名与 token 量
-
-**URL 规则**：`model_id` 中的 `/` 替换为 `--`，如 `openai/gpt-4o` → `/models/openai--gpt-4o`
+规则：
+- 空值表示“不限制”
+- 行数据为 null 时：若该字段设置了 min/max，则该行不满足（即被过滤掉）
+- 与搜索/能力筛选为 AND
 
 ---
 
-### 前端新增文件
+### 3.3 排序（关键数值字段）
 
-```
-web/src/
-  pages/
-    rankings.astro              # 榜单页
-    models/
-      [slug].astro              # 模型详情页（动态路由）
-  components/
-    ModelTable.astro            # 原有，增加排序/筛选/搜索逻辑
-    RankingsTable.astro         # 新增：榜单表格
-    ModelDetail.astro           # 新增：详情页内容区
-```
+对以下字段提供排序（升 / 降 / 无）：
+- `context_length`
+- `max_completion_tokens`
+- `input_price_usd_per_1m`
+- `output_price_usd_per_1m`
+- `intelligence_index`
+- `coding_index`
+- `agentic_index`
+- `fetched_at`（按时间排序）
 
----
-
-## 数据分层新增产物
-
-| 文件 | 层 | Git | 说明 |
-|------|----|-----|------|
-| `data/derived/rankings_YYYYMMDD.json` | derived | committed | 当周榜单快照 |
-| `data/derived/rankings_latest.json` | derived | committed | 最新榜单 |
-| `data/derived/rankings_diff_YYYYMMDD.json` | derived | committed | 周环比 diff |
-| `data/derived/rankings_diff_latest.json` | derived | committed | 最新 diff |
+规则：
+- 数值排序按数值比较；`null` 永远排最后
+- 时间排序：无法解析的时间字符串按字符串回退比较，且仍保持 `null`/无效时间排最后
+- 同值时稳定排序回退到 `model_id`（保证排序结果可预期）
 
 ---
 
 ## M3 完成标准
 
-- [ ] `python scripts/fetch_rankings.py` 生成 `rankings_*.json`
-- [ ] `python scripts/diff_rankings.py` 生成 `rankings_diff_*.json`，内容正确
-- [ ] `pytest tests/test_rankings_fetcher.py tests/test_rankings_differ.py` 全部通过
-- [ ] `/rankings` 页面正常展示榜单与环比变化
-- [ ] `/models/[slug]` 详情页正常展示，description 完整
-- [ ] 主表格列排序、多条件筛选、搜索框可用
-- [ ] `ruff check .` 零报错，`npm run build` 无错误
+- [ ] 主表仅展示 `model_id`（不再展示 `author/slug/vendor_name/name` 列）
+- [ ] 统一搜索框可用（匹配 `model_id/vendor_name/name`，与其他筛选 AND）
+- [ ] 能力复选筛选可用（Reasoning/Tools/Vision，AND）
+- [ ] 关键数值字段范围筛选可用（min/max，AND）
+- [ ] 关键数值字段排序可用（升/降/无，null 排最后）
+- [ ] `cd web && npm run build` 无错误

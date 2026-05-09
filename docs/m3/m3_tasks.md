@@ -5,73 +5,47 @@
 
 ---
 
-## 后端任务
-
-## T1 — Rankings Fetcher
-
-文件：`src/openrouter_watch/rankings_fetcher.py`
-
-- [ ] 实现 `fetch_rankings() -> list[dict]`：抓取 `https://openrouter.ai/rankings`，带浏览器 UA  
-- [ ] 提取 Top N 榜单：slug、排名、token 量（保留原始字符串）  
-- [ ] 提取 `week_start`（本周周一日期，从页面或当前日期推算）  
-- [ ] 实现 slug 映射：精确匹配 → 去日期后缀匹配 → 兜底保留原始（标记 `unmatched: true`）  
-- [ ] 准备 `tests/fixtures/rankings_sample.html`（真实页面 HTML 片段）  
-- [ ] `tests/test_rankings_fetcher.py`：mock HTTP，验证提取与映射逻辑  
-
-## T2 — Rankings Differ
-
-文件：`src/openrouter_watch/rankings_differ.py`
-
-- [ ] 实现 `diff_rankings(current: list[dict], previous: list[dict]) -> list[dict]`  
-- [ ] 覆盖 5 种变化类型：`new_entry`, `dropped`, `rank_up`, `rank_down`, `rank_unchanged`  
-- [ ] 准备 `tests/fixtures/rankings_prev.json` 和 `rankings_curr.json`  
-- [ ] `tests/test_rankings_differ.py`：验证各变化类型判断、边界情况（首次运行无上周数据）  
-
-## T3 — Rankings 入口脚本
-
-- [ ] `scripts/fetch_rankings.py`：调用 `fetch_rankings()`，保存 `data/derived/rankings_YYYYMMDD.json` + `rankings_latest.json`  
-- [ ] `scripts/diff_rankings.py`：读最新两份 rankings 文件，生成 `rankings_diff_YYYYMMDD.json` + `rankings_diff_latest.json`；若只有一份则跳过（首次运行）  
-
----
-
-## 前端任务
+## 前端任务（仅主表增强）
 
 ## T4 — 主表格增强
 
 文件：`web/src/components/ModelTable.astro`
 
-- [ ] 列排序：点击表头切换 升/降/无，数值列按数值排序，null 排最后，表头显示 ↑↓ 指示符  
-- [ ] 多条件筛选：新增 Reasoning / Tools / Vision 三个复选框，与厂商筛选 AND 组合  
-- [ ] 搜索框：实时过滤 `model_id` 和 `name`（大小写不敏感），与其他筛选 AND 组合  
+### T4.1 — 列展示去重
 
-## T5 — 榜单页
+- [ ] 主表列删除：`author` / `slug` / `vendor_name` / `name`（仅保留 `model_id` 作为模型标识列）
+- [ ] 保留其余数值列与能力列（context/max output/价格/能力/index/更新时间）
 
-文件：`web/src/pages/rankings.astro`、`web/src/components/RankingsTable.astro`
+### T4.2 — 统一搜索框（“模型 id 筛选”入口）
 
-- [ ] 读取 `rankings_latest.json` + `rankings_diff_latest.json`  
-- [ ] 展示 Top N 表格：排名 / 模型名 / token 量 / 环比变化  
-- [ ] 环比变化样式：新进 → 绿色 `NEW`；上升 → 绿色 `↑N`；下降 → 红色 `↓N`；不变 → `—`  
-- [ ] 页头展示当前周榜日期（`week_start`）  
+- [ ] 新增搜索框：输入实时过滤（大小写不敏感）
+- [ ] 匹配字段至少包含：`model_id`、`vendor_name`、`name`
+- [ ] 与能力筛选、数值范围筛选为 AND 关系
 
-## T6 — 模型详情页
+### T4.3 — 能力筛选（AND）
 
-文件：`web/src/pages/models/[slug].astro`、`web/src/components/ModelDetail.astro`
+- [ ] Reasoning / Tools / Vision 三个复选框
+- [ ] 勾选则只显示该能力为 `true` 的行
+- [ ] 多个复选框 AND
 
-- [ ] `getStaticPaths()` 遍历 `models_latest.json`，URL 规则：`openai/gpt-4o` → `openai--gpt-4o`  
-- [ ] 展示所有 M1 字段（完整，不截断），`description` 字段完整展示  
-- [ ] 若该模型在 `rankings_latest.json` 中，展示当前排名与 token 量  
-- [ ] 主表格中模型名可点击跳转详情页  
+### T4.4 — 关键数值字段范围筛选（AND）
 
-## T7 — 数据复制脚本更新
+- [ ] 为以下字段提供 min/max：`context_length`、`max_completion_tokens`、`input_price_usd_per_1m`、`output_price_usd_per_1m`、`intelligence_index`、`coding_index`、`agentic_index`
+- [ ] 行数据为 null 且该字段设置了 min/max 时，该行不满足（过滤掉）
 
-文件：`scripts/copy_data.py`
+### T4.5 — 关键数值字段排序
 
-- [ ] 同步复制 `rankings_latest.json` 和 `rankings_diff_latest.json` 到 `web/public/data/`  
+- [ ] 对以下字段提供升/降/无：`context_length`、`max_completion_tokens`、输入/输出价、三项 index、`fetched_at`
+- [ ] null 始终排最后；同值回退到 `model_id`
 
 ## T8 — 验收
 
-- [ ] `pytest` 全量通过（含 M1 原有测试）  
-- [ ] `python scripts/fetch_rankings.py && python scripts/diff_rankings.py` 无报错  
-- [ ] `cd web && npm run build` 无报错，`/rankings` 和 `/models/[slug]` 页面可访问  
-- [ ] 主表格排序 / 筛选 / 搜索组合使用正常  
-- [ ] `ruff check .` 零报错  
+- [ ] `cd web && npm run build` 无报错
+- [ ] 主表仅展示 `model_id`（列去重达成）
+- [ ] 搜索 + 能力复选 + 数值范围 + 排序可组合使用（AND），且结果数统计正确
+
+---
+
+## 延期到 M4 的内容（不属于本轮 M3）
+
+Rankings 采集/diff、榜单页、详情页整体迁移到 `docs/m4/m4_ideas.md`。
