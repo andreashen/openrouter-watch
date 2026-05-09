@@ -23,11 +23,6 @@ type Props = {
 };
 
 const { models } = Astro.props;
-
-const vendors = Array.from(new Set(models.map((model) => model.vendor_name))).sort((a, b) =>
-  a.localeCompare(b),
-);
-
 const numberFormatter = new Intl.NumberFormat("en-US");
 
 function truncateToOneDecimal(value: number): string {
@@ -82,10 +77,6 @@ function formatFetchedAt(value: string): string {
 
 const columns = [
   "Model ID",
-  "Author",
-  "Slug",
-  "厂商",
-  "模型名称",
   "上下文",
   "最大输出",
   "输入价 ($/1M)",
@@ -98,20 +89,111 @@ const columns = [
   "Agentic",
   "更新时间",
 ];
+
+const rangeFields = [
+  { key: "context_length", label: "上下文" },
+  { key: "max_completion_tokens", label: "最大输出" },
+  { key: "input_price_usd_per_1m", label: "输入价" },
+  { key: "output_price_usd_per_1m", label: "输出价" },
+  { key: "intelligence_index", label: "Intelligence" },
+  { key: "coding_index", label: "Coding" },
+  { key: "agentic_index", label: "Agentic" },
+];
 ---
 
 <section class="rounded-2xl border border-slate-200 bg-white shadow-sm">
-  <div class="flex flex-col gap-3 border-b border-slate-200 p-4 sm:flex-row sm:items-end sm:justify-between">
-    <div>
-      <label for="vendor-filter" class="text-sm font-medium text-slate-700">厂商筛选</label>
-      <select
-        id="vendor-filter"
-        class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 sm:w-64"
-      >
-        <option value="">全部厂商</option>
-        {vendors.map((vendor) => <option value={vendor}>{vendor}</option>)}
-      </select>
+  <div class="flex flex-col gap-4 border-b border-slate-200 p-4">
+    <div class="grid gap-3 lg:grid-cols-2">
+      <div>
+        <label for="model-search" class="text-sm font-medium text-slate-700">模型搜索</label>
+        <input
+          id="model-search"
+          type="search"
+          placeholder="搜索 model_id / vendor / name / author / slug"
+          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+        />
+      </div>
+      <div>
+        <p class="text-sm font-medium text-slate-700">能力筛选（AND）</p>
+        <div class="mt-2 flex flex-wrap gap-4 text-sm text-slate-700">
+          <label class="inline-flex items-center gap-2">
+            <input id="cap-reasoning" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-300" />
+            <span>Reasoning</span>
+          </label>
+          <label class="inline-flex items-center gap-2">
+            <input id="cap-tools" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-300" />
+            <span>Tools</span>
+          </label>
+          <label class="inline-flex items-center gap-2">
+            <input id="cap-vision" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-300" />
+            <span>Vision</span>
+          </label>
+        </div>
+      </div>
     </div>
+
+    <div>
+      <p class="text-sm font-medium text-slate-700">关键数值范围（AND）</p>
+      <div class="mt-2 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        {rangeFields.map((field) => (
+          <div class="rounded-lg border border-slate-200 p-3">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-600">{field.label}</p>
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              <input
+                type="number"
+                step="any"
+                inputmode="decimal"
+                placeholder="min"
+                data-range-key={field.key}
+                data-range-bound="min"
+                class="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+              />
+              <input
+                type="number"
+                step="any"
+                inputmode="decimal"
+                placeholder="max"
+                data-range-key={field.key}
+                data-range-bound="max"
+                class="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="grid gap-3 sm:max-w-xl sm:grid-cols-2">
+      <div>
+        <label for="sort-field" class="text-sm font-medium text-slate-700">排序字段</label>
+        <select
+          id="sort-field"
+          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+        >
+          <option value="">不排序</option>
+          <option value="context_length">上下文</option>
+          <option value="max_completion_tokens">最大输出</option>
+          <option value="input_price_usd_per_1m">输入价</option>
+          <option value="output_price_usd_per_1m">输出价</option>
+          <option value="intelligence_index">Intelligence</option>
+          <option value="coding_index">Coding</option>
+          <option value="agentic_index">Agentic</option>
+          <option value="fetched_at">更新时间</option>
+        </select>
+      </div>
+      <div>
+        <label for="sort-direction" class="text-sm font-medium text-slate-700">排序方向</label>
+        <select
+          id="sort-direction"
+          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+        >
+          <option value="none">无</option>
+          <option value="asc">升序</option>
+          <option value="desc">降序</option>
+        </select>
+      </div>
+    </div>
+
     <p id="model-count" class="text-sm text-slate-500" aria-live="polite">
       共 {models.length} 个模型
     </p>
@@ -128,12 +210,8 @@ const columns = [
       </thead>
       <tbody id="model-table-body" class="divide-y divide-slate-100">
         {models.map((model) => (
-          <tr class="hover:bg-sky-50/70" data-vendor-name={model.vendor_name}>
+          <tr class="hover:bg-sky-50/70">
             <td class="whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-700">{model.model_id}</td>
-            <td class="whitespace-nowrap px-4 py-3">{model.author}</td>
-            <td class="whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-600">{model.slug}</td>
-            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-900">{model.vendor_name}</td>
-            <td class="min-w-64 px-4 py-3 text-slate-900">{model.name}</td>
             <td class="whitespace-nowrap px-4 py-3 tabular-nums">{formatCompact(model.context_length)}</td>
             <td class="whitespace-nowrap px-4 py-3 tabular-nums">
               {formatCompact(model.max_completion_tokens)}
@@ -158,25 +236,307 @@ const columns = [
   </div>
 </section>
 
-<script>
-  const filter = document.querySelector<HTMLSelectElement>("#vendor-filter");
-  const rows = Array.from(document.querySelectorAll<HTMLTableRowElement>("[data-vendor-name]"));
+<script define:vars={{ models }}>
+  const tableBody = document.querySelector<HTMLTableSectionElement>("#model-table-body");
   const count = document.querySelector<HTMLElement>("#model-count");
+  const searchInput = document.querySelector<HTMLInputElement>("#model-search");
+  const capReasoning = document.querySelector<HTMLInputElement>("#cap-reasoning");
+  const capTools = document.querySelector<HTMLInputElement>("#cap-tools");
+  const capVision = document.querySelector<HTMLInputElement>("#cap-vision");
+  const sortField = document.querySelector<HTMLSelectElement>("#sort-field");
+  const sortDirection = document.querySelector<HTMLSelectElement>("#sort-direction");
+  const rangeInputs = Array.from(
+    document.querySelectorAll<HTMLInputElement>("input[data-range-key][data-range-bound]"),
+  );
+  const totalRows = models.length;
 
-  filter?.addEventListener("change", () => {
-    const selectedVendor = filter.value;
-    let visibleRows = 0;
+  function truncateToOneDecimal(value: number): string {
+    return (Math.trunc(value * 10) / 10).toFixed(1);
+  }
 
-    for (const row of rows) {
-      const isVisible = !selectedVendor || row.dataset.vendorName === selectedVendor;
-      row.hidden = !isVisible;
-      if (isVisible) {
-        visibleRows += 1;
-      }
+  function formatCompact(value: number | null): string {
+    if (value === null) {
+      return "—";
     }
+    const absValue = Math.abs(value);
+    if (absValue >= 1_000_000) {
+      return `${truncateToOneDecimal(value / 1_000_000)}M`;
+    }
+    if (absValue >= 1_000) {
+      return `${truncateToOneDecimal(value / 1_000)}K`;
+    }
+    return new Intl.NumberFormat("en-US").format(value);
+  }
+
+  function formatPrice(value: number | null): string {
+    if (value === null) {
+      return "—";
+    }
+    if (value === 0) {
+      return "0";
+    }
+    return value.toFixed(4).replace(/0+$/, "").replace(/\.$/, "");
+  }
+
+  function formatIndex(value: number | null): string {
+    return value === null ? "—" : value.toFixed(1);
+  }
+
+  function formatBoolean(value: boolean): string {
+    return value ? "✓" : "—";
+  }
+
+  function formatFetchedAt(value: string): string {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return value;
+    }
+    const year = date.getUTCFullYear();
+    const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+    const day = String(date.getUTCDate()).padStart(2, "0");
+    const hour = String(date.getUTCHours()).padStart(2, "0");
+    const minute = String(date.getUTCMinutes()).padStart(2, "0");
+    return `${year}-${month}-${day} ${hour}:${minute} UTC`;
+  }
+
+  function parseRangeValue(input: HTMLInputElement | null): number | null {
+    if (!input) {
+      return null;
+    }
+    const value = input.value.trim();
+    if (!value) {
+      return null;
+    }
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  function getRangeByKey(key: string): { min: number | null; max: number | null } {
+    const minInput = document.querySelector<HTMLInputElement>(
+      `input[data-range-key="${key}"][data-range-bound="min"]`,
+    );
+    const maxInput = document.querySelector<HTMLInputElement>(
+      `input[data-range-key="${key}"][data-range-bound="max"]`,
+    );
+    return {
+      min: parseRangeValue(minInput),
+      max: parseRangeValue(maxInput),
+    };
+  }
+
+  function toSearchText(model: (typeof models)[number]): string {
+    return [
+      model.model_id,
+      model.vendor_name,
+      model.name,
+      model.author,
+      model.slug,
+    ]
+      .join(" ")
+      .toLowerCase();
+  }
+
+  function compareNullableNumber(
+    left: number | null,
+    right: number | null,
+    direction: "asc" | "desc",
+  ): number {
+    if (left === null && right === null) {
+      return 0;
+    }
+    if (left === null) {
+      return 1;
+    }
+    if (right === null) {
+      return -1;
+    }
+    return direction === "asc" ? left - right : right - left;
+  }
+
+  function parseFetchedAtValue(value: string): { valid: boolean; timestamp: number; text: string } {
+    if (!value) {
+      return { valid: false, timestamp: 0, text: "" };
+    }
+    const timestamp = Date.parse(value);
+    if (!Number.isFinite(timestamp)) {
+      return { valid: false, timestamp: 0, text: value };
+    }
+    return { valid: true, timestamp, text: value };
+  }
+
+  function compareFetchedAt(
+    left: string,
+    right: string,
+    direction: "asc" | "desc",
+  ): number {
+    const parsedLeft = parseFetchedAtValue(left);
+    const parsedRight = parseFetchedAtValue(right);
+
+    if (!parsedLeft.valid && !parsedRight.valid) {
+      return direction === "asc"
+        ? parsedLeft.text.localeCompare(parsedRight.text)
+        : parsedRight.text.localeCompare(parsedLeft.text);
+    }
+    if (!parsedLeft.valid) {
+      return 1;
+    }
+    if (!parsedRight.valid) {
+      return -1;
+    }
+    return direction === "asc"
+      ? parsedLeft.timestamp - parsedRight.timestamp
+      : parsedRight.timestamp - parsedLeft.timestamp;
+  }
+
+  function createCell(text: string, className: string): HTMLTableCellElement {
+    const cell = document.createElement("td");
+    cell.className = className;
+    cell.textContent = text;
+    return cell;
+  }
+
+  function renderRows(rows: Array<(typeof models)[number]>): void {
+    if (!tableBody) {
+      return;
+    }
+    tableBody.textContent = "";
+    const fragment = document.createDocumentFragment();
+
+    for (const model of rows) {
+      const row = document.createElement("tr");
+      row.className = "hover:bg-sky-50/70";
+      row.appendChild(
+        createCell(model.model_id, "whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-700"),
+      );
+      row.appendChild(
+        createCell(formatCompact(model.context_length), "whitespace-nowrap px-4 py-3 tabular-nums"),
+      );
+      row.appendChild(
+        createCell(formatCompact(model.max_completion_tokens), "whitespace-nowrap px-4 py-3 tabular-nums"),
+      );
+      row.appendChild(
+        createCell(formatPrice(model.input_price_usd_per_1m), "whitespace-nowrap px-4 py-3 tabular-nums"),
+      );
+      row.appendChild(
+        createCell(formatPrice(model.output_price_usd_per_1m), "whitespace-nowrap px-4 py-3 tabular-nums"),
+      );
+      row.appendChild(
+        createCell(formatBoolean(model.supports_reasoning), "whitespace-nowrap px-4 py-3 text-center"),
+      );
+      row.appendChild(
+        createCell(formatBoolean(model.supports_tools), "whitespace-nowrap px-4 py-3 text-center"),
+      );
+      row.appendChild(
+        createCell(formatBoolean(model.supports_vision), "whitespace-nowrap px-4 py-3 text-center"),
+      );
+      row.appendChild(
+        createCell(formatIndex(model.intelligence_index), "whitespace-nowrap px-4 py-3 tabular-nums"),
+      );
+      row.appendChild(
+        createCell(formatIndex(model.coding_index), "whitespace-nowrap px-4 py-3 tabular-nums"),
+      );
+      row.appendChild(
+        createCell(formatIndex(model.agentic_index), "whitespace-nowrap px-4 py-3 tabular-nums"),
+      );
+      row.appendChild(
+        createCell(formatFetchedAt(model.fetched_at), "whitespace-nowrap px-4 py-3 tabular-nums"),
+      );
+      fragment.appendChild(row);
+    }
+    tableBody.appendChild(fragment);
 
     if (count) {
-      count.textContent = `显示 ${visibleRows} / ${rows.length} 个模型`;
+      count.textContent = `显示 ${rows.length} / ${totalRows} 个模型`;
     }
-  });
+  }
+
+  function applyFiltersAndSort(): void {
+    const search = searchInput?.value.trim().toLowerCase() ?? "";
+    const needsReasoning = capReasoning?.checked ?? false;
+    const needsTools = capTools?.checked ?? false;
+    const needsVision = capVision?.checked ?? false;
+    const directionValue = sortDirection?.value;
+    const field = sortField?.value ?? "";
+    const direction = directionValue === "asc" || directionValue === "desc" ? directionValue : "none";
+    const numericRanges = {
+      context_length: getRangeByKey("context_length"),
+      max_completion_tokens: getRangeByKey("max_completion_tokens"),
+      input_price_usd_per_1m: getRangeByKey("input_price_usd_per_1m"),
+      output_price_usd_per_1m: getRangeByKey("output_price_usd_per_1m"),
+      intelligence_index: getRangeByKey("intelligence_index"),
+      coding_index: getRangeByKey("coding_index"),
+      agentic_index: getRangeByKey("agentic_index"),
+    };
+
+    const filtered = models
+      .map((model, index) => ({ model, index }))
+      .filter(({ model }) => {
+        if (search && !toSearchText(model).includes(search)) {
+          return false;
+        }
+        if (needsReasoning && !model.supports_reasoning) {
+          return false;
+        }
+        if (needsTools && !model.supports_tools) {
+          return false;
+        }
+        if (needsVision && !model.supports_vision) {
+          return false;
+        }
+
+        for (const [key, range] of Object.entries(numericRanges)) {
+          const rawValue = model[key as keyof typeof numericRanges];
+          const value = typeof rawValue === "number" ? rawValue : null;
+          if ((range.min !== null || range.max !== null) && value === null) {
+            return false;
+          }
+          if (range.min !== null && value !== null && value < range.min) {
+            return false;
+          }
+          if (range.max !== null && value !== null && value > range.max) {
+            return false;
+          }
+        }
+        return true;
+      });
+
+    if (field && direction !== "none") {
+      filtered.sort((left, right) => {
+        let result = 0;
+        if (field === "fetched_at") {
+          result = compareFetchedAt(left.model.fetched_at, right.model.fetched_at, direction);
+        } else {
+          const leftValue = left.model[field as keyof typeof numericRanges];
+          const rightValue = right.model[field as keyof typeof numericRanges];
+          result = compareNullableNumber(
+            typeof leftValue === "number" ? leftValue : null,
+            typeof rightValue === "number" ? rightValue : null,
+            direction,
+          );
+        }
+        if (result !== 0) {
+          return result;
+        }
+        const modelIdCompare = left.model.model_id.localeCompare(right.model.model_id);
+        if (modelIdCompare !== 0) {
+          return modelIdCompare;
+        }
+        return left.index - right.index;
+      });
+    }
+
+    renderRows(filtered.map((entry) => entry.model));
+  }
+
+  searchInput?.addEventListener("input", applyFiltersAndSort);
+  capReasoning?.addEventListener("change", applyFiltersAndSort);
+  capTools?.addEventListener("change", applyFiltersAndSort);
+  capVision?.addEventListener("change", applyFiltersAndSort);
+  sortField?.addEventListener("change", applyFiltersAndSort);
+  sortDirection?.addEventListener("change", applyFiltersAndSort);
+  for (const input of rangeInputs) {
+    input.addEventListener("input", applyFiltersAndSort);
+  }
+
+  applyFiltersAndSort();
 </script>
