@@ -47,30 +47,35 @@ const latestFetchedAtLabel = latestFetchedAt
   title="OpenRouter Watch"
   description="Static OpenRouter model table generated from derived model data."
 >
-  <main class="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
-    <header class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-        OpenRouter Watch
-      </p>
-      <div class="mt-3 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h1 class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-            模型信息表
-          </h1>
-          <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
-            支持统一搜索、能力复选、数值范围筛选与关键字段排序。
-          </p>
-        </div>
-        <div class="rounded-2xl bg-slate-100 px-4 py-3 text-sm text-slate-700">
-          数据更新时间：
-          <span class="font-semibold text-slate-950">{latestFetchedAtLabel}</span>
+  <main class="mx-auto flex max-w-[90rem] flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
+    <header class="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/50 p-8 shadow-2xl backdrop-blur-xl">
+      <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-sky-500/20 blur-[128px] pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-indigo-500/20 blur-[128px] pointer-events-none"></div>
+      
+      <div class="relative z-10">
+        <p class="text-sm font-bold uppercase tracking-[0.25em] text-sky-400">
+          OpenRouter Watch
+        </p>
+        <div class="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl drop-shadow-sm">
+              模型信息表
+            </h1>
+            <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-400">
+              支持统一搜索、能力复选、数值范围筛选与关键字段排序，为您提供最前沿的 AI 模型全景数据。
+            </p>
+          </div>
+          <div class="flex items-center gap-3 rounded-2xl border border-slate-700/50 bg-slate-800/50 px-5 py-3 text-sm text-slate-300 backdrop-blur-md shadow-inner">
+            <div class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
+            <span>数据更新时间：<span class="font-mono font-semibold text-slate-100">{latestFetchedAtLabel}</span></span>
+          </div>
         </div>
       </div>
     </header>
 
     <ModelTable models={modelsData} />
 
-    <footer class="pb-4 text-sm text-slate-500">
+    <footer class="pb-8 text-center text-sm text-slate-500">
       数据来源：OpenRouter API。
     </footer>
   </main>
