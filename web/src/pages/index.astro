@@ -41,6 +41,8 @@ const latestFetchedAtLabel = latestFetchedAt
       .format(new Date(latestFetchedAt))
       .replace(",", "") + " UTC"
   : "Unknown";
+const deploymentUrl = "https://andreashen.github.io/openrouter-watch/";
+const repositoryUrl = "https://github.com/andreashen/openrouter-watch";
 ---
 
 <Base
@@ -75,9 +77,36 @@ const latestFetchedAtLabel = latestFetchedAt
               支持统一搜索、能力复选、数值范围筛选与关键字段排序，为您提供最前沿的 AI 模型全景数据。
             </p>
           </div>
-          <div class="flex items-center gap-3 rounded-2xl border border-slate-300/50 dark:border-slate-700/50 bg-slate-100/50 dark:bg-slate-800/50 px-5 py-3 text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md shadow-inner">
-            <div class="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)] dark:shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
-            <span>数据更新时间：<span class="font-mono font-semibold text-slate-900 dark:text-slate-100">{latestFetchedAtLabel}</span></span>
+          <div class="flex flex-col items-start gap-3 md:items-end">
+            <div class="flex flex-wrap items-center gap-2 md:justify-end">
+              <a
+                href={deploymentUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={deploymentUrl}
+                class="inline-flex items-center gap-2 rounded-xl border border-sky-300/60 bg-sky-100/70 px-3 py-2 text-sm font-semibold text-sky-700 transition-all hover:-translate-y-0.5 hover:border-sky-400/80 hover:bg-sky-200/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-sky-600/70 dark:bg-sky-500/15 dark:text-sky-300 dark:hover:border-sky-500 dark:hover:bg-sky-500/25 dark:focus-visible:ring-offset-slate-900"
+                aria-label="在线访问部署站点（新标签页打开）"
+              >
+                在线访问
+                <span class="max-w-48 truncate font-mono text-xs sm:max-w-64">{deploymentUrl}</span>
+              </a>
+              <a
+                href={repositoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-xl border border-slate-300/70 bg-white/70 px-3 py-2 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-slate-400/80 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-600/70 dark:bg-slate-800/70 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-900"
+                aria-label="前往 GitHub 仓库，给项目点个 Star（新标签页打开）"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 1.5A10.5 10.5 0 0 0 1.5 12a10.5 10.5 0 0 0 7.18 9.96c.53.1.72-.23.72-.5v-1.95c-2.93.64-3.55-1.24-3.55-1.24-.48-1.2-1.17-1.52-1.17-1.52-.96-.66.08-.65.08-.65 1.06.08 1.62 1.09 1.62 1.09.94 1.62 2.47 1.15 3.07.88.1-.68.37-1.15.67-1.41-2.34-.27-4.8-1.17-4.8-5.2 0-1.15.41-2.09 1.08-2.83-.1-.27-.47-1.38.1-2.88 0 0 .89-.28 2.9 1.08a10.11 10.11 0 0 1 5.28 0c2-1.36 2.88-1.08 2.88-1.08.58 1.5.22 2.61.11 2.88.68.74 1.07 1.68 1.07 2.83 0 4.04-2.47 4.92-4.82 5.18.38.33.73.98.73 1.98v2.95c0 .28.18.6.73.5A10.5 10.5 0 0 0 22.5 12 10.5 10.5 0 0 0 12 1.5Z"></path>
+                </svg>
+                给项目点个 Star
+              </a>
+            </div>
+            <div class="flex items-center gap-3 rounded-2xl border border-slate-300/50 dark:border-slate-700/50 bg-slate-100/50 dark:bg-slate-800/50 px-5 py-3 text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md shadow-inner">
+              <div class="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)] dark:shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
+              <span>数据更新时间：<span class="font-mono font-semibold text-slate-900 dark:text-slate-100">{latestFetchedAtLabel}</span></span>
+            </div>
           </div>
         </div>
       </div>
