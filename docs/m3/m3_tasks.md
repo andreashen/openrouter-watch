@@ -55,8 +55,8 @@
 
 ### T4.8 — 顶部标题区外链引导（部署网址 + 仓库 Star）
 
-- [ ] 在 `web/src/pages/index.astro` 顶部标题区域新增“部署网址”链接位（可见文本/胶囊样式均可），点击新标签页打开部署站点。
-- [ ] 在同一区域新增仓库图标按钮（建议 GitHub 图标）并跳转项目仓库，附带“Star”引导文案（不能仅图标）。
+- [ ] 在 `web/src/pages/index.astro` 顶部标题区域新增“部署网址”链接位，链接固定为 `https://andreashen.github.io/openrouter-watch/`，点击新标签页打开。
+- [ ] 在同一区域新增 **GitHub 图标** 按钮并跳转 `https://github.com/andreashen/openrouter-watch`，附带中文文案“给项目点个 Star”（不能仅图标）。
 - [ ] 两类外链统一补齐 `target="_blank"` 与 `rel="noopener noreferrer"`。
 - [ ] 校验亮/暗主题下的可读性与 hover/focus 反馈；键盘可聚焦触发（可访问性达标）。
 
