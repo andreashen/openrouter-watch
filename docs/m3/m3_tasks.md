@@ -9,7 +9,9 @@
 
 ## T4 — 主表格增强
 
-文件：`web/src/components/ModelTable.astro`
+文件：
+- `web/src/components/ModelTable.astro`
+- `web/src/pages/index.astro`
 
 ### T4.1 — 列展示去重
 
@@ -51,6 +53,15 @@
 - [ ] 支持根据系统偏好自动初始化，并将用户手动选择持久化至 localStorage。
 - [ ] 为现有深色科技感样式提供对应的亮色版本（保持现代、干净、高对比度）。
 
+### T4.8 — 顶部标题区外链引导（部署网址 + 仓库 Star）
+
+- [x] 将首页主标题文案更新为：`openrouter 模型信息表`。
+- [x] 在 `web/src/pages/index.astro` 顶部标题区域新增“部署网址”链接位，链接固定为 `https://andreashen.github.io/openrouter-watch/`，并仅展示完整 URL 文本（不显示“在线访问”文案）。
+- [x] 拉宽部署网址模块，确保 URL 默认完整可见（不截断）。
+- [x] 在同一区域新增 **GitHub 图标** 按钮并跳转 `https://github.com/andreashen/openrouter-watch`，附带中文文案“给项目点个 Star”（不能仅图标）。
+- [x] 两类外链统一补齐 `target="_blank"` 与 `rel="noopener noreferrer"`。
+- [x] 校验亮/暗主题下的可读性与 hover/focus 反馈；键盘可聚焦触发（可访问性达标）。
+
 ## T8 — 验收
 
 - [ ] `cd web && npm run build` 无报错
@@ -58,6 +69,7 @@
 - [ ] 搜索 + 能力复选 + 数值范围 + 排序可组合使用（AND），且结果数统计正确
 - [ ] 页面视觉达到现代、科技化、美观、前沿的标准
 - [ ] 支持亮色/深色主题切换并持久化状态
+- [x] 顶部标题区部署网址与仓库 Star 引导均可用（新标签跳转、安全属性、可访问性满足要求），且主标题已更新为 `openrouter 模型信息表`、部署 URL 完整显示
 
 ---
 
