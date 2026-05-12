@@ -35,6 +35,8 @@ web/               # Astro frontend for the model table
 docs/              # Milestone specs and task lists
 ```
 
+**About `docs/m1/`, `m2/`, …:** The **`m` prefix means milestone** (e.g. `m1` = Milestone 1). Higher numbers usually build on earlier milestones. Full wording: [docs/readme.md](docs/readme.md).
+
 ## Development
 
 ```bash
@@ -83,6 +85,8 @@ python scripts/derive.py
 ```
 
 `derive.py` 会为每个模型请求 benchmark 接口并节流，完整运行可能需数分钟。M1 数据验收与闭环说明见 [docs/m1/m1_acceptance.md](docs/m1/m1_acceptance.md)。
+
+**关于 `docs/m1/`、`m2/` 等目录：** 前缀 **`m` 表示 milestone（里程碑）**（如 `m1` 即第 1 个里程碑）；数字越大通常越靠后、并可能依赖前置里程碑的交付物。完整说明见 [docs/readme.md](docs/readme.md)。
 
 ### 数据来源
 
