@@ -15,43 +15,43 @@
 
 ### T4.1 — 列展示去重
 
-- [ ] 主表列删除：`author` / `slug` / `vendor_name` / `name`（仅保留 `model_id` 作为模型标识列）
-- [ ] 保留其余数值列与能力列（context/max output/价格/能力/index/更新时间）
+- [x] 主表列删除：`author` / `slug` / `vendor_name` / `name`（仅保留 `model_id` 作为模型标识列）
+- [x] 保留其余数值列与能力列（context/max output/价格/能力/index/更新时间）
 
 ### T4.2 — 统一搜索框（“模型 id 筛选”入口）
 
-- [ ] 新增搜索框：输入实时过滤（大小写不敏感）
-- [ ] 匹配字段至少包含：`model_id`、`vendor_name`、`name`
-- [ ] 与能力筛选、数值范围筛选为 AND 关系
+- [x] 新增搜索框：输入实时过滤（大小写不敏感）
+- [x] 匹配字段至少包含：`model_id`、`vendor_name`、`name`
+- [x] 与能力筛选、数值范围筛选为 AND 关系
 
 ### T4.3 — 能力筛选（AND）
 
-- [ ] Reasoning / Tools / Vision 三个复选框
-- [ ] 勾选则只显示该能力为 `true` 的行
-- [ ] 多个复选框 AND
+- [x] Reasoning / Tools / Vision 三个复选框
+- [x] 勾选则只显示该能力为 `true` 的行
+- [x] 多个复选框 AND
 
 ### T4.4 — 关键数值字段范围筛选（AND）
 
-- [ ] 为以下字段提供 min/max：`context_length`、`max_completion_tokens`、`input_price_usd_per_1m`、`output_price_usd_per_1m`、`intelligence_index`、`coding_index`、`agentic_index`
-- [ ] 行数据为 null 且该字段设置了 min/max 时，该行不满足（过滤掉）
+- [x] 为以下字段提供 min/max：`context_length`、`max_completion_tokens`、`input_price_usd_per_1m`、`output_price_usd_per_1m`、`intelligence_index`、`coding_index`、`agentic_index`
+- [x] 行数据为 null 且该字段设置了 min/max 时，该行不满足（过滤掉）
 
 ### T4.5 — 关键数值字段排序
 
-- [ ] 对以下字段提供升/降/无：`context_length`、`max_completion_tokens`、输入/输出价、三项 index、`fetched_at`
-- [ ] null 始终排最后；同值回退到 `model_id`
+- [x] 对以下字段提供升/降/无：`context_length`、`max_completion_tokens`、输入/输出价、三项 index、`fetched_at`
+- [x] null 始终排最后；同值回退到 `model_id`
 
 ### T4.6 — UI/UX 现代化升级
 
-- [ ] **全局主题**：升级为科技感配色（深色/高对比度），添加全局渐变背景或网格背景。
-- [ ] **表格视觉**：实现表头吸顶+毛玻璃效果，数据行 Hover 过渡动画，数值字体等宽化。
-- [ ] **组件美化**：优化搜索框、下拉框、范围输入框的边框、阴影与聚焦状态（Focus Ring）。
-- [ ] **状态展示**：将布尔值（Reasoning/Tools/Vision）转换为美观的徽章（Badge）或图标。
+- [x] **全局主题**：升级为科技感配色（深色/高对比度），添加全局渐变背景或网格背景。
+- [x] **表格视觉**：实现表头吸顶+毛玻璃效果，数据行 Hover 过渡动画，数值字体等宽化。
+- [x] **组件美化**：优化搜索框、下拉框、范围输入框的边框、阴影与聚焦状态（Focus Ring）。
+- [x] **状态展示**：将布尔值（Reasoning/Tools/Vision）转换为美观的徽章（Badge）或图标。
 
 ### T4.7 — 亮色/深色主题切换（新增）
 
-- [ ] 提供全局亮色/深色主题切换按钮。
-- [ ] 支持根据系统偏好自动初始化，并将用户手动选择持久化至 localStorage。
-- [ ] 为现有深色科技感样式提供对应的亮色版本（保持现代、干净、高对比度）。
+- [x] 提供全局亮色/深色主题切换按钮。
+- [x] 支持根据系统偏好自动初始化，并将用户手动选择持久化至 localStorage。
+- [x] 为现有深色科技感样式提供对应的亮色版本（保持现代、干净、高对比度）。
 
 ### T4.8 — 顶部标题区外链引导（部署网址 + 仓库 Star）
 
@@ -64,11 +64,11 @@
 
 ## T8 — 验收
 
-- [ ] `cd web && npm run build` 无报错
-- [ ] 主表仅展示 `model_id`（列去重达成）
-- [ ] 搜索 + 能力复选 + 数值范围 + 排序可组合使用（AND），且结果数统计正确
-- [ ] 页面视觉达到现代、科技化、美观、前沿的标准
-- [ ] 支持亮色/深色主题切换并持久化状态
+- [x] `cd web && npm run build` 无报错
+- [x] 主表仅展示 `model_id`（列去重达成）
+- [x] 搜索 + 能力复选 + 数值范围 + 排序可组合使用（AND），且结果数统计正确
+- [x] 页面视觉达到现代、科技化、美观、前沿的标准
+- [x] 支持亮色/深色主题切换并持久化状态
 - [x] 顶部标题区部署网址与仓库 Star 引导均可用（新标签跳转、安全属性、可访问性满足要求），且主标题已更新为 `openrouter 模型信息表`、部署 URL 完整显示
 
 ---
