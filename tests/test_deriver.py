@@ -9,7 +9,13 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from openrouter_watch.deriver import to_row, write_csv, write_json
+from openrouter_watch.deriver import (
+    merge_benchmark_fields,
+    merge_derived_rows,
+    to_row,
+    write_csv,
+    write_json,
+)
 from openrouter_watch.normalizer import normalize_model
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -50,9 +56,11 @@ def test_to_row_has_all_fields(normalized_models) -> None:
         "intelligence_index",
         "coding_index",
         "agentic_index",
+        "officially_removed",
         "fetched_at",
     }
     assert set(row.keys()) == expected_keys
+    assert row["officially_removed"] is False
 
 
 def test_to_row_includes_vendor_name(normalized_models) -> None:
@@ -100,6 +108,91 @@ def test_write_json_correct_count(rows) -> None:
     write_json(rows, path)
     data = json.loads(path.read_text(encoding="utf-8"))
     assert len(data) == len(rows)
+
+
+def test_merge_benchmark_fields_current_wins() -> None:
+    current = {"intelligence_index": 80.0, "coding_index": None, "agentic_index": 50.0}
+    previous = {"intelligence_index": 70.0, "coding_index": 60.0, "agentic_index": 40.0}
+    merged = merge_benchmark_fields(current, previous)
+    assert merged["intelligence_index"] == 80.0
+    assert merged["coding_index"] == 60.0
+    assert merged["agentic_index"] == 50.0
+
+
+def test_merge_benchmark_fields_both_blank() -> None:
+    current = {"intelligence_index": None, "coding_index": None, "agentic_index": None}
+    previous = {"intelligence_index": None, "coding_index": None, "agentic_index": None}
+    merged = merge_benchmark_fields(current, previous)
+    assert merged["intelligence_index"] is None
+    assert merged["coding_index"] is None
+    assert merged["agentic_index"] is None
+
+
+def test_merge_derived_rows_marks_removed_models() -> None:
+    current = [
+        {
+            "model_id": "alpha/model",
+            "vendor_name": "Alpha",
+            "officially_removed": False,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+        }
+    ]
+    previous = {
+        "alpha/model": {
+            "model_id": "alpha/model",
+            "vendor_name": "Alpha",
+            "officially_removed": False,
+            "intelligence_index": 1.0,
+            "coding_index": 2.0,
+            "agentic_index": 3.0,
+        },
+        "gone/model": {
+            "model_id": "gone/model",
+            "vendor_name": "Gone",
+            "officially_removed": False,
+            "intelligence_index": 9.0,
+            "coding_index": 8.0,
+            "agentic_index": 7.0,
+        },
+    }
+    merged = merge_derived_rows(current, previous)
+    by_id = {row["model_id"]: row for row in merged}
+    assert by_id["alpha/model"]["officially_removed"] is False
+    assert by_id["gone/model"]["officially_removed"] is True
+    assert by_id["gone/model"]["intelligence_index"] == 9.0
+
+
+def test_merge_derived_rows_reappeared_model() -> None:
+    current = [
+        {
+            "model_id": "back/model",
+            "vendor_name": "Back",
+            "name": "Back: New",
+            "officially_removed": False,
+            "intelligence_index": 50.0,
+            "coding_index": None,
+            "agentic_index": None,
+        }
+    ]
+    previous = {
+        "back/model": {
+            "model_id": "back/model",
+            "vendor_name": "Back",
+            "name": "Back: Old",
+            "officially_removed": True,
+            "intelligence_index": 70.0,
+            "coding_index": 60.0,
+            "agentic_index": 55.0,
+        }
+    }
+    merged = merge_derived_rows(current, previous)
+    row = merged[0]
+    assert row["officially_removed"] is False
+    assert row["name"] == "Back: New"
+    assert row["intelligence_index"] == 50.0
+    assert row["coding_index"] == 60.0
 
 
 def test_write_json_fields_complete(rows) -> None:

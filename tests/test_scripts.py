@@ -135,3 +135,146 @@ def test_derive_writes_timestamped_outputs_sorted_and_latest(tmp_path, monkeypat
     timestamped = json.loads(timestamped_path.read_text(encoding="utf-8"))
     assert [row["model_id"] for row in latest] == ["alpha/model", "zeta/model"]
     assert latest == timestamped
+    assert all(row["officially_removed"] is False for row in latest)
+
+
+def _make_derived_row(
+    model_id: str,
+    vendor_name: str,
+    *,
+    intelligence_index=None,
+    coding_index=None,
+    agentic_index=None,
+    officially_removed: bool = False,
+) -> dict:
+    return {
+        "model_id": model_id,
+        "author": vendor_name.lower(),
+        "slug": "model",
+        "vendor_name": vendor_name,
+        "name": f"{vendor_name}: Model",
+        "context_length": None,
+        "max_completion_tokens": None,
+        "input_price_usd_per_1m": None,
+        "output_price_usd_per_1m": None,
+        "supports_reasoning": False,
+        "supports_tools": False,
+        "supports_vision": False,
+        "intelligence_index": intelligence_index,
+        "coding_index": coding_index,
+        "agentic_index": agentic_index,
+        "officially_removed": officially_removed,
+        "fetched_at": "2026-01-02T03:04:05Z",
+    }
+
+
+def test_derive_merges_removed_models_from_previous(tmp_path, monkeypatch) -> None:
+    norm_dir = tmp_path / "normalized"
+    derived_dir = tmp_path / "derived"
+    norm_dir.mkdir()
+    derived_dir.mkdir()
+
+    previous_rows = [
+        _make_derived_row("alpha/model", "Alpha", intelligence_index=10.0),
+        _make_derived_row("removed/model", "Removed", intelligence_index=99.0),
+    ]
+    previous_json = derived_dir / "models_20260101_000000.json"
+    previous_json.write_text(json.dumps(previous_rows), encoding="utf-8")
+    (derived_dir / "models_latest.json").symlink_to(previous_json.name)
+
+    current_records = [
+        {
+            "model_id": "alpha/model",
+            "author": "alpha",
+            "slug": "model",
+            "vendor_name": "Alpha",
+            "name": "Alpha: Model",
+            "context_length": None,
+            "max_completion_tokens": None,
+            "input_price_usd_per_1m": None,
+            "output_price_usd_per_1m": None,
+            "supports_reasoning": False,
+            "supports_tools": False,
+            "supports_vision": False,
+            "fetched_at": "2026-01-02T03:04:05Z",
+        }
+    ]
+    (norm_dir / "20260102_030405_models.json").write_text(
+        json.dumps(current_records), encoding="utf-8"
+    )
+    monkeypatch.setattr(derive_script, "NORM_DIR", norm_dir)
+    monkeypatch.setattr(derive_script, "DERIVED_DIR", derived_dir)
+    monkeypatch.setattr(
+        derive_script,
+        "fetch_benchmark",
+        lambda model_id: None if model_id == "alpha/model" else {"intelligence_index": 99.0},
+    )
+
+    derive_script.main()
+
+    latest = json.loads((derived_dir / "models_latest.json").read_text(encoding="utf-8"))
+    by_id = {row["model_id"]: row for row in latest}
+    assert by_id["removed/model"]["officially_removed"] is True
+    assert by_id["removed/model"]["intelligence_index"] == 99.0
+    assert by_id["alpha/model"]["officially_removed"] is False
+    assert by_id["alpha/model"]["intelligence_index"] == 10.0
+
+
+def test_derive_benchmark_blank_backfill_and_update(tmp_path, monkeypatch) -> None:
+    norm_dir = tmp_path / "normalized"
+    derived_dir = tmp_path / "derived"
+    norm_dir.mkdir()
+    derived_dir.mkdir()
+
+    previous_rows = [
+        _make_derived_row(
+            "alpha/model",
+            "Alpha",
+            intelligence_index=10.0,
+            coding_index=20.0,
+            agentic_index=30.0,
+        )
+    ]
+    previous_json = derived_dir / "models_20260101_000000.json"
+    previous_json.write_text(json.dumps(previous_rows), encoding="utf-8")
+    (derived_dir / "models_latest.json").symlink_to(previous_json.name)
+
+    current_records = [
+        {
+            "model_id": "alpha/model",
+            "author": "alpha",
+            "slug": "model",
+            "vendor_name": "Alpha",
+            "name": "Alpha: Model",
+            "context_length": None,
+            "max_completion_tokens": None,
+            "input_price_usd_per_1m": None,
+            "output_price_usd_per_1m": None,
+            "supports_reasoning": False,
+            "supports_tools": False,
+            "supports_vision": False,
+            "fetched_at": "2026-01-02T03:04:05Z",
+        }
+    ]
+    (norm_dir / "20260102_030405_models.json").write_text(
+        json.dumps(current_records), encoding="utf-8"
+    )
+    monkeypatch.setattr(derive_script, "NORM_DIR", norm_dir)
+    monkeypatch.setattr(derive_script, "DERIVED_DIR", derived_dir)
+    monkeypatch.setattr(
+        derive_script,
+        "fetch_benchmark",
+        lambda model_id: {
+            "intelligence_index": 50.0,
+            "coding_index": None,
+            "agentic_index": None,
+        },
+    )
+
+    derive_script.main()
+
+    latest = json.loads((derived_dir / "models_latest.json").read_text(encoding="utf-8"))
+    row = latest[0]
+    assert row["intelligence_index"] == 50.0
+    assert row["coding_index"] == 20.0
+    assert row["agentic_index"] == 30.0
