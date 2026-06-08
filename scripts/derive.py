@@ -6,7 +6,13 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from openrouter_watch.deriver import to_row, write_csv, write_json
+from openrouter_watch.deriver import (
+    load_previous_models,
+    merge_derived_rows,
+    to_row,
+    write_csv,
+    write_json,
+)
 from openrouter_watch.fetcher import fetch_benchmark
 from openrouter_watch.schema import NormalizedModel
 
@@ -37,12 +43,13 @@ def main() -> None:
         benchmark = fetch_benchmark(model.model_id)
         rows.append(to_row(model, benchmark))
 
-    rows.sort(key=lambda row: (row["vendor_name"], row["model_id"]))
+    latest_path = DERIVED_DIR / "models_latest.json"
+    previous_map = load_previous_models(latest_path)
+    rows = merge_derived_rows(rows, previous_map)
 
     ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     csv_path = DERIVED_DIR / f"models_{ts}.csv"
     json_path = DERIVED_DIR / f"models_{ts}.json"
-    latest_path = DERIVED_DIR / "models_latest.json"
 
     write_csv(rows, csv_path)
     write_json(rows, json_path)

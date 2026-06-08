@@ -79,18 +79,18 @@
 
 ## 验收标准（M3B）
 
-- [ ] 当模型从最新 API 消失时，`models_latest.json` 仍保留该模型行且 `officially_removed=true`。
-- [ ] 当模型仍存在于最新 API 时，`officially_removed=false`。
-- [ ] benchmark 某项在本次为空、上次有值时，产物保留上次值。
-- [ ] benchmark 某项本次有更新值时，产物覆盖旧值。
-- [ ] benchmark 某项两次都为空时，产物为 `null`。
-- [ ] 相关测试覆盖“新增模型 / 移除模型 / benchmark 空白 / benchmark 更新”四类路径。
+- [x] 当模型从最新 API 消失时，`models_latest.json` 仍保留该模型行且 `officially_removed=true`。
+- [x] 当模型仍存在于最新 API 时，`officially_removed=false`。
+- [x] benchmark 某项在本次为空、上次有值时，产物保留上次值。
+- [x] benchmark 某项本次有更新值时，产物覆盖旧值。
+- [x] benchmark 某项两次都为空时，产物为 `null`。
+- [x] 相关测试覆盖“新增模型 / 移除模型 / benchmark 空白 / benchmark 更新”四类路径。
 
 ---
 
-## 待澄清需求
+## 已决策澄清项
 
-1. **移除模型保留时长**：是否永久保留，还是保留最近 N 次/最近 N 天后清理？
-2. **字段命名是否固定**：`officially_removed` 是否作为最终字段名，或需改为 `is_removed` / `removed_by_official`？
-3. **“空白”判定粒度**：当前方案将 `null/缺失` 统一视为可回填；是否需要区分“接口隐藏”与“请求失败”并做不同处理？
-4. **前端默认展示策略**：后续前端是否默认隐藏 `officially_removed=true` 的模型，或全部展示并提供筛选？
+1. **移除模型保留时长**：永久保留于最新产物，清理策略留待后续里程碑。
+2. **字段命名**：固定为 `officially_removed`。
+3. **“空白”判定粒度**：`null`/缺失统一视为可回填，不区分来源。
+4. **前端默认展示策略**：M3B 不改前端；M3 再定筛选/隐藏策略。
