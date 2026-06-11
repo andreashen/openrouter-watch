@@ -21,6 +21,17 @@
    - 生产：`https://<owner>.github.io/<repo>/`
    - SIT：`https://<owner>.github.io/<repo>/sit/`
 
+### 2.1 环境保护规则注意事项（关键）
+
+若你在仓库里配置了 environment protection rules（部署分支限制/审批人），需要区分两个环境：
+
+1. `github-pages`：生产部署环境（`main` 分支触发）。
+2. `github-pages-sit`：SIT 部署环境（`test` 分支触发）。
+
+当前 workflow 已按分支自动路由到上述两个环境，避免 `test` 被 `github-pages` 的分支保护直接拒绝。
+
+如果你之前只配置过 `github-pages` 且限制只能 `main` 部署，这是正常的；请额外确认 `github-pages-sit` 没有把 `test` 拦截掉（或按你们规范单独配置审批策略）。
+
 ---
 
 ## 3. 配置 Actions 权限
@@ -65,7 +76,8 @@
 
 1. 向 `test` 分支推送一个小改动（如 docs 注释）。
 2. 在 `Actions` 中确认 `Deploy site to GitHub Pages` 运行成功。
-3. 访问 `https://<owner>.github.io/<repo>/sit/` 验证页面更新。
+3. 若失败信息包含 `not allowed to deploy`，先检查 `github-pages-sit` 环境是否允许 `test`。
+4. 访问 `https://<owner>.github.io/<repo>/sit/` 验证页面更新。
 
 ### B. 数据刷新链路
 
