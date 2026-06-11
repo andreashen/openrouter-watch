@@ -31,7 +31,6 @@
 当前 workflow 已按分支自动路由到上述两个环境，避免 `test` 被 `github-pages` 的分支保护直接拒绝。
 
 如果你之前只配置过 `github-pages` 且限制只能 `main` 部署，这是正常的；请额外确认 `github-pages-sit` 没有把 `test` 拦截掉（或按你们规范单独配置审批策略）。
-
 ---
 
 ## 3. 配置 Actions 权限
