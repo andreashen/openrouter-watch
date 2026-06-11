@@ -105,11 +105,16 @@ jobs:
         with:
           path: pages-dist
 
+  # A repository can serve only one GitHub Pages site, so production (root)
+  # and SIT (/sit/) are published together as a single artifact and must
+  # deploy through the one Pages-enabled environment: github-pages.
+  # Any push to main OR test rebuilds both sites and redeploys the combined
+  # artifact, keeping production and SIT consistent on every run.
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.ref == 'refs/heads/test' && 'github-pages-sit' || 'github-pages' }}
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
