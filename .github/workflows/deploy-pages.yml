@@ -2,7 +2,7 @@ name: Deploy site to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, test]
     paths:
       - "web/**"
       - "data/derived/**"
@@ -22,15 +22,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout main branch (production site source)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: src-main
+
+      - name: Checkout test branch (SIT site source)
+        uses: actions/checkout@v4
+        with:
+          ref: test
+          path: src-test
 
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: npm
-          cache-dependency-path: web/package-lock.json
+          cache-dependency-path: |
+            src-main/web/package-lock.json
+            src-test/web/package-lock.json
 
-      - name: Compute Astro site and base for GitHub Pages
+      - name: Compute Astro site and bases for GitHub Pages
         id: astro
         shell: bash
         run: |
@@ -38,33 +50,66 @@ jobs:
           repo="${GITHUB_REPOSITORY#*/}"
           site="https://${owner}.github.io"
           if [ "${repo}" = "${owner}.github.io" ]; then
-            base="/"
+            prod_base="/"
+            sit_base="/sit/"
+            prod_url="${site}/"
+            sit_url="${site}/sit/"
           else
-            base="/${repo}/"
+            prod_base="/${repo}/"
+            sit_base="/${repo}/sit/"
+            prod_url="${site}/${repo}/"
+            sit_url="${site}/${repo}/sit/"
           fi
           echo "site=${site}" >> "${GITHUB_OUTPUT}"
-          echo "base=${base}" >> "${GITHUB_OUTPUT}"
-          echo "Using ASTRO_SITE=${site} ASTRO_BASE=${base}"
+          echo "prod_base=${prod_base}" >> "${GITHUB_OUTPUT}"
+          echo "sit_base=${sit_base}" >> "${GITHUB_OUTPUT}"
+          echo "prod_url=${prod_url}" >> "${GITHUB_OUTPUT}"
+          echo "sit_url=${sit_url}" >> "${GITHUB_OUTPUT}"
+          echo "Using ASTRO_SITE=${site}"
+          echo "Production base: ${prod_base}"
+          echo "SIT base: ${sit_base}"
 
-      - name: Install and build
+      - name: Build production and SIT sites
         env:
           ASTRO_SITE: ${{ steps.astro.outputs.site }}
-          ASTRO_BASE: ${{ steps.astro.outputs.base }}
+          PROD_BASE: ${{ steps.astro.outputs.prod_base }}
+          SIT_BASE: ${{ steps.astro.outputs.sit_base }}
         run: |
           set -euo pipefail
-          cd web
-          npm ci
-          npm run build
+          build_site () {
+            src_dir="$1"
+            base="$2"
+            out_dir="$3"
+            echo "Building ${src_dir} with ASTRO_BASE=${base}"
+            (
+              cd "${src_dir}/web"
+              npm ci
+              ASTRO_SITE="${ASTRO_SITE}" ASTRO_BASE="${base}" npm run build
+            )
+            mkdir -p "${out_dir}"
+            cp -R "${src_dir}/web/dist/." "${out_dir}/"
+          }
+
+          rm -rf pages-dist
+          mkdir -p pages-dist
+
+          build_site "src-main" "${PROD_BASE}" "pages-dist"
+          build_site "src-test" "${SIT_BASE}" "pages-dist/sit"
+
+      - name: Print deployment targets
+        run: |
+          echo "Production URL: ${{ steps.astro.outputs.prod_url }}"
+          echo "SIT URL: ${{ steps.astro.outputs.sit_url }}"
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: web/dist
+          path: pages-dist
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
+      name: ${{ github.ref == 'refs/heads/test' && 'github-pages-sit' || 'github-pages' }}
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
