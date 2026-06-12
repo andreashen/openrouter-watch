@@ -57,10 +57,12 @@ def test_to_row_has_all_fields(normalized_models) -> None:
         "coding_index",
         "agentic_index",
         "officially_removed",
+        "latest_alias_target",
         "fetched_at",
     }
     assert set(row.keys()) == expected_keys
     assert row["officially_removed"] is False
+    assert row["latest_alias_target"] is None
 
 
 def test_to_row_includes_vendor_name(normalized_models) -> None:
@@ -193,6 +195,34 @@ def test_merge_derived_rows_reappeared_model() -> None:
     assert row["name"] == "Back: New"
     assert row["intelligence_index"] == 50.0
     assert row["coding_index"] == 60.0
+
+
+def test_merge_derived_rows_keeps_previous_latest_alias_target_when_current_missing() -> None:
+    current = [
+        {
+            "model_id": "~openai/gpt-latest",
+            "vendor_name": "~openai",
+            "officially_removed": False,
+            "latest_alias_target": None,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+        }
+    ]
+    previous = {
+        "~openai/gpt-latest": {
+            "model_id": "~openai/gpt-latest",
+            "vendor_name": "~openai",
+            "officially_removed": False,
+            "latest_alias_target": "openai/gpt-5.5",
+            "intelligence_index": 60.2,
+            "coding_index": 59.1,
+            "agentic_index": 74.1,
+        }
+    }
+    merged = merge_derived_rows(current, previous)
+    row = merged[0]
+    assert row["latest_alias_target"] == "openai/gpt-5.5"
 
 
 def test_write_json_fields_complete(rows) -> None:

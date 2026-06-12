@@ -22,6 +22,7 @@ _FIELDS = [
     "intelligence_index",
     "coding_index",
     "agentic_index",
+    "latest_alias_target",
     "officially_removed",
     "fetched_at",
 ]
@@ -33,7 +34,12 @@ def _is_valid_benchmark(value: object) -> bool:
     return value is not None
 
 
-def to_row(model: NormalizedModel, benchmark: dict | None = None) -> dict:
+def to_row(
+    model: NormalizedModel,
+    benchmark: dict | None = None,
+    *,
+    latest_alias_target: str | None = None,
+) -> dict:
     row = model.model_dump()
     row["intelligence_index"] = None
     row["coding_index"] = None
@@ -42,6 +48,7 @@ def to_row(model: NormalizedModel, benchmark: dict | None = None) -> dict:
         row["intelligence_index"] = benchmark.get("intelligence_index")
         row["coding_index"] = benchmark.get("coding_index")
         row["agentic_index"] = benchmark.get("agentic_index")
+    row["latest_alias_target"] = latest_alias_target
     row["officially_removed"] = False
     return {k: row.get(k) for k in _FIELDS}
 
@@ -63,6 +70,24 @@ def merge_benchmark_fields(current: dict, previous: dict | None) -> dict:
     return merged
 
 
+def merge_latest_alias_target(current: dict, previous: dict | None) -> dict:
+    """Preserve previous latest alias target if current run cannot resolve it."""
+    if previous is None:
+        return current
+    model_id = current.get("model_id")
+    if not isinstance(model_id, str) or not model_id.startswith("~"):
+        return current
+    if current.get("latest_alias_target"):
+        return current
+
+    previous_target = previous.get("latest_alias_target")
+    if isinstance(previous_target, str) and previous_target:
+        merged = dict(current)
+        merged["latest_alias_target"] = previous_target
+        return merged
+    return current
+
+
 def load_previous_models(latest_path: Path | str) -> dict[str, dict]:
     """Load previous derived rows indexed by model_id; empty if no prior run."""
     latest_path = Path(latest_path)
@@ -75,6 +100,8 @@ def load_previous_models(latest_path: Path | str) -> dict[str, dict]:
         model_id = row["model_id"]
         if "officially_removed" not in row:
             row = {**row, "officially_removed": False}
+        if "latest_alias_target" not in row:
+            row = {**row, "latest_alias_target": None}
         previous_map[model_id] = row
     return previous_map
 
@@ -92,6 +119,7 @@ def merge_derived_rows(current_rows: list[dict], previous_map: dict[str, dict]) 
         previous_row = previous_map.get(model_id)
         row = _normalize_row(current_row)
         row["officially_removed"] = False
+        row = merge_latest_alias_target(row, previous_row)
         row = merge_benchmark_fields(row, previous_row)
         merged.append(row)
 

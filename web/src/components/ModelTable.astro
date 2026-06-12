@@ -15,6 +15,8 @@ type Model = {
   intelligence_index: number | null;
   coding_index: number | null;
   agentic_index: number | null;
+  officially_removed: boolean;
+  latest_alias_target?: string | null;
   fetched_at: string;
 };
 
@@ -73,6 +75,7 @@ function formatFetchedAt(value: string): string {
 
 const columns = [
   "Model ID",
+  "已下架",
   "上下文",
   "最大输出",
   "输入价 ($/1M)",
@@ -99,7 +102,7 @@ const rangeFields = [
 
 <section class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 shadow-2xl backdrop-blur-xl overflow-hidden">
   <div class="flex flex-col gap-6 border-b border-slate-200 dark:border-slate-800 p-6">
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="grid gap-6 lg:grid-cols-3">
       <div>
         <label for="model-search" class="text-sm font-medium text-slate-700 dark:text-slate-300">模型搜索</label>
         <div class="relative mt-2">
@@ -125,6 +128,19 @@ const rangeFields = [
               <span class="capitalize">{cap}</span>
             </label>
           ))}
+        </div>
+      </div>
+      <div>
+        <p class="text-sm font-medium text-slate-700 dark:text-slate-300">可见性筛选</p>
+        <div class="mt-3 flex flex-col gap-3 text-sm text-slate-700 dark:text-slate-300">
+          <label class="group relative flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 px-3 py-2 transition-colors hover:bg-slate-200 dark:hover:bg-slate-800">
+            <input id="hide-latest-toggle" type="checkbox" class="peer h-4 w-4 rounded border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sky-500 focus:ring-sky-500/50 focus:ring-offset-white dark:focus:ring-offset-slate-900" checked />
+            <span>隐藏 latest 标识模型（~ 前缀）</span>
+          </label>
+          <label class="group relative flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 px-3 py-2 transition-colors hover:bg-slate-200 dark:hover:bg-slate-800">
+            <input id="hide-removed-toggle" type="checkbox" class="peer h-4 w-4 rounded border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sky-500 focus:ring-sky-500/50 focus:ring-offset-white dark:focus:ring-offset-slate-900" />
+            <span>隐藏已下架模型</span>
+          </label>
         </div>
       </div>
     </div>
@@ -238,10 +254,15 @@ const rangeFields = [
   const capReasoning = document.querySelector("#cap-reasoning");
   const capTools = document.querySelector("#cap-tools");
   const capVision = document.querySelector("#cap-vision");
+  const hideLatestToggle = document.querySelector("#hide-latest-toggle");
+  const hideRemovedToggle = document.querySelector("#hide-removed-toggle");
   const sortField = document.querySelector("#sort-field");
   const sortDirection = document.querySelector("#sort-direction");
   const rangeInputs = Array.from(document.querySelectorAll("input[data-range-key][data-range-bound]"));
-  const totalRows = models.length;
+  const HIDE_LATEST_STORAGE_KEY = "openrouter_watch_hide_latest_models";
+  const HIDE_REMOVED_STORAGE_KEY = "openrouter_watch_hide_removed_models";
+  const DEFAULT_HIDE_LATEST = true;
+  const DEFAULT_HIDE_REMOVED = false;
   const numericRangeKeys = [
     "context_length",
     "max_completion_tokens",
@@ -251,6 +272,39 @@ const rangeFields = [
     "coding_index",
     "agentic_index",
   ];
+  const modelsById = new Map(models.map((model) => [model.model_id, model]));
+
+  function resolveDisplayModel(model) {
+    if (
+      typeof model.model_id !== "string" ||
+      !model.model_id.startsWith("~") ||
+      !model.latest_alias_target
+    ) {
+      return model;
+    }
+    const targetModel = modelsById.get(model.latest_alias_target);
+    if (!targetModel || targetModel.model_id.startsWith("~")) {
+      return model;
+    }
+    return {
+      ...targetModel,
+      model_id: model.model_id,
+      author: model.author,
+      slug: model.slug,
+      vendor_name: model.vendor_name,
+      name: model.name,
+      officially_removed: model.officially_removed,
+      latest_alias_target: model.latest_alias_target,
+      fetched_at: model.fetched_at,
+    };
+  }
+
+  const preparedModels = models.map((model, index) => ({
+    model,
+    displayModel: resolveDisplayModel(model),
+    index,
+  }));
+  const totalRows = preparedModels.length;
 
   function truncateToOneDecimal(value) {
     return (Math.trunc(value * 10) / 10).toFixed(1);
@@ -299,6 +353,12 @@ const rangeFields = [
       : `<span class="text-slate-400 dark:text-slate-600">—</span>`;
   }
 
+  function formatRemoved(value) {
+    return value
+      ? `<span class="inline-flex items-center justify-center rounded-full bg-amber-100 dark:bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-400 ring-1 ring-inset ring-amber-500/20">✓</span>`
+      : `<span class="text-slate-400 dark:text-slate-600">—</span>`;
+  }
+
   function formatFetchedAt(value) {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) {
@@ -337,16 +397,57 @@ const rangeFields = [
     };
   }
 
-  function toSearchText(model) {
+  function toSearchText(model, displayModel) {
     return [
       model.model_id,
       model.vendor_name,
       model.name,
       model.author,
       model.slug,
+      model.latest_alias_target || "",
+      displayModel.vendor_name,
+      displayModel.name,
     ]
       .join(" ")
       .toLowerCase();
+  }
+
+  function readToggleFromStorage(key, fallback) {
+    try {
+      const value = window.localStorage.getItem(key);
+      if (value === "1") {
+        return true;
+      }
+      if (value === "0") {
+        return false;
+      }
+      return fallback;
+    } catch {
+      return fallback;
+    }
+  }
+
+  function writeToggleToStorage(key, value) {
+    try {
+      window.localStorage.setItem(key, value ? "1" : "0");
+    } catch {
+      // Ignore storage write errors.
+    }
+  }
+
+  function initializeVisibilityToggles() {
+    if (hideLatestToggle) {
+      hideLatestToggle.checked = readToggleFromStorage(
+        HIDE_LATEST_STORAGE_KEY,
+        DEFAULT_HIDE_LATEST,
+      );
+    }
+    if (hideRemovedToggle) {
+      hideRemovedToggle.checked = readToggleFromStorage(
+        HIDE_REMOVED_STORAGE_KEY,
+        DEFAULT_HIDE_REMOVED,
+      );
+    }
   }
 
   function compareNullableNumber(left, right, direction) {
@@ -407,7 +508,8 @@ const rangeFields = [
     tableBody.textContent = "";
     const fragment = document.createDocumentFragment();
 
-    for (const model of rows) {
+    for (const entry of rows) {
+      const { model, displayModel } = entry;
       const row = document.createElement("tr");
       row.className = "group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50";
       
@@ -416,37 +518,40 @@ const rangeFields = [
         createCellHTML(`<span class="font-semibold text-sky-600 group-hover:text-sky-700 dark:text-sky-400 dark:group-hover:text-sky-300 transition-colors">${model.model_id}</span>`, "whitespace-nowrap px-5 py-3 font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatCompact(model.context_length), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatRemoved(model.officially_removed), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCellHTML(formatCompact(model.max_completion_tokens), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatCompact(displayModel.context_length), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatPrice(model.input_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatCompact(displayModel.max_completion_tokens), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatPrice(model.output_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatPrice(displayModel.input_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatBoolean(model.supports_reasoning), "whitespace-nowrap px-5 py-3 text-center"),
+        createCellHTML(formatPrice(displayModel.output_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatBoolean(model.supports_tools), "whitespace-nowrap px-5 py-3 text-center"),
+        createCellHTML(formatBoolean(displayModel.supports_reasoning), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCellHTML(formatBoolean(model.supports_vision), "whitespace-nowrap px-5 py-3 text-center"),
+        createCellHTML(formatBoolean(displayModel.supports_tools), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCellHTML(formatIndex(model.intelligence_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatBoolean(displayModel.supports_vision), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCellHTML(formatIndex(model.coding_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatIndex(displayModel.intelligence_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatIndex(model.agentic_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatIndex(displayModel.coding_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatFetchedAt(model.fetched_at), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatIndex(displayModel.agentic_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+      );
+      row.appendChild(
+        createCellHTML(formatFetchedAt(displayModel.fetched_at), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       fragment.appendChild(row);
     }
@@ -467,6 +572,8 @@ const rangeFields = [
     const needsReasoning = capReasoning?.checked ?? false;
     const needsTools = capTools?.checked ?? false;
     const needsVision = capVision?.checked ?? false;
+    const hideLatest = hideLatestToggle?.checked ?? DEFAULT_HIDE_LATEST;
+    const hideRemoved = hideRemovedToggle?.checked ?? DEFAULT_HIDE_REMOVED;
     const directionValue = sortDirection?.value;
     const field = sortField?.value ?? "";
     const direction =
@@ -481,25 +588,29 @@ const rangeFields = [
       agentic_index: getRangeByKey("agentic_index"),
     };
 
-    const filtered = models
-      .map((model, index) => ({ model, index }))
-      .filter(({ model }) => {
-        if (search && !toSearchText(model).includes(search)) {
+    const filtered = preparedModels.filter(({ model, displayModel }) => {
+        if (hideLatest && model.model_id.startsWith("~")) {
           return false;
         }
-        if (needsReasoning && !model.supports_reasoning) {
+        if (hideRemoved && model.officially_removed) {
           return false;
         }
-        if (needsTools && !model.supports_tools) {
+        if (search && !toSearchText(model, displayModel).includes(search)) {
           return false;
         }
-        if (needsVision && !model.supports_vision) {
+        if (needsReasoning && !displayModel.supports_reasoning) {
+          return false;
+        }
+        if (needsTools && !displayModel.supports_tools) {
+          return false;
+        }
+        if (needsVision && !displayModel.supports_vision) {
           return false;
         }
 
         for (const key of numericRangeKeys) {
           const range = numericRanges[key];
-          const value = getNumericValue(model, key);
+          const value = getNumericValue(displayModel, key);
           if ((range.min !== null || range.max !== null) && value === null) {
             return false;
           }
@@ -517,10 +628,14 @@ const rangeFields = [
       filtered.sort((left, right) => {
         let result = 0;
         if (field === "fetched_at") {
-          result = compareFetchedAt(left.model.fetched_at, right.model.fetched_at, direction);
+          result = compareFetchedAt(
+            left.displayModel.fetched_at,
+            right.displayModel.fetched_at,
+            direction,
+          );
         } else {
-          const leftValue = getNumericValue(left.model, field);
-          const rightValue = getNumericValue(right.model, field);
+          const leftValue = getNumericValue(left.displayModel, field);
+          const rightValue = getNumericValue(right.displayModel, field);
           result = compareNullableNumber(leftValue, rightValue, direction);
         }
         if (result !== 0) {
@@ -534,13 +649,22 @@ const rangeFields = [
       });
     }
 
-    renderRows(filtered.map((entry) => entry.model));
+    renderRows(filtered);
   }
 
+  initializeVisibilityToggles();
   searchInput?.addEventListener("input", applyFiltersAndSort);
   capReasoning?.addEventListener("change", applyFiltersAndSort);
   capTools?.addEventListener("change", applyFiltersAndSort);
   capVision?.addEventListener("change", applyFiltersAndSort);
+  hideLatestToggle?.addEventListener("change", () => {
+    writeToggleToStorage(HIDE_LATEST_STORAGE_KEY, hideLatestToggle.checked);
+    applyFiltersAndSort();
+  });
+  hideRemovedToggle?.addEventListener("change", () => {
+    writeToggleToStorage(HIDE_REMOVED_STORAGE_KEY, hideRemovedToggle.checked);
+    applyFiltersAndSort();
+  });
   sortField?.addEventListener("change", applyFiltersAndSort);
   sortDirection?.addEventListener("change", applyFiltersAndSort);
   for (const input of rangeInputs) {
