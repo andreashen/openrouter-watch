@@ -13,7 +13,7 @@ from openrouter_watch.deriver import (
     write_csv,
     write_json,
 )
-from openrouter_watch.fetcher import fetch_benchmark
+from openrouter_watch.fetcher import BenchmarkDetails, fetch_benchmark_details
 from openrouter_watch.schema import NormalizedModel
 
 NORM_DIR = Path(__file__).parent.parent / "data" / "normalized"
@@ -27,6 +27,41 @@ def latest_normalized_file() -> Path:
     return files[-1]
 
 
+def _build_model_indexes(models: list[NormalizedModel]) -> tuple[set[str], dict[str, str]]:
+    concrete_ids: set[str] = set()
+    canonical_to_model_id: dict[str, str] = {}
+    for model in models:
+        if model.model_id.startswith("~"):
+            continue
+        concrete_ids.add(model.model_id)
+        if model.canonical_slug:
+            canonical_to_model_id[model.canonical_slug] = model.model_id
+    return concrete_ids, canonical_to_model_id
+
+
+def _resolve_latest_alias_target(
+    model: NormalizedModel,
+    benchmark_details: BenchmarkDetails | None,
+    concrete_ids: set[str],
+    canonical_to_model_id: dict[str, str],
+) -> str | None:
+    if not model.model_id.startswith("~") or benchmark_details is None:
+        return None
+
+    for candidate in (
+        benchmark_details.get("heuristic_openrouter_slug"),
+        benchmark_details.get("permaslug"),
+    ):
+        if not isinstance(candidate, str) or not candidate:
+            continue
+        if candidate in concrete_ids:
+            return candidate
+        mapped_model_id = canonical_to_model_id.get(candidate)
+        if mapped_model_id:
+            return mapped_model_id
+    return None
+
+
 def main() -> None:
     DERIVED_DIR.mkdir(parents=True, exist_ok=True)
     norm_path = latest_normalized_file()
@@ -36,12 +71,23 @@ def main() -> None:
         records = json.load(f)
 
     models = [NormalizedModel.model_validate(r) for r in records]
+    concrete_ids, canonical_to_model_id = _build_model_indexes(models)
     rows: list[dict] = []
 
     for i, model in enumerate(models):
         print(f"[{i + 1}/{len(models)}] Fetching benchmark for {model.model_id}...")
-        benchmark = fetch_benchmark(model.model_id)
-        rows.append(to_row(model, benchmark))
+        benchmark_details = fetch_benchmark_details(
+            model.model_id,
+            canonical_slug=model.canonical_slug,
+        )
+        benchmark = benchmark_details["indices"] if benchmark_details else None
+        latest_alias_target = _resolve_latest_alias_target(
+            model,
+            benchmark_details,
+            concrete_ids,
+            canonical_to_model_id,
+        )
+        rows.append(to_row(model, benchmark, latest_alias_target=latest_alias_target))
 
     latest_path = DERIVED_DIR / "models_latest.json"
     previous_map = load_previous_models(latest_path)

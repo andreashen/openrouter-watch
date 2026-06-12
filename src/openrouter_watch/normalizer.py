@@ -59,6 +59,7 @@ def normalize_model(raw: dict, fetched_at: str | None = None) -> NormalizedModel
 
     return NormalizedModel(
         model_id=m.id,
+        canonical_slug=m.canonical_slug,
         author=author,
         slug=slug,
         vendor_name=_vendor_name(m.name, author),

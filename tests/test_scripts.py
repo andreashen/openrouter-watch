@@ -113,7 +113,11 @@ def test_derive_writes_timestamped_outputs_sorted_and_latest(tmp_path, monkeypat
     (norm_dir / "20260102_030405_models.json").write_text(json.dumps(records), encoding="utf-8")
     monkeypatch.setattr(derive_script, "NORM_DIR", norm_dir)
     monkeypatch.setattr(derive_script, "DERIVED_DIR", tmp_path / "derived")
-    monkeypatch.setattr(derive_script, "fetch_benchmark", lambda model_id: None)
+    monkeypatch.setattr(
+        derive_script,
+        "fetch_benchmark_details",
+        lambda model_id, canonical_slug=None: None,
+    )
 
     derive_script.main()
 
@@ -146,6 +150,7 @@ def _make_derived_row(
     coding_index=None,
     agentic_index=None,
     officially_removed: bool = False,
+    latest_alias_target: str | None = None,
 ) -> dict:
     return {
         "model_id": model_id,
@@ -164,6 +169,7 @@ def _make_derived_row(
         "coding_index": coding_index,
         "agentic_index": agentic_index,
         "officially_removed": officially_removed,
+        "latest_alias_target": latest_alias_target,
         "fetched_at": "2026-01-02T03:04:05Z",
     }
 
@@ -206,8 +212,21 @@ def test_derive_merges_removed_models_from_previous(tmp_path, monkeypatch) -> No
     monkeypatch.setattr(derive_script, "DERIVED_DIR", derived_dir)
     monkeypatch.setattr(
         derive_script,
-        "fetch_benchmark",
-        lambda model_id: None if model_id == "alpha/model" else {"intelligence_index": 99.0},
+        "fetch_benchmark_details",
+        lambda model_id, canonical_slug=None: (
+            None
+            if model_id == "alpha/model"
+            else {
+                "indices": {
+                    "intelligence_index": 99.0,
+                    "coding_index": None,
+                    "agentic_index": None,
+                },
+                "heuristic_openrouter_slug": None,
+                "permaslug": None,
+                "query_slug": model_id,
+            }
+        ),
     )
 
     derive_script.main()
@@ -263,11 +282,16 @@ def test_derive_benchmark_blank_backfill_and_update(tmp_path, monkeypatch) -> No
     monkeypatch.setattr(derive_script, "DERIVED_DIR", derived_dir)
     monkeypatch.setattr(
         derive_script,
-        "fetch_benchmark",
-        lambda model_id: {
-            "intelligence_index": 50.0,
-            "coding_index": None,
-            "agentic_index": None,
+        "fetch_benchmark_details",
+        lambda model_id, canonical_slug=None: {
+            "indices": {
+                "intelligence_index": 50.0,
+                "coding_index": None,
+                "agentic_index": None,
+            },
+            "heuristic_openrouter_slug": None,
+            "permaslug": None,
+            "query_slug": canonical_slug or model_id,
         },
     )
 
@@ -278,3 +302,151 @@ def test_derive_benchmark_blank_backfill_and_update(tmp_path, monkeypatch) -> No
     assert row["intelligence_index"] == 50.0
     assert row["coding_index"] == 20.0
     assert row["agentic_index"] == 30.0
+
+
+def test_derive_sets_latest_alias_target_from_benchmark_relation(tmp_path, monkeypatch) -> None:
+    norm_dir = tmp_path / "normalized"
+    derived_dir = tmp_path / "derived"
+    norm_dir.mkdir()
+    derived_dir.mkdir()
+
+    current_records = [
+        {
+            "model_id": "moonshotai/kimi-k2.6",
+            "author": "moonshotai",
+            "slug": "kimi-k2.6",
+            "vendor_name": "MoonshotAI",
+            "name": "MoonshotAI: Kimi K2.6",
+            "context_length": 262144,
+            "max_completion_tokens": 262142,
+            "input_price_usd_per_1m": 0.68,
+            "output_price_usd_per_1m": 3.41,
+            "supports_reasoning": True,
+            "supports_tools": True,
+            "supports_vision": True,
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "canonical_slug": "moonshotai/kimi-k2.6-20260420",
+        },
+        {
+            "model_id": "~moonshotai/kimi-latest",
+            "author": "~moonshotai",
+            "slug": "kimi-latest",
+            "vendor_name": "~moonshotai",
+            "name": "MoonshotAI Kimi Latest",
+            "context_length": 262144,
+            "max_completion_tokens": 262142,
+            "input_price_usd_per_1m": 0.68,
+            "output_price_usd_per_1m": 3.41,
+            "supports_reasoning": True,
+            "supports_tools": True,
+            "supports_vision": True,
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "canonical_slug": "~moonshotai/kimi-latest",
+        },
+    ]
+    (norm_dir / "20260102_030405_models.json").write_text(
+        json.dumps(current_records), encoding="utf-8"
+    )
+
+    def _fake_fetch_benchmark_details(model_id: str, canonical_slug: str | None = None) -> dict:
+        if model_id == "moonshotai/kimi-k2.6":
+            return {
+                "indices": {
+                    "intelligence_index": 53.9,
+                    "coding_index": 47.1,
+                    "agentic_index": 66.0,
+                },
+                "heuristic_openrouter_slug": None,
+                "permaslug": "moonshotai/kimi-k2.6-20260420",
+                "query_slug": model_id,
+            }
+        if model_id == "~moonshotai/kimi-latest":
+            return {
+                "indices": {
+                    "intelligence_index": 53.9,
+                    "coding_index": 47.1,
+                    "agentic_index": 66.0,
+                },
+                "heuristic_openrouter_slug": "moonshotai/kimi-k2.6",
+                "permaslug": "moonshotai/kimi-k2.6-20260420",
+                "query_slug": model_id,
+            }
+        raise AssertionError(f"Unexpected model id: {model_id}, canonical={canonical_slug}")
+
+    monkeypatch.setattr(derive_script, "NORM_DIR", norm_dir)
+    monkeypatch.setattr(derive_script, "DERIVED_DIR", derived_dir)
+    monkeypatch.setattr(derive_script, "fetch_benchmark_details", _fake_fetch_benchmark_details)
+
+    derive_script.main()
+
+    latest = json.loads((derived_dir / "models_latest.json").read_text(encoding="utf-8"))
+    by_id = {row["model_id"]: row for row in latest}
+    assert by_id["~moonshotai/kimi-latest"]["latest_alias_target"] == "moonshotai/kimi-k2.6"
+    assert by_id["moonshotai/kimi-k2.6"]["latest_alias_target"] is None
+
+
+def test_derive_keeps_previous_gpt55_pro_benchmark_when_live_is_null(tmp_path, monkeypatch) -> None:
+    norm_dir = tmp_path / "normalized"
+    derived_dir = tmp_path / "derived"
+    norm_dir.mkdir()
+    derived_dir.mkdir()
+
+    previous_rows = [
+        _make_derived_row(
+            "openai/gpt-5.5-pro",
+            "OpenAI",
+            intelligence_index=62.0,
+            coding_index=58.0,
+            agentic_index=75.0,
+        )
+    ]
+    previous_json = derived_dir / "models_20260101_000000.json"
+    previous_json.write_text(json.dumps(previous_rows), encoding="utf-8")
+    (derived_dir / "models_latest.json").symlink_to(previous_json.name)
+
+    current_records = [
+        {
+            "model_id": "openai/gpt-5.5-pro",
+            "author": "openai",
+            "slug": "gpt-5.5-pro",
+            "vendor_name": "OpenAI",
+            "name": "OpenAI: GPT-5.5 Pro",
+            "context_length": 1050000,
+            "max_completion_tokens": 128000,
+            "input_price_usd_per_1m": 30.0,
+            "output_price_usd_per_1m": 180.0,
+            "supports_reasoning": True,
+            "supports_tools": True,
+            "supports_vision": True,
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "canonical_slug": "openai/gpt-5.5-pro-20260423",
+        }
+    ]
+    (norm_dir / "20260102_030405_models.json").write_text(
+        json.dumps(current_records), encoding="utf-8"
+    )
+    monkeypatch.setattr(derive_script, "NORM_DIR", norm_dir)
+    monkeypatch.setattr(derive_script, "DERIVED_DIR", derived_dir)
+    monkeypatch.setattr(
+        derive_script,
+        "fetch_benchmark_details",
+        lambda model_id, canonical_slug=None: {
+            "indices": {
+                "intelligence_index": None,
+                "coding_index": None,
+                "agentic_index": None,
+            },
+            "heuristic_openrouter_slug": None,
+            "permaslug": "openai/gpt-5.5-pro-20260423",
+            "query_slug": canonical_slug or model_id,
+        },
+    )
+
+    derive_script.main()
+
+    latest = json.loads((derived_dir / "models_latest.json").read_text(encoding="utf-8"))
+    row = latest[0]
+    assert row["model_id"] == "openai/gpt-5.5-pro"
+    assert row["intelligence_index"] == 62.0
+    assert row["coding_index"] == 58.0
+    assert row["agentic_index"] == 75.0

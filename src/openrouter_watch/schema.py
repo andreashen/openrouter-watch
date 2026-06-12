@@ -23,6 +23,7 @@ class RawModelArchitecture(BaseModel):
 
 class RawModel(BaseModel):
     id: str
+    canonical_slug: str | None = None
     name: str | None = None
     context_length: int | None = None
     pricing: RawModelPricing | None = None
@@ -36,6 +37,7 @@ class RawModel(BaseModel):
 
 class NormalizedModel(BaseModel):
     model_id: str
+    canonical_slug: str | None = None
     author: str
     slug: str
     vendor_name: str

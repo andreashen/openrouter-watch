@@ -9,7 +9,12 @@ import httpx
 import pytest
 from pytest_httpx import HTTPXMock
 
-from openrouter_watch.fetcher import MODELS_URL, fetch_benchmark, fetch_models
+from openrouter_watch.fetcher import (
+    MODELS_URL,
+    fetch_benchmark,
+    fetch_benchmark_details,
+    fetch_models,
+)
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -91,3 +96,110 @@ def test_fetch_benchmark_returns_none_on_invalid_json(httpx_mock: HTTPXMock) -> 
     httpx_mock.add_response(text="not json {")
     result = fetch_benchmark("openai/gpt-4o")
     assert result is None
+
+
+def test_fetch_benchmark_details_selects_highest_intelligence(httpx_mock: HTTPXMock) -> None:
+    httpx_mock.add_response(
+        json={
+            "data": [
+                {
+                    "heuristic_openrouter_slug": "moonshotai/kimi-k2.6",
+                    "permaslug": "moonshotai/kimi-k2.6-20260420",
+                    "benchmark_data": {
+                        "evaluations": {
+                            "artificial_analysis_intelligence_index": 42.9,
+                            "artificial_analysis_coding_index": 38.4,
+                            "artificial_analysis_agentic_index": 58.7,
+                        }
+                    },
+                },
+                {
+                    "heuristic_openrouter_slug": "moonshotai/kimi-k2.6",
+                    "permaslug": "moonshotai/kimi-k2.6-20260420",
+                    "benchmark_data": {
+                        "evaluations": {
+                            "artificial_analysis_intelligence_index": 53.9,
+                            "artificial_analysis_coding_index": 47.1,
+                            "artificial_analysis_agentic_index": 66.0,
+                        }
+                    },
+                },
+            ]
+        }
+    )
+    result = fetch_benchmark_details("~moonshotai/kimi-latest")
+    assert result is not None
+    assert result["indices"] == {
+        "intelligence_index": 53.9,
+        "coding_index": 47.1,
+        "agentic_index": 66.0,
+    }
+    assert result["heuristic_openrouter_slug"] == "moonshotai/kimi-k2.6"
+    assert result["query_slug"] == "~moonshotai/kimi-latest"
+
+
+def test_fetch_benchmark_details_falls_back_to_canonical_slug(httpx_mock: HTTPXMock) -> None:
+    httpx_mock.add_response(json={"data": []})
+    httpx_mock.add_response(
+        json={
+            "data": [
+                {
+                    "heuristic_openrouter_slug": "anthropic/claude-opus-4.8",
+                    "permaslug": "anthropic/claude-4.8-opus-20260528",
+                    "benchmark_data": {
+                        "evaluations": {
+                            "artificial_analysis_intelligence_index": 61.4,
+                            "artificial_analysis_coding_index": 56.7,
+                            "artificial_analysis_agentic_index": 77.8,
+                        }
+                    },
+                }
+            ]
+        }
+    )
+    result = fetch_benchmark_details(
+        "anthropic/claude-opus-4.8",
+        canonical_slug="anthropic/claude-4.8-opus-20260528",
+    )
+    assert result is not None
+    assert result["indices"] == {
+        "intelligence_index": 61.4,
+        "coding_index": 56.7,
+        "agentic_index": 77.8,
+    }
+    assert result["query_slug"] == "anthropic/claude-4.8-opus-20260528"
+    requests = httpx_mock.get_requests()
+    assert len(requests) == 2
+    assert requests[0].url.params["slug"] == "anthropic/claude-opus-4.8"
+    assert requests[1].url.params["slug"] == "anthropic/claude-4.8-opus-20260528"
+
+
+def test_fetch_benchmark_details_keeps_null_indices_from_live_payload(httpx_mock: HTTPXMock) -> None:
+    httpx_mock.add_response(
+        json={
+            "data": [
+                {
+                    "heuristic_openrouter_slug": "openai/gpt-5.5-pro",
+                    "permaslug": "openai/gpt-5.5-pro-20260423",
+                    "benchmark_data": {
+                        "evaluations": {
+                            "artificial_analysis_intelligence_index": None,
+                            "artificial_analysis_coding_index": None,
+                            "artificial_analysis_agentic_index": None,
+                        }
+                    },
+                }
+            ]
+        }
+    )
+    result = fetch_benchmark_details(
+        "openai/gpt-5.5-pro",
+        canonical_slug="openai/gpt-5.5-pro-20260423",
+    )
+    assert result is not None
+    assert result["indices"] == {
+        "intelligence_index": None,
+        "coding_index": None,
+        "agentic_index": None,
+    }
+    assert result["query_slug"] == "openai/gpt-5.5-pro"
