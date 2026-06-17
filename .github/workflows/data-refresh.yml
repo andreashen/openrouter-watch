@@ -12,8 +12,8 @@ on:
           - test
           - main
   schedule:
-    # Run every 6 hours (UTC).
-    - cron: "17 */6 * * *"
+    # Run daily at 00:00 UTC.
+    - cron: "0 0 * * *"
 
 permissions:
   contents: read
