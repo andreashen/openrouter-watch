@@ -24,16 +24,13 @@ def _vendor_name(name: str | None, author: str) -> str:
     return author
 
 
+def _openrouter_model_url(model_id: str, canonical_slug: str | None) -> str:
+    slug = canonical_slug or model_id
+    return f"https://openrouter.ai/{slug}"
+
+
 def _now_utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
-def _vendor_name(name: str | None, author: str) -> str:
-    if name and ":" in name:
-        vendor = name.split(":", 1)[0].strip()
-        if vendor:
-            return vendor
-    return author
 
 
 def normalize_model(raw: dict, fetched_at: str | None = None) -> NormalizedModel:
@@ -63,6 +60,7 @@ def normalize_model(raw: dict, fetched_at: str | None = None) -> NormalizedModel
         slug=slug,
         vendor_name=_vendor_name(m.name, author),
         name=m.name or m.id,
+        openrouter_model_url=_openrouter_model_url(m.id, m.canonical_slug),
         context_length=m.context_length,
         max_completion_tokens=max_completion,
         input_price_usd_per_1m=input_price,
