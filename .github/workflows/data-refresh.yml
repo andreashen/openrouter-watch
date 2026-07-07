@@ -2,6 +2,23 @@ name: Refresh derived model data
 
 on:
   workflow_dispatch:
+    inputs:
+      operation:
+        description: Maintenance operation to run
+        required: true
+        default: refresh_main
+        type: choice
+        options:
+          - refresh_main
+          - reanchor_test
+      expected_test_sha:
+        description: Exact current SHA required at origin/test for a reanchor run
+        required: false
+        type: string
+      backup_branch:
+        description: Remote backup branch name, for example test-backup-YYYYMMDD-HHMMSS
+        required: false
+        type: string
   schedule:
     - cron: "17 0 * * *"
 
@@ -14,6 +31,7 @@ concurrency:
 
 jobs:
   refresh:
+    if: github.event_name == 'schedule' || inputs.operation == 'refresh_main'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
@@ -65,3 +83,70 @@ jobs:
           git add data/derived
           git commit -m "chore(data): refresh derived artifacts"
           git push origin "HEAD:${TARGET_BRANCH}"
+
+  reanchor_test:
+    if: github.event_name == 'workflow_dispatch' && inputs.operation == 'reanchor_test'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TEST_SHA: ${{ inputs.expected_test_sha }}
+      BACKUP_BRANCH: ${{ inputs.backup_branch }}
+
+    steps:
+      - name: Generate automation app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.AUTOMATION_APP_ID }}
+          private-key: ${{ secrets.AUTOMATION_APP_PRIVATE_KEY }}
+
+      - name: Checkout production branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Backup current test and re-anchor it to main
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${EXPECTED_TEST_SHA}" ]; then
+            echo "::error::expected_test_sha is required for reanchor_test."
+            exit 1
+          fi
+
+          if [ -z "${BACKUP_BRANCH}" ]; then
+            echo "::error::backup_branch is required for reanchor_test."
+            exit 1
+          fi
+
+          case "${BACKUP_BRANCH}" in
+            test-backup-*) ;;
+            *)
+              echo "::error::backup_branch must start with test-backup-."
+              exit 1
+              ;;
+          esac
+
+          git fetch origin main test
+
+          actual_test_sha="$(git rev-parse origin/test)"
+          new_test_sha="$(git rev-parse origin/main)"
+
+          if [ "${actual_test_sha}" != "${EXPECTED_TEST_SHA}" ]; then
+            echo "::error::origin/test moved to ${actual_test_sha}; expected ${EXPECTED_TEST_SHA}."
+            exit 1
+          fi
+
+          if git ls-remote --exit-code --heads origin "${BACKUP_BRANCH}" >/dev/null 2>&1; then
+            echo "::error::backup branch ${BACKUP_BRANCH} already exists on origin."
+            exit 1
+          fi
+
+          git push origin "origin/test:refs/heads/${BACKUP_BRANCH}"
+          git push --force-with-lease="refs/heads/test:${EXPECTED_TEST_SHA}" origin "origin/main:refs/heads/test"
+
+          echo "Backed up ${actual_test_sha} to ${BACKUP_BRANCH}."
+          echo "Re-anchored test to ${new_test_sha}."

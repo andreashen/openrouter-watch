@@ -27,6 +27,10 @@
 
 这个动作应在一次 `test` → `main` 提升完成之后执行；本轮实现不会替你静默改写远端历史。
 
+### 仓库规则注意事项
+
+如果仓库规则禁止人工对 `test` 直接 force-push，应优先使用 `data-refresh.yml` 的手动 `reanchor_test` 操作，由现有 GitHub App token 执行备份与带租约重锚。只有在仓库规则明确允许的情况下，才使用下面的本地 git 命令路径。
+
 ### 执行前条件
 
 1. 提升 PR 已合并到 `main`。
@@ -34,6 +38,23 @@
 3. 操作者已经 `git fetch origin`，并确认本地没有未提交改动。
 
 ### 受控执行步骤
+
+#### 推荐：GitHub Actions 路径
+
+1. 记录当前远端 `test` SHA：
+   - `git rev-parse origin/test`
+2. 准备远端备份分支名，例如：
+   - `test-backup-<YYYYMMDD-HHMMSS>`
+3. 手动触发 `Refresh derived model data` workflow：
+   - `operation=reanchor_test`
+   - `expected_test_sha=<OLD_TEST_SHA>`
+   - `backup_branch=test-backup-<YYYYMMDD-HHMMSS>`
+4. workflow 会自动执行三件事：
+   - 校验 `origin/test` 仍然等于 `expected_test_sha`
+   - 先创建远端备份分支
+   - 再用 `--force-with-lease` 把 `test` 重锚到当前 `origin/main`
+
+#### 备选：本地 git 路径（仅当仓库规则允许时）
 
 1. 记录当前远端 `test` 备份点：
    - `git rev-parse origin/test`
