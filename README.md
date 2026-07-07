@@ -1,6 +1,6 @@
 # OpenRouter Watch
 
-Python pipeline fetches OpenRouter model metadata, normalizes and derives CSV/JSON under `data/derived/`, and an Astro site in `web/` renders the model table from `models_latest.json`.
+Python pipeline fetches OpenRouter model metadata, normalizes it, and derives the committed dataset under `data/derived/models_latest.json`. The Astro site in `web/` renders the model table from that stable file.
 
 English | [中文](#中文说明)
 
@@ -25,14 +25,14 @@ Copy `.env.example` to `.env` and fill in your key if needed.
 ## Directory Structure
 
 ```
-scripts/           # Entry-point scripts (fetch, normalize, derive)
+scripts/                 # Entry-point scripts (fetch, normalize, derive)
 src/openrouter_watch/    # Core library (fetcher, normalizer, deriver, schema)
-tests/             # pytest tests
-data/raw/          # Raw API snapshots (gitignored)
-data/normalized/   # Pydantic-validated records (gitignored)
-data/derived/      # CSV + JSON products (committed)
-web/               # Astro frontend for the model table
-docs/              # Milestone specs and task lists
+tests/                   # pytest tests
+data/raw/                # Raw API snapshots (gitignored)
+data/normalized/         # Pydantic-validated records (gitignored)
+data/derived/            # Stable committed dataset (models_latest.json)
+web/                     # Astro frontend for the model table
+docs/                    # Milestone specs, task lists, and release runbooks
 ```
 
 **About `docs/m1/`, `m2/`, …:** The **`m` prefix means milestone** (e.g. `m1` = Milestone 1). Higher numbers usually build on earlier milestones. Full wording: [docs/readme.md](docs/readme.md).
@@ -72,7 +72,7 @@ The source code of this project is licensed under the Apache License 2.0.
 
 ## 中文说明
 
-OpenRouter Watch 从 OpenRouter 拉取模型数据，经规范化与派生后产出 `data/derived/` 下的 CSV/JSON，并由 `web/` 中的 Astro 站点读取 `models_latest.json` 展示模型表。
+OpenRouter Watch 从 OpenRouter 拉取模型数据，经规范化与派生后产出稳定维护的 `data/derived/models_latest.json`，并由 `web/` 中的 Astro 站点读取它来展示模型表。
 
 ### 快速开始
 

@@ -4,10 +4,12 @@
 
 ## 1. 准备分支
 
-1. 确认仓库存在 `test` 分支（用于 SIT 页面与默认数据刷新目标）。
+1. 确认仓库存在 `test` 分支（用于 SIT 页面来源）。
 2. 约定：
-   - `main`：生产页面来源
-   - `test`：SIT 页面来源与默认数据刷新回写分支
+   - `main`：生产页面来源，也是唯一允许自动/手动数据刷新的分支
+   - `test`：SIT 页面来源，只承载待验证的功能代码
+
+发布与重锚操作细则见 [main_test_release_flow.md](../main_test_release_flow.md)。
 
 ---
 
@@ -60,12 +62,14 @@
 
 路径：`Settings -> Branches`
 
-需要重点检查 `test`（以及若你计划让 workflow 回写 `main`，还要检查 `main`）：
+需要重点检查 `main`：
 
 1. 若开启了 “Require pull request before merging” 且禁止直接 push：
    - 需要允许 GitHub Actions bot 对目标分支有写入能力，或
    - 改为“工作流只产物不回写”模式（不在当前方案内）。
 2. 若开启 status checks，避免把“必须人工审阅 PR”强加到 bot 自动提交路径上。
+
+`test` 不再承接数据刷新写入，因此不需要为该 workflow 保留 bot 直推权限。
 
 ---
 
@@ -81,12 +85,12 @@
 ### B. 数据刷新链路
 
 1. 在 `Actions` 中手动执行 `Refresh derived model data`（`workflow_dispatch`）。
-2. 输入参数 `target_branch=test`。
+2. 确认工作流不再暴露 `target_branch` 选择，默认只刷新 `main`。
 3. 确认日志依次执行：
    - `python scripts/fetch.py`
    - `python scripts/normalize.py`
    - `python scripts/derive.py`
-4. 若 `data/derived` 有变化，确认自动提交到目标分支成功。
+4. 若 `data/derived` 有变化，确认自动提交只落到 `main`。
 
 ---
 
@@ -94,4 +98,4 @@
 
 1. 保持 `data-refresh.yml` 的 `timeout-minutes: 30`（防止异常长跑）。
 2. 定时任务使用 UTC；若需北京时间固定时段，按 UTC 偏移换算 cron。
-3. 观察前 1 周运行情况，再决定是否缩短刷新频率（如每 6 小时 -> 每 3 小时）。
+3. 观察前 1 周运行情况，再决定是否需要调整每日刷新时点。

@@ -2,24 +2,14 @@ name: Refresh derived model data
 
 on:
   workflow_dispatch:
-    inputs:
-      target_branch:
-        description: "Branch to update with refreshed data"
-        required: true
-        default: "test"
-        type: choice
-        options:
-          - test
-          - main
   schedule:
-    # Run every 6 hours (UTC).
-    - cron: "17 */6 * * *"
+    - cron: "17 0 * * *"
 
 permissions:
   contents: read
 
 concurrency:
-  group: data-refresh-${{ github.event_name == 'workflow_dispatch' && inputs.target_branch || 'test' }}
+  group: data-refresh-main
   cancel-in-progress: false
 
 jobs:
@@ -27,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      TARGET_BRANCH: ${{ github.event_name == 'workflow_dispatch' && inputs.target_branch || 'test' }}
+      TARGET_BRANCH: main
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       PIP_DISABLE_PIP_VERSION_CHECK: "1"
       PYTHONDONTWRITEBYTECODE: "1"
@@ -40,7 +30,7 @@ jobs:
           app-id: ${{ vars.AUTOMATION_APP_ID }}
           private-key: ${{ secrets.AUTOMATION_APP_PRIVATE_KEY }}
 
-      - name: Checkout target branch
+      - name: Checkout production branch
         uses: actions/checkout@v4
         with:
           ref: ${{ env.TARGET_BRANCH }}

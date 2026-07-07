@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+from pathlib import Path
 
 import scripts.derive as derive_script
 import scripts.fetch as fetch_script
@@ -75,7 +76,7 @@ def test_normalize_inherits_raw_fetched_at(tmp_path, monkeypatch) -> None:
     assert records[0]["fetched_at"] == "2026-01-02T03:04:05Z"
 
 
-def test_derive_writes_timestamped_outputs_sorted_and_latest(tmp_path, monkeypatch) -> None:
+def test_derive_writes_single_stable_json_output_sorted(tmp_path, monkeypatch) -> None:
     norm_dir = tmp_path / "normalized"
     norm_dir.mkdir()
     records = [
@@ -118,23 +119,13 @@ def test_derive_writes_timestamped_outputs_sorted_and_latest(tmp_path, monkeypat
     derive_script.main()
 
     derived_dir = tmp_path / "derived"
-    json_files = [
-        path.name for path in derived_dir.glob("models_*.json") if path.name != "models_latest.json"
-    ]
-    csv_files = [path.name for path in derived_dir.glob("models_*.csv")]
-    assert any(re.fullmatch(r"models_\d{8}_\d{6}\.json", name) for name in json_files)
-    assert any(re.fullmatch(r"models_\d{8}_\d{6}\.csv", name) for name in csv_files)
-
     latest_path = derived_dir / "models_latest.json"
-    timestamped_path = derived_dir / json_files[0]
-
-    assert latest_path.is_symlink()
-    assert latest_path.resolve() == timestamped_path.resolve()
+    assert latest_path.exists()
+    assert not latest_path.is_symlink()
+    assert sorted(path.name for path in derived_dir.iterdir()) == ["models_latest.json"]
 
     latest = json.loads(latest_path.read_text(encoding="utf-8"))
-    timestamped = json.loads(timestamped_path.read_text(encoding="utf-8"))
     assert [row["model_id"] for row in latest] == ["alpha/model", "zeta/model"]
-    assert latest == timestamped
     assert all(row["officially_removed"] is False for row in latest)
 
 
@@ -178,9 +169,8 @@ def test_derive_merges_removed_models_from_previous(tmp_path, monkeypatch) -> No
         _make_derived_row("alpha/model", "Alpha", intelligence_index=10.0),
         _make_derived_row("removed/model", "Removed", intelligence_index=99.0),
     ]
-    previous_json = derived_dir / "models_20260101_000000.json"
+    previous_json = derived_dir / "models_latest.json"
     previous_json.write_text(json.dumps(previous_rows), encoding="utf-8")
-    (derived_dir / "models_latest.json").symlink_to(previous_json.name)
 
     current_records = [
         {
@@ -235,9 +225,8 @@ def test_derive_benchmark_blank_backfill_and_update(tmp_path, monkeypatch) -> No
             agentic_index=30.0,
         )
     ]
-    previous_json = derived_dir / "models_20260101_000000.json"
+    previous_json = derived_dir / "models_latest.json"
     previous_json.write_text(json.dumps(previous_rows), encoding="utf-8")
-    (derived_dir / "models_latest.json").symlink_to(previous_json.name)
 
     current_records = [
         {
@@ -278,3 +267,11 @@ def test_derive_benchmark_blank_backfill_and_update(tmp_path, monkeypatch) -> No
     assert row["intelligence_index"] == 50.0
     assert row["coding_index"] == 20.0
     assert row["agentic_index"] == 30.0
+
+
+def test_data_refresh_workflow_targets_main_only() -> None:
+    workflow_text = Path(".github/workflows/data-refresh.yml").read_text(encoding="utf-8")
+
+    assert "target_branch" not in workflow_text
+    assert 'cron: "17 0 * * *"' in workflow_text
+    assert "TARGET_BRANCH: main" in workflow_text
