@@ -120,13 +120,21 @@ def test_derive_writes_single_stable_json_output_sorted(tmp_path, monkeypatch) -
 
     derived_dir = tmp_path / "derived"
     latest_path = derived_dir / "models_latest.json"
+    meta_path = derived_dir / "models_meta.json"
     assert latest_path.exists()
+    assert meta_path.exists()
     assert not latest_path.is_symlink()
-    assert sorted(path.name for path in derived_dir.iterdir()) == ["models_latest.json"]
+    assert sorted(path.name for path in derived_dir.iterdir()) == [
+        "models_latest.json",
+        "models_meta.json",
+    ]
 
     latest = json.loads(latest_path.read_text(encoding="utf-8"))
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
     assert [row["model_id"] for row in latest] == ["alpha/model", "zeta/model"]
     assert all(row["officially_removed"] is False for row in latest)
+    assert all(row["updated_at"] == "2026-01-02T03:04:05Z" for row in latest)
+    assert meta == {"refreshed_at": "2026-01-02T03:04:05Z"}
 
 
 def _make_derived_row(
@@ -155,7 +163,9 @@ def _make_derived_row(
         "coding_index": coding_index,
         "agentic_index": agentic_index,
         "officially_removed": officially_removed,
+        "openrouter_model_url": f"https://openrouter.ai/{model_id}",
         "fetched_at": "2026-01-02T03:04:05Z",
+        "updated_at": "2026-01-02T03:04:05Z",
     }
 
 
@@ -206,6 +216,7 @@ def test_derive_merges_removed_models_from_previous(tmp_path, monkeypatch) -> No
     by_id = {row["model_id"]: row for row in latest}
     assert by_id["removed/model"]["officially_removed"] is True
     assert by_id["removed/model"]["intelligence_index"] == 99.0
+    assert by_id["removed/model"]["updated_at"] == "2026-01-02T03:04:05Z"
     assert by_id["alpha/model"]["officially_removed"] is False
     assert by_id["alpha/model"]["intelligence_index"] == 10.0
 
@@ -267,6 +278,7 @@ def test_derive_benchmark_blank_backfill_and_update(tmp_path, monkeypatch) -> No
     assert row["intelligence_index"] == 50.0
     assert row["coding_index"] == 20.0
     assert row["agentic_index"] == 30.0
+    assert row["updated_at"] == "2026-01-02T03:04:05Z"
 
 
 def test_data_refresh_workflow_targets_main_only() -> None:

@@ -122,3 +122,19 @@ def test_fetched_at_preserved(models_data: list[dict]) -> None:
     raw = get_model(models_data, "openai/gpt-4o")
     result = normalize_model(raw, fetched_at="2026-04-17T00:00:00Z")
     assert result.fetched_at == "2026-04-17T00:00:00Z"
+
+
+def test_openrouter_model_url_uses_canonical_slug() -> None:
+    raw = {
+        "id": "openai/gpt-4o-alias",
+        "canonical_slug": "openai/gpt-4o",
+        "name": "OpenAI: GPT-4o Alias",
+    }
+    result = normalize_model(raw)
+    assert result.openrouter_model_url == "https://openrouter.ai/openai/gpt-4o"
+
+
+def test_openrouter_model_url_falls_back_to_model_id(models_data: list[dict]) -> None:
+    raw = get_model(models_data, "openai/gpt-4o")
+    result = normalize_model(raw)
+    assert result.openrouter_model_url == "https://openrouter.ai/openai/gpt-4o"

@@ -23,6 +23,7 @@ class RawModelArchitecture(BaseModel):
 
 class RawModel(BaseModel):
     id: str
+    canonical_slug: str | None = None
     name: str | None = None
     context_length: int | None = None
     pricing: RawModelPricing | None = None
@@ -40,6 +41,7 @@ class NormalizedModel(BaseModel):
     slug: str
     vendor_name: str
     name: str
+    openrouter_model_url: str | None = None
     context_length: int | None = None
     max_completion_tokens: int | None = None
     input_price_usd_per_1m: float | None = None

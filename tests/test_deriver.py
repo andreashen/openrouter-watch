@@ -57,7 +57,9 @@ def test_to_row_has_all_fields(normalized_models) -> None:
         "coding_index",
         "agentic_index",
         "officially_removed",
+        "openrouter_model_url",
         "fetched_at",
+        "updated_at",
     }
     assert set(row.keys()) == expected_keys
     assert row["officially_removed"] is False
@@ -66,6 +68,11 @@ def test_to_row_has_all_fields(normalized_models) -> None:
 def test_to_row_includes_vendor_name(normalized_models) -> None:
     row = to_row(normalized_models[0])
     assert row["vendor_name"] == "OpenAI"
+
+
+def test_to_row_includes_openrouter_model_url(normalized_models) -> None:
+    row = to_row(normalized_models[0])
+    assert row["openrouter_model_url"] == "https://openrouter.ai/openai/gpt-4o"
 
 
 def test_to_row_with_benchmark(normalized_models) -> None:
@@ -128,6 +135,135 @@ def test_merge_benchmark_fields_both_blank() -> None:
     assert merged["agentic_index"] is None
 
 
+def test_merge_derived_rows_new_model_sets_updated_at() -> None:
+    current = [
+        {
+            "model_id": "alpha/model",
+            "author": "alpha",
+            "slug": "model",
+            "vendor_name": "Alpha",
+            "name": "Alpha: Model",
+            "context_length": 8192,
+            "max_completion_tokens": 4096,
+            "input_price_usd_per_1m": 1.0,
+            "output_price_usd_per_1m": 2.0,
+            "supports_reasoning": False,
+            "supports_tools": True,
+            "supports_vision": False,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "openrouter_model_url": "https://openrouter.ai/alpha/model",
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "updated_at": None,
+        }
+    ]
+    merged = merge_derived_rows(current, {}, refreshed_at="2026-01-02T03:04:05Z")
+    assert merged[0]["updated_at"] == "2026-01-02T03:04:05Z"
+
+
+def test_merge_derived_rows_unchanged_model_keeps_previous_updated_at() -> None:
+    current = [
+        {
+            "model_id": "alpha/model",
+            "author": "alpha",
+            "slug": "model",
+            "vendor_name": "Alpha",
+            "name": "Alpha: Model",
+            "context_length": 8192,
+            "max_completion_tokens": 4096,
+            "input_price_usd_per_1m": 1.0,
+            "output_price_usd_per_1m": 2.0,
+            "supports_reasoning": False,
+            "supports_tools": True,
+            "supports_vision": False,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "openrouter_model_url": "https://openrouter.ai/alpha/model",
+            "fetched_at": "2026-02-02T03:04:05Z",
+            "updated_at": None,
+        }
+    ]
+    previous = {
+        "alpha/model": {
+            "model_id": "alpha/model",
+            "author": "alpha",
+            "slug": "model",
+            "vendor_name": "Alpha",
+            "name": "Alpha: Model",
+            "context_length": 8192,
+            "max_completion_tokens": 4096,
+            "input_price_usd_per_1m": 1.0,
+            "output_price_usd_per_1m": 2.0,
+            "supports_reasoning": False,
+            "supports_tools": True,
+            "supports_vision": False,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "openrouter_model_url": "https://openrouter.ai/alpha/model",
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "updated_at": "2026-01-15T00:00:00Z",
+        }
+    }
+    merged = merge_derived_rows(current, previous, refreshed_at="2026-02-02T03:04:05Z")
+    assert merged[0]["updated_at"] == "2026-01-15T00:00:00Z"
+
+
+def test_merge_derived_rows_uses_previous_fetched_at_when_updated_at_missing() -> None:
+    current = [
+        {
+            "model_id": "alpha/model",
+            "author": "alpha",
+            "slug": "model",
+            "vendor_name": "Alpha",
+            "name": "Alpha: Model",
+            "context_length": 8192,
+            "max_completion_tokens": 4096,
+            "input_price_usd_per_1m": 1.0,
+            "output_price_usd_per_1m": 2.0,
+            "supports_reasoning": False,
+            "supports_tools": True,
+            "supports_vision": False,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "openrouter_model_url": "https://openrouter.ai/alpha/model",
+            "fetched_at": "2026-02-02T03:04:05Z",
+            "updated_at": None,
+        }
+    ]
+    previous = {
+        "alpha/model": {
+            "model_id": "alpha/model",
+            "author": "alpha",
+            "slug": "model",
+            "vendor_name": "Alpha",
+            "name": "Alpha: Model",
+            "context_length": 8192,
+            "max_completion_tokens": 4096,
+            "input_price_usd_per_1m": 1.0,
+            "output_price_usd_per_1m": 2.0,
+            "supports_reasoning": False,
+            "supports_tools": True,
+            "supports_vision": False,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "openrouter_model_url": "https://openrouter.ai/alpha/model",
+            "fetched_at": "2026-01-02T03:04:05Z",
+        }
+    }
+    merged = merge_derived_rows(current, previous, refreshed_at="2026-02-02T03:04:05Z")
+    assert merged[0]["updated_at"] == "2026-01-02T03:04:05Z"
+
+
 def test_merge_derived_rows_marks_removed_models() -> None:
     current = [
         {
@@ -157,11 +293,12 @@ def test_merge_derived_rows_marks_removed_models() -> None:
             "agentic_index": 7.0,
         },
     }
-    merged = merge_derived_rows(current, previous)
+    merged = merge_derived_rows(current, previous, refreshed_at="2026-02-02T03:04:05Z")
     by_id = {row["model_id"]: row for row in merged}
     assert by_id["alpha/model"]["officially_removed"] is False
     assert by_id["gone/model"]["officially_removed"] is True
     assert by_id["gone/model"]["intelligence_index"] == 9.0
+    assert by_id["gone/model"]["updated_at"] == "2026-02-02T03:04:05Z"
 
 
 def test_merge_derived_rows_reappeared_model() -> None:
@@ -187,12 +324,13 @@ def test_merge_derived_rows_reappeared_model() -> None:
             "agentic_index": 55.0,
         }
     }
-    merged = merge_derived_rows(current, previous)
+    merged = merge_derived_rows(current, previous, refreshed_at="2026-02-02T03:04:05Z")
     row = merged[0]
     assert row["officially_removed"] is False
     assert row["name"] == "Back: New"
     assert row["intelligence_index"] == 50.0
     assert row["coding_index"] == 60.0
+    assert row["updated_at"] == "2026-02-02T03:04:05Z"
 
 
 def test_write_json_fields_complete(rows) -> None:
@@ -203,4 +341,5 @@ def test_write_json_fields_complete(rows) -> None:
     row = data[0]
     assert row["model_id"] == "openai/gpt-4o"
     assert row["vendor_name"] == "OpenAI"
+    assert row["openrouter_model_url"] == "https://openrouter.ai/openai/gpt-4o"
     assert row["fetched_at"] == "2026-04-17T00:00:00Z"

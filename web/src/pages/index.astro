@@ -1,11 +1,34 @@
 ---
+import { existsSync, readFileSync } from "node:fs";
+
 import modelsData from "../../../data/derived/models_latest.json";
 import ModelTable from "../components/ModelTable.astro";
 import Base from "../layouts/Base.astro";
 
 type ModelRecord = {
+  model_id: string;
+  author: string;
+  slug: string;
+  name: string;
   fetched_at: string;
+  officially_removed: boolean;
+  openrouter_model_url?: string | null;
+  context_length: number | null;
+  max_completion_tokens: number | null;
+  input_price_usd_per_1m: number | null;
+  output_price_usd_per_1m: number | null;
+  supports_reasoning: boolean;
+  supports_tools: boolean;
+  supports_vision: boolean;
+  intelligence_index: number | null;
+  coding_index: number | null;
+  agentic_index: number | null;
+  updated_at?: string | null;
   vendor_name: string;
+};
+
+type ModelsMeta = {
+  refreshed_at?: string;
 };
 
 if (!Array.isArray(modelsData) || modelsData.length === 0) {
@@ -24,12 +47,31 @@ for (const [index, model] of modelsData.entries()) {
 }
 
 const models = modelsData as ModelRecord[];
-const latestFetchedAt = models
+const fallbackLatestFetchedAt = models
   .map((model) => Date.parse(model.fetched_at))
   .filter((timestamp) => Number.isFinite(timestamp))
   .sort((a, b) => b - a)[0];
-const latestFetchedAtLabel = latestFetchedAt
-  ? new Intl.DateTimeFormat("en-CA", {
+
+function readModelsMeta(): ModelsMeta | null {
+  const metaUrl = new URL("../../../data/derived/models_meta.json", import.meta.url);
+  if (!existsSync(metaUrl)) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(readFileSync(metaUrl, "utf-8"));
+    if (!parsed || typeof parsed !== "object") {
+      return null;
+    }
+    return parsed as ModelsMeta;
+  } catch {
+    return null;
+  }
+}
+
+function formatUtcLabel(timestamp: number | undefined): string {
+  return timestamp
+    ? new Intl.DateTimeFormat("en-CA", {
       timeZone: "UTC",
       year: "numeric",
       month: "2-digit",
@@ -38,9 +80,20 @@ const latestFetchedAtLabel = latestFetchedAt
       minute: "2-digit",
       hour12: false,
     })
-      .format(new Date(latestFetchedAt))
+      .format(new Date(timestamp))
       .replace(",", "") + " UTC"
-  : "Unknown";
+    : "Unknown";
+}
+
+const modelsMeta = readModelsMeta();
+const refreshedAt = (() => {
+  const parsedMeta = Date.parse(modelsMeta?.refreshed_at ?? "");
+  if (Number.isFinite(parsedMeta)) {
+    return parsedMeta;
+  }
+  return fallbackLatestFetchedAt;
+})();
+const refreshedAtLabel = formatUtcLabel(refreshedAt);
 const deploymentUrl = "https://andreashen.github.io/openrouter-watch/";
 const repositoryUrl = "https://github.com/andreashen/openrouter-watch";
 ---
@@ -104,14 +157,14 @@ const repositoryUrl = "https://github.com/andreashen/openrouter-watch";
             </div>
             <div class="flex items-center gap-3 rounded-2xl border border-slate-300/50 dark:border-slate-700/50 bg-slate-100/50 dark:bg-slate-800/50 px-5 py-3 text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md shadow-inner">
               <div class="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)] dark:shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
-              <span>数据更新时间：<span class="font-mono font-semibold text-slate-900 dark:text-slate-100">{latestFetchedAtLabel}</span></span>
+              <span>数据刷新时间：<span class="font-mono font-semibold text-slate-900 dark:text-slate-100">{refreshedAtLabel}</span></span>
             </div>
           </div>
         </div>
       </div>
     </header>
 
-    <ModelTable models={modelsData} />
+    <ModelTable models={models} />
 
     <footer class="pb-8 text-center text-sm text-slate-500">
       数据来源：OpenRouter API。
