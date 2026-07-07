@@ -1,16 +1,14 @@
-"""Derive final CSV/JSON products from normalized data + benchmarks."""
+"""Derive the committed model dataset from normalized data + benchmarks."""
 
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 
 from openrouter_watch.deriver import (
     load_previous_models,
     merge_derived_rows,
     to_row,
-    write_csv,
     write_json,
 )
 from openrouter_watch.fetcher import fetch_benchmark
@@ -18,6 +16,8 @@ from openrouter_watch.schema import NormalizedModel
 
 NORM_DIR = Path(__file__).parent.parent / "data" / "normalized"
 DERIVED_DIR = Path(__file__).parent.parent / "data" / "derived"
+LATEST_JSON_NAME = "models_latest.json"
+LEGACY_DERIVED_PATTERNS = ("models_*.json", "models_*.csv")
 
 
 def latest_normalized_file() -> Path:
@@ -27,8 +27,20 @@ def latest_normalized_file() -> Path:
     return files[-1]
 
 
+def remove_legacy_derived_outputs(derived_dir: Path, *, keep_path: Path) -> list[Path]:
+    removed_paths: list[Path] = []
+    for pattern in LEGACY_DERIVED_PATTERNS:
+        for path in derived_dir.glob(pattern):
+            if path == keep_path:
+                continue
+            path.unlink()
+            removed_paths.append(path)
+    return removed_paths
+
+
 def main() -> None:
     DERIVED_DIR.mkdir(parents=True, exist_ok=True)
+    latest_json_path = DERIVED_DIR / LATEST_JSON_NAME
     norm_path = latest_normalized_file()
     print(f"Reading normalized file: {norm_path}")
 
@@ -43,24 +55,17 @@ def main() -> None:
         benchmark = fetch_benchmark(model.model_id)
         rows.append(to_row(model, benchmark))
 
-    latest_path = DERIVED_DIR / "models_latest.json"
-    previous_map = load_previous_models(latest_path)
+    previous_map = load_previous_models(latest_json_path)
     rows = merge_derived_rows(rows, previous_map)
 
-    ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    csv_path = DERIVED_DIR / f"models_{ts}.csv"
-    json_path = DERIVED_DIR / f"models_{ts}.json"
+    if latest_json_path.exists() or latest_json_path.is_symlink():
+        latest_json_path.unlink()
+    write_json(rows, latest_json_path)
+    removed_paths = remove_legacy_derived_outputs(DERIVED_DIR, keep_path=latest_json_path)
 
-    write_csv(rows, csv_path)
-    write_json(rows, json_path)
-
-    if latest_path.exists() or latest_path.is_symlink():
-        latest_path.unlink()
-    latest_path.symlink_to(json_path.name)
-
-    print(f"Wrote {len(rows)} rows → {csv_path}")
-    print(f"Wrote {len(rows)} rows → {json_path}")
-    print(f"Wrote latest symlink → {latest_path} -> {json_path.name}")
+    print(f"Wrote {len(rows)} rows → {latest_json_path}")
+    if removed_paths:
+        print(f"Removed {len(removed_paths)} legacy derived artifact(s).")
 
 
 if __name__ == "__main__":

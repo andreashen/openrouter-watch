@@ -5,7 +5,7 @@
 ### Architecture
 
 OpenRouter Watch has two components:
-1. **Python data pipeline** (`src/openrouter_watch/`) — fetches model data from the OpenRouter API, normalizes, and derives CSV/JSON outputs into `data/derived/`.
+1. **Python data pipeline** (`src/openrouter_watch/`) — fetches model data from the OpenRouter API, normalizes it, and derives the committed dataset into `data/derived/models_latest.json`.
 2. **Astro static frontend** (`web/`) — renders a model comparison table from `data/derived/models_latest.json`.
 
 No databases, Docker, or background services are required.
@@ -23,4 +23,5 @@ No databases, Docker, or background services are required.
 - Python 3.12+, Node.js 22+ are required.
 - `OPENROUTER_API_KEY` env var is optional (increases rate limits).
 - The frontend requires `data/derived/models_latest.json` to exist (run the pipeline first).
+- `models_latest.json` is a normal committed JSON file, not a symlink or timestamp pointer.
 - The `ruff check .` linter may report existing import ordering issues in the test files — these are pre-existing and not introduced by agent changes.
