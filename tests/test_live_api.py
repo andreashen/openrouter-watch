@@ -12,7 +12,7 @@ import pytest
 if os.environ.get("RUN_LIVE_API") != "1":
     pytest.skip("Set RUN_LIVE_API=1 to run live OpenRouter API tests", allow_module_level=True)
 
-from openrouter_watch.fetcher import fetch_benchmark, fetch_models
+from openrouter_watch.fetcher import extract_benchmark_from_raw, fetch_models
 
 
 @pytest.mark.live
@@ -25,8 +25,11 @@ def test_live_fetch_models_returns_data() -> None:
 
 
 @pytest.mark.live
-def test_live_fetch_benchmark_accepts_known_model() -> None:
+def test_live_models_embed_artificial_analysis_for_opus_4_8() -> None:
     payload = fetch_models()
-    model_id = payload["data"][0]["id"]
-    result = fetch_benchmark(model_id)
-    assert result is None or isinstance(result, dict)
+    opus = next(m for m in payload["data"] if m["id"] == "anthropic/claude-opus-4.8")
+    benchmark = extract_benchmark_from_raw(opus)
+    assert benchmark is not None
+    assert benchmark["intelligence_index"] is not None
+    assert benchmark["coding_index"] is not None
+    assert benchmark["agentic_index"] is not None

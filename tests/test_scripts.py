@@ -114,7 +114,6 @@ def test_derive_writes_single_stable_json_output_sorted(tmp_path, monkeypatch) -
     (norm_dir / "20260102_030405_models.json").write_text(json.dumps(records), encoding="utf-8")
     monkeypatch.setattr(derive_script, "NORM_DIR", norm_dir)
     monkeypatch.setattr(derive_script, "DERIVED_DIR", tmp_path / "derived")
-    monkeypatch.setattr(derive_script, "fetch_benchmark", lambda model_id: None)
 
     derive_script.main()
 
@@ -204,11 +203,6 @@ def test_derive_merges_removed_models_from_previous(tmp_path, monkeypatch) -> No
     )
     monkeypatch.setattr(derive_script, "NORM_DIR", norm_dir)
     monkeypatch.setattr(derive_script, "DERIVED_DIR", derived_dir)
-    monkeypatch.setattr(
-        derive_script,
-        "fetch_benchmark",
-        lambda model_id: None if model_id == "alpha/model" else {"intelligence_index": 99.0},
-    )
 
     derive_script.main()
 
@@ -253,6 +247,9 @@ def test_derive_benchmark_blank_backfill_and_update(tmp_path, monkeypatch) -> No
             "supports_reasoning": False,
             "supports_tools": False,
             "supports_vision": False,
+            "intelligence_index": 50.0,
+            "coding_index": None,
+            "agentic_index": None,
             "fetched_at": "2026-01-02T03:04:05Z",
         }
     ]
@@ -261,15 +258,6 @@ def test_derive_benchmark_blank_backfill_and_update(tmp_path, monkeypatch) -> No
     )
     monkeypatch.setattr(derive_script, "NORM_DIR", norm_dir)
     monkeypatch.setattr(derive_script, "DERIVED_DIR", derived_dir)
-    monkeypatch.setattr(
-        derive_script,
-        "fetch_benchmark",
-        lambda model_id: {
-            "intelligence_index": 50.0,
-            "coding_index": None,
-            "agentic_index": None,
-        },
-    )
 
     derive_script.main()
 

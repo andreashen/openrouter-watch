@@ -31,7 +31,14 @@
         "seed",
         "response_format",
         "stream"
-      ]
+      ],
+      "benchmarks": {
+        "artificial_analysis": {
+          "intelligence_index": 72.5,
+          "coding_index": 68.3,
+          "agentic_index": 55.1
+        }
+      }
     },
     {
       "id": "anthropic/claude-3-5-sonnet",

@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 
+from .fetcher import extract_benchmark_from_raw
 from .schema import NormalizedModel, RawModel
 
 
@@ -53,6 +54,7 @@ def normalize_model(raw: dict, fetched_at: str | None = None) -> NormalizedModel
     output_price = _parse_price(pricing.completion if pricing else None)
 
     max_completion = m.top_provider.max_completion_tokens if m.top_provider else None
+    benchmark = extract_benchmark_from_raw(raw)
 
     return NormalizedModel(
         model_id=m.id,
@@ -68,5 +70,8 @@ def normalize_model(raw: dict, fetched_at: str | None = None) -> NormalizedModel
         supports_reasoning=supports_reasoning,
         supports_tools=supports_tools,
         supports_vision=supports_vision,
+        intelligence_index=benchmark.get("intelligence_index") if benchmark else None,
+        coding_index=benchmark.get("coding_index") if benchmark else None,
+        agentic_index=benchmark.get("agentic_index") if benchmark else None,
         fetched_at=fetched_at or _now_utc(),
     )

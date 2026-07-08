@@ -38,9 +38,6 @@ def _is_valid_benchmark(value: object) -> bool:
 
 def to_row(model: NormalizedModel, benchmark: dict | None = None) -> dict:
     row = model.model_dump()
-    row["intelligence_index"] = None
-    row["coding_index"] = None
-    row["agentic_index"] = None
     if benchmark:
         row["intelligence_index"] = benchmark.get("intelligence_index")
         row["coding_index"] = benchmark.get("coding_index")

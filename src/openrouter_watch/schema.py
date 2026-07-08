@@ -49,4 +49,7 @@ class NormalizedModel(BaseModel):
     supports_reasoning: bool = False
     supports_tools: bool = False
     supports_vision: bool = False
+    intelligence_index: float | None = None
+    coding_index: float | None = None
+    agentic_index: float | None = None
     fetched_at: str = Field(description="ISO8601 UTC timestamp")
