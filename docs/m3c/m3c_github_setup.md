@@ -60,16 +60,19 @@
 
 ## 5. 检查分支保护策略
 
-路径：`Settings -> Branches`
+路径：`Settings -> Rules -> Rulesets`（本仓库使用 ruleset `rule-diy`，非经典 Branch protection）
 
-需要重点检查 `main`：
+| 分支 | 当前策略 | 说明 |
+| --- | --- | --- |
+| `main` | 受 `rule-diy` 保护 | 须走 PR 合并；禁止直接 push / force-push；数据刷新 bot 通过 ruleset bypass actor 写入 |
+| `test` | **无保护** | 允许开发者直接 push 到 `test` 以快速验证 SIT；不承接数据刷新 |
 
-1. 若开启了 “Require pull request before merging” 且禁止直接 push：
-   - 需要允许 GitHub Actions bot 对目标分支有写入能力，或
-   - 改为“工作流只产物不回写”模式（不在当前方案内）。
+`main` 额外注意：
+
+1. 若 ruleset 要求 PR 且禁止直接 push，需确保 GitHub App（Automation）在 bypass actors 中，以便 `data-refresh.yml` 回写 `data/derived`。
 2. 若开启 status checks，避免把“必须人工审阅 PR”强加到 bot 自动提交路径上。
 
-`test` 不再承接数据刷新写入，因此不需要为该 workflow 保留 bot 直推权限。
+`test` 不再承接数据刷新写入，也不需要为该 workflow 保留 bot 直推权限。
 
 ---
 
