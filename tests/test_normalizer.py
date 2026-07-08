@@ -138,3 +138,11 @@ def test_openrouter_model_url_falls_back_to_model_id(models_data: list[dict]) ->
     raw = get_model(models_data, "openai/gpt-4o")
     result = normalize_model(raw)
     assert result.openrouter_model_url == "https://openrouter.ai/openai/gpt-4o"
+
+
+def test_embedded_benchmark_indices(models_data: list[dict]) -> None:
+    raw = get_model(models_data, "openai/gpt-4o")
+    result = normalize_model(raw)
+    assert result.intelligence_index == pytest.approx(72.5)
+    assert result.coding_index == pytest.approx(68.3)
+    assert result.agentic_index == pytest.approx(55.1)

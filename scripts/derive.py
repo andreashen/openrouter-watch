@@ -12,7 +12,6 @@ from openrouter_watch.deriver import (
     to_row,
     write_json,
 )
-from openrouter_watch.fetcher import fetch_benchmark
 from openrouter_watch.schema import NormalizedModel
 
 NORM_DIR = Path(__file__).parent.parent / "data" / "normalized"
@@ -59,10 +58,8 @@ def main() -> None:
     refreshed_at = models[0].fetched_at if models else _now_utc()
     rows: list[dict] = []
 
-    for i, model in enumerate(models):
-        print(f"[{i + 1}/{len(models)}] Fetching benchmark for {model.model_id}...")
-        benchmark = fetch_benchmark(model.model_id)
-        rows.append(to_row(model, benchmark))
+    for model in models:
+        rows.append(to_row(model))
 
     previous_map = load_previous_models(latest_json_path)
     rows = merge_derived_rows(rows, previous_map, refreshed_at)

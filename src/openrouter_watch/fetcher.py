@@ -1,12 +1,10 @@
 from __future__ import annotations
 
 import os
-import time
 
 import httpx
 
 MODELS_URL = "https://openrouter.ai/api/v1/models"
-BENCHMARK_URL = "https://openrouter.ai/api/internal/v1/artificial-analysis-benchmarks"
 
 _HEADERS = {"User-Agent": "Mozilla/5.0"}
 
@@ -26,34 +24,17 @@ def fetch_models() -> dict:
         return response.json()
 
 
-def _extract_benchmark_indices(payload: dict) -> dict | None:
-    if "data" not in payload:
-        return payload
-
-    records = payload.get("data")
-    if not records:
+def extract_benchmark_from_raw(raw: dict) -> dict | None:
+    """Extract AA benchmark indices embedded in a /api/v1/models item."""
+    aa = (raw.get("benchmarks") or {}).get("artificial_analysis")
+    if not aa:
         return None
 
-    evaluations = records[0].get("benchmark_data", {}).get("evaluations", {})
-    return {
-        "intelligence_index": evaluations.get("artificial_analysis_intelligence_index"),
-        "coding_index": evaluations.get("artificial_analysis_coding_index"),
-        "agentic_index": evaluations.get("artificial_analysis_agentic_index"),
+    result = {
+        "intelligence_index": aa.get("intelligence_index"),
+        "coding_index": aa.get("coding_index"),
+        "agentic_index": aa.get("agentic_index"),
     }
-
-
-def fetch_benchmark(model_id: str) -> dict | None:
-    """Fetch benchmark indices for a model. Returns None on any failure."""
-    time.sleep(0.5)
-    try:
-        with httpx.Client(trust_env=False) as client:
-            response = client.get(
-                BENCHMARK_URL,
-                params={"slug": model_id},
-                headers=_auth_headers(),
-                timeout=30,
-            )
-            response.raise_for_status()
-            return _extract_benchmark_indices(response.json())
-    except Exception:
+    if all(value is None for value in result.values()):
         return None
+    return result

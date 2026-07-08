@@ -83,10 +83,17 @@ def test_to_row_with_benchmark(normalized_models) -> None:
 
 
 def test_to_row_without_benchmark_has_none_indices(normalized_models) -> None:
-    row = to_row(normalized_models[0])
+    row = to_row(normalized_models[1])
     assert row["intelligence_index"] is None
     assert row["coding_index"] is None
     assert row["agentic_index"] is None
+
+
+def test_to_row_uses_embedded_benchmark_when_present(normalized_models) -> None:
+    row = to_row(normalized_models[0])
+    assert row["intelligence_index"] == 72.5
+    assert row["coding_index"] == 68.3
+    assert row["agentic_index"] == 55.1
 
 
 def test_write_csv_correct_row_count(rows) -> None:
