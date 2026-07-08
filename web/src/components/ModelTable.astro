@@ -81,10 +81,40 @@ const rangeFields = [
               <span class="capitalize">{cap}</span>
             </label>
           ))}
-          <label class="group relative flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 px-3 py-2 transition-colors hover:bg-slate-200 dark:hover:bg-slate-800">
-            <input id="show-removed" type="checkbox" class="peer h-4 w-4 rounded border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sky-500 focus:ring-sky-500/50 focus:ring-offset-white dark:focus:ring-offset-slate-900" />
-            <span>显示已下架模型</span>
-          </label>
+          <div class="flex flex-col gap-1.5">
+            <span class="text-xs text-slate-500 dark:text-slate-400">已下架模型</span>
+            <div
+              id="removed-filter"
+              role="radiogroup"
+              aria-label="已下架模型显示方式"
+              class="inline-flex rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 p-0.5"
+            >
+              <button
+                type="button"
+                data-removed-filter="hide"
+                aria-pressed="true"
+                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                不显示
+              </button>
+              <button
+                type="button"
+                data-removed-filter="show"
+                aria-pressed="false"
+                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                显示
+              </button>
+              <button
+                type="button"
+                data-removed-filter="only"
+                aria-pressed="false"
+                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                只显示
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -142,11 +172,11 @@ const rangeFields = [
         <label for="sort-direction" class="text-sm font-medium text-slate-700 dark:text-slate-300">排序方向</label>
         <select
           id="sort-direction"
-          class="mt-2 block w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/50 px-3 py-2.5 text-sm text-slate-900 dark:text-slate-200 focus:border-sky-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
+          disabled
+          class="mt-2 block w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/50 px-3 py-2.5 text-sm text-slate-900 dark:text-slate-200 focus:border-sky-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
         >
-          <option value="none">无</option>
-          <option value="asc">升序</option>
           <option value="desc">降序</option>
+          <option value="asc">升序</option>
         </select>
       </div>
     </div>
@@ -159,11 +189,29 @@ const rangeFields = [
   </div>
 
   <div class="overflow-x-auto overflow-y-auto max-h-[70vh] custom-scrollbar">
-    <table class="min-w-max border-collapse text-left text-sm w-full">
+    <table id="model-table" class="min-w-max border-collapse text-left text-sm w-full">
       <thead class="sticky top-0 z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 shadow-sm">
         <tr>
-          {columns.map((column) => (
-            <th class="whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-5 py-4 font-semibold">{column}</th>
+          {columns.map((column, index) => (
+            index === 0 ? (
+              <th
+                id="model-id-col-header"
+                data-col="model-id"
+                class="relative whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-5 py-4 font-semibold"
+              >
+                <span>{column}</span>
+                <span
+                  id="model-id-col-resizer"
+                  role="separator"
+                  aria-orientation="vertical"
+                  aria-label="调整 Model ID 列宽"
+                  tabindex="0"
+                  class="absolute right-0 top-0 z-30 h-full w-1.5 cursor-col-resize touch-none select-none bg-transparent hover:bg-sky-500/40 focus-visible:bg-sky-500/50 focus-visible:outline-none"
+                ></span>
+              </th>
+            ) : (
+              <th class="whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-5 py-4 font-semibold">{column}</th>
+            )
           ))}
         </tr>
       </thead>
@@ -189,20 +237,59 @@ const rangeFields = [
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(71, 85, 105, 0.8);
   }
+
+  .removed-filter-btn[aria-pressed="true"] {
+    background: rgb(14 165 233 / 0.15);
+    color: rgb(2 132 199);
+    box-shadow: inset 0 0 0 1px rgb(14 165 233 / 0.35);
+  }
+
+  .removed-filter-btn[aria-pressed="false"] {
+    color: rgb(71 85 105);
+  }
+
+  :global(.dark) .removed-filter-btn[aria-pressed="true"] {
+    background: rgb(14 165 233 / 0.2);
+    color: rgb(125 211 252);
+    box-shadow: inset 0 0 0 1px rgb(14 165 233 / 0.4);
+  }
+
+  :global(.dark) .removed-filter-btn[aria-pressed="false"] {
+    color: rgb(148 163 184);
+  }
+
+  #model-id-col-resizer::after {
+    content: "";
+    position: absolute;
+    inset: 0 -3px;
+  }
+
+  body.model-id-col-resizing {
+    cursor: col-resize;
+    user-select: none;
+  }
 </style>
 
 <script define:vars={{ models }} is:inline>
   const tableBody = document.querySelector("#model-table-body");
+  const modelTable = document.querySelector("#model-table");
+  const modelIdColHeader = document.querySelector("#model-id-col-header");
+  const modelIdColResizer = document.querySelector("#model-id-col-resizer");
   const count = document.querySelector("#model-count");
   const searchInput = document.querySelector("#model-search");
   const capReasoning = document.querySelector("#cap-reasoning");
   const capTools = document.querySelector("#cap-tools");
   const capVision = document.querySelector("#cap-vision");
-  const showRemoved = document.querySelector("#show-removed");
+  const removedFilterButtons = Array.from(document.querySelectorAll("[data-removed-filter]"));
   const sortField = document.querySelector("#sort-field");
   const sortDirection = document.querySelector("#sort-direction");
   const rangeInputs = Array.from(document.querySelectorAll("input[data-range-key][data-range-bound]"));
   const totalRows = models.length;
+  const MODEL_ID_COL_WIDTH_KEY = "openrouter-watch.model-id-column-width";
+  const MODEL_ID_COL_MIN_WIDTH = 140;
+  const MODEL_ID_COL_MAX_WIDTH = 480;
+  let removedFilterMode = "hide";
+  let modelIdColWidth = null;
   const numericRangeKeys = [
     "context_length",
     "max_completion_tokens",
@@ -212,6 +299,137 @@ const rangeFields = [
     "coding_index",
     "agentic_index",
   ];
+
+  function clampModelIdColWidth(width) {
+    return Math.min(MODEL_ID_COL_MAX_WIDTH, Math.max(MODEL_ID_COL_MIN_WIDTH, width));
+  }
+
+  function readStoredModelIdColWidth() {
+    try {
+      const raw = window.localStorage.getItem(MODEL_ID_COL_WIDTH_KEY);
+      if (!raw) {
+        return null;
+      }
+      const parsed = Number(raw);
+      return Number.isFinite(parsed) ? clampModelIdColWidth(parsed) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function persistModelIdColWidth(width) {
+    try {
+      if (width === null) {
+        window.localStorage.removeItem(MODEL_ID_COL_WIDTH_KEY);
+        return;
+      }
+      window.localStorage.setItem(MODEL_ID_COL_WIDTH_KEY, String(width));
+    } catch {
+      // Ignore storage failures.
+    }
+  }
+
+  function applyModelIdColWidth(width) {
+    modelIdColWidth = width;
+    const widthStyle = width === null ? "" : `${width}px`;
+    if (modelIdColHeader) {
+      modelIdColHeader.style.width = widthStyle;
+      modelIdColHeader.style.maxWidth = widthStyle;
+      modelIdColHeader.style.minWidth = widthStyle;
+    }
+    if (modelTable) {
+      modelTable.style.tableLayout = width === null ? "" : "fixed";
+    }
+    for (const cell of document.querySelectorAll('td[data-col="model-id"]')) {
+      cell.style.width = widthStyle;
+      cell.style.maxWidth = widthStyle;
+      cell.style.minWidth = widthStyle;
+    }
+  }
+
+  function initModelIdColResize() {
+    modelIdColWidth = readStoredModelIdColWidth();
+    applyModelIdColWidth(modelIdColWidth);
+
+    if (!modelIdColResizer || !modelIdColHeader) {
+      return;
+    }
+
+    let startX = 0;
+    let startWidth = 0;
+
+    const stopResize = () => {
+      document.body.classList.remove("model-id-col-resizing");
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", stopResize);
+      if (modelIdColWidth !== null) {
+        persistModelIdColWidth(modelIdColWidth);
+      }
+    };
+
+    const onMouseMove = (event) => {
+      const delta = event.clientX - startX;
+      const nextWidth = clampModelIdColWidth(startWidth + delta);
+      applyModelIdColWidth(nextWidth);
+    };
+
+    const startResize = (clientX) => {
+      const measuredWidth = modelIdColHeader.getBoundingClientRect().width;
+      startX = clientX;
+      startWidth = modelIdColWidth ?? measuredWidth;
+      document.body.classList.add("model-id-col-resizing");
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseup", stopResize);
+    };
+
+    modelIdColResizer.addEventListener("mousedown", (event) => {
+      event.preventDefault();
+      startResize(event.clientX);
+    });
+
+    modelIdColResizer.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
+        return;
+      }
+      event.preventDefault();
+      const measuredWidth = modelIdColHeader.getBoundingClientRect().width;
+      const currentWidth = modelIdColWidth ?? measuredWidth;
+      const delta = event.key === "ArrowLeft" ? -8 : 8;
+      const nextWidth = clampModelIdColWidth(currentWidth + delta);
+      applyModelIdColWidth(nextWidth);
+      persistModelIdColWidth(nextWidth);
+    });
+  }
+
+  function setRemovedFilterMode(mode) {
+    removedFilterMode = mode;
+    for (const button of removedFilterButtons) {
+      const isActive = button.dataset.removedFilter === mode;
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    }
+  }
+
+  function updateSortDirectionState({ resetDirection = false } = {}) {
+    const field = sortField?.value ?? "";
+    const hasField = Boolean(field);
+    if (!sortDirection) {
+      return;
+    }
+    sortDirection.disabled = !hasField;
+    if (hasField && resetDirection) {
+      sortDirection.value = "desc";
+    }
+  }
+
+  function matchesRemovedFilter(model) {
+    if (removedFilterMode === "show") {
+      return true;
+    }
+    if (removedFilterMode === "only") {
+      return model.officially_removed;
+    }
+    return !model.officially_removed;
+  }
 
   function truncateToOneDecimal(value) {
     return (Math.trunc(value * 10) / 10).toFixed(1);
@@ -380,9 +598,12 @@ const rangeFields = [
       : parsedRight.timestamp - parsedLeft.timestamp;
   }
 
-  function createCellHTML(html, className) {
+  function createCellHTML(html, className, dataset = {}) {
     const cell = document.createElement("td");
     cell.className = className;
+    for (const [key, value] of Object.entries(dataset)) {
+      cell.dataset[key] = value;
+    }
     cell.innerHTML = html;
     return cell;
   }
@@ -399,7 +620,7 @@ const rangeFields = [
       row.className = `group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50${model.officially_removed ? " opacity-70" : ""}`;
       
       row.appendChild(
-        createCellHTML(createModelIdHTML(model), "whitespace-nowrap px-5 py-3 font-mono text-xs"),
+        createCellHTML(createModelIdHTML(model), "whitespace-nowrap px-5 py-3 font-mono text-xs", { col: "model-id" }),
       );
       row.appendChild(
         createCellHTML(formatCompact(model.context_length), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
@@ -437,6 +658,7 @@ const rangeFields = [
       fragment.appendChild(row);
     }
     tableBody.appendChild(fragment);
+    applyModelIdColWidth(modelIdColWidth);
 
     if (count) {
       count.innerHTML = `显示 <span class="text-slate-900 dark:text-white">${rows.length}</span> / ${totalRows} 个模型`;
@@ -453,11 +675,9 @@ const rangeFields = [
     const needsReasoning = capReasoning?.checked ?? false;
     const needsTools = capTools?.checked ?? false;
     const needsVision = capVision?.checked ?? false;
-    const includeRemoved = showRemoved?.checked ?? false;
     const directionValue = sortDirection?.value;
     const field = sortField?.value ?? "";
-    const direction =
-      directionValue === "asc" || directionValue === "desc" ? directionValue : "none";
+    const direction = directionValue === "asc" ? "asc" : "desc";
     const numericRanges = {
       context_length: getRangeByKey("context_length"),
       max_completion_tokens: getRangeByKey("max_completion_tokens"),
@@ -483,7 +703,7 @@ const rangeFields = [
         if (needsVision && !model.supports_vision) {
           return false;
         }
-        if (!includeRemoved && model.officially_removed) {
+        if (!matchesRemovedFilter(model)) {
           return false;
         }
 
@@ -503,7 +723,7 @@ const rangeFields = [
         return true;
       });
 
-    if (field && direction !== "none") {
+    if (field) {
       filtered.sort((left, right) => {
         let result = 0;
         if (field === "updated_at") {
@@ -531,12 +751,26 @@ const rangeFields = [
   capReasoning?.addEventListener("change", applyFiltersAndSort);
   capTools?.addEventListener("change", applyFiltersAndSort);
   capVision?.addEventListener("change", applyFiltersAndSort);
-  showRemoved?.addEventListener("change", applyFiltersAndSort);
-  sortField?.addEventListener("change", applyFiltersAndSort);
+  for (const button of removedFilterButtons) {
+    button.addEventListener("click", () => {
+      const mode = button.dataset.removedFilter;
+      if (!mode || mode === removedFilterMode) {
+        return;
+      }
+      setRemovedFilterMode(mode);
+      applyFiltersAndSort();
+    });
+  }
+  sortField?.addEventListener("change", () => {
+    updateSortDirectionState({ resetDirection: true });
+    applyFiltersAndSort();
+  });
   sortDirection?.addEventListener("change", applyFiltersAndSort);
   for (const input of rangeInputs) {
     input.addEventListener("input", applyFiltersAndSort);
   }
 
+  initModelIdColResize();
+  updateSortDirectionState();
   applyFiltersAndSort();
 </script>
