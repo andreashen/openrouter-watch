@@ -46,13 +46,13 @@ const columns = [
 ];
 
 const rangeFields = [
-  { key: "context_length", label: "上下文" },
-  { key: "max_completion_tokens", label: "最大输出" },
-  { key: "input_price_usd_per_1m", label: "输入价" },
-  { key: "output_price_usd_per_1m", label: "输出价" },
-  { key: "intelligence_index", label: "Intelligence" },
-  { key: "coding_index", label: "Coding" },
-  { key: "agentic_index", label: "Agentic" },
+  { key: "context_length", label: "上下文", unit: "k", scale: 1000 },
+  { key: "max_completion_tokens", label: "最大输出", unit: "k", scale: 1000 },
+  { key: "input_price_usd_per_1m", label: "输入价", unit: null, scale: 1 },
+  { key: "output_price_usd_per_1m", label: "输出价", unit: null, scale: 1 },
+  { key: "intelligence_index", label: "Intelligence", unit: null, scale: 1 },
+  { key: "coding_index", label: "Coding", unit: null, scale: 1 },
+  { key: "agentic_index", label: "Agentic", unit: null, scale: 1 },
 ];
 ---
 
@@ -90,10 +90,11 @@ const rangeFields = [
 
     <div>
       <p class="text-sm font-medium text-slate-700 dark:text-slate-300">关键数值范围（AND）</p>
-      <div class="mt-3 flex flex-wrap gap-2">
+      {/* Desktop: 4 + 3 rows; mobile: wrap naturally */}
+      <div class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
         {rangeFields.map((field) => (
           <div
-            class="inline-flex items-center gap-1.5 rounded-full border border-slate-300/70 dark:border-slate-700/70 bg-slate-100/60 dark:bg-slate-800/30 px-2.5 py-1.5 transition-colors focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/40"
+            class="inline-flex w-full items-center gap-1.5 rounded-full border border-slate-300/70 dark:border-slate-700/70 bg-slate-100/60 dark:bg-slate-800/30 px-2.5 py-1.5 transition-colors focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/40"
           >
             <span class="whitespace-nowrap text-xs font-medium text-slate-600 dark:text-slate-300">{field.label}</span>
             <input
@@ -101,10 +102,11 @@ const rangeFields = [
               step="any"
               inputmode="decimal"
               placeholder="min"
-              aria-label={`${field.label} 最小值`}
+              aria-label={field.unit ? `${field.label} 最小值（${field.unit}）` : `${field.label} 最小值`}
               data-range-key={field.key}
               data-range-bound="min"
-              class="range-capsule-input w-16 rounded-md border-0 bg-white/80 dark:bg-slate-900/70 px-1.5 py-0.5 text-xs tabular-nums text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-0"
+              data-range-scale={field.scale}
+              class="range-capsule-input min-w-0 flex-1 rounded-md border-0 bg-white/80 dark:bg-slate-900/70 px-1.5 py-0.5 text-xs tabular-nums text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-0"
             />
             <span class="text-xs text-slate-400 dark:text-slate-500" aria-hidden="true">–</span>
             <input
@@ -112,11 +114,15 @@ const rangeFields = [
               step="any"
               inputmode="decimal"
               placeholder="max"
-              aria-label={`${field.label} 最大值`}
+              aria-label={field.unit ? `${field.label} 最大值（${field.unit}）` : `${field.label} 最大值`}
               data-range-key={field.key}
               data-range-bound="max"
-              class="range-capsule-input w-16 rounded-md border-0 bg-white/80 dark:bg-slate-900/70 px-1.5 py-0.5 text-xs tabular-nums text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-0"
+              data-range-scale={field.scale}
+              class="range-capsule-input min-w-0 flex-1 rounded-md border-0 bg-white/80 dark:bg-slate-900/70 px-1.5 py-0.5 text-xs tabular-nums text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-0"
             />
+            {field.unit && (
+              <span class="shrink-0 text-xs font-medium text-slate-500 dark:text-slate-400" aria-hidden="true">{field.unit}</span>
+            )}
           </div>
         ))}
       </div>
@@ -643,7 +649,12 @@ const rangeFields = [
       return null;
     }
     const parsed = Number(value);
-    return Number.isFinite(parsed) ? parsed : null;
+    if (!Number.isFinite(parsed)) {
+      return null;
+    }
+    const scaleRaw = Number(input.dataset.rangeScale ?? "1");
+    const scale = Number.isFinite(scaleRaw) && scaleRaw > 0 ? scaleRaw : 1;
+    return parsed * scale;
   }
 
   function getRangeByKey(key) {
