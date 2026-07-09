@@ -17,7 +17,7 @@
     "coding_index": 7.8,
     "agentic_index": 4.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -80,7 +80,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -101,7 +101,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -122,7 +122,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -143,7 +143,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -185,7 +185,7 @@
     "coding_index": 10.5,
     "agentic_index": 0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -223,12 +223,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 24.6,
-    "coding_index": 13.6,
-    "agentic_index": 27.8,
+    "intelligence_index": 18.2,
+    "coding_index": 23.0,
+    "agentic_index": 3.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "amazon/nova-lite-v1",
@@ -248,7 +248,7 @@
     "coding_index": 5.1,
     "agentic_index": 5.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -269,7 +269,7 @@
     "coding_index": 4.1,
     "agentic_index": 4.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -290,7 +290,7 @@
     "coding_index": 13.8,
     "agentic_index": 16.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -311,7 +311,7 @@
     "coding_index": 11,
     "agentic_index": 4.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -332,7 +332,7 @@
     "coding_index": 6.7,
     "agentic_index": 7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -412,12 +412,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 59.9,
+    "coding_index": 76.5,
+    "agentic_index": 52.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "anthropic/claude-haiku-4.5",
@@ -433,12 +433,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 37.1,
-    "coding_index": 32.6,
-    "agentic_index": 40.2,
+    "intelligence_index": 29.6,
+    "coding_index": 43.9,
+    "agentic_index": 16.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "anthropic/claude-opus-4",
@@ -458,7 +458,7 @@
     "coding_index": 34,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -479,7 +479,7 @@
     "coding_index": 36.5,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -500,7 +500,7 @@
     "coding_index": 47.8,
     "agentic_index": 59.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -521,7 +521,7 @@
     "coding_index": 48.1,
     "agentic_index": 67.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -559,12 +559,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 57.3,
-    "coding_index": 52.5,
-    "agentic_index": 71.3,
+    "intelligence_index": 53.5,
+    "coding_index": 73.6,
+    "agentic_index": 44.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "anthropic/claude-opus-4.7-fast",
@@ -584,7 +584,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -601,12 +601,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 55.7,
+    "coding_index": 74.3,
+    "agentic_index": 47.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "anthropic/claude-opus-4.8-fast",
@@ -626,7 +626,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -643,12 +643,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 38.7,
-    "coding_index": 34.1,
-    "agentic_index": 43,
+    "intelligence_index": 28.9,
+    "coding_index": 37.6,
+    "agentic_index": 16.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "anthropic/claude-sonnet-4.5",
@@ -664,12 +664,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 43,
-    "coding_index": 38.6,
-    "agentic_index": 51.7,
+    "intelligence_index": 36.4,
+    "coding_index": 52.1,
+    "agentic_index": 24.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "anthropic/claude-sonnet-4.6",
@@ -685,12 +685,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 51.7,
-    "coding_index": 50.9,
-    "agentic_index": 63,
+    "intelligence_index": 47.2,
+    "coding_index": 63.0,
+    "agentic_index": 40.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "anthropic/claude-sonnet-5",
@@ -706,12 +706,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 53.4,
+    "coding_index": 71.5,
+    "agentic_index": 46.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "~anthropic/claude-fable-latest",
@@ -731,7 +731,7 @@
     "coding_index": 62,
     "agentic_index": 80.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -752,7 +752,7 @@
     "coding_index": 56.7,
     "agentic_index": 77.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -773,7 +773,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -857,7 +857,7 @@
     "coding_index": 27.2,
     "agentic_index": 42.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -878,7 +878,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -899,7 +899,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1004,7 +1004,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1067,7 +1067,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1088,7 +1088,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1109,7 +1109,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1130,7 +1130,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1151,7 +1151,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1168,12 +1168,12 @@
     "supports_reasoning": false,
     "supports_tools": false,
     "supports_vision": false,
-    "intelligence_index": 13.5,
-    "coding_index": 9.9,
-    "agentic_index": 5.1,
+    "intelligence_index": 22.5,
+    "coding_index": 27.8,
+    "agentic_index": 9.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "cohere/command-r-08-2024",
@@ -1193,7 +1193,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1214,7 +1214,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1235,7 +1235,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1253,11 +1253,11 @@
     "supports_tools": true,
     "supports_vision": false,
     "intelligence_index": null,
-    "coding_index": null,
+    "coding_index": 36.5,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "deepcogito/cogito-v2.1-671b",
@@ -1277,7 +1277,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1298,7 +1298,7 @@
     "coding_index": 16.4,
     "agentic_index": 8.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1315,12 +1315,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 22.3,
-    "coding_index": 22,
-    "agentic_index": 16.3,
+    "intelligence_index": 15.4,
+    "coding_index": 21.2,
+    "agentic_index": 1.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "deepseek/deepseek-chat-v3.1",
@@ -1340,7 +1340,7 @@
     "coding_index": 28.4,
     "agentic_index": 31.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1357,12 +1357,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 18.8,
-    "coding_index": 15.9,
-    "agentic_index": 3.8,
+    "intelligence_index": 18.5,
+    "coding_index": 24.6,
+    "agentic_index": 3.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "deepseek/deepseek-r1-0528",
@@ -1382,7 +1382,7 @@
     "coding_index": 24,
     "agentic_index": 20.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1403,7 +1403,7 @@
     "coding_index": 11.4,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1441,12 +1441,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 28.5,
-    "coding_index": 31.9,
-    "agentic_index": 28.6,
+    "intelligence_index": 30.4,
+    "coding_index": 43.5,
+    "agentic_index": 18.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "deepseek/deepseek-v3.2",
@@ -1462,12 +1462,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 41.7,
-    "coding_index": 36.7,
-    "agentic_index": 52.9,
+    "intelligence_index": 32.0,
+    "coding_index": 44.2,
+    "agentic_index": 18.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "deepseek/deepseek-v3.2-exp",
@@ -1487,7 +1487,7 @@
     "coding_index": 34.6,
     "agentic_index": 39.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1525,12 +1525,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 46.5,
-    "coding_index": 38.7,
-    "agentic_index": 61.3,
+    "intelligence_index": 40.3,
+    "coding_index": 56.2,
+    "agentic_index": 31.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "deepseek/deepseek-v4-pro",
@@ -1546,12 +1546,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 51.5,
-    "coding_index": 47.5,
-    "agentic_index": 67.2,
+    "intelligence_index": 44.3,
+    "coding_index": 59.4,
+    "agentic_index": 36.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "essentialai/rnj-1-instruct",
@@ -1634,7 +1634,7 @@
     "coding_index": 17.8,
     "agentic_index": 15,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1655,7 +1655,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1676,7 +1676,7 @@
     "coding_index": 9.5,
     "agentic_index": 6.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1697,7 +1697,7 @@
     "coding_index": 14.5,
     "agentic_index": 10.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1714,12 +1714,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 34.6,
-    "coding_index": 32,
-    "agentic_index": 32.7,
+    "intelligence_index": 25.8,
+    "coding_index": 33.3,
+    "agentic_index": 7.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemini-2.5-pro-preview",
@@ -1739,7 +1739,7 @@
     "coding_index": 31.9,
     "agentic_index": 32.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1760,7 +1760,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1781,7 +1781,7 @@
     "coding_index": 42.6,
     "agentic_index": 49.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1802,7 +1802,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1823,7 +1823,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1844,7 +1844,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1865,7 +1865,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1886,7 +1886,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1907,7 +1907,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1924,12 +1924,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 33.5,
-    "coding_index": 30.1,
-    "agentic_index": 25.7,
+    "intelligence_index": 25.0,
+    "coding_index": 34.7,
+    "agentic_index": 6.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemini-3.1-pro-preview",
@@ -1945,12 +1945,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 57.2,
-    "coding_index": 55.5,
-    "agentic_index": 59.1,
+    "intelligence_index": 46.5,
+    "coding_index": 68.8,
+    "agentic_index": 21.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemini-3.1-pro-preview-customtools",
@@ -1970,7 +1970,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -1987,12 +1987,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 50.2,
+    "coding_index": 70.1,
+    "agentic_index": 37.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemma-2-27b-it",
@@ -2012,7 +2012,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2029,12 +2029,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 8.8,
-    "coding_index": 6.3,
-    "agentic_index": 3.6,
+    "intelligence_index": 5.5,
+    "coding_index": 5.8,
+    "agentic_index": 0.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemma-3-27b-it",
@@ -2050,12 +2050,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 10.3,
-    "coding_index": 9.6,
-    "agentic_index": 3.5,
+    "intelligence_index": 7.4,
+    "coding_index": 10.1,
+    "agentic_index": 0.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemma-3-4b-it",
@@ -2072,11 +2072,11 @@
     "supports_tools": false,
     "supports_vision": true,
     "intelligence_index": 6.3,
-    "coding_index": 2.9,
+    "coding_index": 2.7,
     "agentic_index": 1.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemma-3n-e4b-it",
@@ -2093,11 +2093,11 @@
     "supports_tools": false,
     "supports_vision": false,
     "intelligence_index": 6.4,
-    "coding_index": 4.2,
+    "coding_index": 3.2,
     "agentic_index": 1.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemma-4-26b-a4b-it",
@@ -2113,12 +2113,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 31.2,
-    "coding_index": 22.4,
-    "agentic_index": 32.1,
+    "intelligence_index": 25.7,
+    "coding_index": 39.3,
+    "agentic_index": 11.0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemma-4-26b-a4b-it:free",
@@ -2134,12 +2134,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 25.7,
+    "coding_index": 39.3,
+    "agentic_index": 11.0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemma-4-31b-it",
@@ -2155,12 +2155,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 39.2,
-    "coding_index": 38.7,
-    "agentic_index": 40.9,
+    "intelligence_index": 29.4,
+    "coding_index": 43.4,
+    "agentic_index": 14.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/gemma-4-31b-it:free",
@@ -2176,12 +2176,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 29.4,
+    "coding_index": 43.4,
+    "agentic_index": 14.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "google/lyria-3-clip-preview",
@@ -2201,7 +2201,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2222,7 +2222,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2243,7 +2243,7 @@
     "coding_index": 5,
     "agentic_index": 4.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2261,11 +2261,11 @@
     "supports_tools": true,
     "supports_vision": false,
     "intelligence_index": 12.4,
-    "coding_index": 7.3,
+    "coding_index": 9.5,
     "agentic_index": 10.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "inception/mercury-2",
@@ -2285,7 +2285,7 @@
     "coding_index": 30.6,
     "agentic_index": 39.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2306,7 +2306,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2327,7 +2327,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2348,7 +2348,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2369,7 +2369,7 @@
     "coding_index": 3.6,
     "agentic_index": 3.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2390,7 +2390,7 @@
     "coding_index": 0.8,
     "agentic_index": 3.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2411,7 +2411,7 @@
     "coding_index": 1.4,
     "agentic_index": 6.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2432,7 +2432,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2474,7 +2474,7 @@
     "coding_index": 4,
     "agentic_index": 0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2495,7 +2495,7 @@
     "coding_index": 10.9,
     "agentic_index": 5.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2512,12 +2512,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 11.8,
-    "coding_index": 4.9,
-    "agentic_index": 5.5,
+    "intelligence_index": 7.6,
+    "coding_index": 5.4,
+    "agentic_index": 0.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "meta-llama/llama-3.2-11b-vision-instruct",
@@ -2537,7 +2537,7 @@
     "coding_index": 4.2,
     "agentic_index": 4.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2558,7 +2558,7 @@
     "coding_index": 0.6,
     "agentic_index": 0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2579,7 +2579,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2600,7 +2600,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2617,12 +2617,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 14.5,
-    "coding_index": 10.7,
-    "agentic_index": 9.1,
+    "intelligence_index": 9.4,
+    "coding_index": 11.9,
+    "agentic_index": 0.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "meta-llama/llama-3.3-70b-instruct:free",
@@ -2638,12 +2638,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 9.4,
+    "coding_index": 11.9,
+    "agentic_index": 0.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "meta-llama/llama-4-maverick",
@@ -2659,12 +2659,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 18.4,
-    "coding_index": 15.6,
-    "agentic_index": 7.2,
+    "intelligence_index": 14.3,
+    "coding_index": 16.3,
+    "agentic_index": 1.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "meta-llama/llama-4-scout",
@@ -2680,12 +2680,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 13.5,
-    "coding_index": 6.7,
-    "agentic_index": 5.2,
+    "intelligence_index": 10.0,
+    "coding_index": 8.2,
+    "agentic_index": 1.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "meta-llama/llama-guard-4-12b",
@@ -2705,7 +2705,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2726,7 +2726,7 @@
     "coding_index": 11.2,
     "agentic_index": 0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2768,7 +2768,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2789,7 +2789,7 @@
     "coding_index": 14.5,
     "agentic_index": 29.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2810,7 +2810,7 @@
     "coding_index": 29.2,
     "agentic_index": 47.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2831,7 +2831,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2852,7 +2852,7 @@
     "coding_index": 32.8,
     "agentic_index": 47.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2873,7 +2873,7 @@
     "coding_index": 37.4,
     "agentic_index": 55.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2911,12 +2911,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 49.6,
-    "coding_index": 41.9,
-    "agentic_index": 61.5,
+    "intelligence_index": 38.1,
+    "coding_index": 52.6,
+    "agentic_index": 25.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "minimax/minimax-m3",
@@ -2932,12 +2932,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 44.4,
+    "coding_index": 58.6,
+    "agentic_index": 35.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "mistralai/codestral-2508",
@@ -2957,7 +2957,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -2974,12 +2974,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 22,
-    "coding_index": 23.7,
-    "agentic_index": 21.9,
+    "intelligence_index": 19.2,
+    "coding_index": 31.3,
+    "agentic_index": 10.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "mistralai/devstral-medium",
@@ -3037,12 +3037,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 16,
-    "coding_index": 10.9,
-    "agentic_index": 17.4,
+    "intelligence_index": 11.1,
+    "coding_index": 14.4,
+    "agentic_index": 2.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "mistralai/ministral-3b-2512",
@@ -3058,12 +3058,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 11.2,
+    "intelligence_index": 6.8,
     "coding_index": 4.8,
-    "agentic_index": 11.4,
+    "agentic_index": 1.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "mistralai/ministral-8b-2512",
@@ -3079,12 +3079,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 14.8,
-    "coding_index": 10,
-    "agentic_index": 16.7,
+    "intelligence_index": 9.0,
+    "coding_index": 9.7,
+    "agentic_index": 1.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "mistralai/mistral-7b-instruct-v0.1",
@@ -3121,12 +3121,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 22.8,
-    "coding_index": 22.7,
-    "agentic_index": 21.7,
+    "intelligence_index": 15.9,
+    "coding_index": 20.1,
+    "agentic_index": 5.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "mistralai/mistral-medium-3",
@@ -3146,7 +3146,7 @@
     "coding_index": 13.6,
     "agentic_index": 13.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3163,12 +3163,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 39.2,
-    "coding_index": 35.4,
-    "agentic_index": 53.2,
+    "intelligence_index": 29.9,
+    "coding_index": 46.9,
+    "agentic_index": 19.0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "mistralai/mistral-medium-3.1",
@@ -3184,12 +3184,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 21.3,
-    "coding_index": 18.3,
-    "agentic_index": 25.3,
+    "intelligence_index": 14.7,
+    "coding_index": 20.5,
+    "agentic_index": 6.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "mistralai/mistral-nemo",
@@ -3209,7 +3209,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3230,7 +3230,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3251,7 +3251,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3268,12 +3268,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 18.6,
-    "coding_index": 16.4,
-    "agentic_index": 18.6,
+    "intelligence_index": 19.6,
+    "coding_index": 26.6,
+    "agentic_index": 4.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "mistralai/mistral-small-3.1-24b-instruct",
@@ -3293,7 +3293,7 @@
     "coding_index": 13.9,
     "agentic_index": 8.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3314,7 +3314,7 @@
     "coding_index": 13.3,
     "agentic_index": 9.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3335,7 +3335,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3377,7 +3377,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3398,7 +3398,7 @@
     "coding_index": 10.5,
     "agentic_index": 6.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3419,7 +3419,7 @@
     "coding_index": 25.9,
     "agentic_index": 37.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3436,12 +3436,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 40.9,
-    "coding_index": 34.8,
-    "agentic_index": 47.9,
+    "intelligence_index": 17.3,
+    "coding_index": 21.0,
+    "agentic_index": 1.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "moonshotai/kimi-k2.5",
@@ -3461,7 +3461,7 @@
     "coding_index": 39.5,
     "agentic_index": 58.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3473,17 +3473,17 @@
     "openrouter_model_url": "https://openrouter.ai/moonshotai/kimi-k2.6-20260420",
     "context_length": 262144,
     "max_completion_tokens": 262144,
-    "input_price_usd_per_1m": 0.66,
+    "input_price_usd_per_1m": 0.65,
     "output_price_usd_per_1m": 3.41,
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 53.9,
-    "coding_index": 47.1,
-    "agentic_index": 66,
+    "intelligence_index": 44.2,
+    "coding_index": 61.8,
+    "agentic_index": 30.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "moonshotai/kimi-k2.7-code",
@@ -3499,12 +3499,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 41.9,
+    "coding_index": 60.8,
+    "agentic_index": 29.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "morph/morph-v3-fast",
@@ -3524,7 +3524,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3545,7 +3545,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3566,7 +3566,7 @@
     "coding_index": 10.5,
     "agentic_index": 8.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3583,12 +3583,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 13.2,
-    "coding_index": 15.8,
-    "agentic_index": 8.5,
+    "intelligence_index": 14.2,
+    "coding_index": 14.4,
+    "agentic_index": 2.0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "nvidia/nemotron-3-nano-30b-a3b:free",
@@ -3604,12 +3604,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 14.2,
+    "coding_index": 14.4,
+    "agentic_index": 2.0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
@@ -3629,7 +3629,7 @@
     "coding_index": 14.8,
     "agentic_index": 23.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3646,12 +3646,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 36,
-    "coding_index": 31.2,
-    "agentic_index": 40.2,
+    "intelligence_index": 25.4,
+    "coding_index": 37.7,
+    "agentic_index": 8.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "nvidia/nemotron-3-super-120b-a12b:free",
@@ -3667,12 +3667,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 25.4,
+    "coding_index": 37.7,
+    "agentic_index": 8.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "nvidia/nemotron-3-ultra-550b-a55b",
@@ -3688,12 +3688,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 37.8,
+    "coding_index": 49.3,
+    "agentic_index": 27.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -3709,12 +3709,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 37.8,
+    "coding_index": 49.3,
+    "agentic_index": 27.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "nvidia/nemotron-3.5-content-safety:free",
@@ -3734,7 +3734,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3755,7 +3755,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3797,7 +3797,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3839,7 +3839,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3860,7 +3860,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3902,7 +3902,7 @@
     "coding_index": 18.1,
     "agentic_index": 11.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3923,7 +3923,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3944,7 +3944,7 @@
     "coding_index": 9.2,
     "agentic_index": 10,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3965,7 +3965,7 @@
     "coding_index": 16,
     "agentic_index": 12.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -3986,7 +3986,7 @@
     "coding_index": 14.4,
     "agentic_index": 11.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4028,7 +4028,7 @@
     "coding_index": 10.7,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4049,7 +4049,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4070,7 +4070,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4091,7 +4091,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4112,7 +4112,7 @@
     "coding_index": 13.1,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4175,7 +4175,7 @@
     "coding_index": 21.5,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4196,7 +4196,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4217,7 +4217,7 @@
     "coding_index": 21.8,
     "agentic_index": 27.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4234,12 +4234,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 22.9,
-    "coding_index": 18.5,
-    "agentic_index": 25.1,
+    "intelligence_index": 14.8,
+    "coding_index": 20.2,
+    "agentic_index": 1.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-4.1-nano",
@@ -4255,12 +4255,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 13,
-    "coding_index": 11.2,
-    "agentic_index": 5.8,
+    "intelligence_index": 9.6,
+    "coding_index": 11.1,
+    "agentic_index": 1.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-4o",
@@ -4280,7 +4280,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4301,7 +4301,7 @@
     "coding_index": 24.2,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4322,7 +4322,7 @@
     "coding_index": 16.6,
     "agentic_index": 9.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4343,7 +4343,7 @@
     "coding_index": 16.7,
     "agentic_index": 8.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4382,11 +4382,11 @@
     "supports_tools": true,
     "supports_vision": true,
     "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "coding_index": 11.4,
+    "agentic_index": 1.0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-4o-mini-2024-07-18",
@@ -4406,7 +4406,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4427,7 +4427,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4448,7 +4448,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4465,12 +4465,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 44.6,
-    "coding_index": 36,
-    "agentic_index": 54.6,
+    "intelligence_index": 34.7,
+    "coding_index": 37.8,
+    "agentic_index": 25.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-5-chat",
@@ -4490,7 +4490,7 @@
     "coding_index": 21.2,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4511,7 +4511,7 @@
     "coding_index": 38.9,
     "agentic_index": 52.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4532,7 +4532,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4553,7 +4553,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4570,12 +4570,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 41.2,
-    "coding_index": 35.3,
-    "agentic_index": 45.5,
+    "intelligence_index": 25.3,
+    "coding_index": 15.6,
+    "agentic_index": 19.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-5-nano",
@@ -4595,7 +4595,7 @@
     "coding_index": 20.3,
     "agentic_index": 23.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4616,7 +4616,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4633,12 +4633,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 47.7,
-    "coding_index": 44.7,
-    "agentic_index": 51.3,
+    "intelligence_index": 36.9,
+    "coding_index": 49.4,
+    "agentic_index": 21.0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-5.1-chat",
@@ -4658,7 +4658,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4679,7 +4679,7 @@
     "coding_index": 36.6,
     "agentic_index": 50.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4700,7 +4700,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4721,7 +4721,7 @@
     "coding_index": 36.4,
     "agentic_index": 38.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4742,7 +4742,7 @@
     "coding_index": 48.7,
     "agentic_index": 60.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4763,7 +4763,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4784,7 +4784,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4805,7 +4805,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4826,7 +4826,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4847,7 +4847,7 @@
     "coding_index": 53.1,
     "agentic_index": 60.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4864,12 +4864,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 56.8,
-    "coding_index": 57.3,
-    "agentic_index": 68,
+    "intelligence_index": 51.4,
+    "coding_index": 71.1,
+    "agentic_index": 41.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-5.4-image-2",
@@ -4889,7 +4889,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4906,12 +4906,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 48.9,
-    "coding_index": 51.5,
-    "agentic_index": 58.9,
+    "intelligence_index": 40.0,
+    "coding_index": 56.1,
+    "agentic_index": 30.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-5.4-nano",
@@ -4927,12 +4927,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 44,
-    "coding_index": 43.9,
-    "agentic_index": 47.6,
+    "intelligence_index": 38.2,
+    "coding_index": 56.1,
+    "agentic_index": 27.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-5.4-pro",
@@ -4952,7 +4952,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -4969,12 +4969,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 60.2,
-    "coding_index": 59.1,
-    "agentic_index": 74.1,
+    "intelligence_index": 54.8,
+    "coding_index": 74.9,
+    "agentic_index": 44.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-5.5-pro",
@@ -4994,7 +4994,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5015,7 +5015,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5036,7 +5036,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5057,7 +5057,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5074,12 +5074,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 33.3,
-    "coding_index": 28.6,
-    "agentic_index": 37.9,
+    "intelligence_index": 23.8,
+    "coding_index": 30.4,
+    "agentic_index": 13.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-oss-120b:free",
@@ -5095,12 +5095,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 23.8,
+    "coding_index": 30.4,
+    "agentic_index": 13.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-oss-20b",
@@ -5116,12 +5116,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 24.5,
-    "coding_index": 18.5,
-    "agentic_index": 27.6,
+    "intelligence_index": 14.9,
+    "coding_index": 20.7,
+    "agentic_index": 3.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-oss-20b:free",
@@ -5137,12 +5137,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 14.9,
+    "coding_index": 20.7,
+    "agentic_index": 3.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/gpt-oss-safeguard-20b",
@@ -5162,7 +5162,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5180,11 +5180,11 @@
     "supports_tools": true,
     "supports_vision": true,
     "intelligence_index": 30.8,
-    "coding_index": 20.5,
+    "coding_index": 39.7,
     "agentic_index": 31.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/o1-pro",
@@ -5204,7 +5204,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5225,7 +5225,7 @@
     "coding_index": 38.4,
     "agentic_index": 36.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5246,7 +5246,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5267,7 +5267,7 @@
     "coding_index": 17.3,
     "agentic_index": 20.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5284,12 +5284,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 15.6,
+    "coding_index": 16.3,
+    "agentic_index": 1.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "openai/o3-pro",
@@ -5309,7 +5309,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5330,7 +5330,7 @@
     "coding_index": 25.6,
     "agentic_index": 36.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5351,7 +5351,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5372,7 +5372,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5393,7 +5393,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5414,7 +5414,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5435,7 +5435,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5456,7 +5456,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5477,7 +5477,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5498,7 +5498,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5519,7 +5519,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5540,7 +5540,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5561,7 +5561,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5582,7 +5582,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5603,7 +5603,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5624,7 +5624,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5645,7 +5645,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5687,7 +5687,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5729,7 +5729,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5750,7 +5750,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5771,7 +5771,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5855,7 +5855,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5872,12 +5872,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 16.2,
-    "coding_index": 13.1,
-    "agentic_index": 14.4,
+    "intelligence_index": 10.4,
+    "coding_index": 13.8,
+    "agentic_index": 1.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3-235b-a22b",
@@ -5897,7 +5897,7 @@
     "coding_index": 17.4,
     "agentic_index": 18.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5918,7 +5918,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5935,12 +5935,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 29.5,
-    "coding_index": 23.2,
-    "agentic_index": 29.7,
+    "intelligence_index": 19.6,
+    "coding_index": 22.1,
+    "agentic_index": 3.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3-30b-a3b",
@@ -5960,7 +5960,7 @@
     "coding_index": 11,
     "agentic_index": 12.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5981,7 +5981,7 @@
     "coding_index": 14.2,
     "agentic_index": 7.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -5998,12 +5998,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 22.4,
-    "coding_index": 14.6,
-    "agentic_index": 17.7,
+    "intelligence_index": 14.4,
+    "coding_index": 12.1,
+    "agentic_index": 1.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3-32b",
@@ -6019,12 +6019,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 16.5,
-    "coding_index": 13.8,
-    "agentic_index": 13.4,
+    "intelligence_index": 11.5,
+    "coding_index": 15.3,
+    "agentic_index": 1.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3-8b",
@@ -6040,12 +6040,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 13.2,
-    "coding_index": 9,
-    "agentic_index": 12.6,
+    "intelligence_index": 8.3,
+    "coding_index": 9.0,
+    "agentic_index": 1.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3-coder",
@@ -6065,7 +6065,7 @@
     "coding_index": 24.6,
     "agentic_index": 18.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6086,7 +6086,7 @@
     "coding_index": 19.4,
     "agentic_index": 21.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6107,7 +6107,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6124,12 +6124,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 28.3,
-    "coding_index": 22.9,
-    "agentic_index": 42.1,
+    "intelligence_index": 21.1,
+    "coding_index": 36.2,
+    "agentic_index": 8.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3-coder-plus",
@@ -6149,7 +6149,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6170,7 +6170,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6191,7 +6191,7 @@
     "coding_index": 26.4,
     "agentic_index": 43,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6212,7 +6212,7 @@
     "coding_index": 30.5,
     "agentic_index": 50.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6233,7 +6233,7 @@
     "coding_index": 15.3,
     "agentic_index": 14.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6254,7 +6254,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6271,12 +6271,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 26.7,
-    "coding_index": 19.5,
-    "agentic_index": 23.6,
+    "intelligence_index": 16.7,
+    "coding_index": 17.4,
+    "agentic_index": 2.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3-vl-235b-a22b-instruct",
@@ -6296,7 +6296,7 @@
     "coding_index": 14,
     "agentic_index": 19.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6317,7 +6317,7 @@
     "coding_index": 20.9,
     "agentic_index": 27,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6338,7 +6338,7 @@
     "coding_index": 14.3,
     "agentic_index": 9.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6359,7 +6359,7 @@
     "coding_index": 13.1,
     "agentic_index": 14.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6380,7 +6380,7 @@
     "coding_index": 14.5,
     "agentic_index": 23.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6401,7 +6401,7 @@
     "coding_index": 7.3,
     "agentic_index": 18.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6422,7 +6422,7 @@
     "coding_index": 9.8,
     "agentic_index": 15.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6439,12 +6439,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 41.6,
-    "coding_index": 34.7,
-    "agentic_index": 53,
+    "intelligence_index": 32.3,
+    "coding_index": 45.7,
+    "agentic_index": 20.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3.5-27b",
@@ -6464,7 +6464,7 @@
     "coding_index": 34.9,
     "agentic_index": 54.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6485,7 +6485,7 @@
     "coding_index": 30.3,
     "agentic_index": 44.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6502,12 +6502,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 45,
-    "coding_index": 41.3,
-    "agentic_index": 55.8,
+    "intelligence_index": 33.7,
+    "coding_index": 48.2,
+    "agentic_index": 19.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3.5-9b",
@@ -6523,12 +6523,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 32.4,
-    "coding_index": 25.3,
-    "agentic_index": 37.4,
+    "intelligence_index": 21.4,
+    "coding_index": 28.7,
+    "agentic_index": 7.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3.5-flash-02-23",
@@ -6548,7 +6548,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6569,7 +6569,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6590,7 +6590,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6607,12 +6607,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 45.8,
-    "coding_index": 36.5,
-    "agentic_index": 62.9,
+    "intelligence_index": 37.1,
+    "coding_index": 53.7,
+    "agentic_index": 27.0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3.6-35b-a3b",
@@ -6628,12 +6628,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 43.5,
-    "coding_index": 35.1,
-    "agentic_index": 58.3,
+    "intelligence_index": 31.6,
+    "coding_index": 41.9,
+    "agentic_index": 21.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3.6-flash",
@@ -6653,7 +6653,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6674,7 +6674,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6691,12 +6691,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 39.6,
+    "coding_index": 54.5,
+    "agentic_index": 27.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3.7-max",
@@ -6712,12 +6712,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 46.0,
+    "coding_index": 66.0,
+    "agentic_index": 30.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "qwen/qwen3.7-plus",
@@ -6733,12 +6733,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 39.0,
+    "coding_index": 55.9,
+    "agentic_index": 20.8,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "relace/relace-apply-3",
@@ -6758,7 +6758,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6779,7 +6779,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6800,7 +6800,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6821,7 +6821,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6842,7 +6842,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6863,7 +6863,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6884,7 +6884,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6926,7 +6926,7 @@
     "coding_index": 31.6,
     "agentic_index": 52,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6943,12 +6943,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 29.7,
+    "coding_index": 37.3,
+    "agentic_index": 21.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "tencent/hunyuan-a13b-instruct",
@@ -6968,7 +6968,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -6979,9 +6979,9 @@
     "name": "Tencent: Hy3",
     "openrouter_model_url": "https://openrouter.ai/tencent/hy3-20260706",
     "context_length": 262144,
-    "max_completion_tokens": 131072,
-    "input_price_usd_per_1m": 0.2,
-    "output_price_usd_per_1m": 0.8,
+    "max_completion_tokens": null,
+    "input_price_usd_per_1m": 0.14,
+    "output_price_usd_per_1m": 0.58,
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
@@ -6989,8 +6989,8 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "tencent/hy3-preview",
@@ -7010,7 +7010,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7031,7 +7031,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7052,7 +7052,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7073,7 +7073,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7094,7 +7094,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7115,7 +7115,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7132,12 +7132,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 25.9,
-    "coding_index": 13.3,
-    "agentic_index": 34.9,
+    "intelligence_index": 14.1,
+    "coding_index": 16.2,
+    "agentic_index": 2.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
@@ -7157,7 +7157,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7178,7 +7178,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7262,7 +7262,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7279,12 +7279,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 53.8,
-    "coding_index": 45.5,
-    "agentic_index": 67.4,
+    "intelligence_index": 42.2,
+    "coding_index": 60.2,
+    "agentic_index": 29.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "z-ai/glm-4-32b",
@@ -7325,7 +7325,7 @@
     "coding_index": 26.3,
     "agentic_index": 16.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7346,7 +7346,7 @@
     "coding_index": 23.8,
     "agentic_index": 21,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7388,7 +7388,7 @@
     "coding_index": 10.9,
     "agentic_index": 10.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7405,12 +7405,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 30.2,
-    "coding_index": 30.2,
-    "agentic_index": 42.9,
+    "intelligence_index": 28.7,
+    "coding_index": 45.8,
+    "agentic_index": 17.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "z-ai/glm-4.6v",
@@ -7430,7 +7430,7 @@
     "coding_index": 19.7,
     "agentic_index": 17.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7447,12 +7447,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 42.1,
-    "coding_index": 36.3,
-    "agentic_index": 55,
+    "intelligence_index": 33.7,
+    "coding_index": 45.3,
+    "agentic_index": 25.4,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "z-ai/glm-4.7-flash",
@@ -7472,7 +7472,7 @@
     "coding_index": 25.9,
     "agentic_index": 46,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7493,7 +7493,7 @@
     "coding_index": 44.2,
     "agentic_index": 63.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7514,7 +7514,7 @@
     "coding_index": 36.8,
     "agentic_index": 66.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7531,12 +7531,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 51.4,
-    "coding_index": 43.4,
-    "agentic_index": 67,
+    "intelligence_index": 40.2,
+    "coding_index": 55.8,
+    "agentic_index": 29.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "z-ai/glm-5.2",
@@ -7546,18 +7546,18 @@
     "name": "Z.ai: GLM 5.2",
     "openrouter_model_url": "https://openrouter.ai/z-ai/glm-5.2-20260616",
     "context_length": 1048576,
-    "max_completion_tokens": 32768,
-    "input_price_usd_per_1m": 0.93,
-    "output_price_usd_per_1m": 3.0,
+    "max_completion_tokens": 1048576,
+    "input_price_usd_per_1m": 0.9,
+    "output_price_usd_per_1m": 3.08,
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 51.1,
+    "coding_index": 68.8,
+    "agentic_index": 43.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "z-ai/glm-5v-turbo",
@@ -7577,7 +7577,7 @@
     "coding_index": 36.2,
     "agentic_index": 61.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7661,7 +7661,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7682,7 +7682,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7703,7 +7703,7 @@
     "coding_index": 33,
     "agentic_index": 48.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7720,12 +7720,12 @@
     "supports_reasoning": false,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": 26.2,
-    "coding_index": 23.2,
-    "agentic_index": 38.1,
+    "intelligence_index": 14.1,
+    "coding_index": 25.3,
+    "agentic_index": 2.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "inclusionai/ring-2.6-1t",
@@ -7741,12 +7741,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": false,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 30.6,
+    "coding_index": 42.8,
+    "agentic_index": 18.9,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "inclusionai/ring-2.6-1t:free",
@@ -7808,7 +7808,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7829,7 +7829,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7850,7 +7850,7 @@
     "coding_index": 13.8,
     "agentic_index": 10.2,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7892,7 +7892,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7913,7 +7913,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7934,7 +7934,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7976,7 +7976,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -7997,7 +7997,7 @@
     "coding_index": 11.9,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8018,7 +8018,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8039,7 +8039,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8060,7 +8060,7 @@
     "coding_index": 8.9,
     "agentic_index": 0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8081,7 +8081,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8102,7 +8102,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8270,7 +8270,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8291,7 +8291,7 @@
     "coding_index": null,
     "agentic_index": null,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8308,12 +8308,33 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": 53.2,
-    "coding_index": 41,
-    "agentic_index": 65.9,
+    "intelligence_index": 37.6,
+    "coding_index": 42.2,
+    "agentic_index": 24.1,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
+  },
+  {
+    "model_id": "x-ai/grok-4.5",
+    "author": "x-ai",
+    "slug": "grok-4.5",
+    "vendor_name": "xAI",
+    "name": "xAI: Grok 4.5",
+    "openrouter_model_url": "https://openrouter.ai/x-ai/grok-4.5-20260708",
+    "context_length": 500000,
+    "max_completion_tokens": null,
+    "input_price_usd_per_1m": 2.0,
+    "output_price_usd_per_1m": 6.0,
+    "supports_reasoning": true,
+    "supports_tools": true,
+    "supports_vision": true,
+    "intelligence_index": 53.8,
+    "coding_index": 72.4,
+    "agentic_index": 45.7,
+    "officially_removed": false,
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "x-ai/grok-build-0.1",
@@ -8329,12 +8350,12 @@
     "supports_reasoning": true,
     "supports_tools": true,
     "supports_vision": true,
-    "intelligence_index": null,
-    "coding_index": null,
-    "agentic_index": null,
+    "intelligence_index": 39.8,
+    "coding_index": 51.5,
+    "agentic_index": 28.0,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "x-ai/grok-code-fast-1",
@@ -8358,6 +8379,27 @@
     "updated_at": "2026-05-09T18:35:22Z"
   },
   {
+    "model_id": "~x-ai/grok-latest",
+    "author": "~x-ai",
+    "slug": "grok-latest",
+    "vendor_name": "xAI",
+    "name": "xAI: Grok Latest",
+    "openrouter_model_url": "https://openrouter.ai/~x-ai/grok-latest",
+    "context_length": 500000,
+    "max_completion_tokens": null,
+    "input_price_usd_per_1m": 2.0,
+    "output_price_usd_per_1m": 6.0,
+    "supports_reasoning": true,
+    "supports_tools": true,
+    "supports_vision": true,
+    "intelligence_index": null,
+    "coding_index": null,
+    "agentic_index": null,
+    "officially_removed": false,
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
+  },
+  {
     "model_id": "~anthropic/claude-haiku-latest",
     "author": "~anthropic",
     "slug": "claude-haiku-latest",
@@ -8375,7 +8417,7 @@
     "coding_index": 29.6,
     "agentic_index": 32.6,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8396,7 +8438,7 @@
     "coding_index": 43,
     "agentic_index": 57.5,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8417,7 +8459,7 @@
     "coding_index": 47.1,
     "agentic_index": 51,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8438,7 +8480,7 @@
     "coding_index": 39.4,
     "agentic_index": 45,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8450,7 +8492,7 @@
     "openrouter_model_url": "https://openrouter.ai/~moonshotai/kimi-latest",
     "context_length": 262144,
     "max_completion_tokens": 262144,
-    "input_price_usd_per_1m": 0.66,
+    "input_price_usd_per_1m": 0.65,
     "output_price_usd_per_1m": 3.41,
     "supports_reasoning": true,
     "supports_tools": true,
@@ -8459,8 +8501,8 @@
     "coding_index": 38.4,
     "agentic_index": 58.7,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
-    "updated_at": "2026-07-08T03:44:46Z"
+    "fetched_at": "2026-07-09T01:21:07Z",
+    "updated_at": "2026-07-09T01:21:07Z"
   },
   {
     "model_id": "~openai/gpt-latest",
@@ -8480,7 +8522,7 @@
     "coding_index": 58.5,
     "agentic_index": 72,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   },
   {
@@ -8501,7 +8543,7 @@
     "coding_index": 37.5,
     "agentic_index": 40.3,
     "officially_removed": false,
-    "fetched_at": "2026-07-08T03:44:46Z",
+    "fetched_at": "2026-07-09T01:21:07Z",
     "updated_at": "2026-07-08T03:44:46Z"
   }
 ]
