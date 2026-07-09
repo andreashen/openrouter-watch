@@ -36,12 +36,12 @@ const columns = [
   "最大输出",
   "输入价 ($/1M)",
   "输出价 ($/1M)",
-  "Reasoning",
-  "Tools",
-  "Vision",
   "Intelligence",
   "Coding",
   "Agentic",
+  "Reasoning",
+  "Tools",
+  "Vision",
   "更新时间",
 ];
 
@@ -763,15 +763,6 @@ const rangeFields = [
         createCellHTML(formatPrice(display.output_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatBoolean(display.supports_reasoning), "whitespace-nowrap px-5 py-3 text-center"),
-      );
-      row.appendChild(
-        createCellHTML(formatBoolean(display.supports_tools), "whitespace-nowrap px-5 py-3 text-center"),
-      );
-      row.appendChild(
-        createCellHTML(formatBoolean(display.supports_vision), "whitespace-nowrap px-5 py-3 text-center"),
-      );
-      row.appendChild(
         createCellHTML(formatIndex(display.intelligence_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
@@ -779,6 +770,15 @@ const rangeFields = [
       );
       row.appendChild(
         createCellHTML(formatIndex(display.agentic_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+      );
+      row.appendChild(
+        createCellHTML(formatBoolean(display.supports_reasoning), "whitespace-nowrap px-5 py-3 text-center"),
+      );
+      row.appendChild(
+        createCellHTML(formatBoolean(display.supports_tools), "whitespace-nowrap px-5 py-3 text-center"),
+      );
+      row.appendChild(
+        createCellHTML(formatBoolean(display.supports_vision), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
         createCellHTML(formatTimestamp(getUpdatedAtValue(display)), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
