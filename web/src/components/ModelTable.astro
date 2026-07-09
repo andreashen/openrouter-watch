@@ -81,74 +81,6 @@ const rangeFields = [
               <span class="capitalize">{cap}</span>
             </label>
           ))}
-          <div class="flex flex-col gap-1.5">
-            <span class="text-xs text-slate-500 dark:text-slate-400">已下架模型</span>
-            <div
-              id="removed-filter"
-              role="radiogroup"
-              aria-label="已下架模型显示方式"
-              class="inline-flex rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 p-0.5"
-            >
-              <button
-                type="button"
-                data-removed-filter="hide"
-                aria-pressed="true"
-                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
-              >
-                不显示
-              </button>
-              <button
-                type="button"
-                data-removed-filter="show"
-                aria-pressed="false"
-                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
-              >
-                显示
-              </button>
-              <button
-                type="button"
-                data-removed-filter="only"
-                aria-pressed="false"
-                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
-              >
-                只显示
-              </button>
-            </div>
-          </div>
-          <div class="flex flex-col gap-1.5">
-            <span class="text-xs text-slate-500 dark:text-slate-400">指针模型（Latest）</span>
-            <div
-              id="pointer-filter"
-              role="radiogroup"
-              aria-label="指针模型显示方式"
-              class="inline-flex rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 p-0.5"
-            >
-              <button
-                type="button"
-                data-pointer-filter="hide"
-                aria-pressed="true"
-                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
-              >
-                不显示
-              </button>
-              <button
-                type="button"
-                data-pointer-filter="show"
-                aria-pressed="false"
-                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
-              >
-                显示
-              </button>
-              <button
-                type="button"
-                data-pointer-filter="only"
-                aria-pressed="false"
-                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
-              >
-                只显示
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -184,7 +116,7 @@ const rangeFields = [
       </div>
     </div>
 
-    <div class="grid gap-4 sm:max-w-2xl sm:grid-cols-2">
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <div>
         <label for="sort-field" class="text-sm font-medium text-slate-700 dark:text-slate-300">排序字段</label>
         <select
@@ -212,6 +144,74 @@ const rangeFields = [
           <option value="desc">降序</option>
           <option value="asc">升序</option>
         </select>
+      </div>
+      <div>
+        <span class="text-sm font-medium text-slate-700 dark:text-slate-300">已下架模型</span>
+        <div
+          id="removed-filter"
+          role="radiogroup"
+          aria-label="已下架模型显示方式"
+          class="mt-2 inline-flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 p-0.5"
+        >
+          <button
+            type="button"
+            data-removed-filter="hide"
+            aria-pressed="true"
+            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+          >
+            不显示
+          </button>
+          <button
+            type="button"
+            data-removed-filter="show"
+            aria-pressed="false"
+            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+          >
+            显示
+          </button>
+          <button
+            type="button"
+            data-removed-filter="only"
+            aria-pressed="false"
+            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+          >
+            只显示
+          </button>
+        </div>
+      </div>
+      <div>
+        <span class="text-sm font-medium text-slate-700 dark:text-slate-300">模型系列latest</span>
+        <div
+          id="pointer-filter"
+          role="radiogroup"
+          aria-label="模型系列 latest 显示方式"
+          class="mt-2 inline-flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 p-0.5"
+        >
+          <button
+            type="button"
+            data-pointer-filter="hide"
+            aria-pressed="true"
+            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+          >
+            不显示
+          </button>
+          <button
+            type="button"
+            data-pointer-filter="show"
+            aria-pressed="false"
+            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+          >
+            显示
+          </button>
+          <button
+            type="button"
+            data-pointer-filter="only"
+            aria-pressed="false"
+            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+          >
+            只显示
+          </button>
+        </div>
       </div>
     </div>
 
