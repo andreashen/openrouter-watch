@@ -29,6 +29,23 @@ type Props = {
 };
 
 const { models } = Astro.props;
+const assetBase = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+/** 静态锁定的主流厂商快筛名单（RFC 已确认，勿按数据动态扩缩） */
+const vendorQuickFilters = [
+  { name: "Anthropic", icon: "anthropic.svg" },
+  { name: "OpenAI", icon: "openai.svg" },
+  { name: "xAI", icon: "xai.svg" },
+  { name: "Z.ai", icon: "zai.svg" },
+  { name: "Google", icon: "google.png" },
+  { name: "Xiaomi", icon: "xiaomi.png" },
+  { name: "MoonshotAI", icon: "moonshotai.png" },
+  { name: "Qwen", icon: "qwen.svg" },
+  { name: "MiniMax", icon: "minimax.png" },
+  { name: "DeepSeek", icon: "deepseek.svg" },
+] as const;
 
 const columns = [
   "Model ID",
@@ -224,10 +241,38 @@ const rangeFields = [
       </div>
     </div>
 
-    <div class="flex items-center justify-between">
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <p id="model-count" class="text-sm font-medium text-sky-600 dark:text-sky-400" aria-live="polite">
         共 {models.length} 个模型
       </p>
+      <div class="flex flex-wrap items-center gap-2" role="group" aria-label="厂商快速筛选">
+        {vendorQuickFilters.map((vendor) => (
+          <button
+            type="button"
+            class="vendor-chip"
+            data-vendor-filter={vendor.name}
+            aria-pressed="false"
+            title={vendor.name}
+          >
+            <img
+              src={`${assetBase}vendors/${vendor.icon}`}
+              alt=""
+              width="28"
+              height="28"
+              class="h-7 w-7 object-contain"
+              loading="lazy"
+            />
+            <span class="sr-only">{vendor.name}</span>
+          </button>
+        ))}
+        <button
+          type="button"
+          id="vendor-filter-clear"
+          class="rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300 hover:border-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors"
+        >
+          清除厂商
+        </button>
+      </div>
     </div>
   </div>
 
@@ -301,6 +346,52 @@ const rangeFields = [
     color: rgb(148 163 184);
   }
 
+  .vendor-chip {
+    display: inline-grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.25rem;
+    border-radius: 0.75rem;
+    border: 2px solid transparent;
+    background: rgb(255 255 255);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.08);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .vendor-chip:hover {
+    border-color: rgb(125 211 252);
+  }
+
+  .vendor-chip[aria-pressed="true"] {
+    border-color: rgb(14 165 233);
+    background: rgb(224 242 254);
+    box-shadow: 0 0 0 1px rgb(14 165 233 / 0.25);
+  }
+
+  :global(.dark) .vendor-chip {
+    background: rgb(15 23 42);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+  }
+
+  :global(.dark) .vendor-chip[aria-pressed="true"] {
+    border-color: rgb(56 189 248);
+    background: rgb(12 74 110 / 0.45);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   #model-id-col-resizer::after {
     content: "";
     position: absolute;
@@ -336,6 +427,8 @@ const rangeFields = [
   const capVision = document.querySelector("#cap-vision");
   const removedFilterButtons = Array.from(document.querySelectorAll("[data-removed-filter]"));
   const pointerFilterButtons = Array.from(document.querySelectorAll("[data-pointer-filter]"));
+  const vendorFilterButtons = Array.from(document.querySelectorAll("[data-vendor-filter]"));
+  const vendorFilterClear = document.querySelector("#vendor-filter-clear");
   const sortField = document.querySelector("#sort-field");
   const sortDirection = document.querySelector("#sort-direction");
   const rangeInputs = Array.from(document.querySelectorAll("input[data-range-key][data-range-bound]"));
@@ -346,6 +439,8 @@ const rangeFields = [
   const MODEL_ID_COL_MAX_WIDTH = 480;
   let removedFilterMode = "hide";
   let pointerFilterMode = "hide";
+  /** @type {Set<string>} 多选厂商并集（OR）；空集表示不过滤厂商 */
+  const selectedVendors = new Set();
   let modelIdColWidth = null;
   const numericRangeKeys = [
     "context_length",
@@ -837,6 +932,9 @@ const rangeFields = [
         if (!matchesPointerFilter(model)) {
           return false;
         }
+        if (selectedVendors.size > 0 && !selectedVendors.has(model.vendor_name)) {
+          return false;
+        }
 
         for (const key of numericRangeKeys) {
           const range = numericRanges[key];
@@ -902,6 +1000,40 @@ const rangeFields = [
       applyFiltersAndSort();
     });
   }
+
+  function syncVendorChipPressedState() {
+    for (const button of vendorFilterButtons) {
+      const vendor = button.dataset.vendorFilter;
+      const isActive = Boolean(vendor && selectedVendors.has(vendor));
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    }
+  }
+
+  for (const button of vendorFilterButtons) {
+    button.addEventListener("click", () => {
+      const vendor = button.dataset.vendorFilter;
+      if (!vendor) {
+        return;
+      }
+      if (selectedVendors.has(vendor)) {
+        selectedVendors.delete(vendor);
+      } else {
+        selectedVendors.add(vendor);
+      }
+      syncVendorChipPressedState();
+      applyFiltersAndSort();
+    });
+  }
+
+  vendorFilterClear?.addEventListener("click", () => {
+    if (selectedVendors.size === 0) {
+      return;
+    }
+    selectedVendors.clear();
+    syncVendorChipPressedState();
+    applyFiltersAndSort();
+  });
+
   sortField?.addEventListener("change", () => {
     updateSortDirectionState({ resetDirection: true });
     applyFiltersAndSort();
