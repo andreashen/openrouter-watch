@@ -46,13 +46,13 @@ const columns = [
 ];
 
 const rangeFields = [
-  { key: "context_length", label: "上下文", unit: "k", scale: 1000 },
-  { key: "max_completion_tokens", label: "最大输出", unit: "k", scale: 1000 },
-  { key: "input_price_usd_per_1m", label: "输入价", unit: null, scale: 1 },
-  { key: "output_price_usd_per_1m", label: "输出价", unit: null, scale: 1 },
-  { key: "intelligence_index", label: "Intelligence", unit: null, scale: 1 },
-  { key: "coding_index", label: "Coding", unit: null, scale: 1 },
-  { key: "agentic_index", label: "Agentic", unit: null, scale: 1 },
+  { key: "context_length", label: "上下文（k）", scale: 1000 },
+  { key: "max_completion_tokens", label: "最大输出（k）", scale: 1000 },
+  { key: "input_price_usd_per_1m", label: "输入价", scale: 1 },
+  { key: "output_price_usd_per_1m", label: "输出价", scale: 1 },
+  { key: "intelligence_index", label: "Intelligence", scale: 1 },
+  { key: "coding_index", label: "Coding", scale: 1 },
+  { key: "agentic_index", label: "Agentic", scale: 1 },
 ];
 ---
 
@@ -102,7 +102,7 @@ const rangeFields = [
               step="any"
               inputmode="decimal"
               placeholder="min"
-              aria-label={field.unit ? `${field.label} 最小值（${field.unit}）` : `${field.label} 最小值`}
+              aria-label={`${field.label} 最小值`}
               data-range-key={field.key}
               data-range-bound="min"
               data-range-scale={field.scale}
@@ -114,15 +114,12 @@ const rangeFields = [
               step="any"
               inputmode="decimal"
               placeholder="max"
-              aria-label={field.unit ? `${field.label} 最大值（${field.unit}）` : `${field.label} 最大值`}
+              aria-label={`${field.label} 最大值`}
               data-range-key={field.key}
               data-range-bound="max"
               data-range-scale={field.scale}
               class="range-capsule-input min-w-0 flex-1 rounded-md border-0 bg-white/80 dark:bg-slate-900/70 px-1.5 py-0.5 text-xs tabular-nums text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-0"
             />
-            {field.unit && (
-              <span class="shrink-0 text-xs font-medium text-slate-500 dark:text-slate-400" aria-hidden="true">{field.unit}</span>
-            )}
           </div>
         ))}
       </div>
