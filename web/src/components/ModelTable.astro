@@ -115,6 +115,40 @@ const rangeFields = [
               </button>
             </div>
           </div>
+          <div class="flex flex-col gap-1.5">
+            <span class="text-xs text-slate-500 dark:text-slate-400">指针模型（Latest）</span>
+            <div
+              id="pointer-filter"
+              role="radiogroup"
+              aria-label="指针模型显示方式"
+              class="inline-flex rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 p-0.5"
+            >
+              <button
+                type="button"
+                data-pointer-filter="hide"
+                aria-pressed="true"
+                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                不显示
+              </button>
+              <button
+                type="button"
+                data-pointer-filter="show"
+                aria-pressed="false"
+                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                显示
+              </button>
+              <button
+                type="button"
+                data-pointer-filter="only"
+                aria-pressed="false"
+                class="removed-filter-btn rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                只显示
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -281,6 +315,7 @@ const rangeFields = [
   const capTools = document.querySelector("#cap-tools");
   const capVision = document.querySelector("#cap-vision");
   const removedFilterButtons = Array.from(document.querySelectorAll("[data-removed-filter]"));
+  const pointerFilterButtons = Array.from(document.querySelectorAll("[data-pointer-filter]"));
   const sortField = document.querySelector("#sort-field");
   const sortDirection = document.querySelector("#sort-direction");
   const rangeInputs = Array.from(document.querySelectorAll("input[data-range-key][data-range-bound]"));
@@ -289,6 +324,7 @@ const rangeFields = [
   const MODEL_ID_COL_MIN_WIDTH = 140;
   const MODEL_ID_COL_MAX_WIDTH = 480;
   let removedFilterMode = "hide";
+  let pointerFilterMode = "hide";
   let modelIdColWidth = null;
   const numericRangeKeys = [
     "context_length",
@@ -409,6 +445,23 @@ const rangeFields = [
     }
   }
 
+  function setPointerFilterMode(mode) {
+    pointerFilterMode = mode;
+    for (const button of pointerFilterButtons) {
+      const isActive = button.dataset.pointerFilter === mode;
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    }
+  }
+
+  function isPointerModel(model) {
+    const modelId = model.model_id;
+    if (modelId.startsWith("~")) {
+      return true;
+    }
+    const slugPart = modelId.split("/", 2)[1] ?? "";
+    return slugPart.includes("-latest");
+  }
+
   function updateSortDirectionState({ resetDirection = false } = {}) {
     const field = sortField?.value ?? "";
     const hasField = Boolean(field);
@@ -429,6 +482,20 @@ const rangeFields = [
       return model.officially_removed;
     }
     return !model.officially_removed;
+  }
+
+  function matchesPointerFilter(model) {
+    const isPointer = isPointerModel(model);
+    if (!isPointer) {
+      return pointerFilterMode !== "only";
+    }
+    if (pointerFilterMode === "hide") {
+      return false;
+    }
+    if (pointerFilterMode === "only") {
+      return true;
+    }
+    return true;
   }
 
   function truncateToOneDecimal(value) {
@@ -706,6 +773,9 @@ const rangeFields = [
         if (!matchesRemovedFilter(model)) {
           return false;
         }
+        if (!matchesPointerFilter(model)) {
+          return false;
+        }
 
         for (const key of numericRangeKeys) {
           const range = numericRanges[key];
@@ -758,6 +828,16 @@ const rangeFields = [
         return;
       }
       setRemovedFilterMode(mode);
+      applyFiltersAndSort();
+    });
+  }
+  for (const button of pointerFilterButtons) {
+    button.addEventListener("click", () => {
+      const mode = button.dataset.pointerFilter;
+      if (!mode || mode === pointerFilterMode) {
+        return;
+      }
+      setPointerFilterMode(mode);
       applyFiltersAndSort();
     });
   }
