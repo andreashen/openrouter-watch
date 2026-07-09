@@ -19,6 +19,9 @@ type Model = {
   officially_removed: boolean;
   fetched_at: string;
   updated_at?: string | null;
+  is_pointer?: boolean;
+  pointer_target_id?: string | null;
+  pointer_kind?: string | null;
 };
 
 type Props = {
@@ -43,13 +46,13 @@ const columns = [
 ];
 
 const rangeFields = [
-  { key: "context_length", label: "上下文" },
-  { key: "max_completion_tokens", label: "最大输出" },
-  { key: "input_price_usd_per_1m", label: "输入价" },
-  { key: "output_price_usd_per_1m", label: "输出价" },
-  { key: "intelligence_index", label: "Intelligence" },
-  { key: "coding_index", label: "Coding" },
-  { key: "agentic_index", label: "Agentic" },
+  { key: "context_length", label: "上下文（k）", scale: 1000 },
+  { key: "max_completion_tokens", label: "最大输出（k）", scale: 1000 },
+  { key: "input_price_usd_per_1m", label: "输入价", scale: 1 },
+  { key: "output_price_usd_per_1m", label: "输出价", scale: 1 },
+  { key: "intelligence_index", label: "Intelligence", scale: 1 },
+  { key: "coding_index", label: "Coding", scale: 1 },
+  { key: "agentic_index", label: "Agentic", scale: 1 },
 ];
 ---
 
@@ -87,30 +90,36 @@ const rangeFields = [
 
     <div>
       <p class="text-sm font-medium text-slate-700 dark:text-slate-300">关键数值范围（AND）</p>
-      <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {/* Desktop: 4 + 3 rows; mobile: wrap naturally */}
+      <div class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
         {rangeFields.map((field) => (
-          <div class="rounded-xl border border-slate-300/50 dark:border-slate-700/50 bg-slate-100/50 dark:bg-slate-800/20 p-3 transition-colors hover:border-slate-400 dark:hover:border-slate-600">
-            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{field.label}</p>
-            <div class="mt-2 grid grid-cols-2 gap-2">
-              <input
-                type="number"
-                step="any"
-                inputmode="decimal"
-                placeholder="min"
-                data-range-key={field.key}
-                data-range-bound="min"
-                class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 px-2.5 py-1.5 text-sm text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
-              />
-              <input
-                type="number"
-                step="any"
-                inputmode="decimal"
-                placeholder="max"
-                data-range-key={field.key}
-                data-range-bound="max"
-                class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 px-2.5 py-1.5 text-sm text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
-              />
-            </div>
+          <div
+            class="inline-flex w-full items-center gap-1.5 rounded-full border border-slate-300/70 dark:border-slate-700/70 bg-slate-100/60 dark:bg-slate-800/30 px-2.5 py-1.5 transition-colors focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/40"
+          >
+            <span class="whitespace-nowrap text-xs font-medium text-slate-600 dark:text-slate-300">{field.label}</span>
+            <input
+              type="number"
+              step="any"
+              inputmode="decimal"
+              placeholder="min"
+              aria-label={`${field.label} 最小值`}
+              data-range-key={field.key}
+              data-range-bound="min"
+              data-range-scale={field.scale}
+              class="range-capsule-input min-w-0 flex-1 rounded-md border-0 bg-white/80 dark:bg-slate-900/70 px-1.5 py-0.5 text-xs tabular-nums text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-0"
+            />
+            <span class="text-xs text-slate-400 dark:text-slate-500" aria-hidden="true">–</span>
+            <input
+              type="number"
+              step="any"
+              inputmode="decimal"
+              placeholder="max"
+              aria-label={`${field.label} 最大值`}
+              data-range-key={field.key}
+              data-range-bound="max"
+              data-range-scale={field.scale}
+              class="range-capsule-input min-w-0 flex-1 rounded-md border-0 bg-white/80 dark:bg-slate-900/70 px-1.5 py-0.5 text-xs tabular-nums text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-0"
+            />
           </div>
         ))}
       </div>
@@ -302,6 +311,17 @@ const rangeFields = [
     cursor: col-resize;
     user-select: none;
   }
+
+  .range-capsule-input::-webkit-outer-spin-button,
+  .range-capsule-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .range-capsule-input {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
 </style>
 
 <script define:vars={{ models }} is:inline>
@@ -320,6 +340,7 @@ const rangeFields = [
   const sortDirection = document.querySelector("#sort-direction");
   const rangeInputs = Array.from(document.querySelectorAll("input[data-range-key][data-range-bound]"));
   const totalRows = models.length;
+  const modelsById = new Map(models.map((model) => [model.model_id, model]));
   const MODEL_ID_COL_WIDTH_KEY = "openrouter-watch.model-id-column-width";
   const MODEL_ID_COL_MIN_WIDTH = 140;
   const MODEL_ID_COL_MAX_WIDTH = 480;
@@ -454,12 +475,37 @@ const rangeFields = [
   }
 
   function isPointerModel(model) {
+    if (typeof model.is_pointer === "boolean") {
+      return model.is_pointer;
+    }
     const modelId = model.model_id;
     if (modelId.startsWith("~")) {
       return true;
     }
     const slugPart = modelId.split("/", 2)[1] ?? "";
     return slugPart.includes("-latest");
+  }
+
+  function resolveDisplayModel(row) {
+    if (!isPointerModel(row) || !row.pointer_target_id) {
+      return row;
+    }
+    const target = modelsById.get(row.pointer_target_id);
+    if (!target) {
+      return row;
+    }
+    return {
+      ...target,
+      model_id: row.model_id,
+      name: row.name ?? target.name,
+      openrouter_model_url: row.openrouter_model_url ?? target.openrouter_model_url,
+      is_pointer: true,
+      pointer_target_id: row.pointer_target_id,
+      pointer_kind: row.pointer_kind ?? null,
+      officially_removed: row.officially_removed,
+      fetched_at: row.fetched_at,
+      updated_at: row.updated_at ?? row.fetched_at,
+    };
   }
 
   function updateSortDirectionState({ resetDirection = false } = {}) {
@@ -570,6 +616,12 @@ const rangeFields = [
     const removedBadge = model.officially_removed
       ? '<span class="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-700 ring-1 ring-inset ring-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:ring-amber-500/30">已下架</span>'
       : "";
+    const pointerBadge = isPointerModel(model)
+      ? `<span
+          class="rounded-full bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-700 ring-1 ring-inset ring-violet-200 dark:bg-violet-500/15 dark:text-violet-300 dark:ring-violet-500/30"
+          title="${model.pointer_target_id ? `→ ${model.pointer_target_id}` : "Latest"}"
+        >Latest</span>`
+      : "";
     const url = getModelUrl(model);
     return `
       <a
@@ -579,6 +631,7 @@ const rangeFields = [
         class="inline-flex items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/50"
       >
         <span class="font-semibold text-sky-600 group-hover:text-sky-700 dark:text-sky-400 dark:group-hover:text-sky-300 transition-colors">${model.model_id}</span>
+        ${pointerBadge}
         ${removedBadge}
       </a>
     `;
@@ -593,7 +646,12 @@ const rangeFields = [
       return null;
     }
     const parsed = Number(value);
-    return Number.isFinite(parsed) ? parsed : null;
+    if (!Number.isFinite(parsed)) {
+      return null;
+    }
+    const scaleRaw = Number(input.dataset.rangeScale ?? "1");
+    const scale = Number.isFinite(scaleRaw) && scaleRaw > 0 ? scaleRaw : 1;
+    return parsed * scale;
   }
 
   function getRangeByKey(key) {
@@ -616,7 +674,9 @@ const rangeFields = [
       model.name,
       model.author,
       model.slug,
+      model.pointer_target_id,
     ]
+      .filter(Boolean)
       .join(" ")
       .toLowerCase();
   }
@@ -683,44 +743,45 @@ const rangeFields = [
     const fragment = document.createDocumentFragment();
 
     for (const model of rows) {
+      const display = resolveDisplayModel(model);
       const row = document.createElement("tr");
-      row.className = `group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50${model.officially_removed ? " opacity-70" : ""}`;
-      
+      row.className = `group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50${display.officially_removed ? " opacity-70" : ""}`;
+
       row.appendChild(
-        createCellHTML(createModelIdHTML(model), "whitespace-nowrap px-5 py-3 font-mono text-xs", { col: "model-id" }),
+        createCellHTML(createModelIdHTML(display), "whitespace-nowrap px-5 py-3 font-mono text-xs", { col: "model-id" }),
       );
       row.appendChild(
-        createCellHTML(formatCompact(model.context_length), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatCompact(display.context_length), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatCompact(model.max_completion_tokens), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatCompact(display.max_completion_tokens), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatPrice(model.input_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatPrice(display.input_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatPrice(model.output_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatPrice(display.output_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatBoolean(model.supports_reasoning), "whitespace-nowrap px-5 py-3 text-center"),
+        createCellHTML(formatBoolean(display.supports_reasoning), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCellHTML(formatBoolean(model.supports_tools), "whitespace-nowrap px-5 py-3 text-center"),
+        createCellHTML(formatBoolean(display.supports_tools), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCellHTML(formatBoolean(model.supports_vision), "whitespace-nowrap px-5 py-3 text-center"),
+        createCellHTML(formatBoolean(display.supports_vision), "whitespace-nowrap px-5 py-3 text-center"),
       );
       row.appendChild(
-        createCellHTML(formatIndex(model.intelligence_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatIndex(display.intelligence_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatIndex(model.coding_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatIndex(display.coding_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatIndex(model.agentic_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatIndex(display.agentic_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatTimestamp(getUpdatedAtValue(model)), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+        createCellHTML(formatTimestamp(getUpdatedAtValue(display)), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       fragment.appendChild(row);
     }
@@ -756,18 +817,18 @@ const rangeFields = [
     };
 
     const filtered = models
-      .map((model, index) => ({ model, index }))
-      .filter(({ model }) => {
+      .map((model, index) => ({ model, display: resolveDisplayModel(model), index }))
+      .filter(({ model, display }) => {
         if (search && !toSearchText(model).includes(search)) {
           return false;
         }
-        if (needsReasoning && !model.supports_reasoning) {
+        if (needsReasoning && !display.supports_reasoning) {
           return false;
         }
-        if (needsTools && !model.supports_tools) {
+        if (needsTools && !display.supports_tools) {
           return false;
         }
-        if (needsVision && !model.supports_vision) {
+        if (needsVision && !display.supports_vision) {
           return false;
         }
         if (!matchesRemovedFilter(model)) {
@@ -779,7 +840,7 @@ const rangeFields = [
 
         for (const key of numericRangeKeys) {
           const range = numericRanges[key];
-          const value = getNumericValue(model, key);
+          const value = getNumericValue(display, key);
           if ((range.min !== null || range.max !== null) && value === null) {
             return false;
           }
@@ -797,10 +858,10 @@ const rangeFields = [
       filtered.sort((left, right) => {
         let result = 0;
         if (field === "updated_at") {
-          result = compareFetchedAt(getUpdatedAtValue(left.model), getUpdatedAtValue(right.model), direction);
+          result = compareFetchedAt(getUpdatedAtValue(left.display), getUpdatedAtValue(right.display), direction);
         } else {
-          const leftValue = getNumericValue(left.model, field);
-          const rightValue = getNumericValue(right.model, field);
+          const leftValue = getNumericValue(left.display, field);
+          const rightValue = getNumericValue(right.display, field);
           result = compareNullableNumber(leftValue, rightValue, direction);
         }
         if (result !== 0) {

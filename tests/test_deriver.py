@@ -10,8 +10,12 @@ import pandas as pd
 import pytest
 
 from openrouter_watch.deriver import (
+    enrich_pointer_metadata,
+    is_pointer_candidate,
     merge_benchmark_fields,
     merge_derived_rows,
+    pointer_kind_for,
+    resolve_pointer_target,
     to_row,
     write_csv,
     write_json,
@@ -60,9 +64,15 @@ def test_to_row_has_all_fields(normalized_models) -> None:
         "openrouter_model_url",
         "fetched_at",
         "updated_at",
+        "is_pointer",
+        "pointer_target_id",
+        "pointer_kind",
     }
     assert set(row.keys()) == expected_keys
     assert row["officially_removed"] is False
+    assert row["is_pointer"] is False
+    assert row["pointer_target_id"] is None
+    assert row["pointer_kind"] is None
 
 
 def test_to_row_includes_vendor_name(normalized_models) -> None:
@@ -350,3 +360,213 @@ def test_write_json_fields_complete(rows) -> None:
     assert row["vendor_name"] == "OpenAI"
     assert row["openrouter_model_url"] == "https://openrouter.ai/openai/gpt-4o"
     assert row["fetched_at"] == "2026-04-17T00:00:00Z"
+
+
+def test_is_pointer_candidate_rules() -> None:
+    assert is_pointer_candidate("~anthropic/claude-opus-latest") is True
+    assert is_pointer_candidate("openai/gpt-chat-latest") is True
+    assert is_pointer_candidate("openai/gpt-4o") is False
+    assert is_pointer_candidate("vendor/latest-preview") is False
+
+
+def test_pointer_kind_for_variants() -> None:
+    assert pointer_kind_for("~anthropic/claude-opus-latest") == "tilde_latest"
+    assert pointer_kind_for("openai/gpt-chat-latest") == "slug_latest"
+    assert pointer_kind_for("openai/gpt-4o") is None
+
+
+def test_resolve_pointer_target_from_url_canonical() -> None:
+    rows = {
+        "openai/gpt-chat-latest": {
+            "model_id": "openai/gpt-chat-latest",
+            "author": "openai",
+            "openrouter_model_url": "https://openrouter.ai/openai/gpt-chat-latest-20260505",
+        },
+        "openai/gpt-5-chat": {
+            "model_id": "openai/gpt-5-chat",
+            "author": "openai",
+            "openrouter_model_url": "https://openrouter.ai/openai/gpt-chat-latest-20260505",
+        },
+        "openai/gpt-4o": {
+            "model_id": "openai/gpt-4o",
+            "author": "openai",
+            "openrouter_model_url": "https://openrouter.ai/openai/gpt-4o",
+        },
+    }
+    target = resolve_pointer_target(rows["openai/gpt-chat-latest"], rows)
+    assert target == "openai/gpt-5-chat"
+
+
+def test_resolve_pointer_target_fuzzy_highest_version() -> None:
+    rows = {
+        "~anthropic/claude-opus-latest": {
+            "model_id": "~anthropic/claude-opus-latest",
+            "author": "~anthropic",
+            "openrouter_model_url": "https://openrouter.ai/~anthropic/claude-opus-latest",
+        },
+        "anthropic/claude-opus-4.5": {
+            "model_id": "anthropic/claude-opus-4.5",
+            "author": "anthropic",
+            "openrouter_model_url": "https://openrouter.ai/anthropic/claude-opus-4.5",
+        },
+        "anthropic/claude-opus-4.8": {
+            "model_id": "anthropic/claude-opus-4.8",
+            "author": "anthropic",
+            "openrouter_model_url": "https://openrouter.ai/anthropic/claude-opus-4.8",
+        },
+        "anthropic/claude-sonnet-4.6": {
+            "model_id": "anthropic/claude-sonnet-4.6",
+            "author": "anthropic",
+            "openrouter_model_url": "https://openrouter.ai/anthropic/claude-sonnet-4.6",
+        },
+    }
+    target = resolve_pointer_target(rows["~anthropic/claude-opus-latest"], rows)
+    assert target == "anthropic/claude-opus-4.8"
+
+
+def test_resolve_pointer_target_unresolved_keeps_null() -> None:
+    rows = {
+        "~vendor/unknown-latest": {
+            "model_id": "~vendor/unknown-latest",
+            "author": "~vendor",
+            "openrouter_model_url": "https://openrouter.ai/~vendor/unknown-latest",
+        },
+        "other/model": {
+            "model_id": "other/model",
+            "author": "other",
+            "openrouter_model_url": "https://openrouter.ai/other/model",
+        },
+    }
+    assert resolve_pointer_target(rows["~vendor/unknown-latest"], rows) is None
+
+
+def test_enrich_pointer_metadata_sets_fields() -> None:
+    rows = [
+        {
+            "model_id": "~anthropic/claude-opus-latest",
+            "author": "~anthropic",
+            "slug": "claude-opus-latest",
+            "vendor_name": "Anthropic",
+            "name": "Anthropic: Claude Opus Latest",
+            "openrouter_model_url": "https://openrouter.ai/~anthropic/claude-opus-latest",
+            "context_length": 1000000,
+            "max_completion_tokens": None,
+            "input_price_usd_per_1m": 1.0,
+            "output_price_usd_per_1m": 2.0,
+            "supports_reasoning": True,
+            "supports_tools": True,
+            "supports_vision": False,
+            "intelligence_index": 61.4,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "updated_at": "2026-01-02T03:04:05Z",
+        },
+        {
+            "model_id": "anthropic/claude-opus-4.8",
+            "author": "anthropic",
+            "slug": "claude-opus-4.8",
+            "vendor_name": "Anthropic",
+            "name": "Anthropic: Claude Opus 4.8",
+            "openrouter_model_url": "https://openrouter.ai/anthropic/claude-opus-4.8",
+            "context_length": 1000000,
+            "max_completion_tokens": None,
+            "input_price_usd_per_1m": 5.0,
+            "output_price_usd_per_1m": 25.0,
+            "supports_reasoning": True,
+            "supports_tools": True,
+            "supports_vision": True,
+            "intelligence_index": 55.7,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "updated_at": "2026-01-02T03:04:05Z",
+        },
+        {
+            "model_id": "openai/gpt-4o",
+            "author": "openai",
+            "slug": "gpt-4o",
+            "vendor_name": "OpenAI",
+            "name": "OpenAI: GPT-4o",
+            "openrouter_model_url": "https://openrouter.ai/openai/gpt-4o",
+            "context_length": 128000,
+            "max_completion_tokens": None,
+            "input_price_usd_per_1m": 2.5,
+            "output_price_usd_per_1m": 10.0,
+            "supports_reasoning": False,
+            "supports_tools": True,
+            "supports_vision": True,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "updated_at": "2026-01-02T03:04:05Z",
+        },
+    ]
+    enriched = enrich_pointer_metadata(rows)
+    by_id = {row["model_id"]: row for row in enriched}
+    pointer = by_id["~anthropic/claude-opus-latest"]
+    assert pointer["is_pointer"] is True
+    assert pointer["pointer_kind"] == "tilde_latest"
+    assert pointer["pointer_target_id"] == "anthropic/claude-opus-4.8"
+    assert by_id["openai/gpt-4o"]["is_pointer"] is False
+    assert by_id["openai/gpt-4o"]["pointer_target_id"] is None
+    assert by_id["openai/gpt-4o"]["pointer_kind"] is None
+
+
+def test_merge_derived_rows_enriches_pointer_metadata() -> None:
+    current = [
+        {
+            "model_id": "~anthropic/claude-opus-latest",
+            "author": "~anthropic",
+            "slug": "claude-opus-latest",
+            "vendor_name": "Anthropic",
+            "name": "Anthropic: Claude Opus Latest",
+            "openrouter_model_url": "https://openrouter.ai/~anthropic/claude-opus-latest",
+            "context_length": 1000000,
+            "max_completion_tokens": None,
+            "input_price_usd_per_1m": 1.0,
+            "output_price_usd_per_1m": 2.0,
+            "supports_reasoning": True,
+            "supports_tools": True,
+            "supports_vision": False,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "updated_at": None,
+        },
+        {
+            "model_id": "anthropic/claude-opus-4.8",
+            "author": "anthropic",
+            "slug": "claude-opus-4.8",
+            "vendor_name": "Anthropic",
+            "name": "Anthropic: Claude Opus 4.8",
+            "openrouter_model_url": "https://openrouter.ai/anthropic/claude-opus-4.8",
+            "context_length": 1000000,
+            "max_completion_tokens": None,
+            "input_price_usd_per_1m": 5.0,
+            "output_price_usd_per_1m": 25.0,
+            "supports_reasoning": True,
+            "supports_tools": True,
+            "supports_vision": True,
+            "intelligence_index": 55.7,
+            "coding_index": None,
+            "agentic_index": None,
+            "officially_removed": False,
+            "fetched_at": "2026-01-02T03:04:05Z",
+            "updated_at": None,
+        },
+    ]
+    merged = merge_derived_rows(current, {}, refreshed_at="2026-01-02T03:04:05Z")
+    by_id = {row["model_id"]: row for row in merged}
+    assert by_id["~anthropic/claude-opus-latest"]["is_pointer"] is True
+    assert (
+        by_id["~anthropic/claude-opus-latest"]["pointer_target_id"]
+        == "anthropic/claude-opus-4.8"
+    )
+    assert by_id["anthropic/claude-opus-4.8"]["is_pointer"] is False
