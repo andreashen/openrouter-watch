@@ -25,6 +25,8 @@ _FIELDS = [
     "intelligence_index",
     "coding_index",
     "agentic_index",
+    "knowledge_cutoff",
+    "released_at",
     "officially_removed",
     "fetched_at",
     "updated_at",

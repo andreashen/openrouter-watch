@@ -16,6 +16,8 @@ type Model = {
   intelligence_index: number | null;
   coding_index: number | null;
   agentic_index: number | null;
+  knowledge_cutoff?: string | null;
+  released_at?: string | null;
   officially_removed: boolean;
   fetched_at: string;
   updated_at?: string | null;
@@ -59,6 +61,8 @@ const columns = [
   "Reasoning",
   "Tools",
   "Vision",
+  "知识截止",
+  "发布日期",
   "更新时间",
 ];
 
@@ -157,6 +161,8 @@ const rangeFields = [
           <option value="intelligence_index">Intelligence</option>
           <option value="coding_index">Coding</option>
           <option value="agentic_index">Agentic</option>
+          <option value="knowledge_cutoff">知识截止</option>
+          <option value="released_at">发布日期</option>
           <option value="updated_at">更新时间</option>
         </select>
       </div>
@@ -390,6 +396,31 @@ const rangeFields = [
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+
+  :global(#model-id-col-header),
+  :global(td[data-col="model-id"]) {
+    overflow: hidden;
+  }
+
+  :global(td[data-col="model-id"] .model-id-link) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  :global(td[data-col="model-id"] .model-id-text) {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  :global(td[data-col="model-id"] .model-id-badge) {
+    flex-shrink: 0;
   }
 
   #model-id-col-resizer::after {
@@ -699,6 +730,44 @@ const rangeFields = [
     return `<span class="text-slate-500 dark:text-slate-400">${year}-${month}-${day} ${hour}:${minute}</span>`;
   }
 
+  function formatKnowledgeCutoff(value) {
+    if (value == null || value === "") {
+      return '<span class="text-slate-400 dark:text-slate-600">—</span>';
+    }
+    const text = String(value);
+    const month = /^\d{4}-\d{2}/.test(text) ? text.slice(0, 7) : text;
+    return `<span class="text-slate-700 dark:text-slate-300">${month}</span>`;
+  }
+
+  function formatReleasedAt(value) {
+    if (value == null || value === "") {
+      return '<span class="text-slate-400 dark:text-slate-600">—</span>';
+    }
+    return `<span class="text-slate-700 dark:text-slate-300">${value}</span>`;
+  }
+
+  function getKnowledgeCutoffMonth(value) {
+    if (value == null || value === "") {
+      return null;
+    }
+    const text = String(value);
+    return /^\d{4}-\d{2}/.test(text) ? text.slice(0, 7) : text;
+  }
+
+  function compareNullableText(left, right, direction) {
+    if (left === null && right === null) {
+      return 0;
+    }
+    if (left === null) {
+      return 1;
+    }
+    if (right === null) {
+      return -1;
+    }
+    const result = left.localeCompare(right);
+    return direction === "asc" ? result : -result;
+  }
+
   function getModelUrl(model) {
     return model.openrouter_model_url || `https://openrouter.ai/${model.model_id}`;
   }
@@ -709,11 +778,11 @@ const rangeFields = [
 
   function createModelIdHTML(model) {
     const removedBadge = model.officially_removed
-      ? '<span class="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-700 ring-1 ring-inset ring-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:ring-amber-500/30">已下架</span>'
+      ? '<span class="model-id-badge rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-700 ring-1 ring-inset ring-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:ring-amber-500/30">已下架</span>'
       : "";
     const pointerBadge = isPointerModel(model)
       ? `<span
-          class="rounded-full bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-700 ring-1 ring-inset ring-violet-200 dark:bg-violet-500/15 dark:text-violet-300 dark:ring-violet-500/30"
+          class="model-id-badge rounded-full bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-700 ring-1 ring-inset ring-violet-200 dark:bg-violet-500/15 dark:text-violet-300 dark:ring-violet-500/30"
           title="${model.pointer_target_id ? `→ ${model.pointer_target_id}` : "Latest"}"
         >Latest</span>`
       : "";
@@ -723,9 +792,10 @@ const rangeFields = [
         href="${url}"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/50"
+        title="${model.model_id}"
+        class="model-id-link rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/50"
       >
-        <span class="font-semibold text-sky-600 group-hover:text-sky-700 dark:text-sky-400 dark:group-hover:text-sky-300 transition-colors">${model.model_id}</span>
+        <span class="model-id-text font-semibold text-sky-600 group-hover:text-sky-700 dark:text-sky-400 dark:group-hover:text-sky-300 transition-colors">${model.model_id}</span>
         ${pointerBadge}
         ${removedBadge}
       </a>
@@ -843,7 +913,7 @@ const rangeFields = [
       row.className = `group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50${display.officially_removed ? " opacity-70" : ""}`;
 
       row.appendChild(
-        createCellHTML(createModelIdHTML(display), "whitespace-nowrap px-5 py-3 font-mono text-xs", { col: "model-id" }),
+        createCellHTML(createModelIdHTML(display), "px-5 py-3 font-mono text-xs", { col: "model-id" }),
       );
       row.appendChild(
         createCellHTML(formatCompact(display.context_length), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
@@ -874,6 +944,12 @@ const rangeFields = [
       );
       row.appendChild(
         createCellHTML(formatBoolean(display.supports_vision), "whitespace-nowrap px-5 py-3 text-center"),
+      );
+      row.appendChild(
+        createCellHTML(formatKnowledgeCutoff(display.knowledge_cutoff), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
+      );
+      row.appendChild(
+        createCellHTML(formatReleasedAt(display.released_at), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
         createCellHTML(formatTimestamp(getUpdatedAtValue(display)), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
@@ -957,6 +1033,18 @@ const rangeFields = [
         let result = 0;
         if (field === "updated_at") {
           result = compareFetchedAt(getUpdatedAtValue(left.display), getUpdatedAtValue(right.display), direction);
+        } else if (field === "knowledge_cutoff") {
+          result = compareNullableText(
+            getKnowledgeCutoffMonth(left.display.knowledge_cutoff),
+            getKnowledgeCutoffMonth(right.display.knowledge_cutoff),
+            direction,
+          );
+        } else if (field === "released_at") {
+          result = compareNullableText(
+            left.display.released_at ?? null,
+            right.display.released_at ?? null,
+            direction,
+          );
         } else {
           const leftValue = getNumericValue(left.display, field);
           const rightValue = getNumericValue(right.display, field);

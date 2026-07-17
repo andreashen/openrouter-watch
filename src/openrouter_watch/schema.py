@@ -25,6 +25,8 @@ class RawModel(BaseModel):
     id: str
     canonical_slug: str | None = None
     name: str | None = None
+    created: int | None = None
+    knowledge_cutoff: str | None = None
     context_length: int | None = None
     pricing: RawModelPricing | None = None
     top_provider: RawModelTopProvider | None = None
@@ -52,4 +54,10 @@ class NormalizedModel(BaseModel):
     intelligence_index: float | None = None
     coding_index: float | None = None
     agentic_index: float | None = None
+    knowledge_cutoff: str | None = Field(
+        default=None, description="YYYY-MM-DD from OpenRouter, or null if unknown"
+    )
+    released_at: str | None = Field(
+        default=None, description="UTC YYYY-MM-DD derived from OpenRouter created"
+    )
     fetched_at: str = Field(description="ISO8601 UTC timestamp")

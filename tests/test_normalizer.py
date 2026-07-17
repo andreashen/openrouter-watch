@@ -146,3 +146,45 @@ def test_embedded_benchmark_indices(models_data: list[dict]) -> None:
     assert result.intelligence_index == pytest.approx(72.5)
     assert result.coding_index == pytest.approx(68.3)
     assert result.agentic_index == pytest.approx(55.1)
+
+
+def test_knowledge_cutoff_preserved(models_data: list[dict]) -> None:
+    raw = get_model(models_data, "openai/gpt-4o")
+    result = normalize_model(raw)
+    assert result.knowledge_cutoff == "2023-10-31"
+
+
+def test_knowledge_cutoff_null_when_api_null(models_data: list[dict]) -> None:
+    raw = get_model(models_data, "anthropic/claude-3-5-sonnet")
+    result = normalize_model(raw)
+    assert result.knowledge_cutoff is None
+
+
+def test_knowledge_cutoff_null_when_empty_string(models_data: list[dict]) -> None:
+    raw = get_model(models_data, "meta-llama/llama-3-70b-instruct")
+    result = normalize_model(raw)
+    assert result.knowledge_cutoff is None
+
+
+def test_knowledge_cutoff_null_when_missing_key(models_data: list[dict]) -> None:
+    raw = get_model(models_data, "noslash-model")
+    result = normalize_model(raw)
+    assert result.knowledge_cutoff is None
+
+
+def test_knowledge_cutoff_null_when_invalid() -> None:
+    raw = {"id": "x/y", "name": "X: Y", "knowledge_cutoff": "October 2023", "created": 1715558400}
+    result = normalize_model(raw)
+    assert result.knowledge_cutoff is None
+
+
+def test_released_at_from_created_utc_date(models_data: list[dict]) -> None:
+    raw = get_model(models_data, "openai/gpt-4o")
+    result = normalize_model(raw)
+    assert result.released_at == "2024-05-13"
+
+
+def test_released_at_null_when_created_missing() -> None:
+    raw = {"id": "x/y", "name": "X: Y"}
+    result = normalize_model(raw)
+    assert result.released_at is None
