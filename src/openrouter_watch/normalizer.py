@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+import re
 from datetime import datetime, timezone
 from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 
 from .fetcher import extract_benchmark_from_raw
 from .schema import NormalizedModel, RawModel
+
+_KNOWLEDGE_CUTOFF_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def _parse_price(value: str | None) -> float | None:
@@ -32,6 +35,24 @@ def _openrouter_model_url(model_id: str, canonical_slug: str | None) -> str:
 
 def _now_utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _parse_knowledge_cutoff(value: object) -> str | None:
+    if value is None or value == "":
+        return None
+    if isinstance(value, str) and _KNOWLEDGE_CUTOFF_RE.fullmatch(value):
+        return value
+    return None
+
+
+def _parse_released_at(created: object) -> str | None:
+    if created is None or created == "":
+        return None
+    try:
+        timestamp = int(created)
+    except (TypeError, ValueError):
+        return None
+    return datetime.fromtimestamp(timestamp, tz=timezone.utc).strftime("%Y-%m-%d")
 
 
 def normalize_model(raw: dict, fetched_at: str | None = None) -> NormalizedModel:
@@ -73,5 +94,7 @@ def normalize_model(raw: dict, fetched_at: str | None = None) -> NormalizedModel
         intelligence_index=benchmark.get("intelligence_index") if benchmark else None,
         coding_index=benchmark.get("coding_index") if benchmark else None,
         agentic_index=benchmark.get("agentic_index") if benchmark else None,
+        knowledge_cutoff=_parse_knowledge_cutoff(m.knowledge_cutoff),
+        released_at=_parse_released_at(m.created),
         fetched_at=fetched_at or _now_utc(),
     )

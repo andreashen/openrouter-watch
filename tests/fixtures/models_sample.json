@@ -3,6 +3,8 @@
     {
       "id": "openai/gpt-4o",
       "name": "OpenAI: GPT-4o",
+      "created": 1715558400,
+      "knowledge_cutoff": "2023-10-31",
       "context_length": 128000,
       "pricing": {
         "prompt": "0.0000025",
@@ -43,6 +45,8 @@
     {
       "id": "anthropic/claude-3-5-sonnet",
       "name": "Anthropic: Claude 3.5 Sonnet",
+      "created": 1720000000,
+      "knowledge_cutoff": null,
       "context_length": 200000,
       "pricing": {
         "prompt": "0.000003",
@@ -72,6 +76,8 @@
     {
       "id": "google/gemini-2-0-flash",
       "name": "Google: Gemini 2.0 Flash",
+      "created": 1730000000,
+      "knowledge_cutoff": "2025-01-01",
       "context_length": 1048576,
       "pricing": {
         "prompt": "0.0000001",
@@ -98,6 +104,8 @@
     {
       "id": "meta-llama/llama-3-70b-instruct",
       "name": "Meta: Llama 3 70B Instruct",
+      "created": 1712000000,
+      "knowledge_cutoff": "",
       "context_length": 8192,
       "pricing": {
         "prompt": "0.00000059",
@@ -126,6 +134,7 @@
     {
       "id": "noslash-model",
       "name": "Model Without Slash",
+      "created": 1700000000,
       "context_length": 4096,
       "pricing": {
         "prompt": "0",

@@ -60,6 +60,8 @@ def test_to_row_has_all_fields(normalized_models) -> None:
         "intelligence_index",
         "coding_index",
         "agentic_index",
+        "knowledge_cutoff",
+        "released_at",
         "officially_removed",
         "openrouter_model_url",
         "fetched_at",
@@ -73,6 +75,8 @@ def test_to_row_has_all_fields(normalized_models) -> None:
     assert row["is_pointer"] is False
     assert row["pointer_target_id"] is None
     assert row["pointer_kind"] is None
+    assert row["knowledge_cutoff"] == "2023-10-31"
+    assert row["released_at"] == "2024-05-13"
 
 
 def test_to_row_includes_vendor_name(normalized_models) -> None:
