@@ -9,6 +9,7 @@ type Model = {
   context_length: number | null;
   max_completion_tokens: number | null;
   input_price_usd_per_1m: number | null;
+  weighted_avg_input_price_usd_per_1m?: number | null;
   output_price_usd_per_1m: number | null;
   supports_reasoning: boolean;
   supports_tools: boolean;
@@ -54,6 +55,7 @@ const columns = [
   "上下文",
   "最大输出",
   "输入价 ($/1M)",
+  "加权输入价 ($/1M)",
   "输出价 ($/1M)",
   "Intelligence",
   "Coding",
@@ -70,6 +72,7 @@ const rangeFields = [
   { key: "context_length", label: "上下文（k）", scale: 1000 },
   { key: "max_completion_tokens", label: "最大输出（k）", scale: 1000 },
   { key: "input_price_usd_per_1m", label: "输入价", scale: 1 },
+  { key: "weighted_avg_input_price_usd_per_1m", label: "加权输入价", scale: 1 },
   { key: "output_price_usd_per_1m", label: "输出价", scale: 1 },
   { key: "intelligence_index", label: "Intelligence", scale: 1 },
   { key: "coding_index", label: "Coding", scale: 1 },
@@ -157,6 +160,7 @@ const rangeFields = [
           <option value="context_length">上下文</option>
           <option value="max_completion_tokens">最大输出</option>
           <option value="input_price_usd_per_1m">输入价</option>
+          <option value="weighted_avg_input_price_usd_per_1m">加权输入价</option>
           <option value="output_price_usd_per_1m">输出价</option>
           <option value="intelligence_index">Intelligence</option>
           <option value="coding_index">Coding</option>
@@ -487,6 +491,7 @@ const rangeFields = [
     "context_length",
     "max_completion_tokens",
     "input_price_usd_per_1m",
+    "weighted_avg_input_price_usd_per_1m",
     "output_price_usd_per_1m",
     "intelligence_index",
     "coding_index",
@@ -958,6 +963,12 @@ const rangeFields = [
         createCellHTML(formatPrice(display.input_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
+        createCellHTML(
+          formatPrice(display.weighted_avg_input_price_usd_per_1m ?? null),
+          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
+        ),
+      );
+      row.appendChild(
         createCellHTML(formatPrice(display.output_price_usd_per_1m), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
@@ -1014,6 +1025,7 @@ const rangeFields = [
       context_length: getRangeByKey("context_length"),
       max_completion_tokens: getRangeByKey("max_completion_tokens"),
       input_price_usd_per_1m: getRangeByKey("input_price_usd_per_1m"),
+      weighted_avg_input_price_usd_per_1m: getRangeByKey("weighted_avg_input_price_usd_per_1m"),
       output_price_usd_per_1m: getRangeByKey("output_price_usd_per_1m"),
       intelligence_index: getRangeByKey("intelligence_index"),
       coding_index: getRangeByKey("coding_index"),

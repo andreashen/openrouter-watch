@@ -64,6 +64,8 @@ npm run build
 
 See [NOTICE](NOTICE) for data sources and third-party terms.
 
+Weighted Avg Input Price is stored in the sidecar `data/derived/weighted_prices_latest.json` and refreshed by a separate weekly workflow (not the daily `data-refresh` pipeline).
+
 ## License
 
 The source code of this project is licensed under the Apache License 2.0.
@@ -91,6 +93,8 @@ python scripts/derive.py
 ### 数据来源
 
 数据来源与第三方条款说明详见 [NOTICE](NOTICE)。
+
+加权输入价（Weighted Avg Input Price）以侧车文件 `data/derived/weighted_prices_latest.json` 维护，由独立周更 workflow 刷新，不并入每日 `data-refresh` 全量模型管线。
 
 ### 许可证
 
