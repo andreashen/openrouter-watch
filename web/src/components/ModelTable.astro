@@ -403,6 +403,11 @@ const rangeFields = [
     overflow: hidden;
   }
 
+  /* Fixed layout: column width comes from the header only (O(1) write while dragging). */
+  :global(#model-table.model-id-col-sized) {
+    table-layout: fixed;
+  }
+
   :global(td[data-col="model-id"] .model-id-link) {
     display: flex;
     align-items: center;
@@ -432,6 +437,11 @@ const rangeFields = [
   body.model-id-col-resizing {
     cursor: col-resize;
     user-select: none;
+  }
+
+  /* During drag: skip ellipsis glyph measurement across hundreds of rows. */
+  :global(body.model-id-col-resizing td[data-col="model-id"] .model-id-text) {
+    text-overflow: clip;
   }
 
   .range-capsule-input::-webkit-outer-spin-button,
@@ -514,20 +524,24 @@ const rangeFields = [
 
   function applyModelIdColWidth(width) {
     modelIdColWidth = width;
-    const widthStyle = width === null ? "" : `${width}px`;
-    if (modelIdColHeader) {
-      modelIdColHeader.style.width = widthStyle;
-      modelIdColHeader.style.maxWidth = widthStyle;
-      modelIdColHeader.style.minWidth = widthStyle;
+    if (!modelTable || !modelIdColHeader) {
+      return;
     }
-    if (modelTable) {
-      modelTable.style.tableLayout = width === null ? "" : "fixed";
+    if (width === null) {
+      modelTable.classList.remove("model-id-col-sized");
+      modelIdColHeader.style.width = "";
+      modelIdColHeader.style.maxWidth = "";
+      modelIdColHeader.style.minWidth = "";
+      return;
     }
-    for (const cell of document.querySelectorAll('td[data-col="model-id"]')) {
-      cell.style.width = widthStyle;
-      cell.style.maxWidth = widthStyle;
-      cell.style.minWidth = widthStyle;
-    }
+    // table-layout:fixed takes column width from the first row only.
+    // Writing header styles is O(1); do NOT touch every td on each drag frame
+    // (that was the primary jank source with ~300+ Model ID cells + ellipsis).
+    modelTable.classList.add("model-id-col-sized");
+    const widthStyle = `${width}px`;
+    modelIdColHeader.style.width = widthStyle;
+    modelIdColHeader.style.maxWidth = widthStyle;
+    modelIdColHeader.style.minWidth = widthStyle;
   }
 
   function initModelIdColResize() {
@@ -540,8 +554,23 @@ const rangeFields = [
 
     let startX = 0;
     let startWidth = 0;
+    let pendingWidth = null;
+    let rafId = null;
+
+    const flushPendingWidth = () => {
+      rafId = null;
+      if (pendingWidth === null) {
+        return;
+      }
+      applyModelIdColWidth(pendingWidth);
+      pendingWidth = null;
+    };
 
     const stopResize = () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+        flushPendingWidth();
+      }
       document.body.classList.remove("model-id-col-resizing");
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", stopResize);
@@ -552,14 +581,18 @@ const rangeFields = [
 
     const onMouseMove = (event) => {
       const delta = event.clientX - startX;
-      const nextWidth = clampModelIdColWidth(startWidth + delta);
-      applyModelIdColWidth(nextWidth);
+      pendingWidth = clampModelIdColWidth(startWidth + delta);
+      if (rafId !== null) {
+        return;
+      }
+      rafId = requestAnimationFrame(flushPendingWidth);
     };
 
     const startResize = (clientX) => {
       const measuredWidth = modelIdColHeader.getBoundingClientRect().width;
       startX = clientX;
       startWidth = modelIdColWidth ?? measuredWidth;
+      pendingWidth = null;
       document.body.classList.add("model-id-col-resizing");
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", stopResize);
