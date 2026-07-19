@@ -2,6 +2,7 @@
 import { existsSync, readFileSync } from "node:fs";
 
 import modelsData from "../../../data/derived/models_latest.json";
+import weightedPricesData from "../../../data/derived/weighted_prices_latest.json";
 import ModelTable from "../components/ModelTable.astro";
 import Base from "../layouts/Base.astro";
 
@@ -16,6 +17,7 @@ type ModelRecord = {
   context_length: number | null;
   max_completion_tokens: number | null;
   input_price_usd_per_1m: number | null;
+  weighted_avg_input_price_usd_per_1m?: number | null;
   output_price_usd_per_1m: number | null;
   supports_reasoning: boolean;
   supports_tools: boolean;
@@ -25,6 +27,11 @@ type ModelRecord = {
   agentic_index: number | null;
   updated_at?: string | null;
   vendor_name: string;
+};
+
+type WeightedPriceRecord = {
+  model_id: string;
+  weighted_avg_input_price_usd_per_1m?: number | null;
 };
 
 type ModelsMeta = {
@@ -46,7 +53,35 @@ for (const [index, model] of modelsData.entries()) {
   }
 }
 
-const models = modelsData as ModelRecord[];
+function readWeightedPrices(): Map<string, number | null> {
+  const byId = new Map<string, number | null>();
+  if (!Array.isArray(weightedPricesData)) {
+    return byId;
+  }
+  for (const row of weightedPricesData) {
+    if (!row || typeof row !== "object") {
+      continue;
+    }
+    const record = row as WeightedPriceRecord;
+    if (!record.model_id) {
+      continue;
+    }
+    const value = record.weighted_avg_input_price_usd_per_1m;
+    byId.set(
+      record.model_id,
+      typeof value === "number" && Number.isFinite(value) ? value : null,
+    );
+  }
+  return byId;
+}
+
+const weightedById = readWeightedPrices();
+const models = (modelsData as ModelRecord[]).map((model) => ({
+  ...model,
+  weighted_avg_input_price_usd_per_1m: weightedById.has(model.model_id)
+    ? weightedById.get(model.model_id) ?? null
+    : null,
+}));
 const fallbackLatestFetchedAt = models
   .map((model) => Date.parse(model.fetched_at))
   .filter((timestamp) => Number.isFinite(timestamp))
@@ -167,7 +202,7 @@ const repositoryUrl = "https://github.com/andreashen/openrouter-watch";
     <ModelTable models={models} />
 
     <footer class="pb-8 text-center text-sm text-slate-500">
-      数据来源：OpenRouter API。
+      数据来源：OpenRouter API；加权输入价来自 OpenRouter Effective Pricing（非官方 Models API 字段，周更侧车）。
     </footer>
   </main>
 

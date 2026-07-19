@@ -4,4 +4,6 @@ This project is an independent, third-party project and is not affiliated with, 
 
 Any model metadata, pricing, rankings, and related information shown by this project is sourced from OpenRouter and/or the original model providers. Use of that information is subject to OpenRouter's terms and the applicable terms of the original model providers.
 
+Weighted Avg Input Price (加权输入价) is sourced from OpenRouter's public model-page Effective Pricing data via the undocumented frontend endpoint `GET /api/frontend/v1/stats/effective-pricing` (resolved with catalog permaslugs from `GET /api/frontend/v1/catalog/models`). This is not part of the official Models API contract and may change without notice. Values are stored in a sidecar file (`data/derived/weighted_prices_latest.json`) and refreshed on a weekly cadence separate from the daily model metadata pipeline.
+
 OpenRouter and any other third-party names and marks referenced are the property of their respective owners.
