@@ -1,15 +1,12 @@
-# 文档目录说明
+# 文档索引
 
-本目录存放各 **milestone（里程碑）** 的规格与任务清单。
+本目录存放 **现行** 架构、数据契约与运维手册。历史 milestone 规格已移除，不再作为真相源。
 
-## `m1`、`m2`、`m3` 等文件夹的含义
+| 文档 | 用途 |
+| --- | --- |
+| [architecture.md](./architecture.md) | 系统结构、数据流、Actions、前端行为 |
+| [data-schema.md](./data-schema.md) | `models_latest` / 加权价 sidecar 字段权威表 |
+| [ops/main_test_release_flow.md](./ops/main_test_release_flow.md) | `main` / `test` 职责、发布流、`test` 重锚 |
+| [ops/github_setup.md](./ops/github_setup.md) | Pages、Secrets、分支保护与触发验证 |
 
-- **`docs/m1/`**：第 **1** 个里程碑（Milestone 1，简称 **M1**）
-- **`docs/m2/`**：第 **2** 个里程碑（Milestone 2，简称 **M2**）
-- **`docs/m3/`**：第 **3** 个里程碑（Milestone 3，简称 **M3**）
-- **`docs/m3b/`**：M3 的补充需求文档（Milestone 3B，简称 **M3B**），用于承接 M3 里程碑的数据策略补强需求
-- **`docs/m3c/`**：M3 的发布与自动化补充文档（Milestone 3C，简称 **M3C**），用于承接 SIT 页面发布与数据更新自动化需求
-- **`docs/m4/`**：第 **4** 个里程碑（Milestone 4，简称 **M4**），例如想法池、后续规划草稿
-- **`docs/main_test_release_flow.md`**：`main` / `test` 分支职责、日常发布流与重锚操作手册（**当前分支策略以本文为准**）
-
-数字表示项目推进顺序；更高编号的里程碑通常依赖或建立在较低编号里程碑交付物之上。各里程碑的具体目标以对应目录下的 `*_spec.md`、`*_tasks.md` 为准。
+建议阅读顺序：`architecture` → `data-schema` → 按需打开 `ops/*`。

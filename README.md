@@ -25,17 +25,25 @@ Copy `.env.example` to `.env` and fill in your key if needed.
 ## Directory Structure
 
 ```
-scripts/                 # Entry-point scripts (fetch, normalize, derive)
-src/openrouter_watch/    # Core library (fetcher, normalizer, deriver, schema)
+scripts/                 # Entry-point scripts (fetch, normalize, derive, weighted prices)
+src/openrouter_watch/    # Core library (fetcher, normalizer, deriver, schema, weighted prices)
 tests/                   # pytest tests
 data/raw/                # Raw API snapshots (gitignored)
 data/normalized/         # Pydantic-validated records (gitignored)
-data/derived/            # Stable committed dataset (models_latest.json)
+data/derived/            # Stable committed dataset (models_latest.json + weighted sidecar)
 web/                     # Astro frontend for the model table
-docs/                    # Milestone specs, task lists, and release runbooks
+docs/                    # Living architecture, schema, and ops runbooks
 ```
 
-**About `docs/m1/`, `m2/`, …:** The **`m` prefix means milestone** (e.g. `m1` = Milestone 1). Higher numbers usually build on earlier milestones. Full wording: [docs/readme.md](docs/readme.md).
+## Documentation
+
+| Doc | Description |
+| --- | --- |
+| [docs/architecture.md](docs/architecture.md) | System architecture, data flow, frontend behavior |
+| [docs/data-schema.md](docs/data-schema.md) | Field reference for derived datasets |
+| [docs/ops/main_test_release_flow.md](docs/ops/main_test_release_flow.md) | `main` / `test` branch roles, release flow, re-anchor |
+| [docs/ops/github_setup.md](docs/ops/github_setup.md) | GitHub Pages, Secrets, and workflow verification |
+| [docs/readme.md](docs/readme.md) | Docs index |
 
 ## Development
 
@@ -86,9 +94,17 @@ python scripts/normalize.py
 python scripts/derive.py
 ```
 
-`derive.py` 会为每个模型请求 benchmark 接口并节流，完整运行可能需数分钟。M1 数据验收与闭环说明见 [docs/m1/m1_acceptance.md](docs/m1/m1_acceptance.md)。
+`derive.py` 会为每个模型请求 benchmark 接口并节流，完整运行可能需数分钟。系统结构与前端行为见 [docs/architecture.md](docs/architecture.md)；字段定义见 [docs/data-schema.md](docs/data-schema.md)。
 
-**关于 `docs/m1/`、`m2/` 等目录：** 前缀 **`m` 表示 milestone（里程碑）**（如 `m1` 即第 1 个里程碑）；数字越大通常越靠后、并可能依赖前置里程碑的交付物。完整说明见 [docs/readme.md](docs/readme.md)。
+### 文档
+
+| 文档 | 说明 |
+| --- | --- |
+| [docs/architecture.md](docs/architecture.md) | 架构、数据流、前端行为 |
+| [docs/data-schema.md](docs/data-schema.md) | 派生产物字段权威表 |
+| [docs/ops/main_test_release_flow.md](docs/ops/main_test_release_flow.md) | `main` / `test` 分支职责、发布流与重锚 |
+| [docs/ops/github_setup.md](docs/ops/github_setup.md) | GitHub Pages、Secrets 与触发验证 |
+| [docs/readme.md](docs/readme.md) | 文档索引 |
 
 ### 数据来源
 

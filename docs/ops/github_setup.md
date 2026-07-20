@@ -9,7 +9,7 @@
    - `main`：生产页面来源，也是唯一允许自动/手动数据刷新的分支
    - `test`：SIT 页面来源，只承载待验证的功能代码
 
-发布与重锚操作细则见 [main_test_release_flow.md](../main_test_release_flow.md)。
+发布与重锚操作细则见 [main_test_release_flow.md](./main_test_release_flow.md)。
 
 ---
 
