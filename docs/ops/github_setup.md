@@ -1,4 +1,4 @@
-# M3C GitHub 平台配置清单（SIT + 数据自动刷新）
+# GitHub 平台配置清单（SIT + 数据自动刷新）
 
 > 目标：完成 `repo/sit` 的 SIT 发布链路与数据自动刷新链路所需的 GitHub 平台配置。
 
