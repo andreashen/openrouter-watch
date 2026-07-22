@@ -1,4 +1,4 @@
-# M3C GitHub 平台配置清单（SIT + 数据自动刷新）
+# GitHub 平台配置清单（SIT + 数据自动刷新）
 
 > 目标：完成 `repo/sit` 的 SIT 发布链路与数据自动刷新链路所需的 GitHub 平台配置。
 
@@ -9,7 +9,7 @@
    - `main`：生产页面来源，也是唯一允许自动/手动数据刷新的分支
    - `test`：SIT 页面来源，只承载待验证的功能代码
 
-发布与重锚操作细则见 [main_test_release_flow.md](../main_test_release_flow.md)。
+发布与重锚操作细则见 [main_test_release_flow.md](./main_test_release_flow.md)。
 
 ---
 
