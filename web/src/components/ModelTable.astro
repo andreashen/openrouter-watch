@@ -36,18 +36,20 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 
-/** 静态锁定的主流厂商快筛名单（RFC 已确认，勿按数据动态扩缩） */
+/** 静态锁定的主流厂商快筛名单（RFC 已确认，勿按数据动态扩缩）
+ *  mono: true 表示近黑/默认黑单色 SVG，暗色模式下需 invert 才能看清。
+ */
 const vendorQuickFilters = [
-  { name: "Anthropic", icon: "anthropic.svg" },
-  { name: "OpenAI", icon: "openai.svg" },
-  { name: "xAI", icon: "xai.svg" },
-  { name: "Z.ai", icon: "zai.svg" },
-  { name: "Google", icon: "google.png" },
-  { name: "Xiaomi", icon: "xiaomi.png" },
-  { name: "MoonshotAI", icon: "moonshotai.png" },
-  { name: "Qwen", icon: "qwen.svg" },
-  { name: "MiniMax", icon: "minimax.png" },
-  { name: "DeepSeek", icon: "deepseek.svg" },
+  { name: "Anthropic", icon: "anthropic.svg", mono: true },
+  { name: "OpenAI", icon: "openai.svg", mono: true },
+  { name: "xAI", icon: "xai.svg", mono: true },
+  { name: "Z.ai", icon: "zai.svg", mono: false },
+  { name: "Google", icon: "google.png", mono: false },
+  { name: "Xiaomi", icon: "xiaomi.png", mono: false },
+  { name: "MoonshotAI", icon: "moonshotai.png", mono: false },
+  { name: "Qwen", icon: "qwen.svg", mono: false },
+  { name: "MiniMax", icon: "minimax.png", mono: false },
+  { name: "DeepSeek", icon: "deepseek.svg", mono: false },
 ] as const;
 
 const columns = [
@@ -282,7 +284,7 @@ const rangeFields = [
               alt=""
               width="28"
               height="28"
-              class="h-7 w-7 object-contain"
+              class:list={["h-7 w-7 object-contain", vendor.mono && "vendor-icon-mono"]}
               loading="lazy"
             />
             <span class="sr-only">{vendor.name}</span>
@@ -401,6 +403,11 @@ const rangeFields = [
   :global(.dark) .vendor-chip[aria-pressed="true"] {
     border-color: rgb(56 189 248);
     background: rgb(12 74 110 / 0.45);
+  }
+
+  /* Anthropic / OpenAI / xAI 为近黑单色标，暗色底上需反色才可见 */
+  :global(.dark) .vendor-chip img.vendor-icon-mono {
+    filter: invert(1);
   }
 
   .sr-only {
