@@ -66,6 +66,12 @@ const columns = [
   "更新时间",
 ];
 
+const capabilityFilters = [
+  { id: "reasoning", label: "Reasoning", letter: "R", onClass: "cap-badge--r" },
+  { id: "tools", label: "Tools", letter: "T", onClass: "cap-badge--t" },
+  { id: "vision", label: "Vision", letter: "V", onClass: "cap-badge--v" },
+] as const;
+
 const rangeFields = [
   { key: "context_length", label: "上下文（k）", scale: 1000 },
   { key: "max_completion_tokens", label: "最大输出（k）", scale: 1000 },
@@ -100,10 +106,19 @@ const rangeFields = [
       <div>
         <p class="text-sm font-medium text-slate-700 dark:text-slate-300">能力筛选（AND）</p>
         <div class="mt-3 flex flex-wrap gap-4 text-sm text-slate-700 dark:text-slate-300">
-          {['reasoning', 'tools', 'vision'].map((cap) => (
+          {capabilityFilters.map((cap) => (
             <label class="group relative flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 px-3 py-2 transition-colors hover:bg-slate-200 dark:hover:bg-slate-800">
-              <input id={`cap-${cap}`} type="checkbox" class="peer h-4 w-4 rounded border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sky-500 focus:ring-sky-500/50 focus:ring-offset-white dark:focus:ring-offset-slate-900" />
-              <span class="capitalize">{cap}</span>
+              <input
+                id={`cap-${cap.id}`}
+                type="checkbox"
+                aria-label={cap.label}
+                class="peer h-4 w-4 rounded border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sky-500 focus:ring-sky-500/50 focus:ring-offset-white dark:focus:ring-offset-slate-900"
+              />
+              <span
+                class={`cap-badge cap-badge--on ${cap.onClass} cap-badge--legend`}
+                aria-hidden="true"
+              >{cap.letter}</span>
+              <span>{cap.label}</span>
             </label>
           ))}
         </div>
@@ -524,6 +539,16 @@ const rangeFields = [
     box-shadow: 0 0 0 3px rgb(14 165 233 / 0.18);
     outline: none;
     z-index: 1;
+  }
+
+  :global(.cap-badge--legend) {
+    cursor: inherit;
+    flex-shrink: 0;
+  }
+
+  :global(.cap-badge--legend:hover),
+  :global(.cap-badge--legend:focus-visible) {
+    box-shadow: none;
   }
 
   :global(.dark .cap-badge) {
