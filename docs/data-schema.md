@@ -69,7 +69,7 @@
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
 | `model_id` | string | 与模型表对齐的 id |
-| `weighted_avg_input_price_usd_per_1m` | number \| null | 加权平均输入价 USD / 1M；≤0 或缺失视为 `null`；最多 4 位小数 |
+| `weighted_avg_input_price_usd_per_1m` | number \| null | OpenRouter Effective Pricing 的 Weighted Avg Input Price（USD / 1M）；按实际 Token 用量对标价输入与缓存读取价加权后的有效输入价；≤0 或缺失视为 `null`；最多 4 位小数。数据来自非官方前端 API `…/stats/effective-pricing` 字段 `weightedInputPrice` |
 | `weighted_price_fetched_at` | string \| null | 本次侧车抓取时间（ISO8601 UTC） |
 | `weighted_price_source` | string | 固定标记，如 `openrouter_frontend_effective_pricing` |
 | `permaslug` | string \| null | catalog 解析出的 permaslug（抓取用） |

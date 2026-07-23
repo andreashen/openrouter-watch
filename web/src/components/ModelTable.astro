@@ -50,20 +50,25 @@ const vendorQuickFilters = [
   { name: "DeepSeek", icon: "deepseek.svg" },
 ] as const;
 
-const columns = [
-  "Model ID",
-  "上下文",
-  "最大输出",
-  "输入价 ($/1M)",
-  "加权输入价 ($/1M)",
-  "输出价 ($/1M)",
-  "Intelligence",
-  "Coding",
-  "Agentic",
-  "能力",
-  "知识截止",
-  "发布日期",
-  "更新时间",
+const PRICE_UNIT_TIP = "单位：USD / 1M tokens";
+/** OpenRouter Effective Pricing：按实际 Token 用量对标价输入与缓存读取价加权（见模型页 Weighted Avg Input Price） */
+const WEIGHTED_INPUT_TIP =
+  "单位：USD / 1M tokens；OpenRouter 按 Token 用量对输入价与缓存价加权的有效输入价";
+
+const columns: { label: string; tip?: string }[] = [
+  { label: "Model ID" },
+  { label: "上下文" },
+  { label: "最大输出" },
+  { label: "输入价", tip: PRICE_UNIT_TIP },
+  { label: "加权输入价", tip: WEIGHTED_INPUT_TIP },
+  { label: "输出价", tip: PRICE_UNIT_TIP },
+  { label: "Intelligence" },
+  { label: "Coding" },
+  { label: "Agentic" },
+  { label: "能力" },
+  { label: "知识截止" },
+  { label: "发布日期" },
+  { label: "更新时间" },
 ];
 
 const capabilityFilters = [
@@ -310,7 +315,7 @@ const rangeFields = [
                 data-col="model-id"
                 class="relative whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-5 py-4 font-semibold"
               >
-                <span>{column}</span>
+                <span>{column.label}</span>
                 <span
                   id="model-id-col-resizer"
                   role="separator"
@@ -321,7 +326,21 @@ const rangeFields = [
                 ></span>
               </th>
             ) : (
-              <th class="whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-5 py-4 font-semibold">{column}</th>
+              <th class="whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-5 py-4 font-semibold">
+                {column.tip ? (
+                  <span class="inline-flex items-center gap-1.5">
+                    <span>{column.label}</span>
+                    <button
+                      type="button"
+                      class="price-unit-info"
+                      data-tip={column.tip}
+                      aria-label={column.tip}
+                    >i</button>
+                  </span>
+                ) : (
+                  column.label
+                )}
+              </th>
             )
           ))}
         </tr>
@@ -595,16 +614,68 @@ const rangeFields = [
     color: #fff;
     font-size: 12px;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.35;
     white-space: nowrap;
     pointer-events: none;
     transform: translate(-50%, calc(-100% - 8px));
     box-shadow: 0 4px 12px rgb(15 23 42 / 0.18);
   }
 
+  :global(.cap-tip--wrap) {
+    white-space: normal;
+    max-width: min(280px, calc(100vw - 24px));
+    text-align: left;
+    font-weight: 500;
+  }
+
   :global(.dark .cap-tip) {
     background: rgb(226 232 240);
     color: rgb(15 23 42);
+  }
+
+  .price-unit-info {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid rgb(203 213 225);
+    background: #fff;
+    color: rgb(100 116 139);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1;
+    cursor: help;
+    vertical-align: middle;
+    transition: background 0.12s, color 0.12s, border-color 0.12s, box-shadow 0.12s;
+  }
+
+  .price-unit-info:hover,
+  .price-unit-info:focus-visible {
+    background: rgb(224 242 254);
+    border-color: rgb(125 211 252);
+    color: rgb(2 132 199);
+    box-shadow: 0 0 0 3px rgb(14 165 233 / 0.16);
+    outline: none;
+  }
+
+  :global(.dark) .price-unit-info {
+    border-color: rgb(71 85 105);
+    background: rgb(15 23 42);
+    color: rgb(148 163 184);
+  }
+
+  :global(.dark) .price-unit-info:hover,
+  :global(.dark) .price-unit-info:focus-visible {
+    background: rgb(12 74 110 / 0.45);
+    border-color: rgb(56 189 248 / 0.55);
+    color: rgb(125 211 252);
+    box-shadow: 0 0 0 3px rgb(14 165 233 / 0.2);
   }
 </style>
 
@@ -1342,7 +1413,22 @@ const rangeFields = [
   initModelIdColResize();
   updateSortDirectionState();
   initCapabilityTips();
+  initPriceUnitTips();
   applyFiltersAndSort();
+
+  function createFloatingTip(text, { wrap = false } = {}) {
+    const tip = document.createElement("div");
+    tip.className = wrap ? "cap-tip cap-tip--wrap" : "cap-tip";
+    tip.textContent = text;
+    tip.setAttribute("role", "tooltip");
+    return tip;
+  }
+
+  function positionFloatingTip(tipEl, anchor) {
+    const rect = anchor.getBoundingClientRect();
+    tipEl.style.left = `${rect.left + rect.width / 2}px`;
+    tipEl.style.top = `${rect.top}px`;
+  }
 
   function initCapabilityTips() {
     let tipEl = null;
@@ -1360,14 +1446,9 @@ const rangeFields = [
         return;
       }
       hideTip();
-      tipEl = document.createElement("div");
-      tipEl.className = "cap-tip";
-      tipEl.textContent = text;
-      tipEl.setAttribute("role", "tooltip");
+      tipEl = createFloatingTip(text);
       document.body.appendChild(tipEl);
-      const rect = badge.getBoundingClientRect();
-      tipEl.style.left = `${rect.left + rect.width / 2}px`;
-      tipEl.style.top = `${rect.top}px`;
+      positionFloatingTip(tipEl, badge);
     };
 
     if (!tableBody) {
@@ -1402,6 +1483,66 @@ const rangeFields = [
     });
 
     tableBody.addEventListener("focusout", () => {
+      hideTip();
+    });
+
+    window.addEventListener("scroll", hideTip, true);
+  }
+
+  function initPriceUnitTips() {
+    let tipEl = null;
+    const headerRow = modelTable?.querySelector("thead tr");
+
+    const hideTip = () => {
+      if (tipEl) {
+        tipEl.remove();
+        tipEl = null;
+      }
+    };
+
+    const showTip = (button) => {
+      const text = button.dataset.tip;
+      if (!text) {
+        return;
+      }
+      hideTip();
+      tipEl = createFloatingTip(text, { wrap: true });
+      document.body.appendChild(tipEl);
+      positionFloatingTip(tipEl, button);
+    };
+
+    if (!headerRow) {
+      return;
+    }
+
+    headerRow.addEventListener("pointerover", (event) => {
+      const button = event.target.closest?.(".price-unit-info");
+      if (!button || !headerRow.contains(button)) {
+        return;
+      }
+      showTip(button);
+    });
+
+    headerRow.addEventListener("pointerout", (event) => {
+      const button = event.target.closest?.(".price-unit-info");
+      if (!button) {
+        return;
+      }
+      const next = event.relatedTarget;
+      if (next && button.contains(next)) {
+        return;
+      }
+      hideTip();
+    });
+
+    headerRow.addEventListener("focusin", (event) => {
+      const button = event.target.closest?.(".price-unit-info");
+      if (button) {
+        showTip(button);
+      }
+    });
+
+    headerRow.addEventListener("focusout", () => {
       hideTip();
     });
 
