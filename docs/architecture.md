@@ -69,7 +69,7 @@ OpenRouter APIs
 
 ### 表格列（展示）
 
-Model ID、上下文、最大输出、输入价、加权输入价、输出价、Intelligence / Coding / Agentic、Reasoning / Tools / Vision、知识截止、发布日期、更新时间。
+Model ID、上下文、最大输出、输入价、加权输入价、输出价、Intelligence / Coding / Agentic、能力（R / T / V 角标，对应 Reasoning / Tools / Vision）、知识截止、发布日期、更新时间。
 
 `author` / `slug` / `vendor_name` / `name` 不单独成列，但参与搜索匹配。字段定义见 [data-schema.md](./data-schema.md)。
 
