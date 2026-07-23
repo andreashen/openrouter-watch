@@ -60,9 +60,7 @@ const columns = [
   "Intelligence",
   "Coding",
   "Agentic",
-  "Reasoning",
-  "Tools",
-  "Vision",
+  "能力",
   "知识截止",
   "发布日期",
   "更新时间",
@@ -458,6 +456,131 @@ const rangeFields = [
     -moz-appearance: textfield;
     appearance: textfield;
   }
+
+  :global(.cap-cell) {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 28px;
+  }
+
+  :global(.cap-badge) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    border: 1px solid rgb(226 232 240);
+    background: rgb(248 250 252);
+    color: rgb(148 163 184);
+    cursor: default;
+    transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s;
+  }
+
+  :global(.cap-badge::after) {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgb(226 232 240);
+    border: 1.5px solid #fff;
+    box-shadow: 0 0 0 1px rgb(226 232 240);
+  }
+
+  :global(.cap-badge--on.cap-badge--r) {
+    background: rgb(224 242 254);
+    border-color: rgb(125 211 252);
+    color: rgb(3 105 161);
+  }
+
+  :global(.cap-badge--on.cap-badge--t) {
+    background: rgb(236 253 245);
+    border-color: rgb(110 231 183);
+    color: rgb(4 120 87);
+  }
+
+  :global(.cap-badge--on.cap-badge--v) {
+    background: rgb(245 243 255);
+    border-color: rgb(196 181 253);
+    color: rgb(109 40 217);
+  }
+
+  :global(.cap-badge--on::after) {
+    background: rgb(34 197 94);
+    box-shadow: 0 0 0 1px rgb(34 197 94 / 0.35);
+  }
+
+  :global(.cap-badge:hover),
+  :global(.cap-badge:focus-visible) {
+    box-shadow: 0 0 0 3px rgb(14 165 233 / 0.18);
+    outline: none;
+    z-index: 1;
+  }
+
+  :global(.dark .cap-badge) {
+    border-color: rgb(51 65 85);
+    background: rgb(15 23 42);
+    color: rgb(100 116 139);
+  }
+
+  :global(.dark .cap-badge::after) {
+    border-color: rgb(15 23 42);
+    background: rgb(71 85 105);
+    box-shadow: 0 0 0 1px rgb(51 65 85);
+  }
+
+  :global(.dark .cap-badge--on.cap-badge--r) {
+    background: rgb(12 74 110 / 0.45);
+    border-color: rgb(56 189 248 / 0.55);
+    color: rgb(125 211 252);
+  }
+
+  :global(.dark .cap-badge--on.cap-badge--t) {
+    background: rgb(6 78 59 / 0.4);
+    border-color: rgb(52 211 153 / 0.5);
+    color: rgb(110 231 183);
+  }
+
+  :global(.dark .cap-badge--on.cap-badge--v) {
+    background: rgb(76 29 149 / 0.35);
+    border-color: rgb(167 139 250 / 0.5);
+    color: rgb(196 181 253);
+  }
+
+  :global(.dark .cap-badge--on::after) {
+    background: rgb(74 222 128);
+    box-shadow: 0 0 0 1px rgb(74 222 128 / 0.4);
+  }
+
+  :global(.cap-tip) {
+    position: fixed;
+    z-index: 80;
+    padding: 5px 8px;
+    border-radius: 6px;
+    background: rgb(15 23 42);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(-50%, calc(-100% - 8px));
+    box-shadow: 0 4px 12px rgb(15 23 42 / 0.18);
+  }
+
+  :global(.dark .cap-tip) {
+    background: rgb(226 232 240);
+    color: rgb(15 23 42);
+  }
 </style>
 
 <script define:vars={{ models }} is:inline>
@@ -749,10 +872,24 @@ const rangeFields = [
     return `<span class="${colorClass}">${num}</span>`;
   }
 
-  function formatBoolean(value) {
-    return value 
-      ? `<span class="inline-flex items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400 ring-1 ring-inset ring-emerald-500/20">✓</span>` 
-      : `<span class="text-slate-400 dark:text-slate-600">—</span>`;
+  function formatCapabilityBadge(letter, supported, tip, onClass) {
+    const aria = `${tip}: ${supported ? "yes" : "no"}`;
+    const stateClass = supported ? `cap-badge--on ${onClass}` : "";
+    return `<span
+      class="cap-badge ${stateClass}"
+      data-cap-tip="${tip}"
+      tabindex="0"
+      role="img"
+      aria-label="${aria}"
+    >${letter}</span>`;
+  }
+
+  function formatCapabilities(reasoning, tools, vision) {
+    return `<span class="cap-cell">
+      ${formatCapabilityBadge("R", reasoning, "Reasoning", "cap-badge--r")}
+      ${formatCapabilityBadge("T", tools, "Tools", "cap-badge--t")}
+      ${formatCapabilityBadge("V", vision, "Vision", "cap-badge--v")}
+    </span>`;
   }
 
   function formatTimestamp(value) {
@@ -981,13 +1118,14 @@ const rangeFields = [
         createCellHTML(formatIndex(display.agentic_index), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
       );
       row.appendChild(
-        createCellHTML(formatBoolean(display.supports_reasoning), "whitespace-nowrap px-5 py-3 text-center"),
-      );
-      row.appendChild(
-        createCellHTML(formatBoolean(display.supports_tools), "whitespace-nowrap px-5 py-3 text-center"),
-      );
-      row.appendChild(
-        createCellHTML(formatBoolean(display.supports_vision), "whitespace-nowrap px-5 py-3 text-center"),
+        createCellHTML(
+          formatCapabilities(
+            display.supports_reasoning,
+            display.supports_tools,
+            display.supports_vision,
+          ),
+          "whitespace-nowrap px-5 py-3",
+        ),
       );
       row.appendChild(
         createCellHTML(formatKnowledgeCutoff(display.knowledge_cutoff), "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs"),
@@ -1178,5 +1316,70 @@ const rangeFields = [
 
   initModelIdColResize();
   updateSortDirectionState();
+  initCapabilityTips();
   applyFiltersAndSort();
+
+  function initCapabilityTips() {
+    let tipEl = null;
+
+    const hideTip = () => {
+      if (tipEl) {
+        tipEl.remove();
+        tipEl = null;
+      }
+    };
+
+    const showTip = (badge) => {
+      const text = badge.dataset.capTip;
+      if (!text) {
+        return;
+      }
+      hideTip();
+      tipEl = document.createElement("div");
+      tipEl.className = "cap-tip";
+      tipEl.textContent = text;
+      tipEl.setAttribute("role", "tooltip");
+      document.body.appendChild(tipEl);
+      const rect = badge.getBoundingClientRect();
+      tipEl.style.left = `${rect.left + rect.width / 2}px`;
+      tipEl.style.top = `${rect.top}px`;
+    };
+
+    if (!tableBody) {
+      return;
+    }
+
+    tableBody.addEventListener("pointerover", (event) => {
+      const badge = event.target.closest?.(".cap-badge");
+      if (!badge || !tableBody.contains(badge)) {
+        return;
+      }
+      showTip(badge);
+    });
+
+    tableBody.addEventListener("pointerout", (event) => {
+      const badge = event.target.closest?.(".cap-badge");
+      if (!badge) {
+        return;
+      }
+      const next = event.relatedTarget;
+      if (next && badge.contains(next)) {
+        return;
+      }
+      hideTip();
+    });
+
+    tableBody.addEventListener("focusin", (event) => {
+      const badge = event.target.closest?.(".cap-badge");
+      if (badge) {
+        showTip(badge);
+      }
+    });
+
+    tableBody.addEventListener("focusout", () => {
+      hideTip();
+    });
+
+    window.addEventListener("scroll", hideTip, true);
+  }
 </script>
