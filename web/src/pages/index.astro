@@ -138,30 +138,38 @@ const repositoryUrl = "https://github.com/andreashen/openrouter-watch";
   description="Static OpenRouter model table generated from derived model data."
 >
   <main class="mx-auto flex max-w-[90rem] flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
-    <header class="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 p-8 shadow-xl dark:shadow-2xl backdrop-blur-xl">
-      <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-sky-400/10 dark:bg-sky-500/20 blur-[128px] pointer-events-none"></div>
-      <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-indigo-400/10 dark:bg-indigo-500/20 blur-[128px] pointer-events-none"></div>
-      
+    <header
+      class="relative overflow-hidden rounded-[var(--ow-radius)] border p-7 sm:p-8 backdrop-blur-[20px] backdrop-saturate-150"
+      style="border-color: var(--ow-line); background: var(--ow-chrome); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), var(--ow-shadow);"
+    >
       <div class="relative z-10">
-        <div class="flex items-center justify-between">
-          <p class="text-sm font-bold uppercase tracking-[0.25em] text-sky-600 dark:text-sky-400">
+        <div class="flex items-center justify-between gap-3">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] ow-accent-text">
             OpenRouter Watch
           </p>
-          <button id="theme-toggle" class="p-2 rounded-xl bg-slate-200/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 transition-colors" aria-label="切换主题">
-            <svg id="theme-icon-light" class="hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button
+            id="theme-toggle"
+            class="ow-press inline-grid h-9 w-9 place-items-center rounded-full border transition-colors"
+            style="border-color: var(--ow-line); background: var(--ow-fill-quiet); color: var(--ow-ink-3);"
+            aria-label="切换主题"
+          >
+            <svg id="theme-icon-light" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
-            <svg id="theme-icon-dark" class="hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg id="theme-icon-dark" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
           </button>
         </div>
         <div class="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl drop-shadow-sm">
+            <h1
+              class="text-4xl tracking-tight sm:text-5xl"
+              style="color: var(--ow-ink); font-weight: 650; letter-spacing: -0.025em;"
+            >
               openrouter 模型信息表
             </h1>
-            <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+            <p class="mt-3 max-w-2xl text-base leading-relaxed" style="color: var(--ow-ink-3);">
               支持统一搜索、能力复选、数值范围筛选与关键字段排序，为您提供最前沿的 AI 模型全景数据。
             </p>
           </div>
@@ -172,7 +180,8 @@ const repositoryUrl = "https://github.com/andreashen/openrouter-watch";
                 target="_blank"
                 rel="noopener noreferrer"
                 title={deploymentUrl}
-                class="inline-flex w-full items-center justify-center rounded-xl border border-sky-300/60 bg-sky-100/70 px-4 py-2 text-sm font-semibold text-sky-700 transition-all hover:-translate-y-0.5 hover:border-sky-400/80 hover:bg-sky-200/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:min-w-[30rem] sm:w-auto dark:border-sky-600/70 dark:bg-sky-500/15 dark:text-sky-300 dark:hover:border-sky-500 dark:hover:bg-sky-500/25 dark:focus-visible:ring-offset-slate-900"
+                class="ow-press inline-flex w-full items-center justify-center rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ow-accent)] focus-visible:ring-offset-2 sm:min-w-[30rem] sm:w-auto"
+                style="border-color: var(--ow-line-strong); background: var(--ow-fill-quiet); color: var(--ow-ink);"
                 aria-label="部署站点地址（新标签页打开）"
               >
                 <span class="font-mono text-xs sm:text-sm whitespace-nowrap">{deploymentUrl}</span>
@@ -181,7 +190,8 @@ const repositoryUrl = "https://github.com/andreashen/openrouter-watch";
                 href={repositoryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-xl border border-slate-300/70 bg-white/70 px-3 py-2 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-slate-400/80 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-600/70 dark:bg-slate-800/70 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-900"
+                class="ow-press inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ow-accent)] focus-visible:ring-offset-2"
+                style="border-color: var(--ow-line-strong); background: var(--ow-fill-quiet); color: var(--ow-ink);"
                 aria-label="前往 GitHub 仓库，给项目点个 Star（新标签页打开）"
               >
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -190,9 +200,12 @@ const repositoryUrl = "https://github.com/andreashen/openrouter-watch";
                 给项目点个 Star
               </a>
             </div>
-            <div class="flex items-center gap-3 rounded-2xl border border-slate-300/50 dark:border-slate-700/50 bg-slate-100/50 dark:bg-slate-800/50 px-5 py-3 text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md shadow-inner">
-              <div class="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)] dark:shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
-              <span>数据刷新时间：<span class="font-mono font-semibold text-slate-900 dark:text-slate-100">{refreshedAtLabel}</span></span>
+            <div
+              class="flex items-center gap-3 rounded-full border px-4 py-2.5 text-sm backdrop-blur-md"
+              style="border-color: var(--ow-line); background: var(--ow-surface); color: var(--ow-ink-2);"
+            >
+              <div class="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400"></div>
+              <span>数据刷新时间：<span class="font-mono font-semibold" style="color: var(--ow-ink);">{refreshedAtLabel}</span></span>
             </div>
           </div>
         </div>
@@ -201,7 +214,7 @@ const repositoryUrl = "https://github.com/andreashen/openrouter-watch";
 
     <ModelTable models={models} />
 
-    <footer class="pb-8 text-center text-sm text-slate-500">
+    <footer class="pb-8 text-center text-sm" style="color: var(--ow-ink-3);">
       数据来源：OpenRouter网站
     </footer>
   </main>
