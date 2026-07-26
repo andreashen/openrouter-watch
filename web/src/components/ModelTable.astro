@@ -137,36 +137,36 @@ const rangeFields = [
 
     <div>
       <p class="text-sm font-semibold" style="color: var(--ow-ink);">关键数值范围（AND）</p>
-      {/* Desktop: 4 + 3 rows; mobile: wrap naturally */}
-      <div class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Desktop: 4-col grid; label above, min/max share ow-control chrome */}
+      <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {rangeFields.map((field) => (
-          <div
-            class="range-capsule inline-flex w-full items-center gap-1.5 rounded-xl border px-2.5 py-1.5 transition-colors"
-          >
-            <span class="whitespace-nowrap text-xs font-medium" style="color: var(--ow-ink-2);">{field.label}</span>
-            <input
-              type="number"
-              step="any"
-              inputmode="decimal"
-              placeholder="min"
-              aria-label={`${field.label} 最小值`}
-              data-range-key={field.key}
-              data-range-bound="min"
-              data-range-scale={field.scale}
-              class="range-capsule-input min-w-0 flex-1 rounded-lg border-0 px-1.5 py-0.5 text-xs tabular-nums focus:outline-none focus:ring-0"
-            />
-            <span class="text-xs" style="color: var(--ow-ink-3);" aria-hidden="true">–</span>
-            <input
-              type="number"
-              step="any"
-              inputmode="decimal"
-              placeholder="max"
-              aria-label={`${field.label} 最大值`}
-              data-range-key={field.key}
-              data-range-bound="max"
-              data-range-scale={field.scale}
-              class="range-capsule-input min-w-0 flex-1 rounded-lg border-0 px-1.5 py-0.5 text-xs tabular-nums focus:outline-none focus:ring-0"
-            />
+          <div class="range-field">
+            <span class="range-field-label">{field.label}</span>
+            <div class="range-field-inputs">
+              <input
+                type="number"
+                step="any"
+                inputmode="decimal"
+                placeholder="min"
+                aria-label={`${field.label} 最小值`}
+                data-range-key={field.key}
+                data-range-bound="min"
+                data-range-scale={field.scale}
+                class="ow-control range-field-input"
+              />
+              <span class="range-field-sep" aria-hidden="true">–</span>
+              <input
+                type="number"
+                step="any"
+                inputmode="decimal"
+                placeholder="max"
+                aria-label={`${field.label} 最大值`}
+                data-range-key={field.key}
+                data-range-bound="max"
+                data-range-scale={field.scale}
+                class="ow-control range-field-input"
+              />
+            </div>
           </div>
         ))}
       </div>
@@ -361,7 +361,7 @@ const rangeFields = [
 
 <style>
   .ow-control {
-    border-color: var(--ow-line-strong);
+    border: 1px solid var(--ow-line-strong);
     background: var(--ow-fill-quiet);
     color: var(--ow-ink);
   }
@@ -381,27 +381,46 @@ const rangeFields = [
     background: #1c1c1e;
   }
 
-  .range-capsule {
-    border-color: var(--ow-line-strong);
-    background: var(--ow-fill-quiet);
+  .range-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    min-width: 0;
   }
 
-  .range-capsule:focus-within {
-    border-color: var(--ow-accent);
-    box-shadow: 0 0 0 3px var(--ow-accent-soft);
+  .range-field-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ow-ink-2);
   }
 
-  .range-capsule-input {
-    background: #fff;
-    color: var(--ow-ink);
+  .range-field-inputs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.375rem;
+    min-width: 0;
   }
 
-  .range-capsule-input::placeholder {
+  .range-field-sep {
+    font-size: 0.8125rem;
+    line-height: 1;
     color: var(--ow-ink-3);
   }
 
-  :global(.dark) .range-capsule-input {
-    background: rgba(0, 0, 0, 0.35);
+  .range-field-input {
+    min-width: 0;
+    width: 100%;
+    border-radius: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+    transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .range-field-input:focus {
+    outline: none;
   }
 
   .seg-ctrl {
@@ -551,13 +570,13 @@ const rangeFields = [
     text-overflow: clip;
   }
 
-  .range-capsule-input::-webkit-outer-spin-button,
-  .range-capsule-input::-webkit-inner-spin-button {
+  .range-field-input::-webkit-outer-spin-button,
+  .range-field-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 
-  .range-capsule-input {
+  .range-field-input {
     -moz-appearance: textfield;
     appearance: textfield;
   }
