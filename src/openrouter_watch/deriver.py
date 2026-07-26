@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+from collections import Counter, defaultdict
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -314,6 +315,55 @@ def _normalize_row(row: dict) -> dict:
     return normalized
 
 
+def canonicalize_vendor_names(rows: list[dict]) -> list[dict]:
+    """Remap author-slug vendor fallbacks to each author's dominant display name.
+
+    OpenRouter display names are usually ``Vendor: Model``. When the ``Vendor:``
+    prefix is missing, the normalizer falls back to the raw ``author`` slug
+    (e.g. ``anthropic``). Frontend vendor chips match exact display names like
+    ``Anthropic``, so those fallbacks disappear from quick filters.
+
+    For each author, pick the most common ``vendor_name`` that is *not* equal to
+    the author slug, and apply it only to rows still stuck on the author-slug
+    fallback. Distinct name-prefix brands under one author (e.g. ``Baidu`` vs
+    ``Baidu Qianfan``) are left untouched.
+    """
+    by_author: dict[str, list[dict]] = defaultdict(list)
+    for row in rows:
+        by_author[str(row.get("author") or "")].append(row)
+
+    canonical_by_author: dict[str, str] = {}
+    for author, group in by_author.items():
+        if not author:
+            continue
+        display_counts: Counter[str] = Counter()
+        for row in group:
+            vendor = str(row.get("vendor_name") or "")
+            if vendor and vendor != author:
+                display_counts[vendor] += 1
+        if display_counts:
+            canonical_by_author[author] = display_counts.most_common(1)[0][0]
+
+    # Tilde pointer authors (``~anthropic``) inherit the base author's label
+    # when the pointer group itself has no display-prefix peers.
+    for author in by_author:
+        if author.startswith("~") and author not in canonical_by_author:
+            base = author.lstrip("~")
+            if base in canonical_by_author:
+                canonical_by_author[author] = canonical_by_author[base]
+
+    remapped: list[dict] = []
+    for row in rows:
+        author = str(row.get("author") or "")
+        vendor = str(row.get("vendor_name") or "")
+        canonical = canonical_by_author.get(author)
+        if canonical and vendor == author:
+            remapped.append({**row, "vendor_name": canonical})
+        else:
+            remapped.append(row)
+    return remapped
+
+
 def _tracked_row_for_update(row: dict) -> dict:
     return {k: row.get(k) for k in _FIELDS if k not in EXCLUDED_UPDATE_FIELDS}
 
@@ -356,6 +406,14 @@ def merge_derived_rows(
         row["updated_at"] = _resolve_updated_at(row, previous_row, refreshed_at)
         merged.append(row)
 
+    merged = canonicalize_vendor_names(merged)
+    for row in merged:
+        previous_row = previous_map.get(row["model_id"])
+        if previous_row is None:
+            continue
+        previous_vendor = _normalize_row(previous_row).get("vendor_name")
+        if previous_vendor != row.get("vendor_name"):
+            row["updated_at"] = refreshed_at
     merged.sort(key=lambda row: (row["vendor_name"], row["model_id"]))
     return enrich_pointer_metadata(merged)
 

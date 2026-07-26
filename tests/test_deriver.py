@@ -10,6 +10,7 @@ import pandas as pd
 import pytest
 
 from openrouter_watch.deriver import (
+    canonicalize_vendor_names,
     enrich_pointer_metadata,
     is_pointer_candidate,
     merge_benchmark_fields,
@@ -574,3 +575,114 @@ def test_merge_derived_rows_enriches_pointer_metadata() -> None:
         == "anthropic/claude-opus-4.8"
     )
     assert by_id["anthropic/claude-opus-4.8"]["is_pointer"] is False
+
+
+def test_canonicalize_vendor_names_remaps_author_fallback() -> None:
+    """OpenRouter sometimes omits "Vendor:" in name → normalizer falls back to author slug."""
+    rows = [
+        {
+            "model_id": "anthropic/claude-opus-4.8",
+            "author": "anthropic",
+            "vendor_name": "Anthropic",
+            "name": "Anthropic: Claude Opus 4.8",
+        },
+        {
+            "model_id": "anthropic/claude-opus-5",
+            "author": "anthropic",
+            "vendor_name": "anthropic",
+            "name": "Claude Opus 5",
+        },
+        {
+            "model_id": "qwen/qwen-max",
+            "author": "qwen",
+            "vendor_name": "Qwen",
+            "name": "Qwen: Qwen-Max",
+        },
+        {
+            "model_id": "qwen/qwen-2.5-72b-instruct",
+            "author": "qwen",
+            "vendor_name": "qwen",
+            "name": "Qwen2.5 72B Instruct",
+        },
+    ]
+    out = canonicalize_vendor_names(rows)
+    by_id = {row["model_id"]: row for row in out}
+    assert by_id["anthropic/claude-opus-5"]["vendor_name"] == "Anthropic"
+    assert by_id["qwen/qwen-2.5-72b-instruct"]["vendor_name"] == "Qwen"
+    # Peers that already have a display prefix are unchanged.
+    assert by_id["anthropic/claude-opus-4.8"]["vendor_name"] == "Anthropic"
+    assert by_id["qwen/qwen-max"]["vendor_name"] == "Qwen"
+
+
+def test_canonicalize_vendor_names_handles_tilde_author_fallback() -> None:
+    rows = [
+        {
+            "model_id": "~anthropic/claude-opus-latest",
+            "author": "~anthropic",
+            "vendor_name": "Anthropic",
+            "name": "Anthropic: Claude Opus Latest",
+        },
+        {
+            "model_id": "~anthropic/claude-haiku-latest",
+            "author": "~anthropic",
+            "vendor_name": "~anthropic",
+            "name": "Anthropic Claude Haiku Latest",
+        },
+    ]
+    out = canonicalize_vendor_names(rows)
+    by_id = {row["model_id"]: row for row in out}
+    assert by_id["~anthropic/claude-haiku-latest"]["vendor_name"] == "Anthropic"
+
+
+def test_canonicalize_vendor_names_preserves_distinct_name_prefixes() -> None:
+    """Different "Vendor:" prefixes under one author must not be force-merged."""
+    rows = [
+        {
+            "model_id": "baidu/ernie-4.5-21b-a3b",
+            "author": "baidu",
+            "vendor_name": "Baidu",
+            "name": "Baidu: ERNIE 4.5 21B A3B",
+        },
+        {
+            "model_id": "baidu/cobuddy:free",
+            "author": "baidu",
+            "vendor_name": "Baidu Qianfan",
+            "name": "Baidu Qianfan: CoBuddy (free)",
+        },
+    ]
+    out = canonicalize_vendor_names(rows)
+    by_id = {row["model_id"]: row for row in out}
+    assert by_id["baidu/ernie-4.5-21b-a3b"]["vendor_name"] == "Baidu"
+    assert by_id["baidu/cobuddy:free"]["vendor_name"] == "Baidu Qianfan"
+
+
+def test_merge_derived_rows_canonicalizes_vendor_fallback() -> None:
+    current = [
+        {
+            "model_id": "anthropic/claude-opus-4.8",
+            "author": "anthropic",
+            "slug": "claude-opus-4.8",
+            "vendor_name": "Anthropic",
+            "name": "Anthropic: Claude Opus 4.8",
+            "officially_removed": False,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+            "fetched_at": "2026-01-02T03:04:05Z",
+        },
+        {
+            "model_id": "anthropic/claude-opus-5",
+            "author": "anthropic",
+            "slug": "claude-opus-5",
+            "vendor_name": "anthropic",
+            "name": "Claude Opus 5",
+            "officially_removed": False,
+            "intelligence_index": None,
+            "coding_index": None,
+            "agentic_index": None,
+            "fetched_at": "2026-01-02T03:04:05Z",
+        },
+    ]
+    merged = merge_derived_rows(current, {}, refreshed_at="2026-01-02T03:04:05Z")
+    by_id = {row["model_id"]: row for row in merged}
+    assert by_id["anthropic/claude-opus-5"]["vendor_name"] == "Anthropic"

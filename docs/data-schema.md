@@ -26,7 +26,7 @@
 | `model_id` | string | OpenRouter 模型 id，如 `openai/gpt-4o` |
 | `author` | string | `model_id` 中 `/` 左侧；无 `/` 时为空 |
 | `slug` | string | `model_id` 中 `/` 右侧；无 `/` 时为整段 id |
-| `vendor_name` | string | 优先取展示名中第一个 `:` 前缀；否则回退 `author` |
+| `vendor_name` | string | 优先取展示名中第一个 `:` 前缀；否则回退 `author`。derive 阶段会对「仍等于 `author` slug」的回退值，按同 author 下最常见的展示名前缀做规范化（例如缺 `Anthropic:` 前缀的 Opus 5 → `Anthropic`），避免厂商快筛精确匹配漏模型；同 author 下不同展示前缀（如 `Baidu` vs `Baidu Qianfan`）不强制合并 |
 | `name` | string | 展示名 |
 | `openrouter_model_url` | string \| null | OpenRouter 模型页 URL（若可得） |
 | `context_length` | number \| null | 上下文长度（token） |
