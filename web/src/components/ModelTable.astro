@@ -91,14 +91,17 @@ const rangeFields = [
 ];
 ---
 
-<section class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 shadow-2xl backdrop-blur-xl overflow-hidden">
-  <div class="flex flex-col gap-6 border-b border-slate-200 dark:border-slate-800 p-6">
+<section
+  class="overflow-hidden rounded-[var(--ow-radius)] border backdrop-blur-sm"
+  style="border-color: var(--ow-line); background: var(--ow-surface); box-shadow: var(--ow-shadow);"
+>
+  <div class="flex flex-col gap-6 border-b p-6" style="border-color: var(--ow-line);">
     <div class="grid gap-6 lg:grid-cols-2">
       <div>
-        <label for="model-search" class="text-sm font-medium text-slate-700 dark:text-slate-300">模型搜索</label>
+        <label for="model-search" class="text-sm font-semibold" style="color: var(--ow-ink);">模型搜索</label>
         <div class="relative mt-2">
           <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg class="h-5 w-5 text-slate-400 dark:text-slate-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <svg class="h-5 w-5 opacity-45" style="color: var(--ow-ink-3);" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
             </svg>
           </div>
@@ -106,20 +109,20 @@ const rangeFields = [
             id="model-search"
             type="search"
             placeholder="搜索 model_id / vendor / name / author / slug"
-            class="block w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/50 py-2.5 pl-10 pr-3 text-sm text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-sky-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
+            class="ow-control block w-full rounded-xl border py-2.5 pl-10 pr-3 text-sm transition-colors focus:outline-none focus:ring-2"
           />
         </div>
       </div>
       <div>
-        <p class="text-sm font-medium text-slate-700 dark:text-slate-300">能力筛选（AND）</p>
-        <div class="mt-3 flex flex-wrap gap-4 text-sm text-slate-700 dark:text-slate-300">
+        <p class="text-sm font-semibold" style="color: var(--ow-ink);">能力筛选（AND）</p>
+        <div class="mt-3 flex flex-wrap gap-3 text-sm" style="color: var(--ow-ink-2);">
           {capabilityFilters.map((cap) => (
-            <label class="group relative flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 px-3 py-2 transition-colors hover:bg-slate-200 dark:hover:bg-slate-800">
+            <label class="cap-filter-item group relative flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-2 transition-colors">
               <input
                 id={`cap-${cap.id}`}
                 type="checkbox"
                 aria-label={cap.label}
-                class="peer h-4 w-4 rounded border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sky-500 focus:ring-sky-500/50 focus:ring-offset-white dark:focus:ring-offset-slate-900"
+                class="peer h-4 w-4 rounded border-slate-300 bg-white text-[color:var(--ow-accent)] focus:ring-[color:var(--ow-accent)]/40 dark:border-slate-600 dark:bg-slate-900"
               />
               <span
                 class={`cap-badge cap-badge--on ${cap.onClass} cap-badge--legend`}
@@ -133,14 +136,14 @@ const rangeFields = [
     </div>
 
     <div>
-      <p class="text-sm font-medium text-slate-700 dark:text-slate-300">关键数值范围（AND）</p>
+      <p class="text-sm font-semibold" style="color: var(--ow-ink);">关键数值范围（AND）</p>
       {/* Desktop: 4 + 3 rows; mobile: wrap naturally */}
       <div class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
         {rangeFields.map((field) => (
           <div
-            class="inline-flex w-full items-center gap-1.5 rounded-full border border-slate-300/70 dark:border-slate-700/70 bg-slate-100/60 dark:bg-slate-800/30 px-2.5 py-1.5 transition-colors focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/40"
+            class="range-capsule inline-flex w-full items-center gap-1.5 rounded-xl border px-2.5 py-1.5 transition-colors"
           >
-            <span class="whitespace-nowrap text-xs font-medium text-slate-600 dark:text-slate-300">{field.label}</span>
+            <span class="whitespace-nowrap text-xs font-medium" style="color: var(--ow-ink-2);">{field.label}</span>
             <input
               type="number"
               step="any"
@@ -150,9 +153,9 @@ const rangeFields = [
               data-range-key={field.key}
               data-range-bound="min"
               data-range-scale={field.scale}
-              class="range-capsule-input min-w-0 flex-1 rounded-md border-0 bg-white/80 dark:bg-slate-900/70 px-1.5 py-0.5 text-xs tabular-nums text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-0"
+              class="range-capsule-input min-w-0 flex-1 rounded-lg border-0 px-1.5 py-0.5 text-xs tabular-nums focus:outline-none focus:ring-0"
             />
-            <span class="text-xs text-slate-400 dark:text-slate-500" aria-hidden="true">–</span>
+            <span class="text-xs" style="color: var(--ow-ink-3);" aria-hidden="true">–</span>
             <input
               type="number"
               step="any"
@@ -162,7 +165,7 @@ const rangeFields = [
               data-range-key={field.key}
               data-range-bound="max"
               data-range-scale={field.scale}
-              class="range-capsule-input min-w-0 flex-1 rounded-md border-0 bg-white/80 dark:bg-slate-900/70 px-1.5 py-0.5 text-xs tabular-nums text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-0"
+              class="range-capsule-input min-w-0 flex-1 rounded-lg border-0 px-1.5 py-0.5 text-xs tabular-nums focus:outline-none focus:ring-0"
             />
           </div>
         ))}
@@ -171,10 +174,10 @@ const rangeFields = [
 
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <div>
-        <label for="sort-field" class="text-sm font-medium text-slate-700 dark:text-slate-300">排序字段</label>
+        <label for="sort-field" class="text-sm font-semibold" style="color: var(--ow-ink);">排序字段</label>
         <select
           id="sort-field"
-          class="mt-2 block w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/50 px-3 py-2.5 text-sm text-slate-900 dark:text-slate-200 focus:border-sky-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors"
+          class="ow-control mt-2 block w-full rounded-xl border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2"
         >
           <option value="">不排序</option>
           <option value="context_length">上下文</option>
@@ -191,29 +194,29 @@ const rangeFields = [
         </select>
       </div>
       <div>
-        <label for="sort-direction" class="text-sm font-medium text-slate-700 dark:text-slate-300">排序方向</label>
+        <label for="sort-direction" class="text-sm font-semibold" style="color: var(--ow-ink);">排序方向</label>
         <select
           id="sort-direction"
           disabled
-          class="mt-2 block w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/50 px-3 py-2.5 text-sm text-slate-900 dark:text-slate-200 focus:border-sky-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+          class="ow-control mt-2 block w-full rounded-xl border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
         >
           <option value="desc">降序</option>
           <option value="asc">升序</option>
         </select>
       </div>
       <div>
-        <span class="text-sm font-medium text-slate-700 dark:text-slate-300">已下架模型</span>
+        <span class="text-sm font-semibold" style="color: var(--ow-ink);">已下架模型</span>
         <div
           id="removed-filter"
           role="radiogroup"
           aria-label="已下架模型显示方式"
-          class="mt-2 inline-flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 p-0.5"
+          class="seg-ctrl mt-2 inline-flex w-full rounded-xl border p-0.5"
         >
           <button
             type="button"
             data-removed-filter="hide"
             aria-pressed="true"
-            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             不显示
           </button>
@@ -221,7 +224,7 @@ const rangeFields = [
             type="button"
             data-removed-filter="show"
             aria-pressed="false"
-            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             显示
           </button>
@@ -229,25 +232,25 @@ const rangeFields = [
             type="button"
             data-removed-filter="only"
             aria-pressed="false"
-            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             只显示
           </button>
         </div>
       </div>
       <div>
-        <span class="text-sm font-medium text-slate-700 dark:text-slate-300">模型系列latest</span>
+        <span class="text-sm font-semibold" style="color: var(--ow-ink);">模型系列latest</span>
         <div
           id="pointer-filter"
           role="radiogroup"
           aria-label="模型系列 latest 显示方式"
-          class="mt-2 inline-flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800/30 p-0.5"
+          class="seg-ctrl mt-2 inline-flex w-full rounded-xl border p-0.5"
         >
           <button
             type="button"
             data-pointer-filter="hide"
             aria-pressed="true"
-            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             不显示
           </button>
@@ -255,7 +258,7 @@ const rangeFields = [
             type="button"
             data-pointer-filter="show"
             aria-pressed="false"
-            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             显示
           </button>
@@ -263,7 +266,7 @@ const rangeFields = [
             type="button"
             data-pointer-filter="only"
             aria-pressed="false"
-            class="removed-filter-btn flex-1 rounded-md px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             只显示
           </button>
@@ -272,14 +275,14 @@ const rangeFields = [
     </div>
 
     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <p id="model-count" class="text-sm font-medium text-sky-600 dark:text-sky-400" aria-live="polite">
+      <p id="model-count" class="text-sm font-semibold ow-accent-text" aria-live="polite">
         共 {models.length} 个模型
       </p>
       <div class="flex flex-wrap items-center gap-2" role="group" aria-label="厂商快速筛选">
         {vendorQuickFilters.map((vendor) => (
           <button
             type="button"
-            class="vendor-chip"
+            class="vendor-chip ow-press"
             data-vendor-filter={vendor.name}
             aria-pressed="false"
             title={vendor.name}
@@ -298,7 +301,8 @@ const rangeFields = [
         <button
           type="button"
           id="vendor-filter-clear"
-          class="rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300 hover:border-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors"
+          class="ow-press rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors"
+          style="border-color: var(--ow-line-strong); background: var(--ow-fill-quiet); color: var(--ow-ink-2);"
         >
           清除厂商
         </button>
@@ -308,14 +312,15 @@ const rangeFields = [
 
   <div class="overflow-x-auto overflow-y-auto max-h-[70vh] custom-scrollbar">
     <table id="model-table" class="min-w-max border-collapse text-left text-sm w-full">
-      <thead class="sticky top-0 z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 shadow-sm">
+      <thead class="sticky top-0 z-20 text-xs uppercase tracking-wider shadow-sm backdrop-blur-[16px] backdrop-saturate-150" style="background: var(--ow-chrome); color: var(--ow-ink-3);">
         <tr>
           {columns.map((column, index) => (
             index === 0 ? (
               <th
                 id="model-id-col-header"
                 data-col="model-id"
-                class="relative whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-5 py-4 font-semibold"
+                class="relative whitespace-nowrap border-b px-5 py-4 font-semibold"
+                style="border-color: var(--ow-line);"
               >
                 <span>{column.label}</span>
                 <span
@@ -324,11 +329,11 @@ const rangeFields = [
                   aria-orientation="vertical"
                   aria-label="调整 Model ID 列宽"
                   tabindex="0"
-                  class="absolute right-0 top-0 z-30 h-full w-1.5 cursor-col-resize touch-none select-none bg-transparent hover:bg-sky-500/40 focus-visible:bg-sky-500/50 focus-visible:outline-none"
+                  class="absolute right-0 top-0 z-30 h-full w-1.5 cursor-col-resize touch-none select-none bg-transparent hover:bg-[color:var(--ow-accent)]/35 focus-visible:bg-[color:var(--ow-accent)]/45 focus-visible:outline-none"
                 ></span>
               </th>
             ) : (
-              <th class="whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-5 py-4 font-semibold">
+              <th class="whitespace-nowrap border-b px-5 py-4 font-semibold" style="border-color: var(--ow-line);">
                 {column.tip ? (
                   <span class="inline-flex items-center gap-1.5">
                     <span>{column.label}</span>
@@ -347,7 +352,7 @@ const rangeFields = [
           ))}
         </tr>
       </thead>
-      <tbody id="model-table-body" class="divide-y divide-slate-100 dark:divide-slate-800/50">
+      <tbody id="model-table-body" class="divide-y" style="border-color: var(--ow-line);">
         {/* Rendered by JS */}
       </tbody>
     </table>
@@ -355,39 +360,100 @@ const rangeFields = [
 </section>
 
 <style>
+  .ow-control {
+    border-color: var(--ow-line-strong);
+    background: var(--ow-fill-quiet);
+    color: var(--ow-ink);
+  }
+
+  .ow-control::placeholder {
+    color: var(--ow-ink-3);
+  }
+
+  .ow-control:focus {
+    border-color: var(--ow-accent);
+    background: #fff;
+    --tw-ring-color: var(--ow-accent-soft);
+    box-shadow: 0 0 0 3px var(--ow-accent-soft);
+  }
+
+  :global(.dark) .ow-control:focus {
+    background: #1c1c1e;
+  }
+
+  .range-capsule {
+    border-color: var(--ow-line-strong);
+    background: var(--ow-fill-quiet);
+  }
+
+  .range-capsule:focus-within {
+    border-color: var(--ow-accent);
+    box-shadow: 0 0 0 3px var(--ow-accent-soft);
+  }
+
+  .range-capsule-input {
+    background: #fff;
+    color: var(--ow-ink);
+  }
+
+  .range-capsule-input::placeholder {
+    color: var(--ow-ink-3);
+  }
+
+  :global(.dark) .range-capsule-input {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .seg-ctrl {
+    border-color: var(--ow-line-strong);
+    background: var(--ow-fill-quiet);
+  }
+
+  .cap-filter-item {
+    border-color: var(--ow-line-strong);
+    background: #fff;
+  }
+
+  :global(.dark) .cap-filter-item {
+    background: #1c1c1e;
+  }
+
   .custom-scrollbar::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(15, 23, 42, 0.5);
+    background: rgba(0, 0, 0, 0.04);
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(51, 65, 85, 0.8);
+    background: rgba(0, 0, 0, 0.18);
     border-radius: 4px;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(71, 85, 105, 0.8);
+    background: rgba(0, 0, 0, 0.28);
+  }
+
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .removed-filter-btn[aria-pressed="true"] {
-    background: rgb(14 165 233 / 0.15);
-    color: rgb(2 132 199);
-    box-shadow: inset 0 0 0 1px rgb(14 165 233 / 0.35);
+    background: #fff;
+    color: var(--ow-accent);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   }
 
   .removed-filter-btn[aria-pressed="false"] {
-    color: rgb(71 85 105);
+    color: var(--ow-ink-3);
   }
 
   :global(.dark) .removed-filter-btn[aria-pressed="true"] {
-    background: rgb(14 165 233 / 0.2);
-    color: rgb(125 211 252);
-    box-shadow: inset 0 0 0 1px rgb(14 165 233 / 0.4);
-  }
-
-  :global(.dark) .removed-filter-btn[aria-pressed="false"] {
-    color: rgb(148 163 184);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--ow-accent);
+    box-shadow: none;
   }
 
   .vendor-chip {
@@ -397,31 +463,29 @@ const rangeFields = [
     height: 2.5rem;
     padding: 0.25rem;
     border-radius: 0.75rem;
-    border: 2px solid transparent;
-    background: rgb(255 255 255);
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.08);
+    border: 1.5px solid var(--ow-line);
+    background: #fff;
+    box-shadow: none;
     cursor: pointer;
-    transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
   }
 
   .vendor-chip:hover {
-    border-color: rgb(125 211 252);
+    border-color: rgba(0, 113, 227, 0.45);
   }
 
   .vendor-chip[aria-pressed="true"] {
-    border-color: rgb(14 165 233);
-    background: rgb(224 242 254);
-    box-shadow: 0 0 0 1px rgb(14 165 233 / 0.25);
+    border-color: var(--ow-accent);
+    background: #e8f1fc;
   }
 
   :global(.dark) .vendor-chip {
-    background: rgb(15 23 42);
-    box-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+    background: #1c1c1e;
   }
 
   :global(.dark) .vendor-chip[aria-pressed="true"] {
-    border-color: rgb(56 189 248);
-    background: rgb(12 74 110 / 0.45);
+    border-color: var(--ow-accent);
+    background: rgba(10, 132, 255, 0.18);
   }
 
   /* Anthropic / OpenAI / xAI 为近黑单色标，暗色底上需反色才可见 */
@@ -562,7 +626,7 @@ const rangeFields = [
 
   :global(.cap-badge:hover),
   :global(.cap-badge:focus-visible) {
-    box-shadow: 0 0 0 3px rgb(14 165 233 / 0.18);
+    box-shadow: 0 0 0 3px var(--ow-accent-soft);
     outline: none;
     z-index: 1;
   }
@@ -649,9 +713,9 @@ const rangeFields = [
     height: 15px;
     padding: 0;
     border-radius: 999px;
-    border: 1px solid rgb(203 213 225);
+    border: 1px solid var(--ow-line-strong);
     background: #fff;
-    color: rgb(100 116 139);
+    color: var(--ow-ink-3);
     font-family: Georgia, "Times New Roman", serif;
     font-size: 11px;
     font-style: italic;
@@ -664,25 +728,23 @@ const rangeFields = [
 
   .price-unit-info:hover,
   .price-unit-info:focus-visible {
-    background: rgb(224 242 254);
-    border-color: rgb(125 211 252);
-    color: rgb(2 132 199);
-    box-shadow: 0 0 0 3px rgb(14 165 233 / 0.16);
+    background: var(--ow-accent-soft);
+    border-color: var(--ow-accent);
+    color: var(--ow-accent);
+    box-shadow: 0 0 0 3px var(--ow-accent-soft);
     outline: none;
   }
 
   :global(.dark) .price-unit-info {
-    border-color: rgb(71 85 105);
-    background: rgb(15 23 42);
-    color: rgb(148 163 184);
+    background: #1c1c1e;
   }
 
-  :global(.dark) .price-unit-info:hover,
-  :global(.dark) .price-unit-info:focus-visible {
-    background: rgb(12 74 110 / 0.45);
-    border-color: rgb(56 189 248 / 0.55);
-    color: rgb(125 211 252);
-    box-shadow: 0 0 0 3px rgb(14 165 233 / 0.2);
+  :global(tbody tr.ow-row:hover td) {
+    background: rgba(0, 0, 0, 0.025);
+  }
+
+  :global(.dark tbody tr.ow-row:hover td) {
+    background: rgba(255, 255, 255, 0.04);
   }
 </style>
 
@@ -971,7 +1033,7 @@ const rangeFields = [
     // Add a subtle color based on value for index
     let colorClass = "text-slate-700 dark:text-slate-300";
     if (value >= 80) colorClass = "text-emerald-600 dark:text-emerald-400 font-medium";
-    else if (value >= 50) colorClass = "text-sky-600 dark:text-sky-400";
+    else if (value >= 50) colorClass = "ow-accent-text";
     return `<span class="${colorClass}">${num}</span>`;
   }
 
@@ -1071,9 +1133,9 @@ const rangeFields = [
         target="_blank"
         rel="noopener noreferrer"
         title="${model.model_id}"
-        class="model-id-link rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/50"
+        class="model-id-link rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ow-accent)]/40"
       >
-        <span class="model-id-text font-semibold text-sky-600 group-hover:text-sky-700 dark:text-sky-400 dark:group-hover:text-sky-300 transition-colors">${model.model_id}</span>
+        <span class="model-id-text font-semibold ow-accent-text transition-colors">${model.model_id}</span>
         ${pointerBadge}
         ${removedBadge}
       </a>
@@ -1188,7 +1250,7 @@ const rangeFields = [
     for (const model of rows) {
       const display = resolveDisplayModel(model);
       const row = document.createElement("tr");
-      row.className = `group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50${display.officially_removed ? " opacity-70" : ""}`;
+      row.className = `ow-row group transition-colors${display.officially_removed ? " opacity-70" : ""}`;
 
       row.appendChild(
         createCellHTML(createModelIdHTML(display), "px-5 py-3 font-mono text-xs", { col: "model-id" }),
@@ -1245,7 +1307,7 @@ const rangeFields = [
     applyModelIdColWidth(modelIdColWidth);
 
     if (count) {
-      count.innerHTML = `显示 <span class="text-slate-900 dark:text-white">${rows.length}</span> / ${totalRows} 个模型`;
+      count.innerHTML = `显示 <span style="color: var(--ow-ink)">${rows.length}</span> / ${totalRows} 个模型`;
     }
   }
 

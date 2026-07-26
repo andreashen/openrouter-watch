@@ -2,3 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --ow-bg: #f5f5f7;
+  --ow-surface: rgba(255, 255, 255, 0.92);
+  --ow-chrome: rgba(255, 255, 255, 0.72);
+  --ow-ink: #1d1d1f;
+  --ow-ink-2: #424245;
+  --ow-ink-3: #6e6e73;
+  --ow-line: rgba(0, 0, 0, 0.08);
+  --ow-line-strong: rgba(0, 0, 0, 0.12);
+  --ow-accent: #0071e3;
+  --ow-accent-soft: rgba(0, 113, 227, 0.12);
+  --ow-fill-quiet: rgba(0, 0, 0, 0.03);
+  --ow-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  --ow-radius: 18px;
+  --ow-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+}
+
+.dark {
+  --ow-bg: #0b0b0c;
+  --ow-surface: rgba(28, 28, 30, 0.92);
+  --ow-chrome: rgba(28, 28, 30, 0.72);
+  --ow-ink: #f5f5f7;
+  --ow-ink-2: #d2d2d7;
+  --ow-ink-3: #86868b;
+  --ow-line: rgba(255, 255, 255, 0.1);
+  --ow-line-strong: rgba(255, 255, 255, 0.16);
+  --ow-accent: #0a84ff;
+  --ow-accent-soft: rgba(10, 132, 255, 0.18);
+  --ow-fill-quiet: rgba(255, 255, 255, 0.06);
+  --ow-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+@layer base {
+  html {
+    font-family: var(--ow-font);
+  }
+
+  body {
+    background-color: var(--ow-bg);
+    color: var(--ow-ink-2);
+  }
+}
+
+@layer utilities {
+  .ow-page-bg {
+    background-color: var(--ow-bg);
+    background-image: radial-gradient(
+      900px 420px at 50% -20%,
+      rgba(0, 113, 227, 0.06),
+      transparent 60%
+    );
+  }
+
+  .dark .ow-page-bg {
+    background-image: radial-gradient(
+      900px 420px at 50% -20%,
+      rgba(10, 132, 255, 0.1),
+      transparent 60%
+    );
+  }
+
+  .ow-accent-text {
+    color: var(--ow-accent);
+  }
+
+  .ow-press:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ow-press:active {
+    transform: none;
+  }
+
+  .animate-pulse {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --ow-surface: #ffffff;
+    --ow-chrome: #ffffff;
+  }
+
+  .dark {
+    --ow-surface: #1c1c1e;
+    --ow-chrome: #1c1c1e;
+  }
+
+  .backdrop-blur-xl,
+  .backdrop-blur-md,
+  .backdrop-blur-\[20px\] {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
