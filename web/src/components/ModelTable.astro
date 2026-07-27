@@ -329,7 +329,7 @@ const rangeFields = [
                   aria-orientation="vertical"
                   aria-label="调整 Model ID 列宽"
                   tabindex="0"
-                  class="absolute right-0 top-0 z-30 h-full w-1.5 cursor-col-resize touch-none select-none bg-transparent hover:bg-[color:var(--ow-accent)]/35 focus-visible:bg-[color:var(--ow-accent)]/45 focus-visible:outline-none"
+                  class="absolute right-0 top-0 z-30 h-full w-1.5 cursor-col-resize touch-none select-none bg-transparent focus-visible:outline-none"
                 ></span>
               </th>
             ) : (
@@ -524,7 +524,12 @@ const rangeFields = [
     border: 0;
   }
 
-  :global(#model-id-col-header),
+  /* Cells need overflow:hidden for ellipsis; header must stay visible so the
+     resizer hit area (::after) is not clipped at the column boundary. */
+  :global(#model-id-col-header) {
+    overflow: visible;
+  }
+
   :global(td[data-col="model-id"]) {
     overflow: hidden;
   }
@@ -554,10 +559,20 @@ const rangeFields = [
     flex-shrink: 0;
   }
 
+  /* Hover/focus via component CSS: Tailwind `bg-[color:var(--ow-accent)]/35`
+     does not emit a rule, which removed the drag affordance after scheme B. */
+  #model-id-col-resizer:hover {
+    background-color: color-mix(in srgb, var(--ow-accent) 35%, transparent);
+  }
+
+  #model-id-col-resizer:focus-visible {
+    background-color: color-mix(in srgb, var(--ow-accent) 45%, transparent);
+  }
+
   #model-id-col-resizer::after {
     content: "";
     position: absolute;
-    inset: 0 -3px;
+    inset: 0 -6px;
   }
 
   body.model-id-col-resizing {
