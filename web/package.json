@@ -10,7 +10,8 @@
     "dev": "astro dev --host 0.0.0.0",
     "build": "astro build",
     "preview": "astro preview --host 0.0.0.0",
-    "check": "astro check"
+    "check": "astro check",
+    "test:unit": "node --test src/lib/*.test.js"
   },
   "dependencies": {
     "astro": "^6.1.10",
