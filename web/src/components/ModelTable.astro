@@ -662,6 +662,11 @@ const rangeFields = [
     box-shadow: inset 0 2px 0 var(--ow-accent);
   }
 
+  /* Lower-half drop on a pin row → insert AFTER (needed to land below last pin). */
+  :global(tr.ow-row-pin-drop-after td) {
+    box-shadow: inset 0 -2px 0 var(--ow-accent);
+  }
+
   :global(td[data-col="model-id"] .model-id-text) {
     display: block;
     min-width: 0;
@@ -1430,20 +1435,32 @@ const rangeFields = [
     applyFiltersAndSort();
   }
 
-  function reorderPinned(fromId, toId) {
+  function pinDropPlace(event, row) {
+    const rect = row.getBoundingClientRect();
+    return event.clientY < rect.top + rect.height / 2 ? "before" : "after";
+  }
+
+  function clearPinDropIndicators() {
+    tableBody?.querySelectorAll("tr.ow-row-pin-drop, tr.ow-row-pin-drop-after").forEach((el) => {
+      el.classList.remove("ow-row-pin-drop", "ow-row-pin-drop-after");
+    });
+  }
+
+  function reorderPinned(fromId, toId, place = "before") {
     // Keep algorithm aligned with web/src/lib/pinReorder.js (node:test).
-    // Top insert-line UI ⇒ insert BEFORE toId after removing fromId.
+    // Top insert line ⇒ before; bottom insert line ⇒ after (incl. group end).
     const from = pinnedIds.indexOf(fromId);
     const to = pinnedIds.indexOf(toId);
     if (from < 0 || to < 0 || from === to) {
       return;
     }
     const [item] = pinnedIds.splice(from, 1);
-    const insertAt = pinnedIds.indexOf(toId);
-    if (insertAt < 0) {
+    const targetAt = pinnedIds.indexOf(toId);
+    if (targetAt < 0) {
       pinnedIds.splice(from, 0, item);
       return;
     }
+    const insertAt = place === "after" ? targetAt + 1 : targetAt;
     pinnedIds.splice(insertAt, 0, item);
     applyFiltersAndSort();
   }
@@ -1474,9 +1491,10 @@ const rangeFields = [
       });
       handle.addEventListener("dragend", () => {
         pinDragId = null;
-        tableBody?.querySelectorAll("tr.pin-dragging, tr.ow-row-pin-drop").forEach((el) => {
-          el.classList.remove("pin-dragging", "ow-row-pin-drop");
+        tableBody?.querySelectorAll("tr.pin-dragging").forEach((el) => {
+          el.classList.remove("pin-dragging");
         });
+        clearPinDropIndicators();
       });
       inner.appendChild(handle);
     }
@@ -1532,19 +1550,22 @@ const rangeFields = [
             return;
           }
           event.preventDefault();
-          row.classList.add("ow-row-pin-drop");
+          const place = pinDropPlace(event, row);
+          clearPinDropIndicators();
+          row.classList.add(place === "after" ? "ow-row-pin-drop-after" : "ow-row-pin-drop");
         });
         row.addEventListener("dragleave", () => {
-          row.classList.remove("ow-row-pin-drop");
+          row.classList.remove("ow-row-pin-drop", "ow-row-pin-drop-after");
         });
         row.addEventListener("drop", (event) => {
           event.preventDefault();
-          row.classList.remove("ow-row-pin-drop");
+          const place = pinDropPlace(event, row);
+          clearPinDropIndicators();
           const fromId = pinDragId || event.dataTransfer.getData("text/plain");
           if (!fromId || fromId === model.model_id) {
             return;
           }
-          reorderPinned(fromId, model.model_id);
+          reorderPinned(fromId, model.model_id, place);
         });
       }
 
