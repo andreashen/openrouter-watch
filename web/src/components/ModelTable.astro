@@ -623,18 +623,16 @@ const rangeFields = [
     color: var(--ow-ink-3);
     cursor: grab;
     opacity: 0.55;
+    /* Pointer-only affordance: not a focusable control (RFC: no keyboard reorder). */
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
   }
 
   :global(.pin-drag-handle:hover) {
     opacity: 1;
     background: var(--ow-fill-quiet);
     color: var(--ow-ink-2);
-  }
-
-  :global(.pin-drag-handle:focus-visible) {
-    outline: none;
-    opacity: 1;
-    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ow-accent);
   }
 
   :global(.pin-drag-handle:active) {
@@ -645,6 +643,7 @@ const rangeFields = [
     width: 0.75rem;
     height: 1rem;
     display: block;
+    pointer-events: none;
   }
 
   :global(tr.ow-row-pinned) {
@@ -1451,10 +1450,11 @@ const rangeFields = [
     inner.className = "model-id-cell-inner";
 
     if (pinned) {
-      const handle = document.createElement("button");
-      handle.type = "button";
+      // Decorative pointer-only grip: not in tab order, not announced as a control
+      // (RFC / Lens B1: no keyboard reorder).
+      const handle = document.createElement("span");
       handle.className = "pin-drag-handle";
-      handle.setAttribute("aria-label", "拖拽调整 Pin 顺序");
+      handle.setAttribute("aria-hidden", "true");
       handle.title = "拖拽排序";
       handle.draggable = true;
       handle.innerHTML = PIN_GRIP;
