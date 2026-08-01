@@ -1431,13 +1431,20 @@ const rangeFields = [
   }
 
   function reorderPinned(fromId, toId) {
+    // Keep algorithm aligned with web/src/lib/pinReorder.js (node:test).
+    // Top insert-line UI ⇒ insert BEFORE toId after removing fromId.
     const from = pinnedIds.indexOf(fromId);
     const to = pinnedIds.indexOf(toId);
     if (from < 0 || to < 0 || from === to) {
       return;
     }
     const [item] = pinnedIds.splice(from, 1);
-    pinnedIds.splice(to, 0, item);
+    const insertAt = pinnedIds.indexOf(toId);
+    if (insertAt < 0) {
+      pinnedIds.splice(from, 0, item);
+      return;
+    }
+    pinnedIds.splice(insertAt, 0, item);
     applyFiltersAndSort();
   }
 
