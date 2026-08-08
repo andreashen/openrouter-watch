@@ -319,7 +319,7 @@ const rangeFields = [
   </div>
 
   <div class="overflow-x-auto overflow-y-auto max-h-[70vh] custom-scrollbar">
-    <table id="model-table" class="min-w-max border-collapse text-left text-sm w-full">
+    <table id="model-table" class="min-w-max border-collapse text-left text-sm">
       <thead class="sticky top-0 z-20 text-xs uppercase tracking-wider shadow-sm backdrop-blur-[16px] backdrop-saturate-150" style="background: var(--ow-chrome); color: var(--ow-ink-3);">
         <tr>
           {columns.map((column, index) => (
@@ -542,9 +542,34 @@ const rangeFields = [
     overflow: hidden;
   }
 
-  /* Fixed layout: column width comes from the header only (O(1) write while dragging). */
+  /* Fixed layout: column width comes from the header only (O(1) write while dragging).
+   * Fill the scrollport only while sized, so leftover width can go to 更新时间. */
   :global(#model-table.model-id-col-sized) {
     table-layout: fixed;
+    width: 100%;
+  }
+
+  /*
+   * Table uses min-w-max without w-full so non-last columns stay at content
+   * width (same as the old 90rem layout). Extra budget above 90rem goes only
+   * to the last column (更新时间) via min-width.
+   */
+  :global(#model-table th:last-child),
+  :global(#model-table td:last-child) {
+    /* ~content size under 90rem was ~10rem; +6rem matches max-w 90→96 bump */
+    min-width: 16rem;
+  }
+
+  /* While Model ID is user-sized, keep middle columns content-sized. */
+  :global(#model-table.model-id-col-sized th:not(:first-child):not(:last-child)),
+  :global(#model-table.model-id-col-sized td:not(:first-child):not(:last-child)) {
+    width: 1%;
+    white-space: nowrap;
+  }
+
+  :global(#model-table.model-id-col-sized th:last-child),
+  :global(#model-table.model-id-col-sized td:last-child) {
+    width: auto;
   }
 
   :global(td[data-col="model-id"] .model-id-cell-inner) {
