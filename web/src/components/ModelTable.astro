@@ -1,4 +1,9 @@
 ---
+import {
+  VENDOR_QUICK_FILTERS,
+  buildVendorMatchByChip,
+} from "../lib/vendorFilter.js";
+
 type Model = {
   model_id: string;
   author: string;
@@ -38,20 +43,10 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/")
 
 /** 静态锁定的主流厂商快筛名单（RFC 已确认，勿按数据动态扩缩）
  *  mono: true 表示近黑/默认黑单色 SVG，暗色模式下需 invert 才能看清。
+ *  matchNames（见 vendorFilter.js）允许芯片匹配 OpenRouter 改名前缀别名。
  */
-const vendorQuickFilters = [
-  { name: "Anthropic", icon: "anthropic.svg", mono: true },
-  { name: "OpenAI", icon: "openai.svg", mono: true },
-  { name: "xAI", icon: "xai.svg", mono: true },
-  { name: "Meta", icon: "meta.svg", mono: true },
-  { name: "Google", icon: "google.png", mono: false },
-  { name: "Z.ai", icon: "zai.svg", mono: false },
-  { name: "Xiaomi", icon: "xiaomi.png", mono: false },
-  { name: "MoonshotAI", icon: "moonshotai.png", mono: false },
-  { name: "Qwen", icon: "qwen.svg", mono: false },
-  { name: "MiniMax", icon: "minimax.png", mono: false },
-  { name: "DeepSeek", icon: "deepseek.svg", mono: false },
-] as const;
+const vendorQuickFilters = VENDOR_QUICK_FILTERS;
+const vendorMatchByChip = buildVendorMatchByChip(VENDOR_QUICK_FILTERS);
 
 const PRICE_UNIT_TIP = "单位：USD / 1M tokens";
 /** OpenRouter Effective Pricing：按实际 Token 用量对标价输入与缓存读取价加权（见模型页 Weighted Avg Input Price） */
@@ -903,7 +898,7 @@ const rangeFields = [
   }
 </style>
 
-<script define:vars={{ models }} is:inline>
+<script define:vars={{ models, vendorMatchByChip }} is:inline>
   const tableBody = document.querySelector("#model-table-body");
   const modelTable = document.querySelector("#model-table");
   const modelIdColHeader = document.querySelector("#model-id-col-header");
@@ -928,8 +923,37 @@ const rangeFields = [
   const MODEL_ID_COL_MAX_WIDTH = 480;
   let removedFilterMode = "hide";
   let pointerFilterMode = "hide";
-  /** @type {Set<string>} 多选厂商并集（OR）；空集表示不过滤厂商 */
+  /** @type {Set<string>} 多选厂商并集（OR）；空集表示不过滤厂商；值为芯片 name */
   const selectedVendors = new Set();
+  /** @type {Record<string, string[]>} 芯片 name → 可匹配的 vendor_name（含改名前缀别名） */
+  const vendorMatchMap =
+    vendorMatchByChip && typeof vendorMatchByChip === "object" ? vendorMatchByChip : {};
+
+  function expandSelectedVendorNames(selectedChips) {
+    const names = new Set();
+    for (const chip of selectedChips) {
+      const aliases = vendorMatchMap[chip];
+      if (Array.isArray(aliases) && aliases.length > 0) {
+        for (const name of aliases) {
+          names.add(name);
+        }
+      } else {
+        names.add(chip);
+      }
+    }
+    return names;
+  }
+
+  function matchesVendorSelection(vendorName) {
+    if (selectedVendors.size === 0) {
+      return true;
+    }
+    if (vendorName == null || vendorName === "") {
+      return false;
+    }
+    return expandSelectedVendorNames(selectedVendors).has(vendorName);
+  }
+
   let modelIdColWidth = null;
   /** @type {string[]} 会话级 Pin 顺序（先 Pin 的更靠上）；不写 storage */
   const pinnedIds = [];
@@ -1690,7 +1714,8 @@ const rangeFields = [
         if (!matchesPointerFilter(model)) {
           return false;
         }
-        if (selectedVendors.size > 0 && !selectedVendors.has(display.vendor_name)) {
+        // Keep algorithm aligned with web/src/lib/vendorFilter.js (node:test).
+        if (!matchesVendorSelection(display.vendor_name)) {
           return false;
         }
 
