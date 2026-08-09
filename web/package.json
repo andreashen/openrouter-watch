@@ -11,7 +11,11 @@
     "build": "astro build",
     "preview": "astro preview --host 0.0.0.0",
     "check": "astro check",
-    "test:unit": "node --test src/lib/*.test.js"
+    "test:unit": "node --test src/lib/*.test.js",
+    "test:and103-evidence": "node scripts/run-and103-evidence.mjs",
+    "test:boot-json-safety": "node scripts/check-boot-json-safety.mjs",
+    "test:and103-dom-security": "node scripts/and103-dom-security.mjs",
+    "test:and103-evidence:raw": "node scripts/and103-interaction-evidence.mjs"
   },
   "dependencies": {
     "astro": "^6.1.10",
@@ -21,6 +25,8 @@
     "@astrojs/check": "^0.9.9",
     "@types/node": "^26.1.0",
     "autoprefixer": "^10.4.23",
+    "happy-dom": "20.0.2",
+    "playwright": "1.62.1",
     "postcss": "^8.5.6",
     "typescript": "^5.9.3"
   },
