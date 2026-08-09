@@ -223,7 +223,8 @@ const rangeFields = [
           <button
             type="button"
             data-removed-filter="hide"
-            aria-pressed="true"
+            role="radio"
+            aria-checked="true"
             class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             不显示
@@ -231,7 +232,8 @@ const rangeFields = [
           <button
             type="button"
             data-removed-filter="show"
-            aria-pressed="false"
+            role="radio"
+            aria-checked="false"
             class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             显示
@@ -239,7 +241,8 @@ const rangeFields = [
           <button
             type="button"
             data-removed-filter="only"
-            aria-pressed="false"
+            role="radio"
+            aria-checked="false"
             class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             只显示
@@ -257,7 +260,8 @@ const rangeFields = [
           <button
             type="button"
             data-pointer-filter="hide"
-            aria-pressed="true"
+            role="radio"
+            aria-checked="true"
             class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             不显示
@@ -265,7 +269,8 @@ const rangeFields = [
           <button
             type="button"
             data-pointer-filter="show"
-            aria-pressed="false"
+            role="radio"
+            aria-checked="false"
             class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             显示
@@ -273,7 +278,8 @@ const rangeFields = [
           <button
             type="button"
             data-pointer-filter="only"
-            aria-pressed="false"
+            role="radio"
+            aria-checked="false"
             class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             只显示
@@ -291,7 +297,8 @@ const rangeFields = [
           <button
             type="button"
             data-batch-filter="hide"
-            aria-pressed="true"
+            role="radio"
+            aria-checked="true"
             class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             不显示
@@ -299,7 +306,8 @@ const rangeFields = [
           <button
             type="button"
             data-batch-filter="show"
-            aria-pressed="false"
+            role="radio"
+            aria-checked="false"
             class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             显示
@@ -307,7 +315,8 @@ const rangeFields = [
           <button
             type="button"
             data-batch-filter="only"
-            aria-pressed="false"
+            role="radio"
+            aria-checked="false"
             class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
           >
             只显示
@@ -513,17 +522,17 @@ const rangeFields = [
     background: rgba(255, 255, 255, 0.2);
   }
 
-  .removed-filter-btn[aria-pressed="true"] {
+  .removed-filter-btn[aria-checked="true"] {
     background: #fff;
     color: var(--ow-accent);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   }
 
-  .removed-filter-btn[aria-pressed="false"] {
+  .removed-filter-btn[aria-checked="false"] {
     color: var(--ow-ink-3);
   }
 
-  :global(.dark) .removed-filter-btn[aria-pressed="true"] {
+  :global(.dark) .removed-filter-btn[aria-checked="true"] {
     background: rgba(255, 255, 255, 0.1);
     color: var(--ow-accent);
     box-shadow: none;

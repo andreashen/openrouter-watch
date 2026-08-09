@@ -9,6 +9,9 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { rowPassesFilters } from "../src/lib/modelVisibility.js";
+import { getNumericValue, resolveDisplayModel, toSearchText } from "../src/lib/modelTableDisplay.js";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outDir = path.resolve(
   process.env.EVIDENCE_OUT_DIR || path.join(__dirname, "../../../artifacts/and103-evidence"),
@@ -29,6 +32,65 @@ function fail(name, reason, data = {}) {
 
 function nearlyEqual(a, b, tolerancePx = 2) {
   return Math.abs(a - b) <= tolerancePx;
+}
+
+/**
+ * @param {string} text
+ * @returns {number|null}
+ */
+function parseVisibleCount(text) {
+  const match = text.match(/显示\s*(\d+)/);
+  return match ? Number(match[1]) : null;
+}
+
+/**
+ * @param {import("playwright").Page} page
+ * @param {{ batchMode: "hide"|"show"|"only" }} opts
+ * @returns {Promise<number>}
+ */
+async function expectedVisibleCount(page, { batchMode }) {
+  const boot = await page.evaluate(() => {
+    const raw = document.getElementById("model-table-boot")?.textContent || "{}";
+    return JSON.parse(raw);
+  });
+  const models = Array.isArray(boot.models) ? boot.models : [];
+  const modelsById = new Map(models.map((m) => [m.model_id, m]));
+  const pinSet = new Set();
+  return models.filter((model) =>
+    rowPassesFilters({
+      model,
+      display: resolveDisplayModel(model, modelsById),
+      pinSet,
+      search: "",
+      needsReasoning: false,
+      needsTools: false,
+      needsVision: false,
+      removedMode: "hide",
+      pointerMode: "hide",
+      batchMode,
+      selectedVendors: [],
+      vendorMatchByChip: boot.vendorMatchByChip || {},
+      toSearchText,
+      numericRanges: {},
+      getNumericValue,
+      numericRangeKeys: [],
+    }),
+  ).length;
+}
+
+/**
+ * @param {import("playwright").Page} page
+ * @param {string} previousCountText
+ */
+async function waitForCountChange(page, previousCountText) {
+  await page.waitForFunction(
+    (prev) => {
+      const text = document.querySelector("#model-count")?.textContent || "";
+      return Boolean(text) && text !== prev && /显示\s+\d+/.test(text);
+    },
+    previousCountText,
+    { timeout: 10000 },
+  );
 }
 
 const browser = await chromium.launch({ headless: true });
@@ -134,25 +196,44 @@ const outsideHidden = await page.locator("#sort-panel").isHidden();
 step("s4-outside-click", { panelHidden: outsideHidden });
 if (!outsideHidden) fail("s4-outside-click", "outside click did not close panel");
 
-// Batch show / only
+// Batch show / only — wait on count text, assert against production filter expected values
+const expectedShow = await expectedVisibleCount(page, { batchMode: "show" });
+const expectedOnly = await expectedVisibleCount(page, { batchMode: "only" });
+const beforeShow = await page.locator("#model-count").innerText();
 await page.locator('[data-batch-filter="show"]').click();
-await page.waitForTimeout(200);
-const showCount = await page.locator("#model-count").innerText();
-step("batch-show", { showCount });
+await waitForCountChange(page, beforeShow);
+const showCountText = await page.locator("#model-count").innerText();
+const showCount = parseVisibleCount(showCountText);
+const showOk = showCount === expectedShow;
+step("batch-show", { showCountText, showCount, expectedShow, showOk });
+if (!showOk) {
+  fail("batch-show", "visible count did not match expected Batch=show", {
+    showCount,
+    expectedShow,
+  });
+}
 await row.screenshot({ path: path.join(outDir, "03-batch-show.png") });
 
+const beforeOnly = showCountText;
 await page.locator('[data-batch-filter="only"]').click();
-await page.waitForTimeout(200);
-const onlyCount = await page.locator("#model-count").innerText();
+await waitForCountChange(page, beforeOnly);
+const onlyCountText = await page.locator("#model-count").innerText();
+const onlyCount = parseVisibleCount(onlyCountText);
 const onlyText = await page.locator("#model-table-body").innerText();
 const sampleHasBatch = onlyText.toLowerCase().includes(":batch");
 const nonBatchLeak = onlyText
   .split("\n")
   .filter((l) => l.includes("/"))
   .some((l) => l.includes("/") && !l.toLowerCase().includes(":batch"));
-step("batch-only", { onlyCount, sampleHasBatch, nonBatchLeak });
-if (!(sampleHasBatch && !nonBatchLeak)) {
-  fail("batch-only", "only mode leaked non-batch or missed batch rows");
+const onlyOk = onlyCount === expectedOnly && sampleHasBatch && !nonBatchLeak;
+step("batch-only", { onlyCountText, onlyCount, expectedOnly, sampleHasBatch, nonBatchLeak, onlyOk });
+if (!onlyOk) {
+  fail("batch-only", "Batch=only count/content failed", {
+    onlyCount,
+    expectedOnly,
+    sampleHasBatch,
+    nonBatchLeak,
+  });
 }
 await page.locator("#model-table").screenshot({ path: path.join(outDir, "04-batch-only-table.png") });
 
