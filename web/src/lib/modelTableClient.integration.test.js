@@ -90,6 +90,26 @@ function fixtureModels() {
       fetched_at: "2026-01-01T00:00:00Z",
     },
     {
+      // Default-visible non-OpenAI control row (not removed / not pointer).
+      model_id: "acme/gamma",
+      name: "Gamma",
+      vendor_name: "Anthropic",
+      officially_removed: false,
+      is_pointer: false,
+      input_price_usd_per_1m: 5,
+      fetched_at: "2026-01-01T00:00:00Z",
+    },
+    {
+      // Default-visible non-OpenAI Batch row — proves vendor filter is live under Batch=show.
+      model_id: "acme/gamma:batch",
+      name: "Gamma Batch",
+      vendor_name: "Anthropic",
+      officially_removed: false,
+      is_pointer: false,
+      input_price_usd_per_1m: 4,
+      fetched_at: "2026-01-01T00:00:00Z",
+    },
+    {
       model_id: "acme/gone",
       name: "Gone",
       vendor_name: "Other",
@@ -142,8 +162,8 @@ describe("modelTableClient integration", () => {
   it("defaults to hide batch/removed/pointer and uses radio semantics", () => {
     initModelTable({ models: fixtureModels(), vendorMatchByChip: { OpenAI: ["OpenAI"] } });
 
-    assert.deepEqual(visibleIds(), ["acme/alpha"]);
-    assert.equal(visibleCount(), 1);
+    assert.deepEqual(visibleIds().sort(), ["acme/alpha", "acme/gamma"]);
+    assert.equal(visibleCount(), 2);
 
     const hide = document.querySelector('[data-batch-filter="hide"]');
     const show = document.querySelector('[data-batch-filter="show"]');
@@ -156,15 +176,20 @@ describe("modelTableClient integration", () => {
   it("applies Batch show/only through the production client path", () => {
     initModelTable({ models: fixtureModels() });
 
-    document.querySelector('[data-batch-filter="show"]')?.dispatchEvent(new window.Event("click"));
-    assert.deepEqual(visibleIds().sort(), ["acme/alpha", "acme/alpha:batch"]);
+    /** @type {HTMLElement} */ (document.querySelector('[data-batch-filter="show"]')).click();
+    assert.deepEqual(visibleIds().sort(), [
+      "acme/alpha",
+      "acme/alpha:batch",
+      "acme/gamma",
+      "acme/gamma:batch",
+    ]);
     assert.equal(
       document.querySelector('[data-batch-filter="show"]')?.getAttribute("aria-checked"),
       "true",
     );
 
-    document.querySelector('[data-batch-filter="only"]')?.dispatchEvent(new window.Event("click"));
-    assert.deepEqual(visibleIds(), ["acme/alpha:batch"]);
+    /** @type {HTMLElement} */ (document.querySelector('[data-batch-filter="only"]')).click();
+    assert.deepEqual(visibleIds().sort(), ["acme/alpha:batch", "acme/gamma:batch"]);
   });
 
   it("runs S4 field/direction selection via production sort panel wiring", () => {
@@ -182,44 +207,76 @@ describe("modelTableClient integration", () => {
     /** @type {HTMLElement} */ (document.querySelector('[data-sort-dir="asc"]')).click();
     assert.match(document.querySelector("#sort-trigger-label")?.textContent || "", /↑/);
     assert.equal(document.querySelector("#sort-panel")?.hidden, true);
-    assert.deepEqual(visibleIds(), ["acme/alpha:batch", "acme/alpha"]);
+    assert.deepEqual(visibleIds(), [
+      "acme/alpha:batch",
+      "acme/alpha",
+      "acme/gamma:batch",
+      "acme/gamma",
+    ]);
   });
 
   it("keeps pinned rows visible across Batch hide and clears via pin control", () => {
     initModelTable({ models: fixtureModels() });
     /** @type {HTMLElement} */ (document.querySelector('[data-batch-filter="only"]')).click();
-    assert.deepEqual(visibleIds(), ["acme/alpha:batch"]);
+    assert.ok(visibleIds().includes("acme/alpha:batch"));
 
     const pinBtn = /** @type {HTMLElement} */ (
-      document.querySelector('.pin-toggle[aria-label^="Pin "]')
+      document.querySelector('.pin-toggle[aria-label="Pin acme/alpha:batch"]')
     );
     assert.ok(pinBtn);
     pinBtn.click();
-    assert.equal(visibleCount(), 1);
+    assert.ok(visibleIds().includes("acme/alpha:batch"));
 
     /** @type {HTMLElement} */ (document.querySelector('[data-batch-filter="hide"]')).click();
     // Pin keeps batch row visible even when Batch=hide
     assert.ok(visibleIds().includes("acme/alpha:batch"));
     assert.ok(visibleIds().includes("acme/alpha"));
+    assert.ok(visibleIds().includes("acme/gamma"));
 
     const clear = /** @type {HTMLButtonElement} */ (document.querySelector("#pin-clear-all"));
     assert.equal(clear.disabled, false);
     clear.click();
-    assert.deepEqual(visibleIds(), ["acme/alpha"]);
+    assert.deepEqual(visibleIds().sort(), ["acme/alpha", "acme/gamma"]);
   });
 
-  it("combines vendor chip filter with Batch show", () => {
+  it("combines vendor chip filter with Batch show to OpenAI-only row set", () => {
     initModelTable({
       models: fixtureModels(),
       vendorMatchByChip: { OpenAI: ["OpenAI"] },
     });
     /** @type {HTMLElement} */ (document.querySelector('[data-batch-filter="show"]')).click();
+    // Without vendor filter, Anthropic control rows remain visible (fixture is not vacuous).
+    assert.deepEqual(visibleIds().sort(), [
+      "acme/alpha",
+      "acme/alpha:batch",
+      "acme/gamma",
+      "acme/gamma:batch",
+    ]);
+
     /** @type {HTMLElement} */ (document.querySelector('[data-vendor-filter="OpenAI"]')).click();
-    assert.deepEqual(visibleIds().sort(), ["acme/alpha", "acme/alpha:batch"]);
+    const ids = visibleIds().sort();
+    assert.deepEqual(ids, ["acme/alpha", "acme/alpha:batch"]);
+    assert.equal(ids.length, 2);
+    assert.equal(visibleCount(), 2);
     assert.equal(
       document.querySelector('[data-vendor-filter="OpenAI"]')?.getAttribute("aria-pressed"),
       "true",
     );
+    // If vendor predicate were disconnected, Anthropic rows would still appear here.
+    assert.equal(ids.includes("acme/gamma"), false);
+    assert.equal(ids.includes("acme/gamma:batch"), false);
+  });
+
+  it("supports Batch radiogroup ArrowRight keyboard selection", () => {
+    initModelTable({ models: fixtureModels() });
+    const hide = /** @type {HTMLElement} */ (document.querySelector('[data-batch-filter="hide"]'));
+    const show = /** @type {HTMLElement} */ (document.querySelector('[data-batch-filter="show"]'));
+    hide.focus();
+    hide.dispatchEvent(new window.KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
+    assert.equal(show.getAttribute("aria-checked"), "true");
+    assert.equal(hide.getAttribute("aria-checked"), "false");
+    assert.equal(document.activeElement, show);
+    assert.ok(visibleIds().includes("acme/alpha:batch"));
   });
 
   it("renders hostile model fields via textContent/setAttribute without XSS sinks", () => {
