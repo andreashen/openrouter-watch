@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>AND-103 DOM security harness</title>
+  </head>
+  <body>
+    <div id="sort-control">
+      <button type="button" id="sort-trigger" aria-expanded="false">
+        <span id="sort-trigger-label">不排序</span>
+      </button>
+      <div id="sort-panel" hidden>
+        <button type="button" data-sort-field="" aria-pressed="true">不排序</button>
+        <button type="button" data-sort-dir="desc" aria-pressed="true">降序</button>
+      </div>
+    </div>
+    <div id="removed-filter" role="radiogroup">
+      <button type="button" role="radio" data-removed-filter="hide" aria-checked="true">不显示</button>
+      <button type="button" role="radio" data-removed-filter="show" aria-checked="false">显示</button>
+      <button type="button" role="radio" data-removed-filter="only" aria-checked="false">只显示</button>
+    </div>
+    <div id="pointer-filter" role="radiogroup">
+      <button type="button" role="radio" data-pointer-filter="hide" aria-checked="true">不显示</button>
+      <button type="button" role="radio" data-pointer-filter="show" aria-checked="false">显示</button>
+      <button type="button" role="radio" data-pointer-filter="only" aria-checked="false">只显示</button>
+    </div>
+    <div id="batch-filter" role="radiogroup">
+      <button type="button" role="radio" data-batch-filter="hide" aria-checked="true">不显示</button>
+      <button type="button" role="radio" data-batch-filter="show" aria-checked="false">显示</button>
+      <button type="button" role="radio" data-batch-filter="only" aria-checked="false">只显示</button>
+    </div>
+    <input id="model-search" type="search" />
+    <input id="cap-reasoning" type="checkbox" />
+    <input id="cap-tools" type="checkbox" />
+    <input id="cap-vision" type="checkbox" />
+    <p id="model-count"></p>
+    <button type="button" id="pin-clear-all" disabled>清除 Pin</button>
+    <table id="model-table">
+      <thead>
+        <tr>
+          <th id="model-id-col-header"><span id="model-id-col-resizer"></span></th>
+        </tr>
+      </thead>
+      <tbody id="model-table-body"></tbody>
+    </table>
+    <script type="module">
+      import { initModelTable } from "/src/lib/modelTableClient.js";
+
+      const evilId = `acme/x"><img src=x onerror=window.__xss=1>`;
+      const models = [
+        {
+          model_id: evilId,
+          name: `<img src=x onerror=window.__xssName=1>`,
+          vendor_name: "OpenAI",
+          openrouter_model_url: "javascript:alert(1)",
+          pointer_target_id: `tgt"><img src=x onerror=window.__xssPtr=1>`,
+          officially_removed: false,
+          is_pointer: true,
+          knowledge_cutoff: `2024-01"><img src=x>`,
+          released_at: "2024>" + "<" + "script>window.__xssRel=1</" + "script>",
+          fetched_at: `not-a-date"><img src=x onerror=window.__xssTs=1>`,
+          input_price_usd_per_1m: 1,
+        },
+        {
+          model_id: "acme/safe",
+          name: "Safe",
+          vendor_name: "OpenAI",
+          openrouter_model_url: "https://openrouter.ai/acme/safe",
+          officially_removed: false,
+          is_pointer: false,
+          fetched_at: "2026-01-01T00:00:00Z",
+          input_price_usd_per_1m: 2,
+        },
+      ];
+
+      initModelTable({ models, vendorMatchByChip: { OpenAI: ["OpenAI"] } });
+      document.querySelector('[data-removed-filter="show"]').click();
+      document.querySelector('[data-pointer-filter="show"]').click();
+      document.querySelector('[data-batch-filter="show"]').click();
+
+      const body = document.querySelector("#model-table-body");
+      const links = [...body.querySelectorAll("a")].map((a) => a.getAttribute("href"));
+      window.__domSecurityResult = {
+        imgCount: body.querySelectorAll("img").length,
+        scriptCount: body.querySelectorAll("script").length,
+        handlerAttrs: [...body.querySelectorAll("*")].some((el) =>
+          [...el.attributes].some((attr) => /^on/i.test(attr.name)),
+        ),
+        unsafeHref: links.some(
+          (href) => typeof href === "string" && /^\s*javascript:/i.test(href),
+        ),
+        hrefs: links,
+        modelIdText: body.querySelector(".model-id-text")?.textContent || "",
+        xssFlags: {
+          __xss: Boolean(window.__xss),
+          __xssName: Boolean(window.__xssName),
+          __xssPtr: Boolean(window.__xssPtr),
+          __xssRel: Boolean(window.__xssRel),
+          __xssTs: Boolean(window.__xssTs),
+        },
+        parsedImgElements: body.querySelectorAll("img").length,
+        rowCount: body.querySelectorAll("tr").length,
+      };
+    </script>
+  </body>
+</html>

@@ -196,6 +196,15 @@ const outsideHidden = await page.locator("#sort-panel").isHidden();
 step("s4-outside-click", { panelHidden: outsideHidden });
 if (!outsideHidden) fail("s4-outside-click", "outside click did not close panel");
 
+// Capture default-hide row set before Batch show (after S4 interactions; filter still hide)
+const hideRowIds = await page.evaluate(() =>
+  [...document.querySelectorAll("#model-table-body tr")]
+    .map((tr) => tr.getAttribute("data-model-id") || "")
+    .filter(Boolean),
+);
+const hideHasBatch = hideRowIds.some((id) => id.toLowerCase().endsWith(":batch"));
+const hideVisibleCount = parseVisibleCount(await page.locator("#model-count").innerText());
+
 // Batch show / only — wait on count text, assert against production filter expected values
 const expectedShow = await expectedVisibleCount(page, { batchMode: "show" });
 const expectedOnly = await expectedVisibleCount(page, { batchMode: "only" });
@@ -204,12 +213,49 @@ await page.locator('[data-batch-filter="show"]').click();
 await waitForCountChange(page, beforeShow);
 const showCountText = await page.locator("#model-count").innerText();
 const showCount = parseVisibleCount(showCountText);
-const showOk = showCount === expectedShow;
-step("batch-show", { showCountText, showCount, expectedShow, showOk });
+const showRowIds = await page.evaluate(() =>
+  [...document.querySelectorAll("#model-table-body tr")]
+    .map((tr) => tr.getAttribute("data-model-id") || "")
+    .filter(Boolean),
+);
+const showHasBatch = showRowIds.some((id) => id.toLowerCase().endsWith(":batch"));
+const showHasNonBatch = showRowIds.some((id) => !id.toLowerCase().endsWith(":batch"));
+const showGrewVsHide =
+  typeof showCount === "number" &&
+  typeof hideVisibleCount === "number" &&
+  showCount > hideVisibleCount;
+const batchNewlyVisible = showRowIds.some(
+  (id) => id.toLowerCase().endsWith(":batch") && !hideRowIds.includes(id),
+);
+const showOk =
+  showCount === expectedShow &&
+  !hideHasBatch &&
+  showHasBatch &&
+  showHasNonBatch &&
+  showGrewVsHide &&
+  batchNewlyVisible;
+step("batch-show", {
+  showCountText,
+  showCount,
+  expectedShow,
+  hideVisibleCount,
+  hideHasBatch,
+  showHasBatch,
+  showHasNonBatch,
+  showGrewVsHide,
+  batchNewlyVisible,
+  showOk,
+});
 if (!showOk) {
-  fail("batch-show", "visible count did not match expected Batch=show", {
+  fail("batch-show", "Batch=show row set/count assertion failed", {
     showCount,
     expectedShow,
+    hideVisibleCount,
+    hideHasBatch,
+    showHasBatch,
+    showHasNonBatch,
+    showGrewVsHide,
+    batchNewlyVisible,
   });
 }
 await row.screenshot({ path: path.join(outDir, "03-batch-show.png") });

@@ -14,7 +14,7 @@ import {
 import { initModelIdColResize } from "./modelTableColumnResize.js";
 import { getNumericValue, resolveDisplayModel, toSearchText } from "./modelTableDisplay.js";
 import {
-  createModelIdHTML,
+  createModelIdContent,
   formatCapabilities,
   formatCompact,
   formatIndex,
@@ -104,18 +104,18 @@ function getRangeByKey(key) {
 }
 
 /**
- * @param {string} html
+ * @param {Node} child
  * @param {string} className
  * @param {Record<string, string>} [dataset]
  * @returns {HTMLTableCellElement}
  */
-function createCellHTML(html, className, dataset = {}) {
+function createCell(child, className, dataset = {}) {
   const cell = document.createElement("td");
   cell.className = className;
   for (const [key, value] of Object.entries(dataset)) {
     cell.dataset[key] = value;
   }
-  cell.innerHTML = html;
+  cell.appendChild(child);
   return cell;
 }
 
@@ -410,7 +410,7 @@ export function initModelTable(boot = {}) {
 
     const linkWrap = document.createElement("div");
     linkWrap.className = "model-id-link-wrap";
-    linkWrap.innerHTML = createModelIdHTML(display, isPointerModel(display));
+    linkWrap.appendChild(createModelIdContent(display, isPointerModel(display)));
     inner.appendChild(linkWrap);
 
     cell.appendChild(inner);
@@ -462,57 +462,20 @@ export function initModelTable(boot = {}) {
         });
       }
 
+      const numClass = "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs";
       row.appendChild(createModelIdCell(model, display, pinned));
+      row.appendChild(createCell(formatCompact(display.context_length ?? null), numClass));
+      row.appendChild(createCell(formatCompact(display.max_completion_tokens ?? null), numClass));
+      row.appendChild(createCell(formatPrice(display.input_price_usd_per_1m ?? null), numClass));
       row.appendChild(
-        createCellHTML(
-          formatCompact(display.context_length ?? null),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
+        createCell(formatPrice(display.weighted_avg_input_price_usd_per_1m ?? null), numClass),
       );
+      row.appendChild(createCell(formatPrice(display.output_price_usd_per_1m ?? null), numClass));
+      row.appendChild(createCell(formatIndex(display.intelligence_index ?? null), numClass));
+      row.appendChild(createCell(formatIndex(display.coding_index ?? null), numClass));
+      row.appendChild(createCell(formatIndex(display.agentic_index ?? null), numClass));
       row.appendChild(
-        createCellHTML(
-          formatCompact(display.max_completion_tokens ?? null),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
-      row.appendChild(
-        createCellHTML(
-          formatPrice(display.input_price_usd_per_1m ?? null),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
-      row.appendChild(
-        createCellHTML(
-          formatPrice(display.weighted_avg_input_price_usd_per_1m ?? null),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
-      row.appendChild(
-        createCellHTML(
-          formatPrice(display.output_price_usd_per_1m ?? null),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
-      row.appendChild(
-        createCellHTML(
-          formatIndex(display.intelligence_index ?? null),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
-      row.appendChild(
-        createCellHTML(
-          formatIndex(display.coding_index ?? null),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
-      row.appendChild(
-        createCellHTML(
-          formatIndex(display.agentic_index ?? null),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
-      row.appendChild(
-        createCellHTML(
+        createCell(
           formatCapabilities(
             Boolean(display.supports_reasoning),
             Boolean(display.supports_tools),
@@ -521,24 +484,9 @@ export function initModelTable(boot = {}) {
           "whitespace-nowrap px-5 py-3",
         ),
       );
-      row.appendChild(
-        createCellHTML(
-          formatKnowledgeCutoff(display.knowledge_cutoff),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
-      row.appendChild(
-        createCellHTML(
-          formatReleasedAt(display.released_at),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
-      row.appendChild(
-        createCellHTML(
-          formatTimestamp(getUpdatedAtValue(display)),
-          "whitespace-nowrap px-5 py-3 tabular-nums font-mono text-xs",
-        ),
-      );
+      row.appendChild(createCell(formatKnowledgeCutoff(display.knowledge_cutoff), numClass));
+      row.appendChild(createCell(formatReleasedAt(display.released_at), numClass));
+      row.appendChild(createCell(formatTimestamp(getUpdatedAtValue(display)), numClass));
       fragment.appendChild(row);
     }
     tableBody.appendChild(fragment);
@@ -546,11 +494,20 @@ export function initModelTable(boot = {}) {
     syncPinClearButton();
 
     if (count) {
-      const pinPart =
-        pinnedCount > 0
-          ? `（含 <span style="color: var(--ow-ink)">${pinnedCount}</span> 个 Pin）`
-          : "";
-      count.innerHTML = `显示 <span style="color: var(--ow-ink)">${rows.length}</span>${pinPart} / ${totalRows} 个模型`;
+      count.replaceChildren();
+      count.append("显示 ");
+      const shown = document.createElement("span");
+      shown.style.color = "var(--ow-ink)";
+      shown.textContent = String(rows.length);
+      count.append(shown);
+      if (pinnedCount > 0) {
+        count.append("（含 ");
+        const pinnedEl = document.createElement("span");
+        pinnedEl.style.color = "var(--ow-ink)";
+        pinnedEl.textContent = String(pinnedCount);
+        count.append(pinnedEl, " 个 Pin）");
+      }
+      count.append(` / ${totalRows} 个模型`);
     }
   }
 

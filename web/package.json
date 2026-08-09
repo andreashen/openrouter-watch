@@ -14,6 +14,7 @@
     "test:unit": "node --test src/lib/*.test.js",
     "test:and103-evidence": "node scripts/run-and103-evidence.mjs",
     "test:boot-json-safety": "node scripts/check-boot-json-safety.mjs",
+    "test:and103-dom-security": "node scripts/and103-dom-security.mjs",
     "test:and103-evidence:raw": "node scripts/and103-interaction-evidence.mjs"
   },
   "dependencies": {

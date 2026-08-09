@@ -92,6 +92,7 @@ try {
   await ready;
   await waitForHttp(baseUrl);
   await run("node", ["scripts/check-boot-json-safety.mjs"]);
+  await run("node", ["scripts/and103-dom-security.mjs"]);
   await run("node", ["scripts/and103-interaction-evidence.mjs"], {
     env: {
       ...process.env,

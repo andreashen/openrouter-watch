@@ -221,4 +221,37 @@ describe("modelTableClient integration", () => {
       "true",
     );
   });
+
+  it("renders hostile model fields via textContent/setAttribute without XSS sinks", () => {
+    const evilId = `acme/x"><img src=x onerror=window.__xss=1>`;
+    initModelTable({
+      models: [
+        {
+          model_id: evilId,
+          name: `<img src=x>`,
+          vendor_name: "OpenAI",
+          openrouter_model_url: "javascript:alert(1)",
+          pointer_target_id: `tgt"><img src=x>`,
+          is_pointer: true,
+          knowledge_cutoff: `2024"><img src=x>`,
+          released_at: `</script><script>alert(1)</script>`,
+          fetched_at: `bad"><img src=x>`,
+          officially_removed: false,
+          input_price_usd_per_1m: 1,
+        },
+      ],
+    });
+    /** @type {HTMLElement} */ (document.querySelector('[data-pointer-filter="show"]')).click();
+
+    const body = document.querySelector("#model-table-body");
+    assert.ok(body);
+    assert.equal(body.querySelectorAll("img").length, 0);
+    assert.equal(body.querySelectorAll("script").length, 0);
+    assert.equal(Boolean(window.__xss), false);
+    const href = body.querySelector("a")?.getAttribute("href") || "";
+    assert.equal(/^\s*javascript:/i.test(href), false);
+    assert.match(href, /^https:\/\/openrouter\.ai\//);
+    assert.equal(body.querySelector(".model-id-text")?.textContent, evilId);
+    assert.equal(body.querySelectorAll("[onerror]").length, 0);
+  });
 });
