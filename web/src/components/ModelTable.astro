@@ -171,13 +171,13 @@ const rangeFields = [
     </div>
 
     {/* 四等分：排序组合(S4) 1x | 已下架 1x | latest 1x | Batch模型 1x */}
-    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      <div class="relative" id="sort-control">
-        <span class="text-sm font-semibold" style="color: var(--ow-ink);">排序</span>
+    <div class="grid items-end gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div class="relative flex min-w-0 flex-col" id="sort-control">
+        <span class="text-sm font-semibold leading-5" style="color: var(--ow-ink);">排序</span>
         <button
           type="button"
           id="sort-trigger"
-          class="ow-control sort-trigger mt-2 flex w-full items-center justify-between gap-2 rounded-xl border px-3 py-2.5 text-left text-sm transition-colors focus:outline-none focus:ring-2"
+          class="ow-control filter-row-control sort-trigger mt-2 flex w-full items-center justify-between gap-2 rounded-xl border px-3 text-left text-sm transition-colors focus:outline-none focus:ring-2"
           aria-haspopup="dialog"
           aria-expanded="false"
           aria-controls="sort-panel"
@@ -212,20 +212,20 @@ const rangeFields = [
           </div>
         </div>
       </div>
-      <div>
-        <span class="text-sm font-semibold" style="color: var(--ow-ink);">已下架模型</span>
+      <div class="flex min-w-0 flex-col">
+        <span class="text-sm font-semibold leading-5" style="color: var(--ow-ink);">已下架模型</span>
         <div
           id="removed-filter"
           role="radiogroup"
           aria-label="已下架模型显示方式"
-          class="seg-ctrl mt-2 inline-flex w-full rounded-xl border p-0.5"
+          class="ow-control filter-row-control seg-ctrl mt-2 inline-flex w-full rounded-xl border p-0.5"
         >
           <button
             type="button"
             data-removed-filter="hide"
             role="radio"
             aria-checked="true"
-            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 text-sm font-medium transition-colors"
           >
             不显示
           </button>
@@ -234,7 +234,7 @@ const rangeFields = [
             data-removed-filter="show"
             role="radio"
             aria-checked="false"
-            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 text-sm font-medium transition-colors"
           >
             显示
           </button>
@@ -243,26 +243,26 @@ const rangeFields = [
             data-removed-filter="only"
             role="radio"
             aria-checked="false"
-            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 text-sm font-medium transition-colors"
           >
             只显示
           </button>
         </div>
       </div>
-      <div>
-        <span class="text-sm font-semibold" style="color: var(--ow-ink);">模型系列latest</span>
+      <div class="flex min-w-0 flex-col">
+        <span class="text-sm font-semibold leading-5" style="color: var(--ow-ink);">模型系列latest</span>
         <div
           id="pointer-filter"
           role="radiogroup"
           aria-label="模型系列 latest 显示方式"
-          class="seg-ctrl mt-2 inline-flex w-full rounded-xl border p-0.5"
+          class="ow-control filter-row-control seg-ctrl mt-2 inline-flex w-full rounded-xl border p-0.5"
         >
           <button
             type="button"
             data-pointer-filter="hide"
             role="radio"
             aria-checked="true"
-            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 text-sm font-medium transition-colors"
           >
             不显示
           </button>
@@ -271,7 +271,7 @@ const rangeFields = [
             data-pointer-filter="show"
             role="radio"
             aria-checked="false"
-            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 text-sm font-medium transition-colors"
           >
             显示
           </button>
@@ -280,26 +280,26 @@ const rangeFields = [
             data-pointer-filter="only"
             role="radio"
             aria-checked="false"
-            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 text-sm font-medium transition-colors"
           >
             只显示
           </button>
         </div>
       </div>
-      <div>
-        <span class="text-sm font-semibold" style="color: var(--ow-ink);">Batch模型</span>
+      <div class="flex min-w-0 flex-col">
+        <span class="text-sm font-semibold leading-5" style="color: var(--ow-ink);">Batch模型</span>
         <div
           id="batch-filter"
           role="radiogroup"
           aria-label="Batch模型显示方式"
-          class="seg-ctrl mt-2 inline-flex w-full rounded-xl border p-0.5"
+          class="ow-control filter-row-control seg-ctrl mt-2 inline-flex w-full rounded-xl border p-0.5"
         >
           <button
             type="button"
             data-batch-filter="hide"
             role="radio"
             aria-checked="true"
-            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 text-sm font-medium transition-colors"
           >
             不显示
           </button>
@@ -308,7 +308,7 @@ const rangeFields = [
             data-batch-filter="show"
             role="radio"
             aria-checked="false"
-            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 text-sm font-medium transition-colors"
           >
             显示
           </button>
@@ -317,7 +317,7 @@ const rangeFields = [
             data-batch-filter="only"
             role="radio"
             aria-checked="false"
-            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+            class="removed-filter-btn flex-1 rounded-lg px-2 text-sm font-medium transition-colors"
           >
             只显示
           </button>
@@ -444,6 +444,49 @@ const rangeFields = [
     background: #1c1c1e;
   }
 
+  /* Shared chrome height for S4 trigger + tri-state segment controls */
+  .filter-row-control {
+    box-sizing: border-box;
+    min-height: 2.625rem; /* 42px — matches prior S4 trigger geometry */
+    height: 2.625rem;
+  }
+
+  .sort-trigger {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .seg-ctrl {
+    align-items: stretch;
+  }
+
+  .seg-ctrl:focus-within {
+    border-color: var(--ow-accent);
+    background: #fff;
+    box-shadow: 0 0 0 3px var(--ow-accent-soft);
+  }
+
+  :global(.dark) .seg-ctrl:focus-within {
+    background: #1c1c1e;
+  }
+
+  .removed-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    line-height: 1.25rem;
+  }
+
+  .removed-filter-btn:hover {
+    color: var(--ow-ink);
+  }
+
+  .removed-filter-btn:focus-visible {
+    outline: 2px solid var(--ow-accent);
+    outline-offset: 1px;
+  }
+
   .range-field {
     display: flex;
     flex-direction: column;
@@ -484,11 +527,6 @@ const rangeFields = [
 
   .range-field-input:focus {
     outline: none;
-  }
-
-  .seg-ctrl {
-    border-color: var(--ow-line-strong);
-    background: var(--ow-fill-quiet);
   }
 
   .cap-filter-item {

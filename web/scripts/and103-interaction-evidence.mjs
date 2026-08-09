@@ -100,26 +100,59 @@ await page.goto(baseUrl, { waitUntil: "networkidle" });
 const row = page.locator("#batch-filter").locator("xpath=ancestor::div[contains(@class,'grid')][1]");
 await row.waitFor();
 
-// --- Four equal columns (actual geometry) ---
+// --- Four equal columns (actual geometry) + matched control heights ---
 const colBoxes = await page.evaluate(() => {
   const ids = ["sort-control", "removed-filter", "pointer-filter", "batch-filter"];
   return ids.map((id) => {
     const el = document.getElementById(id);
     const cell = id === "sort-control" ? el : el?.parentElement;
+    const control =
+      id === "sort-control" ? document.getElementById("sort-trigger") : el;
     const rect = (cell || el)?.getBoundingClientRect();
+    const controlRect = control?.getBoundingClientRect();
     return rect
-      ? { id, x: rect.x, y: rect.y, width: rect.width, height: rect.height }
+      ? {
+          id,
+          x: rect.x,
+          y: rect.y,
+          width: rect.width,
+          height: rect.height,
+          controlHeight: controlRect?.height ?? null,
+          controlTop: controlRect?.top ?? null,
+        }
       : { id, missing: true };
   });
 });
 const present = colBoxes.filter((b) => !b.missing);
 const widths = present.map((b) => b.width);
+const controlHeights = present.map((b) => b.controlHeight);
+const controlTops = present.map((b) => b.controlTop);
 const widthOk =
   present.length === 4 &&
   widths.every((w) => nearlyEqual(w, widths[0], 2));
-step("four-controls-geometry", { present: present.length, widths, widthOk });
+const heightOk =
+  present.length === 4 &&
+  controlHeights.every((h) => typeof h === "number" && nearlyEqual(h, controlHeights[0], 2));
+const topOk =
+  present.length === 4 &&
+  controlTops.every((t) => typeof t === "number" && nearlyEqual(t, controlTops[0], 2));
+step("four-controls-geometry", {
+  present: present.length,
+  widths,
+  controlHeights,
+  controlTops,
+  widthOk,
+  heightOk,
+  topOk,
+});
 if (!widthOk) {
   fail("four-controls-geometry", "expected 4 equal-width columns", { widths });
+}
+if (!heightOk || !topOk) {
+  fail("four-controls-geometry", "expected matched control height and vertical alignment", {
+    controlHeights,
+    controlTops,
+  });
 }
 
 // Default hide: no :batch in body
