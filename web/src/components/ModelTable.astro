@@ -88,7 +88,7 @@ const rangeFields = [
 ---
 
 <section
-  class="overflow-hidden rounded-[var(--ow-radius)] border backdrop-blur-sm"
+  class="rounded-[var(--ow-radius)] border backdrop-blur-sm"
   style="border-color: var(--ow-line); background: var(--ow-surface); box-shadow: var(--ow-shadow);"
 >
   <div class="flex flex-col gap-6 border-b p-6" style="border-color: var(--ow-line);">
@@ -168,37 +168,47 @@ const rangeFields = [
       </div>
     </div>
 
+    {/* 四等分：排序组合(S4) 1x | 已下架 1x | latest 1x | Batch模型 1x */}
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      <div>
-        <label for="sort-field" class="text-sm font-semibold" style="color: var(--ow-ink);">排序字段</label>
-        <select
-          id="sort-field"
-          class="ow-control mt-2 block w-full rounded-xl border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2"
+      <div class="relative" id="sort-control">
+        <span class="text-sm font-semibold" style="color: var(--ow-ink);">排序</span>
+        <button
+          type="button"
+          id="sort-trigger"
+          class="ow-control sort-trigger mt-2 flex w-full items-center justify-between gap-2 rounded-xl border px-3 py-2.5 text-left text-sm transition-colors focus:outline-none focus:ring-2"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          aria-controls="sort-panel"
         >
-          <option value="">不排序</option>
-          <option value="context_length">上下文</option>
-          <option value="max_completion_tokens">最大输出</option>
-          <option value="input_price_usd_per_1m">输入价</option>
-          <option value="weighted_avg_input_price_usd_per_1m">加权输入价</option>
-          <option value="output_price_usd_per_1m">输出价</option>
-          <option value="intelligence_index">Intelligence</option>
-          <option value="coding_index">Coding</option>
-          <option value="agentic_index">Agentic</option>
-          <option value="knowledge_cutoff">知识截止</option>
-          <option value="released_at">发布日期</option>
-          <option value="updated_at">更新时间</option>
-        </select>
-      </div>
-      <div>
-        <label for="sort-direction" class="text-sm font-semibold" style="color: var(--ow-ink);">排序方向</label>
-        <select
-          id="sort-direction"
-          disabled
-          class="ow-control mt-2 block w-full rounded-xl border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
+          <span id="sort-trigger-label">不排序</span>
+          <span class="sort-trigger-hint" aria-hidden="true">配置</span>
+        </button>
+        <div
+          id="sort-panel"
+          class="sort-panel"
+          role="dialog"
+          aria-label="排序配置"
+          hidden
         >
-          <option value="desc">降序</option>
-          <option value="asc">升序</option>
-        </select>
+          <div class="sort-panel-fields" role="listbox" aria-label="排序字段">
+            <button type="button" class="sort-panel-item" data-sort-field="" role="option" aria-selected="true">不排序</button>
+            <button type="button" class="sort-panel-item" data-sort-field="context_length" role="option" aria-selected="false">上下文</button>
+            <button type="button" class="sort-panel-item" data-sort-field="max_completion_tokens" role="option" aria-selected="false">最大输出</button>
+            <button type="button" class="sort-panel-item" data-sort-field="input_price_usd_per_1m" role="option" aria-selected="false">输入价</button>
+            <button type="button" class="sort-panel-item" data-sort-field="weighted_avg_input_price_usd_per_1m" role="option" aria-selected="false">加权输入价</button>
+            <button type="button" class="sort-panel-item" data-sort-field="output_price_usd_per_1m" role="option" aria-selected="false">输出价</button>
+            <button type="button" class="sort-panel-item" data-sort-field="intelligence_index" role="option" aria-selected="false">Intelligence</button>
+            <button type="button" class="sort-panel-item" data-sort-field="coding_index" role="option" aria-selected="false">Coding</button>
+            <button type="button" class="sort-panel-item" data-sort-field="agentic_index" role="option" aria-selected="false">Agentic</button>
+            <button type="button" class="sort-panel-item" data-sort-field="knowledge_cutoff" role="option" aria-selected="false">知识截止</button>
+            <button type="button" class="sort-panel-item" data-sort-field="released_at" role="option" aria-selected="false">发布日期</button>
+            <button type="button" class="sort-panel-item" data-sort-field="updated_at" role="option" aria-selected="false">更新时间</button>
+          </div>
+          <div class="sort-panel-dirs" role="group" aria-label="排序方向">
+            <button type="button" class="sort-panel-item" data-sort-dir="desc" aria-pressed="true">降序 ↓</button>
+            <button type="button" class="sort-panel-item" data-sort-dir="asc" aria-pressed="false">升序 ↑</button>
+          </div>
+        </div>
       </div>
       <div>
         <span class="text-sm font-semibold" style="color: var(--ow-ink);">已下架模型</span>
@@ -268,6 +278,40 @@ const rangeFields = [
           </button>
         </div>
       </div>
+      <div>
+        <span class="text-sm font-semibold" style="color: var(--ow-ink);">Batch模型</span>
+        <div
+          id="batch-filter"
+          role="radiogroup"
+          aria-label="Batch模型显示方式"
+          class="seg-ctrl mt-2 inline-flex w-full rounded-xl border p-0.5"
+        >
+          <button
+            type="button"
+            data-batch-filter="hide"
+            aria-pressed="true"
+            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+          >
+            不显示
+          </button>
+          <button
+            type="button"
+            data-batch-filter="show"
+            aria-pressed="false"
+            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+          >
+            显示
+          </button>
+          <button
+            type="button"
+            data-batch-filter="only"
+            aria-pressed="false"
+            class="removed-filter-btn flex-1 rounded-lg px-2 py-2 text-xs font-medium transition-colors"
+          >
+            只显示
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -318,7 +362,7 @@ const rangeFields = [
     </div>
   </div>
 
-  <div class="overflow-x-auto overflow-y-auto max-h-[70vh] custom-scrollbar">
+  <div class="overflow-x-auto overflow-y-auto max-h-[70vh] custom-scrollbar rounded-b-[var(--ow-radius)]">
     <table id="model-table" class="min-w-max border-collapse text-left text-sm w-full">
       <thead class="sticky top-0 z-20 text-xs uppercase tracking-wider shadow-sm backdrop-blur-[16px] backdrop-saturate-150" style="background: var(--ow-chrome); color: var(--ow-ink-3);">
         <tr>
@@ -481,6 +525,81 @@ const rangeFields = [
     background: rgba(255, 255, 255, 0.1);
     color: var(--ow-accent);
     box-shadow: none;
+  }
+
+  .sort-trigger-hint {
+    flex: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ow-ink-3);
+  }
+
+  .sort-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 6px);
+    z-index: 50;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.9fr);
+    gap: 8px;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid var(--ow-line-strong);
+    background: #fff;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  :global(.dark) .sort-panel {
+    background: #1c1c1e;
+  }
+
+  .sort-panel[hidden] {
+    display: none;
+  }
+
+  .sort-panel-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-height: 220px;
+    overflow: auto;
+  }
+
+  .sort-panel-dirs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 8px;
+    border-left: 1px solid var(--ow-line);
+  }
+
+  .sort-panel-item {
+    border: 0;
+    background: transparent;
+    text-align: left;
+    border-radius: 8px;
+    padding: 7px 8px;
+    font-size: 12.5px;
+    font-weight: 550;
+    color: var(--ow-ink-2);
+    cursor: pointer;
+  }
+
+  .sort-panel-item:hover {
+    background: var(--ow-fill-quiet);
+  }
+
+  .sort-panel-item[aria-selected="true"],
+  .sort-panel-item[aria-pressed="true"] {
+    background: var(--ow-accent-soft);
+    color: var(--ow-accent);
+  }
+
+  .sort-panel-item:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
   }
 
   .vendor-chip {
@@ -911,10 +1030,15 @@ const rangeFields = [
   const capVision = document.querySelector("#cap-vision");
   const removedFilterButtons = Array.from(document.querySelectorAll("[data-removed-filter]"));
   const pointerFilterButtons = Array.from(document.querySelectorAll("[data-pointer-filter]"));
+  const batchFilterButtons = Array.from(document.querySelectorAll("[data-batch-filter]"));
   const vendorFilterButtons = Array.from(document.querySelectorAll("[data-vendor-filter]"));
   const vendorFilterClear = document.querySelector("#vendor-filter-clear");
-  const sortField = document.querySelector("#sort-field");
-  const sortDirection = document.querySelector("#sort-direction");
+  const sortControl = document.querySelector("#sort-control");
+  const sortTrigger = document.querySelector("#sort-trigger");
+  const sortTriggerLabel = document.querySelector("#sort-trigger-label");
+  const sortPanel = document.querySelector("#sort-panel");
+  const sortFieldButtons = Array.from(document.querySelectorAll("[data-sort-field]"));
+  const sortDirButtons = Array.from(document.querySelectorAll("[data-sort-dir]"));
   const rangeInputs = Array.from(document.querySelectorAll("input[data-range-key][data-range-bound]"));
   const totalRows = models.length;
   const modelsById = new Map(models.map((model) => [model.model_id, model]));
@@ -923,6 +1047,24 @@ const rangeFields = [
   const MODEL_ID_COL_MAX_WIDTH = 480;
   let removedFilterMode = "hide";
   let pointerFilterMode = "hide";
+  let batchFilterMode = "hide";
+  /** @type {string} */
+  let sortFieldValue = "";
+  /** @type {"asc" | "desc"} */
+  let sortDirectionValue = "desc";
+  const SORT_FIELD_LABELS = {
+    context_length: "上下文",
+    max_completion_tokens: "最大输出",
+    input_price_usd_per_1m: "输入价",
+    weighted_avg_input_price_usd_per_1m: "加权输入价",
+    output_price_usd_per_1m: "输出价",
+    intelligence_index: "Intelligence",
+    coding_index: "Coding",
+    agentic_index: "Agentic",
+    knowledge_cutoff: "知识截止",
+    released_at: "发布日期",
+    updated_at: "更新时间",
+  };
   /** @type {Set<string>} 多选厂商并集（OR）；空集表示不过滤厂商；值为芯片 name */
   const selectedVendors = new Set();
   /** @type {Record<string, string[]>} 芯片 name → 可匹配的 vendor_name（含改名前缀别名） */
@@ -1112,6 +1254,14 @@ const rangeFields = [
     }
   }
 
+  function setBatchFilterMode(mode) {
+    batchFilterMode = mode;
+    for (const button of batchFilterButtons) {
+      const isActive = button.dataset.batchFilter === mode;
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    }
+  }
+
   function isPointerModel(model) {
     if (typeof model.is_pointer === "boolean") {
       return model.is_pointer;
@@ -1146,16 +1296,46 @@ const rangeFields = [
     };
   }
 
-  function updateSortDirectionState({ resetDirection = false } = {}) {
-    const field = sortField?.value ?? "";
-    const hasField = Boolean(field);
-    if (!sortDirection) {
+  function updateSortControlUi() {
+    const hasField = Boolean(sortFieldValue);
+    const fieldLabel = hasField
+      ? (SORT_FIELD_LABELS[sortFieldValue] ?? sortFieldValue)
+      : "不排序";
+    if (sortTriggerLabel) {
+      sortTriggerLabel.textContent = hasField
+        ? `${fieldLabel} · ${sortDirectionValue === "asc" ? "↑" : "↓"}`
+        : "不排序";
+    }
+    for (const button of sortFieldButtons) {
+      const value = button.dataset.sortField ?? "";
+      button.setAttribute("aria-selected", value === sortFieldValue ? "true" : "false");
+    }
+    for (const button of sortDirButtons) {
+      const dir = button.dataset.sortDir;
+      const isActive = hasField && dir === sortDirectionValue;
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      button.disabled = !hasField;
+    }
+  }
+
+  function setSortPanelOpen(open) {
+    if (!sortPanel || !sortTrigger) {
       return;
     }
-    sortDirection.disabled = !hasField;
-    if (hasField && resetDirection) {
-      sortDirection.value = "desc";
+    if (open) {
+      sortPanel.hidden = false;
+      sortTrigger.setAttribute("aria-expanded", "true");
+    } else {
+      sortPanel.hidden = true;
+      sortTrigger.setAttribute("aria-expanded", "false");
     }
+  }
+
+  function updateSortDirectionState({ resetDirection = false } = {}) {
+    if (resetDirection) {
+      sortDirectionValue = "desc";
+    }
+    updateSortControlUi();
   }
 
   function matchesRemovedFilter(model) {
@@ -1180,6 +1360,26 @@ const rangeFields = [
       return true;
     }
     return true;
+  }
+
+  // Keep aligned with web/src/lib/batchFilter.js (node:test).
+  function isBatchModel(model) {
+    const id = model?.model_id;
+    if (typeof id !== "string" || id.length === 0) {
+      return false;
+    }
+    return id.toLowerCase().endsWith(":batch");
+  }
+
+  function matchesBatchFilter(model) {
+    const isBatch = isBatchModel(model);
+    if (batchFilterMode === "show") {
+      return true;
+    }
+    if (batchFilterMode === "only") {
+      return isBatch;
+    }
+    return !isBatch;
   }
 
   function truncateToOneDecimal(value) {
@@ -1666,8 +1866,8 @@ const rangeFields = [
     const needsReasoning = capReasoning?.checked ?? false;
     const needsTools = capTools?.checked ?? false;
     const needsVision = capVision?.checked ?? false;
-    const directionValue = sortDirection?.value;
-    const field = sortField?.value ?? "";
+    const directionValue = sortDirectionValue;
+    const field = sortFieldValue;
     const direction = directionValue === "asc" ? "asc" : "desc";
     const numericRanges = {
       context_length: getRangeByKey("context_length"),
@@ -1712,6 +1912,9 @@ const rangeFields = [
           return false;
         }
         if (!matchesPointerFilter(model)) {
+          return false;
+        }
+        if (!matchesBatchFilter(model)) {
           return false;
         }
         // Keep algorithm aligned with web/src/lib/vendorFilter.js (node:test).
@@ -1798,6 +2001,17 @@ const rangeFields = [
     });
   }
 
+  for (const button of batchFilterButtons) {
+    button.addEventListener("click", () => {
+      const mode = button.dataset.batchFilter;
+      if (!mode || mode === batchFilterMode) {
+        return;
+      }
+      setBatchFilterMode(mode);
+      applyFiltersAndSort();
+    });
+  }
+
   function syncVendorChipPressedState() {
     for (const button of vendorFilterButtons) {
       const vendor = button.dataset.vendorFilter;
@@ -1831,11 +2045,65 @@ const rangeFields = [
     applyFiltersAndSort();
   });
 
-  sortField?.addEventListener("change", () => {
-    updateSortDirectionState({ resetDirection: true });
-    applyFiltersAndSort();
+  sortTrigger?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const currentlyOpen = Boolean(sortPanel && !sortPanel.hidden);
+    setSortPanelOpen(!currentlyOpen);
   });
-  sortDirection?.addEventListener("change", applyFiltersAndSort);
+
+  for (const button of sortFieldButtons) {
+    button.addEventListener("click", () => {
+      const nextField = button.dataset.sortField ?? "";
+      if (nextField === sortFieldValue) {
+        if (!nextField) {
+          setSortPanelOpen(false);
+        }
+        return;
+      }
+      sortFieldValue = nextField;
+      updateSortDirectionState({ resetDirection: Boolean(nextField) });
+      applyFiltersAndSort();
+      if (!nextField) {
+        setSortPanelOpen(false);
+      }
+    });
+  }
+
+  for (const button of sortDirButtons) {
+    button.addEventListener("click", () => {
+      if (!sortFieldValue) {
+        return;
+      }
+      const nextDir = button.dataset.sortDir === "asc" ? "asc" : "desc";
+      if (nextDir === sortDirectionValue) {
+        setSortPanelOpen(false);
+        return;
+      }
+      sortDirectionValue = nextDir;
+      updateSortControlUi();
+      applyFiltersAndSort();
+      setSortPanelOpen(false);
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    if (!sortControl || sortPanel?.hidden) {
+      return;
+    }
+    if (sortControl.contains(/** @type {Node} */ (event.target))) {
+      return;
+    }
+    setSortPanelOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || sortPanel?.hidden) {
+      return;
+    }
+    setSortPanelOpen(false);
+    sortTrigger?.focus();
+  });
+
   for (const input of rangeInputs) {
     input.addEventListener("input", applyFiltersAndSort);
   }
