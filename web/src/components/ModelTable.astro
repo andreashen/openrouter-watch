@@ -3,6 +3,7 @@ import {
   VENDOR_QUICK_FILTERS,
   buildVendorMatchByChip,
 } from "../lib/vendorFilter.js";
+import { htmlSafeJsonStringify } from "../lib/htmlSafeJson.js";
 
 type Model = {
   model_id: string;
@@ -47,6 +48,7 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/")
  */
 const vendorQuickFilters = VENDOR_QUICK_FILTERS;
 const vendorMatchByChip = buildVendorMatchByChip(VENDOR_QUICK_FILTERS);
+const modelTableBootJson = htmlSafeJsonStringify({ models, vendorMatchByChip });
 
 const PRICE_UNIT_TIP = "单位：USD / 1M tokens";
 /** OpenRouter Effective Pricing：按实际 Token 用量对标价输入与缓存读取价加权（见模型页 Weighted Avg Input Price） */
@@ -1016,10 +1018,9 @@ const rangeFields = [
   }
 </style>
 
-<script type="application/json" id="model-table-boot" is:inline set:html={JSON.stringify({ models, vendorMatchByChip })} />
+<script type="application/json" id="model-table-boot" is:inline set:html={modelTableBootJson} />
 <script>
   import { initModelTable } from "../lib/modelTableClient.js";
   const bootEl = document.getElementById("model-table-boot");
   initModelTable(JSON.parse(bootEl?.textContent || "{}"));
 </script>
-

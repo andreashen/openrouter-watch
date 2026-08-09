@@ -22,4 +22,14 @@ describe("production wiring", () => {
     assert.match(src, /from\s+["']\.\/batchFilter\.js["']/);
     assert.match(src, /matchesBatchFilter/);
   });
+
+  it("ModelTable.astro embeds boot JSON via htmlSafeJsonStringify", () => {
+    const src = readFileSync(join(root, "../components/ModelTable.astro"), "utf8");
+    assert.match(src, /htmlSafeJsonStringify/);
+    assert.match(src, /modelTableBootJson/);
+    assert.doesNotMatch(
+      src,
+      /set:html=\{JSON\.stringify\(\{\s*models,\s*vendorMatchByChip\s*\}\)\}/,
+    );
+  });
 });
