@@ -1,8 +1,8 @@
 {
-  "requested": 564,
-  "fetched_ok": 432,
+  "requested": 580,
+  "fetched_ok": 442,
   "fetched_failed": 0,
-  "missing_permaslug": 132,
-  "non_null": 427,
-  "refreshed_at": "2026-09-07T06:04:46Z"
+  "missing_permaslug": 138,
+  "non_null": 431,
+  "refreshed_at": "2026-09-14T06:15:00Z"
 }
