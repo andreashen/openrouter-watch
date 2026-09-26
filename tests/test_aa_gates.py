@@ -31,6 +31,9 @@ def _grant() -> dict:
         "grantor": "Artificial Analysis",
         "tier": "commercial",
         "expires": "2099-01-01",
+        "instrument": "commercial_contract",
+        "authorization_ref": "https://contracts.artificialanalysis.ai/openrouter-watch/2026",
+        "verified_by": "Andriy Shen",
         "scope": {"page": True, "json": True, "redistributable": True},
     }
 
@@ -86,20 +89,35 @@ def test_g0_rejects_missing_redistribution_rights() -> None:
 
     free = _grant()
     free["tier"] = "free"
-    assert "tier_unauthorized" in g0_problems(free, today=today)
+    assert "authorization_basis" in g0_problems(free, today=today)
     pro = _grant()
     pro["tier"] = "pro"
-    assert "tier_unauthorized" in g0_problems(pro, today=today)
+    assert "authorization_basis" in g0_problems(pro, today=today)
 
     expired = _grant()
     expired["expires"] = "2020-01-01"
     assert "expires_elapsed" in g0_problems(expired, today=today)
     assert not cutover_allowed(**_ready(g0_record=expired))
 
+    placeholder = _grant()
+    placeholder["authorization_ref"] = "https://example.invalid/aa-public-grant"
+    assert "authorization_basis" in g0_problems(placeholder, today=today)
+
+    bare_commercial = {
+        "date": "2026-09-26",
+        "grantor": "Artificial Analysis",
+        "tier": "commercial",
+        "expires": "2099-01-01",
+        "scope": {"page": True, "json": True, "redistributable": True},
+    }
+    assert "authorization_basis" in g0_problems(bare_commercial, today=today)
+    assert not cutover_allowed(**_ready(g0_record=bare_commercial))
+
     granted = _grant()
     granted["tier"] = "free"
     granted["instrument"] = "written_authorization"
-    granted["authorization_ref"] = "https://example.invalid/aa-public-grant"
+    granted["authorization_ref"] = "https://files.artificialanalysis.ai/grants/openrouter-watch"
+    granted["verified_by"] = "Andriy Shen"
     assert g0_problems(granted, today=today) == []
 
 

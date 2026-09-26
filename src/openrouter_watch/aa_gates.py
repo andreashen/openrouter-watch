@@ -4,11 +4,16 @@ from __future__ import annotations
 
 import re
 from datetime import date, datetime, timezone
+from urllib.parse import urlparse
 
 G0_FIELDS = ("date", "grantor", "tier", "expires")
 SUCCESS_STREAK = 3
 _SELF_SERVE_TIERS = frozenset({"free", "pro"})
+_INSTRUMENTS = frozenset({"written_authorization", "commercial_contract"})
 _DAY = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+_RESERVED_HOSTS = frozenset(
+    {"example", "example.com", "example.org", "example.net", "example.edu", "localhost"}
+)
 
 
 def _nonempty(value: object) -> bool:
@@ -24,18 +29,38 @@ def _parse_day(value: object) -> date | None:
         return None
 
 
-def _written_grant(record: dict) -> bool:
-    if record.get("instrument") != "written_authorization":
+def _reviewable_ref(value: object) -> bool:
+    """Field shape only. A human still has to read the document this locator names."""
+    if not isinstance(value, str):
         return False
-    ref = record.get("authorization_ref")
-    return isinstance(ref, str) and ref.startswith(("https://", "http://"))
+    parsed = urlparse(value.strip())
+    host = (parsed.hostname or "").lower().rstrip(".")
+    if parsed.scheme not in {"https", "http"} or not host or "." not in host:
+        return False
+    if host in _RESERVED_HOSTS or host.endswith((".example", ".invalid", ".test", ".localhost")):
+        return False
+    return parsed.path not in {"", "/"}
+
+
+def _authorization_basis(record: dict) -> bool:
+    instrument = record.get("instrument")
+    tier = record.get("tier")
+    tier_name = tier.strip().lower() if isinstance(tier, str) else ""
+    if instrument not in _INSTRUMENTS or not _reviewable_ref(record.get("authorization_ref")):
+        return False
+    if not _nonempty(record.get("verified_by")):
+        return False
+    if tier_name in _SELF_SERVE_TIERS and instrument != "written_authorization":
+        return False
+    return True
 
 
 def g0_problems(record: object, *, today: date | None = None) -> list[str]:
     """A missing or incomplete grant is not a pass. Pricing-page tier text is not a record.
 
-    ``redistributable`` must be true. Free and Pro tiers pass only with a written
-    grant that explicitly allows public use. An expiry before ``today`` fails.
+    Every tier, including Commercial, needs a reviewable document or contract
+    locator and the name of the person who checked that it covers the public
+    page and JSON. ``redistributable`` must be true. An expiry before ``today`` fails.
     """
     if record is None:
         return ["g0_missing"]
@@ -53,10 +78,8 @@ def g0_problems(record: object, *, today: date | None = None) -> list[str]:
             problems.append("expires")
         elif expires < (today or datetime.now(timezone.utc).date()):
             problems.append("expires_elapsed")
-    tier = record.get("tier")
-    if isinstance(tier, str) and tier.strip().lower() in _SELF_SERVE_TIERS:
-        if not _written_grant(record):
-            problems.append("tier_unauthorized")
+    if not _authorization_basis(record):
+        problems.append("authorization_basis")
     scope = record.get("scope")
     if not isinstance(scope, dict):
         problems.append("scope")

@@ -180,6 +180,35 @@ def test_failed_fetch_zeroes_streak_and_keeps_previous_snapshot(
     ]
 
 
+def test_snapshot_id_conflict_zeroes_streak_and_keeps_pointer(tmp_path) -> None:
+    fetched_at = "2026-09-11T12:00:00.000Z"
+    original = build_snapshot(_pages((1, 1, False, [AA])), fetched_at=fetched_at)
+    assert original is not None
+    store_snapshot(tmp_path, original)
+    fetch_aa_script.write_streak(tmp_path, 2)
+    kept_path = tmp_path / "snapshots" / f"{original['aa_snapshot_id']}.json"
+    kept_bytes = kept_path.read_bytes()
+    kept_pointer = (tmp_path / "latest_snapshot.json").read_text(encoding="utf-8")
+    conflict = {
+        "ok": True,
+        "pages": _pages((1, 1, False, [BB])),
+        "failures": [],
+        "http_error": None,
+    }
+    assert (
+        fetch_aa_script.commit_fetch(
+            tmp_path,
+            conflict,
+            previous=2,
+            fetched_at=fetched_at,
+        )
+        == 1
+    )
+    assert fetch_aa_script.read_streak(tmp_path) == 0
+    assert kept_path.read_bytes() == kept_bytes
+    assert (tmp_path / "latest_snapshot.json").read_text(encoding="utf-8") == kept_pointer
+
+
 def test_each_capture_is_stored_under_its_own_id(tmp_path) -> None:
     first = build_snapshot(_pages((1, 1, False, [AA])), fetched_at="2026-09-11T12:00:00.000Z")
     second = build_snapshot(_pages((1, 1, False, [BB])), fetched_at="2026-09-12T12:00:00.000Z")

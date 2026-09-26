@@ -63,6 +63,7 @@ def commit_fetch(
     try:
         store_snapshot(out_dir, snapshot)
     except FileExistsError:
+        write_streak(out_dir, 0)
         return 1
     write_streak(out_dir, advance_success_streak(previous, True))
     return 0 if alignment["ok"] else 1
