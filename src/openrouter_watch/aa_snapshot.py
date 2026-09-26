@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+import json
+import os
+from pathlib import Path
+
 from .aa_fetch import INDEX_FIELDS, page_failures
 from .aa_version import canonical_major_minor
 
@@ -58,6 +62,49 @@ def scores_from_snapshot(snapshot: dict, aa_model_id: str) -> dict[str, float | 
     if found is None:
         return {name: None for name in BENCHMARK_FIELDS}
     return {name: found.get(name) for name in BENCHMARK_FIELDS}
+
+
+def _safe_snapshot_id(snapshot_id: object) -> str:
+    if not isinstance(snapshot_id, str) or not snapshot_id:
+        raise ValueError("snapshot is missing aa_snapshot_id")
+    if any(char in snapshot_id for char in "/\\") or snapshot_id in {".", ".."}:
+        raise ValueError("aa_snapshot_id is not a safe file name")
+    return snapshot_id
+
+
+def store_snapshot(out_dir: Path, snapshot: dict) -> Path:
+    """Write one immutable snapshot file, then point latest at it.
+
+    An existing file with the same id and different bytes is left untouched,
+    and the latest pointer is not moved. Identical bytes are not rewritten.
+    """
+    snapshot_id = _safe_snapshot_id(snapshot.get("aa_snapshot_id"))
+    folder = out_dir / "snapshots"
+    folder.mkdir(parents=True, exist_ok=True)
+    dest = folder / f"{snapshot_id}.json"
+    payload = json.dumps(snapshot, indent=2, ensure_ascii=False) + "\n"
+    if dest.exists():
+        if dest.read_text(encoding="utf-8") != payload:
+            raise FileExistsError(snapshot_id)
+    else:
+        temporary = folder / f".{snapshot_id}.json.tmp"
+        temporary.write_text(payload, encoding="utf-8")
+        try:
+            os.link(temporary, dest)
+        except FileExistsError:
+            temporary.unlink(missing_ok=True)
+            if dest.read_text(encoding="utf-8") != payload:
+                raise FileExistsError(snapshot_id) from None
+        else:
+            temporary.unlink(missing_ok=True)
+    pointer = {
+        "aa_snapshot_id": snapshot_id,
+        "snapshot_file": f"snapshots/{snapshot_id}.json",
+    }
+    pointer_tmp = out_dir / "latest_snapshot.json.tmp"
+    pointer_tmp.write_text(json.dumps(pointer, indent=2) + "\n", encoding="utf-8")
+    os.replace(pointer_tmp, out_dir / "latest_snapshot.json")
+    return dest
 
 
 def display_aa_snapshot_id(snapshot: dict) -> str:

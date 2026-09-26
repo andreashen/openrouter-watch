@@ -2,16 +2,41 @@
 
 from __future__ import annotations
 
+import re
+from datetime import date, datetime, timezone
+
 G0_FIELDS = ("date", "grantor", "tier", "expires")
 SUCCESS_STREAK = 3
+_SELF_SERVE_TIERS = frozenset({"free", "pro"})
+_DAY = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def _nonempty(value: object) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
-def g0_problems(record: object) -> list[str]:
-    """A missing or incomplete grant is not a pass. Pricing-page tier text is not a record."""
+def _parse_day(value: object) -> date | None:
+    if not isinstance(value, str) or not _DAY.fullmatch(value):
+        return None
+    try:
+        return datetime.strptime(value, "%Y-%m-%d").date()
+    except ValueError:
+        return None
+
+
+def _written_grant(record: dict) -> bool:
+    if record.get("instrument") != "written_authorization":
+        return False
+    ref = record.get("authorization_ref")
+    return isinstance(ref, str) and ref.startswith(("https://", "http://"))
+
+
+def g0_problems(record: object, *, today: date | None = None) -> list[str]:
+    """A missing or incomplete grant is not a pass. Pricing-page tier text is not a record.
+
+    ``redistributable`` must be true. Free and Pro tiers pass only with a written
+    grant that explicitly allows public use. An expiry before ``today`` fails.
+    """
     if record is None:
         return ["g0_missing"]
     if not isinstance(record, dict):
@@ -20,6 +45,18 @@ def g0_problems(record: object) -> list[str]:
     for field in G0_FIELDS:
         if not _nonempty(record.get(field)):
             problems.append(field)
+    if "date" not in problems and _parse_day(record.get("date")) is None:
+        problems.append("date")
+    if "expires" not in problems:
+        expires = _parse_day(record.get("expires"))
+        if expires is None:
+            problems.append("expires")
+        elif expires < (today or datetime.now(timezone.utc).date()):
+            problems.append("expires_elapsed")
+    tier = record.get("tier")
+    if isinstance(tier, str) and tier.strip().lower() in _SELF_SERVE_TIERS:
+        if not _written_grant(record):
+            problems.append("tier_unauthorized")
     scope = record.get("scope")
     if not isinstance(scope, dict):
         problems.append("scope")
@@ -28,7 +65,7 @@ def g0_problems(record: object) -> list[str]:
             problems.append("scope_page")
         if scope.get("json") is not True:
             problems.append("scope_json")
-        if not isinstance(scope.get("redistributable"), bool):
+        if scope.get("redistributable") is not True:
             problems.append("scope_redistributable")
     return problems
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from datetime import date
 from pathlib import Path
 
 from openrouter_watch.aa_gates import (
@@ -29,7 +30,7 @@ def _grant() -> dict:
         "date": "2026-09-26",
         "grantor": "Artificial Analysis",
         "tier": "commercial",
-        "expires": "2027-09-26",
+        "expires": "2099-01-01",
         "scope": {"page": True, "json": True, "redistributable": True},
     }
 
@@ -74,6 +75,32 @@ def test_g0_missing_blocks_display_and_collection_stop() -> None:
         "public_display_blocked",
         "stop_collection_blocked",
     ]
+
+
+def test_g0_rejects_missing_redistribution_rights() -> None:
+    today = date(2026, 9, 26)
+    withheld = _grant()
+    withheld["scope"]["redistributable"] = False
+    assert "scope_redistributable" in g0_problems(withheld, today=today)
+    assert not cutover_allowed(**_ready(g0_record=withheld))
+
+    free = _grant()
+    free["tier"] = "free"
+    assert "tier_unauthorized" in g0_problems(free, today=today)
+    pro = _grant()
+    pro["tier"] = "pro"
+    assert "tier_unauthorized" in g0_problems(pro, today=today)
+
+    expired = _grant()
+    expired["expires"] = "2020-01-01"
+    assert "expires_elapsed" in g0_problems(expired, today=today)
+    assert not cutover_allowed(**_ready(g0_record=expired))
+
+    granted = _grant()
+    granted["tier"] = "free"
+    granted["instrument"] = "written_authorization"
+    granted["authorization_ref"] = "https://example.invalid/aa-public-grant"
+    assert g0_problems(granted, today=today) == []
 
 
 def test_incomplete_grant_and_each_later_gate_block_cutover() -> None:
@@ -131,3 +158,7 @@ def test_committed_publication_and_sample_hold_the_public_page() -> None:
     assert "aaScoreDisplay" not in client
     assert "models_latest.json" in index
     assert extract_benchmark_from_raw({"id": "openai/gpt-4o"}) is None
+    refresh = (ROOT / ".github/workflows/data-refresh.yml").read_text(encoding="utf-8")
+    assert "python scripts/fetch.py" in refresh
+    assert "python scripts/derive.py" in refresh
+    assert "fetch_aa.py" not in refresh

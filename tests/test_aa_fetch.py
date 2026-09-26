@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import json
+
 import httpx
 from pytest_httpx import HTTPXMock
 
+import scripts.fetch_aa as fetch_aa_script
 from openrouter_watch.aa_fetch import (
     FREE_MODELS_URL,
     advance_success_streak,
@@ -12,7 +15,7 @@ from openrouter_watch.aa_fetch import (
     page_failures,
     parse_response_page,
 )
-from openrouter_watch.aa_snapshot import build_snapshot
+from openrouter_watch.aa_snapshot import build_snapshot, store_snapshot
 
 AA = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 BB = "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
@@ -112,6 +115,92 @@ def test_fetch_discards_partial_http_failure(httpx_mock: HTTPXMock) -> None:
     assert not result["ok"]
     assert result["pages"] == []
     assert result["http_error"] == 429
+
+
+def test_missing_or_mistyped_data_does_not_become_an_empty_snapshot() -> None:
+    missing = _body(page=1, total_pages=1, has_more=False, ids=[AA])
+    del missing["data"]
+    missing_pages = [_capture(missing, 1)]
+    assert "F-ENVELOPE" in page_failures(missing_pages)
+    assert build_snapshot(missing_pages, fetched_at="2026-09-11T12:00:00.000Z") is None
+
+    mistyped = _body(page=1, total_pages=1, has_more=False, ids=[AA])
+    mistyped["data"] = {"id": AA}
+    mistyped_pages = [_capture(mistyped, 1)]
+    assert "F-ENVELOPE" in page_failures(mistyped_pages)
+    assert build_snapshot(mistyped_pages, fetched_at="2026-09-11T12:00:00.000Z") is None
+    assert advance_success_streak(2, False) == 0
+
+
+def test_transport_and_parse_failures_discard_the_capture(httpx_mock: HTTPXMock) -> None:
+    httpx_mock.add_response(url=f"{FREE_MODELS_URL}?page=1", status_code=500)
+    httpx_mock.add_response(url=f"{FREE_MODELS_URL}?page=1", content=b"{", status_code=200)
+    httpx_mock.add_exception(httpx.ReadTimeout("timed out"), url=f"{FREE_MODELS_URL}?page=1")
+    with httpx.Client(trust_env=False) as client:
+        server_error = fetch_language_models(client, api_key="test-key")
+        invalid_json = fetch_language_models(client, api_key="test-key")
+        timed_out = fetch_language_models(client, api_key="test-key")
+    assert server_error["http_error"] == 500
+    assert invalid_json["failures"] == ["F-ENVELOPE"]
+    assert timed_out["failures"] == ["F-COMPLETE"]
+    for result in (server_error, invalid_json, timed_out):
+        assert not result["ok"]
+        assert result["pages"] == []
+
+
+def test_failed_fetch_zeroes_streak_and_keeps_previous_snapshot(
+    tmp_path, httpx_mock: HTTPXMock
+) -> None:
+    previous = {
+        "aa_snapshot_id": "20260911T120000.000Z_4.3",
+        "aa_fetched_at": "2026-09-11T12:00:00.000Z",
+        "intelligence_index_version": "4.3",
+        "models": [{"id": AA, "slug": "kept", "intelligence_index": 1}],
+    }
+    store_snapshot(tmp_path, previous)
+    fetch_aa_script.write_streak(tmp_path, 2)
+    kept_bytes = (tmp_path / "snapshots" / f"{previous['aa_snapshot_id']}.json").read_bytes()
+    kept_pointer = (tmp_path / "latest_snapshot.json").read_text(encoding="utf-8")
+
+    httpx_mock.add_response(url=f"{FREE_MODELS_URL}?page=1", status_code=500)
+    with httpx.Client(trust_env=False) as client:
+        fetched = fetch_language_models(client, api_key="test-key")
+    assert fetch_aa_script.commit_fetch(
+        tmp_path,
+        fetched,
+        previous=2,
+        fetched_at="2026-09-12T12:00:00.000Z",
+    ) == 1
+    assert fetch_aa_script.read_streak(tmp_path) == 0
+    kept_path = tmp_path / "snapshots" / f"{previous['aa_snapshot_id']}.json"
+    assert kept_path.read_bytes() == kept_bytes
+    assert (tmp_path / "latest_snapshot.json").read_text(encoding="utf-8") == kept_pointer
+    assert list((tmp_path / "snapshots").glob("*.json")) == [
+        tmp_path / "snapshots" / f"{previous['aa_snapshot_id']}.json"
+    ]
+
+
+def test_each_capture_is_stored_under_its_own_id(tmp_path) -> None:
+    first = build_snapshot(_pages((1, 1, False, [AA])), fetched_at="2026-09-11T12:00:00.000Z")
+    second = build_snapshot(_pages((1, 1, False, [BB])), fetched_at="2026-09-12T12:00:00.000Z")
+    assert first is not None and second is not None
+    store_snapshot(tmp_path, first)
+    first_bytes = (tmp_path / "snapshots" / f"{first['aa_snapshot_id']}.json").read_bytes()
+    store_snapshot(tmp_path, second)
+    assert (tmp_path / "snapshots" / f"{first['aa_snapshot_id']}.json").read_bytes() == first_bytes
+    assert (tmp_path / "snapshots" / f"{second['aa_snapshot_id']}.json").is_file()
+    pointer = json.loads((tmp_path / "latest_snapshot.json").read_text(encoding="utf-8"))
+    assert pointer["aa_snapshot_id"] == second["aa_snapshot_id"]
+    changed = dict(first)
+    changed["models"] = []
+    try:
+        store_snapshot(tmp_path, changed)
+    except FileExistsError:
+        pass
+    else:
+        raise AssertionError("a different body reused an existing snapshot id")
+    assert (tmp_path / "snapshots" / f"{first['aa_snapshot_id']}.json").read_bytes() == first_bytes
+    assert json.loads((tmp_path / "latest_snapshot.json").read_text(encoding="utf-8")) == pointer
 
 
 def test_fetch_keeps_a_stable_capture(httpx_mock: HTTPXMock) -> None:

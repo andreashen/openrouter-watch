@@ -16,7 +16,6 @@ INDEX_FIELDS = {
     "coding_index": "artificial_analysis_coding_index",
     "agentic_index": "artificial_analysis_agentic_index",
 }
-_HTTP_FAILURES = frozenset({401, 403, 429})
 _MAX_PAGES = 100
 
 
@@ -41,9 +40,9 @@ def parse_response_page(
     pagination = body.get("pagination") if isinstance(body, dict) else None
     if not isinstance(pagination, dict):
         pagination = {}
-    data = body.get("data") if isinstance(body, dict) else None
-    if not isinstance(data, list):
-        data = []
+    raw_data = body.get("data") if isinstance(body, dict) else None
+    data_present = isinstance(raw_data, list)
+    data = raw_data if data_present else []
     models: list[dict] = []
     uuids: list[str] = []
     for item in data:
@@ -72,6 +71,7 @@ def parse_response_page(
         else None,
         "aa_uuids": uuids,
         "models": models,
+        "data_present": data_present,
         "request_started_at": request_started_at,
         "request_ended_at": request_ended_at,
     }
@@ -124,6 +124,8 @@ def page_failures(pages: list[dict]) -> list[str]:
     if len(seen) != len(set(seen)):
         _fail("F-UUID")
 
+    if any(page.get("data_present") is not True for page in pages):
+        _fail("F-ENVELOPE")
     tiers = [page.get("tier") for page in pages]
     versions = [canonical_major_minor(page.get("intelligence_index_version")) for page in pages]
     if any(tier is None or tier == "" for tier in tiers) or len(set(tiers)) != 1:
@@ -153,6 +155,10 @@ def _clock() -> Callable[[], str]:
     return _utc_now
 
 
+def _discard(http_error: int | None, failures: list[str]) -> dict[str, Any]:
+    return {"ok": False, "http_error": http_error, "failures": failures, "pages": []}
+
+
 def fetch_language_models(
     client: httpx.Client,
     *,
@@ -160,26 +166,32 @@ def fetch_language_models(
     url: str = FREE_MODELS_URL,
     now: Callable[[], str] | None = None,
 ) -> dict[str, Any]:
-    """Pull every page. F-* failure discards the capture and does not build a snapshot."""
+    """Pull every page. Any transport, HTTP, or parse failure discards the capture."""
     stamp = now or _clock()
     pages: list[dict] = []
-    http_error: int | None = None
     for requested in range(1, _MAX_PAGES + 1):
         started = stamp()
-        response = client.get(
-            url,
-            params={"page": requested},
-            headers={"x-api-key": api_key},
-            timeout=60,
-        )
+        try:
+            response = client.get(
+                url,
+                params={"page": requested},
+                headers={"x-api-key": api_key},
+                timeout=60,
+            )
+        except httpx.HTTPError:
+            return _discard(None, ["F-COMPLETE"])
         ended = stamp()
-        if response.status_code in _HTTP_FAILURES:
-            http_error = response.status_code
-            break
-        response.raise_for_status()
+        if response.status_code >= 400:
+            return _discard(response.status_code, ["F-COMPLETE"])
+        try:
+            body = response.json()
+        except ValueError:
+            return _discard(response.status_code, ["F-ENVELOPE"])
+        if not isinstance(body, dict):
+            return _discard(response.status_code, ["F-ENVELOPE"])
         pages.append(
             parse_response_page(
-                response.json(),
+                body,
                 requested_page=requested,
                 request_started_at=started,
                 request_ended_at=ended,
@@ -190,11 +202,10 @@ def fetch_language_models(
             break
         if has_more is not True:
             break
-    failures = ["F-COMPLETE"] if http_error is not None or not pages else page_failures(pages)
-    ok = http_error is None and not failures
+    failures = page_failures(pages)
     return {
-        "ok": ok,
-        "http_error": http_error,
-        "failures": [] if ok else failures,
-        "pages": [] if not ok else pages,
+        "ok": not failures,
+        "http_error": None,
+        "failures": failures,
+        "pages": [] if failures else pages,
     }
