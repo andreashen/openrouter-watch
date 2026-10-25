@@ -1,5 +1,7 @@
 data/raw/
 data/normalized/
+data/aa_internal/
+data/aa_snapshots/
 __pycache__/
 .env
 *.pyc

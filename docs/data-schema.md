@@ -56,6 +56,7 @@
    - 当前值为有效数值 → 覆盖；
    - 当前空白且上一版有效 → 保留上一版；
    - 两者皆空 → `null`。
+   - 这三条描述的是公开产物里的 OpenRouter 转载分。Artificial Analysis 直连快照不写进本文件，也不跨快照回填；公开展示在书面授权完成前不改读这三项。
 4. **首跑**：无上一版 `models_latest.json` 时按当前行写入，默认 `officially_removed=false`。
 
 排序：`vendor_name` 升序，再 `model_id` 升序。

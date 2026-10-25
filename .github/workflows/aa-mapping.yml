@@ -1,0 +1,55 @@
+name: Validate AA mapping
+
+on:
+  pull_request:
+    paths:
+      - "data/aa_join/**"
+      - "data/derived/models_latest.json"
+      - "src/openrouter_watch/aa_*.py"
+      - "src/openrouter_watch/fetcher.py"
+      - "src/openrouter_watch/deriver.py"
+      - "scripts/validate_aa_mapping.py"
+      - "scripts/fetch_aa.py"
+      - "scripts/aa_mapping_report.py"
+      - "tests/test_aa_*.py"
+      - "web/src/pages/index.astro"
+      - "web/src/components/ModelTable.astro"
+      - "web/src/lib/modelTableClient.js"
+      - "web/src/lib/aaScoreDisplay.js"
+      - ".github/workflows/aa-mapping.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/aa_join/**"
+      - "data/derived/models_latest.json"
+      - "src/openrouter_watch/aa_*.py"
+      - "scripts/validate_aa_mapping.py"
+      - "tests/test_aa_*.py"
+      - ".github/workflows/aa-mapping.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Validate committed mapping and public switch
+        run: python scripts/validate_aa_mapping.py
+
+      - name: Run AA contract tests
+        run: pytest tests/test_aa_mapping.py tests/test_aa_fetch.py tests/test_aa_join.py tests/test_aa_gates.py
