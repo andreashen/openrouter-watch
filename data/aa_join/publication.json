@@ -1,0 +1,7 @@
+{
+  "public_display_source": "openrouter",
+  "collect_openrouter_benchmark": true,
+  "g0": null,
+  "sit_passed": false,
+  "refresh_verified_after_cutover": false
+}
