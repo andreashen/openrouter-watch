@@ -29,36 +29,36 @@
   },
   {
     "model_id": "aion-labs/aion-2.0",
-    "weighted_avg_input_price_usd_per_1m": 0.35,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3645,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "aion-labs/aion-2.0-20260223"
   },
   {
     "model_id": "aion-labs/aion-3.0",
-    "weighted_avg_input_price_usd_per_1m": 1.5987,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.3718,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "aion-labs/aion-3.0-20260707"
   },
   {
     "model_id": "aion-labs/aion-3.0-mini",
-    "weighted_avg_input_price_usd_per_1m": 0.3087,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2995,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "aion-labs/aion-3.0-mini-20260707"
   },
   {
     "model_id": "aion-labs/aion-3.5",
-    "weighted_avg_input_price_usd_per_1m": 1.442,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 1.3738,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "aion-labs/aion-3.5-20260923"
   },
   {
     "model_id": "aion-labs/aion-3.5-mini",
-    "weighted_avg_input_price_usd_per_1m": 0.3355,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3257,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "aion-labs/aion-3.5-mini-20260923"
   },
@@ -113,8 +113,8 @@
   },
   {
     "model_id": "amazon/nova-lite-v1",
-    "weighted_avg_input_price_usd_per_1m": 0.0598,
-    "weighted_price_fetched_at": "2026-07-19T10:18:35Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0588,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "amazon/nova-lite-v1"
   },
@@ -176,15 +176,15 @@
   },
   {
     "model_id": "anthropic/claude-fable-5",
-    "weighted_avg_input_price_usd_per_1m": 3.0829,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 4.2779,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-5-fable-20260609"
   },
   {
     "model_id": "anthropic/claude-fable-5.1",
-    "weighted_avg_input_price_usd_per_1m": 1.3772,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.7083,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-fable-5.1-20260831"
   },
@@ -218,8 +218,8 @@
   },
   {
     "model_id": "anthropic/claude-haiku-5.5",
-    "weighted_avg_input_price_usd_per_1m": 0.087,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.078,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-haiku-5.5-20261007"
   },
@@ -239,8 +239,8 @@
   },
   {
     "model_id": "anthropic/claude-opus-4.1",
-    "weighted_avg_input_price_usd_per_1m": 14.7259,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 5.5782,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-4.1-opus-20250805"
   },
@@ -253,8 +253,8 @@
   },
   {
     "model_id": "anthropic/claude-opus-4.5",
-    "weighted_avg_input_price_usd_per_1m": 4.2986,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 3.712,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-4.5-opus-20251124"
   },
@@ -267,8 +267,8 @@
   },
   {
     "model_id": "anthropic/claude-opus-4.6",
-    "weighted_avg_input_price_usd_per_1m": 2.9492,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 2.6037,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-4.6-opus-20260205"
   },
@@ -288,8 +288,8 @@
   },
   {
     "model_id": "anthropic/claude-opus-4.7",
-    "weighted_avg_input_price_usd_per_1m": 3.0472,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 2.4885,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-4.7-opus-20260416"
   },
@@ -309,8 +309,8 @@
   },
   {
     "model_id": "anthropic/claude-opus-4.8",
-    "weighted_avg_input_price_usd_per_1m": 2.0878,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.6952,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-4.8-opus-20260528"
   },
@@ -330,8 +330,8 @@
   },
   {
     "model_id": "anthropic/claude-opus-5",
-    "weighted_avg_input_price_usd_per_1m": 2.0239,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.5608,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-opus-5-20260723"
   },
@@ -344,8 +344,8 @@
   },
   {
     "model_id": "anthropic/claude-opus-5.5",
-    "weighted_avg_input_price_usd_per_1m": 0.7842,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.7761,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-opus-5.5-20260921"
   },
@@ -372,8 +372,8 @@
   },
   {
     "model_id": "anthropic/claude-sonnet-4.5",
-    "weighted_avg_input_price_usd_per_1m": 1.8855,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 2.1771,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-4.5-sonnet-20250929"
   },
@@ -386,8 +386,8 @@
   },
   {
     "model_id": "anthropic/claude-sonnet-4.6",
-    "weighted_avg_input_price_usd_per_1m": 1.5172,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.6406,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-4.6-sonnet-20260217"
   },
@@ -400,15 +400,15 @@
   },
   {
     "model_id": "anthropic/claude-sonnet-5",
-    "weighted_avg_input_price_usd_per_1m": 0.7203,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.6069,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-sonnet-5-20260630"
   },
   {
     "model_id": "anthropic/claude-sonnet-5.5",
-    "weighted_avg_input_price_usd_per_1m": 0.7214,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.6114,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "anthropic/claude-sonnet-5.5-20260928"
   },
@@ -533,15 +533,15 @@
   },
   {
     "model_id": "bytedance-seed/seed-1.6",
-    "weighted_avg_input_price_usd_per_1m": 0.2486,
-    "weighted_price_fetched_at": "2026-10-12T07:19:40Z",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "bytedance-seed/seed-1.6-20250625"
   },
   {
     "model_id": "bytedance-seed/seed-1.6-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0747,
-    "weighted_price_fetched_at": "2026-07-19T10:18:35Z",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "bytedance-seed/seed-1.6-flash-20250625"
   },
@@ -554,15 +554,15 @@
   },
   {
     "model_id": "bytedance-seed/seed-2.0-code",
-    "weighted_avg_input_price_usd_per_1m": 0.6116,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "bytedance-seed/seed-2.0-code-20260730"
   },
   {
     "model_id": "bytedance-seed/seed-2.0-lite",
-    "weighted_avg_input_price_usd_per_1m": 0.2527,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2692,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "bytedance-seed/seed-2.0-lite-20260309"
   },
@@ -610,8 +610,8 @@
   },
   {
     "model_id": "cohere/command-r-08-2024",
-    "weighted_avg_input_price_usd_per_1m": 0.1496,
-    "weighted_price_fetched_at": "2026-07-19T10:18:35Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1468,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "cohere/command-r-08-2024"
   },
@@ -645,22 +645,22 @@
   },
   {
     "model_id": "deepseek/deepseek-chat",
-    "weighted_avg_input_price_usd_per_1m": 0.2962,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.284,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-chat-v3"
   },
   {
     "model_id": "deepseek/deepseek-chat-v3-0324",
-    "weighted_avg_input_price_usd_per_1m": 0.2262,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2625,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-chat-v3-0324"
   },
   {
     "model_id": "deepseek/deepseek-chat-v3.1",
-    "weighted_avg_input_price_usd_per_1m": 0.2456,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2549,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-chat-v3.1"
   },
@@ -701,8 +701,8 @@
   },
   {
     "model_id": "deepseek/deepseek-v3.2",
-    "weighted_avg_input_price_usd_per_1m": 0.1622,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.177,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-v3.2-20251201"
   },
@@ -722,15 +722,15 @@
   },
   {
     "model_id": "deepseek/deepseek-v4-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0546,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0529,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-v4-flash-20260423"
   },
   {
     "model_id": "deepseek/deepseek-v4-flash-0731",
-    "weighted_avg_input_price_usd_per_1m": 0.0482,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0517,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-v4-flash-20260731"
   },
@@ -750,8 +750,8 @@
   },
   {
     "model_id": "deepseek/deepseek-v4-flash-vision-exp",
-    "weighted_avg_input_price_usd_per_1m": 0.0306,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0459,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-v4-flash-vision-exp-20260821"
   },
@@ -764,15 +764,15 @@
   },
   {
     "model_id": "deepseek/deepseek-v4-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.2999,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3144,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-v4-pro-20260423"
   },
   {
     "model_id": "deepseek/deepseek-v4-pro-0813",
-    "weighted_avg_input_price_usd_per_1m": 0.1957,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2001,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-v4-pro-20260813"
   },
@@ -785,15 +785,15 @@
   },
   {
     "model_id": "deepseek/deepseek-v4.1-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0197,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0288,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-v4.1-flash-20260910"
   },
   {
     "model_id": "deepseek/deepseek-v4.1-flash-1017",
-    "weighted_avg_input_price_usd_per_1m": 0.0152,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0132,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "deepseek/deepseek-v4.1-flash-20261017"
   },
@@ -813,8 +813,8 @@
   },
   {
     "model_id": "elorian/glimpse",
-    "weighted_avg_input_price_usd_per_1m": 0.1177,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2286,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "elorian/glimpse-20261016"
   },
@@ -827,8 +827,8 @@
   },
   {
     "model_id": "fireworks/ember-1",
-    "weighted_avg_input_price_usd_per_1m": 0.3802,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.8849,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "fireworks/ember-1-20260923"
   },
@@ -848,8 +848,8 @@
   },
   {
     "model_id": "google/gemini-2.5-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.1936,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2005,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-2.5-flash"
   },
@@ -862,8 +862,8 @@
   },
   {
     "model_id": "google/gemini-2.5-flash-lite",
-    "weighted_avg_input_price_usd_per_1m": 0.0715,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.076,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-2.5-flash-lite"
   },
@@ -890,8 +890,8 @@
   },
   {
     "model_id": "google/gemini-2.5-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.6957,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.7388,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-2.5-pro"
   },
@@ -918,8 +918,8 @@
   },
   {
     "model_id": "google/gemini-3-flash-preview",
-    "weighted_avg_input_price_usd_per_1m": 0.2688,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2872,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3-flash-preview-20251217"
   },
@@ -932,8 +932,8 @@
   },
   {
     "model_id": "google/gemini-3-pro-image",
-    "weighted_avg_input_price_usd_per_1m": 1.6412,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.3487,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3-pro-image-20260528"
   },
@@ -960,8 +960,8 @@
   },
   {
     "model_id": "google/gemini-3.1-flash-lite",
-    "weighted_avg_input_price_usd_per_1m": 0.1677,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.175,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3.1-flash-lite-20260507"
   },
@@ -974,8 +974,8 @@
   },
   {
     "model_id": "google/gemini-3.1-flash-lite-preview",
-    "weighted_avg_input_price_usd_per_1m": 0.1864,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1803,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3.1-flash-lite-preview-20260303"
   },
@@ -988,8 +988,8 @@
   },
   {
     "model_id": "google/gemini-3.1-pro-preview",
-    "weighted_avg_input_price_usd_per_1m": 1.1866,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.5653,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3.1-pro-preview-20260219"
   },
@@ -1009,15 +1009,15 @@
   },
   {
     "model_id": "google/gemini-3.5-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.8384,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.9788,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3.5-flash-20260519"
   },
   {
     "model_id": "google/gemini-3.5-flash-lite",
-    "weighted_avg_input_price_usd_per_1m": 0.236,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2405,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3.5-flash-lite-20260721"
   },
@@ -1037,8 +1037,8 @@
   },
   {
     "model_id": "google/gemini-3.6-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.4473,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4404,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3.6-flash-20260721"
   },
@@ -1051,8 +1051,8 @@
   },
   {
     "model_id": "google/gemini-3.7-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.4001,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4482,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3.7-flash-20260813"
   },
@@ -1065,8 +1065,8 @@
   },
   {
     "model_id": "google/gemini-3.8-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.323,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4206,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-3.8-flash-20260902"
   },
@@ -1079,8 +1079,8 @@
   },
   {
     "model_id": "google/gemini-4-argon",
-    "weighted_avg_input_price_usd_per_1m": 0.7041,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.9927,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemini-4-argon-20261013"
   },
@@ -1090,6 +1090,20 @@
     "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": null
+  },
+  {
+    "model_id": "google/gemini-4-carbon",
+    "weighted_avg_input_price_usd_per_1m": 0.7726,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
+    "weighted_price_source": "openrouter_frontend_effective_pricing",
+    "permaslug": "google/gemini-4-carbon-20261110"
+  },
+  {
+    "model_id": "google/gemini-4-hydrogen",
+    "weighted_avg_input_price_usd_per_1m": 0.5504,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
+    "weighted_price_source": "openrouter_frontend_effective_pricing",
+    "permaslug": "google/gemini-4-hydrogen-20261112"
   },
   {
     "model_id": "google/gemini-nano-banana-2.1",
@@ -1107,22 +1121,22 @@
   },
   {
     "model_id": "google/gemma-3-12b-it",
-    "weighted_avg_input_price_usd_per_1m": 0.0717,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0586,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemma-3-12b-it"
   },
   {
     "model_id": "google/gemma-3-27b-it",
-    "weighted_avg_input_price_usd_per_1m": 0.0624,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0661,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemma-3-27b-it"
   },
   {
     "model_id": "google/gemma-3-4b-it",
-    "weighted_avg_input_price_usd_per_1m": 0.0425,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.05,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemma-3-4b-it"
   },
@@ -1135,8 +1149,8 @@
   },
   {
     "model_id": "google/gemma-4-26b-a4b-it",
-    "weighted_avg_input_price_usd_per_1m": 0.073,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0705,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemma-4-26b-a4b-it-20260403"
   },
@@ -1149,8 +1163,8 @@
   },
   {
     "model_id": "google/gemma-4-31b-it",
-    "weighted_avg_input_price_usd_per_1m": 0.1668,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1228,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "google/gemma-4-31b-it-20260402"
   },
@@ -1184,8 +1198,8 @@
   },
   {
     "model_id": "gryphe/mythomax-l2-13b",
-    "weighted_avg_input_price_usd_per_1m": 0.176,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1544,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "gryphe/mythomax-l2-13b"
   },
@@ -1254,8 +1268,8 @@
   },
   {
     "model_id": "inclusionai/ling-3.0-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0118,
-    "weighted_price_fetched_at": "2026-10-12T07:19:40Z",
+    "weighted_avg_input_price_usd_per_1m": 0.013,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "inclusionai/ling-3.0-flash-20260723"
   },
@@ -1289,8 +1303,8 @@
   },
   {
     "model_id": "inclusionai/ling-3.0-flash-vl",
-    "weighted_avg_input_price_usd_per_1m": 0.0414,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0294,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "inclusionai/ling-3.0-flash-vl-20260910"
   },
@@ -1310,8 +1324,8 @@
   },
   {
     "model_id": "inclusionai/ling-3.0-tiny",
-    "weighted_avg_input_price_usd_per_1m": 0.0059,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0086,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "inclusionai/ling-3.0-tiny-20260806"
   },
@@ -1324,10 +1338,17 @@
   },
   {
     "model_id": "inclusionai/ling-3.1-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.021,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0199,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "inclusionai/ling-3.1-flash-20261002"
+  },
+  {
+    "model_id": "inclusionai/ling-3.2-flash:free",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
+    "weighted_price_source": "openrouter_frontend_effective_pricing",
+    "permaslug": null
   },
   {
     "model_id": "inclusionai/ring-2.6-1t",
@@ -1415,8 +1436,8 @@
   },
   {
     "model_id": "liquid/lfm-2.5-2.6b",
-    "weighted_avg_input_price_usd_per_1m": 0.1162,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "liquid/lfm-2.5-2.6b-20260811"
   },
@@ -1429,8 +1450,8 @@
   },
   {
     "model_id": "liquid/lfm-2.5-24b-a2b",
-    "weighted_avg_input_price_usd_per_1m": 0.0294,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0367,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "liquid/lfm-2.5-24b-a2b-20261012"
   },
@@ -1443,15 +1464,15 @@
   },
   {
     "model_id": "mancer/weaver",
-    "weighted_avg_input_price_usd_per_1m": 0.3995,
-    "weighted_price_fetched_at": "2026-10-12T07:19:40Z",
+    "weighted_avg_input_price_usd_per_1m": 0.299,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mancer/weaver"
   },
   {
     "model_id": "meituan/longcat-2.0",
-    "weighted_avg_input_price_usd_per_1m": 0.0256,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0158,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meituan/longcat-2.0-20260720"
   },
@@ -1478,8 +1499,8 @@
   },
   {
     "model_id": "meta-llama/llama-3.1-8b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.0269,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1145,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta-llama/llama-3.1-8b-instruct"
   },
@@ -1492,8 +1513,8 @@
   },
   {
     "model_id": "meta-llama/llama-3.2-1b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.0213,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0233,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta-llama/llama-3.2-1b-instruct"
   },
@@ -1513,8 +1534,8 @@
   },
   {
     "model_id": "meta-llama/llama-3.3-70b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.4273,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4685,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta-llama/llama-3.3-70b-instruct"
   },
@@ -1527,15 +1548,15 @@
   },
   {
     "model_id": "meta-llama/llama-4-maverick",
-    "weighted_avg_input_price_usd_per_1m": 0.21,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2906,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta-llama/llama-4-maverick-17b-128e-instruct"
   },
   {
     "model_id": "meta-llama/llama-4-scout",
-    "weighted_avg_input_price_usd_per_1m": 0.1318,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1145,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta-llama/llama-4-scout-17b-16e-instruct"
   },
@@ -1548,15 +1569,22 @@
   },
   {
     "model_id": "meta-llama/llama-guard-4-12b",
-    "weighted_avg_input_price_usd_per_1m": 0.2045,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1885,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta-llama/llama-guard-4-12b"
   },
   {
+    "model_id": "meta/muse-ember",
+    "weighted_avg_input_price_usd_per_1m": 0.0254,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
+    "weighted_price_source": "openrouter_frontend_effective_pricing",
+    "permaslug": "meta/muse-ember-20261109"
+  },
+  {
     "model_id": "meta/muse-glimmer-30b",
-    "weighted_avg_input_price_usd_per_1m": 0.0723,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0817,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta/muse-glimmer-30b-20260810"
   },
@@ -1569,29 +1597,29 @@
   },
   {
     "model_id": "meta/muse-spark-1.1",
-    "weighted_avg_input_price_usd_per_1m": 0.5773,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4762,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta/muse-spark-1.1-20260709"
   },
   {
     "model_id": "meta/muse-spark-1.2",
-    "weighted_avg_input_price_usd_per_1m": 0.7793,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.6775,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta/muse-spark-1.2-20260805"
   },
   {
     "model_id": "meta/muse-spark-1.2-contributor",
-    "weighted_avg_input_price_usd_per_1m": 0.0417,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0215,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta/muse-spark-1.2-contributor-20260805"
   },
   {
     "model_id": "meta/muse-spark-1.3",
-    "weighted_avg_input_price_usd_per_1m": 0.4083,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.393,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta/muse-spark-1.3-20260902"
   },
@@ -1604,15 +1632,15 @@
   },
   {
     "model_id": "meta/muse-spark-open",
-    "weighted_avg_input_price_usd_per_1m": 0.2178,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2976,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta/muse-spark-open-20261015"
   },
   {
     "model_id": "meta/muse-wonder",
-    "weighted_avg_input_price_usd_per_1m": 0.5184,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.6102,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "meta/muse-wonder-20261012"
   },
@@ -1646,8 +1674,8 @@
   },
   {
     "model_id": "minimax/minimax-m1",
-    "weighted_avg_input_price_usd_per_1m": 0.5473,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "minimax/minimax-m1"
   },
@@ -1674,8 +1702,8 @@
   },
   {
     "model_id": "minimax/minimax-m2.5",
-    "weighted_avg_input_price_usd_per_1m": 0.1073,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0738,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "minimax/minimax-m2.5-20260211"
   },
@@ -1688,8 +1716,8 @@
   },
   {
     "model_id": "minimax/minimax-m2.7",
-    "weighted_avg_input_price_usd_per_1m": 0.2162,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2543,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "minimax/minimax-m2.7-20260318"
   },
@@ -1702,15 +1730,15 @@
   },
   {
     "model_id": "minimax/minimax-m3",
-    "weighted_avg_input_price_usd_per_1m": 0.0767,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0735,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "minimax/minimax-m3-20260531"
   },
   {
     "model_id": "minimax/minimax-m3.1-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0235,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0247,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "minimax/minimax-m3.1-flash-20261019"
   },
@@ -1737,8 +1765,8 @@
   },
   {
     "model_id": "mistralai/codestral-2508",
-    "weighted_avg_input_price_usd_per_1m": 0.1477,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2016,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/codestral-2508"
   },
@@ -1751,8 +1779,8 @@
   },
   {
     "model_id": "mistralai/devstral-2512",
-    "weighted_avg_input_price_usd_per_1m": 0.15,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0618,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/devstral-2512"
   },
@@ -1779,8 +1807,8 @@
   },
   {
     "model_id": "mistralai/ministral-3b-2512",
-    "weighted_avg_input_price_usd_per_1m": 0.0691,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0586,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/ministral-3b-2512"
   },
@@ -1793,8 +1821,8 @@
   },
   {
     "model_id": "mistralai/ministral-8b-2512",
-    "weighted_avg_input_price_usd_per_1m": 0.0826,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0624,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/ministral-8b-2512"
   },
@@ -1814,15 +1842,15 @@
   },
   {
     "model_id": "mistralai/mistral-large",
-    "weighted_avg_input_price_usd_per_1m": 1.3557,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 1.507,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-large"
   },
   {
     "model_id": "mistralai/mistral-large-2407",
-    "weighted_avg_input_price_usd_per_1m": 1.8143,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.9527,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-large-2407"
   },
@@ -1835,8 +1863,8 @@
   },
   {
     "model_id": "mistralai/mistral-large-2512",
-    "weighted_avg_input_price_usd_per_1m": 0.364,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3438,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-large-2512"
   },
@@ -1849,22 +1877,22 @@
   },
   {
     "model_id": "mistralai/mistral-large-4-0",
-    "weighted_avg_input_price_usd_per_1m": 0.1309,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1374,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-large-4-0-20261006"
   },
   {
     "model_id": "mistralai/mistral-medium-3",
-    "weighted_avg_input_price_usd_per_1m": 0.1742,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2175,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-medium-3"
   },
   {
     "model_id": "mistralai/mistral-medium-3-5",
-    "weighted_avg_input_price_usd_per_1m": 1.4999,
-    "weighted_price_fetched_at": "2026-07-19T10:18:35Z",
+    "weighted_avg_input_price_usd_per_1m": 1.5395,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-medium-3.5-20260430"
   },
@@ -1877,8 +1905,8 @@
   },
   {
     "model_id": "mistralai/mistral-medium-3.1",
-    "weighted_avg_input_price_usd_per_1m": 0.1806,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1507,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-medium-3.1"
   },
@@ -1891,15 +1919,15 @@
   },
   {
     "model_id": "mistralai/mistral-nemo",
-    "weighted_avg_input_price_usd_per_1m": 0.0282,
-    "weighted_price_fetched_at": "2026-10-12T07:19:40Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0292,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-nemo"
   },
   {
     "model_id": "mistralai/mistral-saba",
-    "weighted_avg_input_price_usd_per_1m": 0.116,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0778,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-saba-2502"
   },
@@ -1912,8 +1940,8 @@
   },
   {
     "model_id": "mistralai/mistral-small-2603",
-    "weighted_avg_input_price_usd_per_1m": 0.0892,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0925,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-small-2603"
   },
@@ -1933,15 +1961,15 @@
   },
   {
     "model_id": "mistralai/mistral-small-3.2-24b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.0728,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0782,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mistral-small-3.2-24b-instruct-2506"
   },
   {
     "model_id": "mistralai/mixtral-8x22b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.5676,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.2507,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/mixtral-8x22b-instruct"
   },
@@ -1954,15 +1982,15 @@
   },
   {
     "model_id": "mistralai/voxtral-small-24b-2507",
-    "weighted_avg_input_price_usd_per_1m": 4.0381,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 2.4209,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "mistralai/voxtral-small-24b-2507"
   },
   {
     "model_id": "moondream/moondream3-preview",
-    "weighted_avg_input_price_usd_per_1m": 0.2847,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2981,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "moondream/moondream3-preview-20261013"
   },
@@ -1989,29 +2017,29 @@
   },
   {
     "model_id": "moonshotai/kimi-k2-thinking",
-    "weighted_avg_input_price_usd_per_1m": 0.376,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4703,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "moonshotai/kimi-k2-thinking-20251106"
   },
   {
     "model_id": "moonshotai/kimi-k2.5",
-    "weighted_avg_input_price_usd_per_1m": 0.2961,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2904,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "moonshotai/kimi-k2.5-0127"
   },
   {
     "model_id": "moonshotai/kimi-k2.6",
-    "weighted_avg_input_price_usd_per_1m": 0.3815,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3878,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "moonshotai/kimi-k2.6-20260420"
   },
   {
     "model_id": "moonshotai/kimi-k2.7-code",
-    "weighted_avg_input_price_usd_per_1m": 0.2386,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.254,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "moonshotai/kimi-k2.7-code-20260612"
   },
@@ -2024,15 +2052,15 @@
   },
   {
     "model_id": "moonshotai/kimi-k3",
-    "weighted_avg_input_price_usd_per_1m": 0.2859,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2706,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "moonshotai/kimi-k3-20260715"
   },
   {
     "model_id": "moonshotai/kimi-k3.1-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.3179,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.304,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "moonshotai/kimi-k3.1-pro-20261023"
   },
@@ -2087,8 +2115,8 @@
   },
   {
     "model_id": "nex-agi/nex-n2.5-mini",
-    "weighted_avg_input_price_usd_per_1m": 0.0168,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0112,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "nex-agi/nex-n2.5-mini-20260908"
   },
@@ -2101,8 +2129,8 @@
   },
   {
     "model_id": "nex-agi/nex-n2.5-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.0323,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0367,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "nex-agi/nex-n2.5-pro-20260907"
   },
@@ -2143,8 +2171,8 @@
   },
   {
     "model_id": "nousresearch/hermes-4-405b",
-    "weighted_avg_input_price_usd_per_1m": 0.473,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4504,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "nousresearch/hermes-4-405b"
   },
@@ -2164,8 +2192,8 @@
   },
   {
     "model_id": "nvidia/nemotron-3-nano-30b-a3b",
-    "weighted_avg_input_price_usd_per_1m": 0.0221,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.05,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "nvidia/nemotron-3-nano-30b-a3b"
   },
@@ -2185,8 +2213,8 @@
   },
   {
     "model_id": "nvidia/nemotron-3-super-120b-a12b",
-    "weighted_avg_input_price_usd_per_1m": 0.0934,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0867,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "nvidia/nemotron-3-super-120b-a12b-20230311"
   },
@@ -2199,8 +2227,8 @@
   },
   {
     "model_id": "nvidia/nemotron-3-ultra-550b-a55b",
-    "weighted_avg_input_price_usd_per_1m": 0.2663,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.31,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "nvidia/nemotron-3-ultra-550b-a55b-20260604"
   },
@@ -2234,8 +2262,8 @@
   },
   {
     "model_id": "nvidia/nemotron-3.5-lightning",
-    "weighted_avg_input_price_usd_per_1m": 0.047,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0378,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "nvidia/nemotron-3.5-lightning-20260807"
   },
@@ -2248,8 +2276,8 @@
   },
   {
     "model_id": "nvidia/nemotron-3.5-super-vl",
-    "weighted_avg_input_price_usd_per_1m": 0.0719,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0663,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "nvidia/nemotron-3.5-super-vl-20261015"
   },
@@ -2367,15 +2395,15 @@
   },
   {
     "model_id": "openai/gpt-4.1",
-    "weighted_avg_input_price_usd_per_1m": 1.6041,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.4782,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-4.1-2025-04-14"
   },
   {
     "model_id": "openai/gpt-4.1-mini",
-    "weighted_avg_input_price_usd_per_1m": 0.2744,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.267,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-4.1-mini-2025-04-14"
   },
@@ -2388,8 +2416,8 @@
   },
   {
     "model_id": "openai/gpt-4.1-nano",
-    "weighted_avg_input_price_usd_per_1m": 0.0822,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0832,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-4.1-nano-2025-04-14"
   },
@@ -2423,15 +2451,15 @@
   },
   {
     "model_id": "openai/gpt-4o-2024-08-06",
-    "weighted_avg_input_price_usd_per_1m": 2.4284,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 2.3985,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-4o-2024-08-06"
   },
   {
     "model_id": "openai/gpt-4o-2024-11-20",
-    "weighted_avg_input_price_usd_per_1m": 2.105,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.7824,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-4o-2024-11-20"
   },
@@ -2444,15 +2472,15 @@
   },
   {
     "model_id": "openai/gpt-4o-mini",
-    "weighted_avg_input_price_usd_per_1m": 0.1281,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1299,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-4o-mini"
   },
   {
     "model_id": "openai/gpt-4o-mini-2024-07-18",
-    "weighted_avg_input_price_usd_per_1m": 0.1238,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1324,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-4o-mini-2024-07-18"
   },
@@ -2486,8 +2514,8 @@
   },
   {
     "model_id": "openai/gpt-5",
-    "weighted_avg_input_price_usd_per_1m": 0.5476,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.8901,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5-2025-08-07"
   },
@@ -2514,8 +2542,8 @@
   },
   {
     "model_id": "openai/gpt-5-image",
-    "weighted_avg_input_price_usd_per_1m": 9.9282,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 9.0522,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5-image"
   },
@@ -2528,8 +2556,8 @@
   },
   {
     "model_id": "openai/gpt-5-mini",
-    "weighted_avg_input_price_usd_per_1m": 0.1333,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1241,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5-mini-2025-08-07"
   },
@@ -2542,8 +2570,8 @@
   },
   {
     "model_id": "openai/gpt-5-nano",
-    "weighted_avg_input_price_usd_per_1m": 0.0311,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0297,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5-nano-2025-08-07"
   },
@@ -2570,8 +2598,8 @@
   },
   {
     "model_id": "openai/gpt-5.1",
-    "weighted_avg_input_price_usd_per_1m": 0.526,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4078,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.1-20251113"
   },
@@ -2584,22 +2612,22 @@
   },
   {
     "model_id": "openai/gpt-5.1-codex",
-    "weighted_avg_input_price_usd_per_1m": 0.2177,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1886,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.1-codex-20251113"
   },
   {
     "model_id": "openai/gpt-5.1-codex-max",
-    "weighted_avg_input_price_usd_per_1m": 0.2309,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2409,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.1-codex-max-20251204"
   },
   {
     "model_id": "openai/gpt-5.1-codex-mini",
-    "weighted_avg_input_price_usd_per_1m": 0.0906,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1471,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.1-codex-mini-20251113"
   },
@@ -2612,22 +2640,22 @@
   },
   {
     "model_id": "openai/gpt-5.2",
-    "weighted_avg_input_price_usd_per_1m": 0.5066,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.6207,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.2-20251211"
   },
   {
     "model_id": "openai/gpt-5.2-chat",
-    "weighted_avg_input_price_usd_per_1m": null,
-    "weighted_price_fetched_at": "2026-09-28T06:50:33Z",
+    "weighted_avg_input_price_usd_per_1m": 1.6667,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.2-chat-20251211"
   },
   {
     "model_id": "openai/gpt-5.2-codex",
-    "weighted_avg_input_price_usd_per_1m": 0.4012,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.471,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.2-codex-20260114"
   },
@@ -2661,15 +2689,15 @@
   },
   {
     "model_id": "openai/gpt-5.3-codex",
-    "weighted_avg_input_price_usd_per_1m": 0.3435,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.331,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.3-codex-20260224"
   },
   {
     "model_id": "openai/gpt-5.4",
-    "weighted_avg_input_price_usd_per_1m": 0.8825,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.9336,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.4-20260305"
   },
@@ -2682,8 +2710,8 @@
   },
   {
     "model_id": "openai/gpt-5.4-mini",
-    "weighted_avg_input_price_usd_per_1m": 0.4228,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4639,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.4-mini-20260317"
   },
@@ -2696,8 +2724,8 @@
   },
   {
     "model_id": "openai/gpt-5.4-nano",
-    "weighted_avg_input_price_usd_per_1m": 0.0976,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0684,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.4-nano-20260317"
   },
@@ -2731,15 +2759,15 @@
   },
   {
     "model_id": "openai/gpt-5.5",
-    "weighted_avg_input_price_usd_per_1m": 2.0055,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.9544,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.5-20260423"
   },
   {
     "model_id": "openai/gpt-5.5-pro",
-    "weighted_avg_input_price_usd_per_1m": 29.986,
-    "weighted_price_fetched_at": "2026-09-28T06:50:33Z",
+    "weighted_avg_input_price_usd_per_1m": 37.9167,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.5-pro-20260423"
   },
@@ -2759,15 +2787,15 @@
   },
   {
     "model_id": "openai/gpt-5.6-luna",
-    "weighted_avg_input_price_usd_per_1m": 0.0808,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1023,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.6-luna-20260709"
   },
   {
     "model_id": "openai/gpt-5.6-luna-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.0719,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0796,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.6-luna-pro-20260709"
   },
@@ -2787,15 +2815,15 @@
   },
   {
     "model_id": "openai/gpt-5.6-sol",
-    "weighted_avg_input_price_usd_per_1m": 1.1842,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.6723,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.6-sol-20260709"
   },
   {
     "model_id": "openai/gpt-5.6-sol-pro",
-    "weighted_avg_input_price_usd_per_1m": 1.3212,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.2906,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.6-sol-pro-20260709"
   },
@@ -2815,15 +2843,15 @@
   },
   {
     "model_id": "openai/gpt-5.6-terra",
-    "weighted_avg_input_price_usd_per_1m": 0.8494,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.1037,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.6-terra-20260709"
   },
   {
     "model_id": "openai/gpt-5.6-terra-pro",
-    "weighted_avg_input_price_usd_per_1m": 1.3032,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.7677,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-5.6-terra-pro-20260709"
   },
@@ -2850,15 +2878,15 @@
   },
   {
     "model_id": "openai/gpt-6-astra",
-    "weighted_avg_input_price_usd_per_1m": 2.6304,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.8507,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6-astra-20260903"
   },
   {
     "model_id": "openai/gpt-6-astra-pro",
-    "weighted_avg_input_price_usd_per_1m": 4.7131,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 4.0801,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6-astra-pro-20260903"
   },
@@ -2878,15 +2906,15 @@
   },
   {
     "model_id": "openai/gpt-6-luna",
-    "weighted_avg_input_price_usd_per_1m": 0.0492,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0453,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6-luna-20260922"
   },
   {
     "model_id": "openai/gpt-6-luna-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.0393,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0365,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6-luna-pro-20260922"
   },
@@ -2906,15 +2934,15 @@
   },
   {
     "model_id": "openai/gpt-6-sol",
-    "weighted_avg_input_price_usd_per_1m": 0.587,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.5477,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6-sol-20260922"
   },
   {
     "model_id": "openai/gpt-6-sol-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.4548,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4378,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6-sol-pro-20260922"
   },
@@ -2934,15 +2962,15 @@
   },
   {
     "model_id": "openai/gpt-6.1-sol",
-    "weighted_avg_input_price_usd_per_1m": 0.4486,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4314,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6.1-sol-20260929"
   },
   {
     "model_id": "openai/gpt-6.1-sol-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.4893,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.5148,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6.1-sol-pro-20260929"
   },
@@ -2962,15 +2990,15 @@
   },
   {
     "model_id": "openai/gpt-6.1-terra",
-    "weighted_avg_input_price_usd_per_1m": 0.1792,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2844,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6.1-terra-20261026"
   },
   {
     "model_id": "openai/gpt-6.1-terra-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.558,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2941,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-6.1-terra-pro-20261026"
   },
@@ -2990,8 +3018,8 @@
   },
   {
     "model_id": "openai/gpt-audio",
-    "weighted_avg_input_price_usd_per_1m": 20.9605,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 5.9093,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-audio"
   },
@@ -3004,8 +3032,8 @@
   },
   {
     "model_id": "openai/gpt-chat-latest",
-    "weighted_avg_input_price_usd_per_1m": 2.2283,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 2.5302,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/gpt-chat-latest-20260505"
   },
@@ -3088,8 +3116,8 @@
   },
   {
     "model_id": "openai/o3",
-    "weighted_avg_input_price_usd_per_1m": 1.5847,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.4503,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "openai/o3-2025-04-16"
   },
@@ -3242,8 +3270,8 @@
   },
   {
     "model_id": "particle-ai/particle-1",
-    "weighted_avg_input_price_usd_per_1m": 0.0214,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0082,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "particle-ai/particle-1-20261027"
   },
@@ -3361,15 +3389,15 @@
   },
   {
     "model_id": "prism-ml/ternary-bonsai-2-27b",
-    "weighted_avg_input_price_usd_per_1m": 0.0709,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0731,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "prism-ml/ternary-bonsai-2-27b-20260918"
   },
   {
     "model_id": "prism-ml/ternary-bonsai-2-9b",
-    "weighted_avg_input_price_usd_per_1m": 0.0799,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0718,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "prism-ml/ternary-bonsai-2-9b-20261015"
   },
@@ -3382,8 +3410,8 @@
   },
   {
     "model_id": "qwen/qwen-2.5-7b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.0996,
-    "weighted_price_fetched_at": "2026-08-24T02:36:49Z",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen-2.5-7b-instruct"
   },
@@ -3403,8 +3431,8 @@
   },
   {
     "model_id": "qwen/qwen-plus",
-    "weighted_avg_input_price_usd_per_1m": 0.1815,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1727,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen-plus-2025-01-25"
   },
@@ -3445,15 +3473,15 @@
   },
   {
     "model_id": "qwen/qwen2.5-vl-72b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.6012,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.65,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen2.5-vl-72b-instruct"
   },
   {
     "model_id": "qwen/qwen3-14b",
-    "weighted_avg_input_price_usd_per_1m": 0.1083,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1579,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-14b-04-28"
   },
@@ -3466,8 +3494,8 @@
   },
   {
     "model_id": "qwen/qwen3-235b-a22b-2507",
-    "weighted_avg_input_price_usd_per_1m": 0.0948,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0884,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-235b-a22b-07-25"
   },
@@ -3480,15 +3508,15 @@
   },
   {
     "model_id": "qwen/qwen3-30b-a3b",
-    "weighted_avg_input_price_usd_per_1m": 0.1198,
-    "weighted_price_fetched_at": "2026-10-12T07:19:40Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1418,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-30b-a3b-04-28"
   },
   {
     "model_id": "qwen/qwen3-30b-a3b-instruct-2507",
-    "weighted_avg_input_price_usd_per_1m": 0.0973,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0958,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-30b-a3b-instruct-2507"
   },
@@ -3501,8 +3529,8 @@
   },
   {
     "model_id": "qwen/qwen3-32b",
-    "weighted_avg_input_price_usd_per_1m": 0.0841,
-    "weighted_price_fetched_at": "2026-09-28T06:50:33Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1061,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-32b-04-28"
   },
@@ -3515,22 +3543,22 @@
   },
   {
     "model_id": "qwen/qwen3-coder",
-    "weighted_avg_input_price_usd_per_1m": 0.1259,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1236,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-coder-480b-a35b-07-25"
   },
   {
     "model_id": "qwen/qwen3-coder-30b-a3b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.1034,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1498,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-coder-30b-a3b-instruct"
   },
   {
     "model_id": "qwen/qwen3-coder-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.1271,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.15,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-coder-flash"
   },
@@ -3571,8 +3599,8 @@
   },
   {
     "model_id": "qwen/qwen3-next-80b-a3b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.0895,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0942,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-next-80b-a3b-instruct-2509"
   },
@@ -3592,8 +3620,8 @@
   },
   {
     "model_id": "qwen/qwen3-vl-235b-a22b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.1668,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1783,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-vl-235b-a22b-instruct"
   },
@@ -3606,15 +3634,15 @@
   },
   {
     "model_id": "qwen/qwen3-vl-30b-a3b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.1546,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1664,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-vl-30b-a3b-instruct"
   },
   {
     "model_id": "qwen/qwen3-vl-30b-a3b-thinking",
-    "weighted_avg_input_price_usd_per_1m": 0.2898,
-    "weighted_price_fetched_at": "2026-10-12T07:19:40Z",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-vl-30b-a3b-thinking"
   },
@@ -3627,8 +3655,8 @@
   },
   {
     "model_id": "qwen/qwen3-vl-8b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.2087,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1842,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3-vl-8b-instruct"
   },
@@ -3641,36 +3669,36 @@
   },
   {
     "model_id": "qwen/qwen3.5-122b-a10b",
-    "weighted_avg_input_price_usd_per_1m": 0.3371,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2893,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.5-122b-a10b-20260224"
   },
   {
     "model_id": "qwen/qwen3.5-27b",
-    "weighted_avg_input_price_usd_per_1m": 0.2567,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1873,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.5-27b-20260224"
   },
   {
     "model_id": "qwen/qwen3.5-35b-a3b",
-    "weighted_avg_input_price_usd_per_1m": 0.1422,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1353,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.5-35b-a3b-20260224"
   },
   {
     "model_id": "qwen/qwen3.5-397b-a17b",
-    "weighted_avg_input_price_usd_per_1m": 0.4601,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.5245,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.5-397b-a17b-20260216"
   },
   {
     "model_id": "qwen/qwen3.5-9b",
-    "weighted_avg_input_price_usd_per_1m": 0.1256,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1141,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.5-9b-20260310"
   },
@@ -3704,22 +3732,22 @@
   },
   {
     "model_id": "qwen/qwen3.6-27b",
-    "weighted_avg_input_price_usd_per_1m": 0.3641,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3224,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.6-27b-20260422"
   },
   {
     "model_id": "qwen/qwen3.6-35b-a3b",
-    "weighted_avg_input_price_usd_per_1m": 0.0636,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0802,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.6-35b-a3b-20260415"
   },
   {
     "model_id": "qwen/qwen3.6-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.2099,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1774,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.6-flash"
   },
@@ -3732,29 +3760,29 @@
   },
   {
     "model_id": "qwen/qwen3.6-plus",
-    "weighted_avg_input_price_usd_per_1m": 0.6374,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3148,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.6-plus-04-02"
   },
   {
     "model_id": "qwen/qwen3.7-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0224,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0237,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.7-flash-20260727"
   },
   {
     "model_id": "qwen/qwen3.7-max",
-    "weighted_avg_input_price_usd_per_1m": 0.4749,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.6343,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.7-max-20260520"
   },
   {
     "model_id": "qwen/qwen3.7-plus",
-    "weighted_avg_input_price_usd_per_1m": 0.1611,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1769,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.7-plus-20260602"
   },
@@ -3767,8 +3795,8 @@
   },
   {
     "model_id": "qwen/qwen3.8-2.4t-a95b",
-    "weighted_avg_input_price_usd_per_1m": 0.5442,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4659,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.8-2.4t-a95b-20260812"
   },
@@ -3781,8 +3809,8 @@
   },
   {
     "model_id": "qwen/qwen3.8-27b",
-    "weighted_avg_input_price_usd_per_1m": 0.0917,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0677,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.8-27b-20260814"
   },
@@ -3795,8 +3823,8 @@
   },
   {
     "model_id": "qwen/qwen3.8-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0289,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0335,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.8-flash-20260826"
   },
@@ -3809,22 +3837,22 @@
   },
   {
     "model_id": "qwen/qwen3.8-max-0902",
-    "weighted_avg_input_price_usd_per_1m": 0.3745,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4488,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.8-max-20260902"
   },
   {
     "model_id": "qwen/qwen3.8-max-prime",
-    "weighted_avg_input_price_usd_per_1m": 1.2251,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.816,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.8-max-prime-20260923"
   },
   {
     "model_id": "qwen/qwen3.8-omni-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0591,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0527,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "qwen/qwen3.8-omni-flash-20260918"
   },
@@ -3837,8 +3865,8 @@
   },
   {
     "model_id": "reflection/beam-1.0-501b-a23b",
-    "weighted_avg_input_price_usd_per_1m": 0.0656,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0672,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "reflection/beam-1.0-501b-a23b-20261016"
   },
@@ -3851,8 +3879,8 @@
   },
   {
     "model_id": "rekaai/reka-flash-3",
-    "weighted_avg_input_price_usd_per_1m": 0.0992,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0952,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "rekaai/reka-flash-3"
   },
@@ -3871,30 +3899,37 @@
     "permaslug": "relace/relace-search-20251208"
   },
   {
+    "model_id": "ricursiveai/ripple-65b-preview",
+    "weighted_avg_input_price_usd_per_1m": 0.0407,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
+    "weighted_price_source": "openrouter_frontend_effective_pricing",
+    "permaslug": "ricursiveai/ripple-65b-preview-20261104"
+  },
+  {
     "model_id": "sakana/fugu-max",
-    "weighted_avg_input_price_usd_per_1m": 0.4977,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4271,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "sakana/fugu-max-20260911"
   },
   {
     "model_id": "sakana/fugu-ultra",
-    "weighted_avg_input_price_usd_per_1m": 1.56,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 2.156,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "sakana/fugu-ultra-20260615"
   },
   {
     "model_id": "sakana/fugu-ultra-v2",
-    "weighted_avg_input_price_usd_per_1m": 2.8838,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 2.3082,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "sakana/fugu-ultra-v2-20260911"
   },
   {
     "model_id": "sakana/sakana-namazu",
-    "weighted_avg_input_price_usd_per_1m": 0.9255,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.8637,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "sakana/namazu-20260811"
   },
@@ -3935,8 +3970,8 @@
   },
   {
     "model_id": "scaledown/extract",
-    "weighted_avg_input_price_usd_per_1m": 0.0398,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0489,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "scaledown/extract-20260928"
   },
@@ -3970,15 +4005,15 @@
   },
   {
     "model_id": "stepfun/step-3.5-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.1,
-    "weighted_price_fetched_at": "2026-07-19T10:18:35Z",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "stepfun/step-3.5-flash"
   },
   {
     "model_id": "stepfun/step-3.7-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0871,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0906,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "stepfun/step-3.7-flash-20260528"
   },
@@ -3998,43 +4033,43 @@
   },
   {
     "model_id": "tencent/hunyuan-a13b-instruct",
-    "weighted_avg_input_price_usd_per_1m": 0.1392,
-    "weighted_price_fetched_at": "2026-08-03T04:45:39Z",
+    "weighted_avg_input_price_usd_per_1m": null,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "tencent/hunyuan-a13b-instruct"
   },
   {
     "model_id": "tencent/hy-mt2-1.8b",
-    "weighted_avg_input_price_usd_per_1m": 0.0427,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.041,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "tencent/hy-mt2-1.8b-20260521"
   },
   {
     "model_id": "tencent/hy-mt2-30b-a3b",
-    "weighted_avg_input_price_usd_per_1m": 0.0728,
-    "weighted_price_fetched_at": "2026-09-28T06:50:33Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0718,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "tencent/hy-mt2-30b-a3b-20260521"
   },
   {
     "model_id": "tencent/hy-mt2-7b",
-    "weighted_avg_input_price_usd_per_1m": 0.0687,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0706,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "tencent/hy-mt2-7b-20260521"
   },
   {
     "model_id": "tencent/hy3",
-    "weighted_avg_input_price_usd_per_1m": 0.042,
-    "weighted_price_fetched_at": "2026-10-12T07:19:40Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0559,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "tencent/hy3-20260706"
   },
   {
     "model_id": "tencent/hy3-preview",
-    "weighted_avg_input_price_usd_per_1m": 0.119,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1282,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "tencent/hy3-preview-20260421"
   },
@@ -4047,15 +4082,15 @@
   },
   {
     "model_id": "tencent/hy4",
-    "weighted_avg_input_price_usd_per_1m": 0.0832,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0863,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "tencent/hy4-20261104"
   },
   {
     "model_id": "tencent/hy4-preview",
-    "weighted_avg_input_price_usd_per_1m": 0.0613,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.083,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "tencent/hy4-preview-20260827"
   },
@@ -4075,8 +4110,8 @@
   },
   {
     "model_id": "thedrummer/skyfall-36b-v2",
-    "weighted_avg_input_price_usd_per_1m": 0.3618,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.439,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "thedrummer/skyfall-36b-v2"
   },
@@ -4089,15 +4124,22 @@
   },
   {
     "model_id": "thinkingmachines/inkling",
-    "weighted_avg_input_price_usd_per_1m": 0.8582,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3451,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "thinkingmachines/inkling-20260715"
   },
   {
+    "model_id": "thinkingmachines/inkling-2-small",
+    "weighted_avg_input_price_usd_per_1m": 0.0754,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
+    "weighted_price_source": "openrouter_frontend_effective_pricing",
+    "permaslug": "thinkingmachines/inkling-2-small-20261107"
+  },
+  {
     "model_id": "thinkingmachines/inkling-small",
-    "weighted_avg_input_price_usd_per_1m": 0.1334,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2499,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "thinkingmachines/inkling-small-20260730"
   },
@@ -4145,36 +4187,36 @@
   },
   {
     "model_id": "unbiased/pareto-26.10",
-    "weighted_avg_input_price_usd_per_1m": 0.272,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2118,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "unbiased/pareto-26.10-20261015"
   },
   {
     "model_id": "unbiased/pareto-26.10-preview",
-    "weighted_avg_input_price_usd_per_1m": null,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4129,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "unbiased/pareto-26.10-preview-20260929"
   },
   {
     "model_id": "unbiased/pareto-26.9",
-    "weighted_avg_input_price_usd_per_1m": 0.9259,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 1.5393,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "unbiased/pareto-26.9-20260917"
   },
   {
     "model_id": "undi95/remm-slerp-l2-13b",
-    "weighted_avg_input_price_usd_per_1m": 0.3493,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2328,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "undi95/remm-slerp-l2-13b"
   },
   {
     "model_id": "upstage/solar-mini4",
-    "weighted_avg_input_price_usd_per_1m": 0.0354,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0309,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "upstage/solar-mini4-20260922"
   },
@@ -4187,8 +4229,8 @@
   },
   {
     "model_id": "upstage/solar-pro4",
-    "weighted_avg_input_price_usd_per_1m": 0.1114,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0713,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "upstage/solar-pro4-20260810"
   },
@@ -4250,22 +4292,22 @@
   },
   {
     "model_id": "x-ai/grok-4.20",
-    "weighted_avg_input_price_usd_per_1m": 0.6275,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.677,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "x-ai/grok-4.20-20260309"
   },
   {
     "model_id": "x-ai/grok-4.20-multi-agent",
-    "weighted_avg_input_price_usd_per_1m": 0.7003,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.6906,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "x-ai/grok-4.20-multi-agent-20260309"
   },
   {
     "model_id": "x-ai/grok-4.3",
-    "weighted_avg_input_price_usd_per_1m": 0.8429,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.8335,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "x-ai/grok-4.3-20260430"
   },
@@ -4285,8 +4327,8 @@
   },
   {
     "model_id": "x-ai/grok-4.6",
-    "weighted_avg_input_price_usd_per_1m": 1.1712,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.852,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "x-ai/grok-4.6-20260810"
   },
@@ -4299,8 +4341,8 @@
   },
   {
     "model_id": "x-ai/grok-build-0.1",
-    "weighted_avg_input_price_usd_per_1m": 0.2553,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3426,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "x-ai/grok-build-0.1-20260520"
   },
@@ -4334,36 +4376,36 @@
   },
   {
     "model_id": "xiaomi/mimo-v2.5",
-    "weighted_avg_input_price_usd_per_1m": 0.1912,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.183,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "xiaomi/mimo-v2.5-20260422"
   },
   {
     "model_id": "xiaomi/mimo-v2.5-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.2866,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3119,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "xiaomi/mimo-v2.5-pro-20260422"
   },
   {
     "model_id": "xiaomi/mimo-v2.6-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0139,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0152,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "xiaomi/mimo-v2.6-flash-20260921"
   },
   {
     "model_id": "xiaomi/mimo-v2.6-pro",
-    "weighted_avg_input_price_usd_per_1m": 0.0779,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0688,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "xiaomi/mimo-v2.6-pro-20260921"
   },
   {
     "model_id": "xiaomi/mimo-v2.6-pro-ultraspeed",
-    "weighted_avg_input_price_usd_per_1m": 0.2934,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3264,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "xiaomi/mimo-v2.6-pro-ultraspeed-20260921"
   },
@@ -4383,15 +4425,15 @@
   },
   {
     "model_id": "z-ai/glm-4.5",
-    "weighted_avg_input_price_usd_per_1m": 0.3167,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.3578,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-4.5"
   },
   {
     "model_id": "z-ai/glm-4.5-air",
-    "weighted_avg_input_price_usd_per_1m": 0.0796,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0741,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-4.5-air"
   },
@@ -4404,64 +4446,64 @@
   },
   {
     "model_id": "z-ai/glm-4.5v",
-    "weighted_avg_input_price_usd_per_1m": 0.3837,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4386,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-4.5v"
   },
   {
     "model_id": "z-ai/glm-4.6",
-    "weighted_avg_input_price_usd_per_1m": 0.3193,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.248,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-4.6"
   },
   {
     "model_id": "z-ai/glm-4.6v",
-    "weighted_avg_input_price_usd_per_1m": 0.2146,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2563,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-4.6-20251208"
   },
   {
     "model_id": "z-ai/glm-4.7",
-    "weighted_avg_input_price_usd_per_1m": 0.2173,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2872,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-4.7-20251222"
   },
   {
     "model_id": "z-ai/glm-4.7-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0599,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0562,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-4.7-flash-20260119"
   },
   {
     "model_id": "z-ai/glm-5",
-    "weighted_avg_input_price_usd_per_1m": 0.3468,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.341,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5-20260211"
   },
   {
     "model_id": "z-ai/glm-5-turbo",
-    "weighted_avg_input_price_usd_per_1m": 0.4998,
-    "weighted_price_fetched_at": "2026-11-02T07:38:53Z",
+    "weighted_avg_input_price_usd_per_1m": 0.4303,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5-turbo-20260315"
   },
   {
     "model_id": "z-ai/glm-5.1",
-    "weighted_avg_input_price_usd_per_1m": 0.6111,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.5563,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5.1-20260406"
   },
   {
     "model_id": "z-ai/glm-5.2",
-    "weighted_avg_input_price_usd_per_1m": 0.2238,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.2024,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5.2-20260616"
   },
@@ -4481,15 +4523,15 @@
   },
   {
     "model_id": "z-ai/glm-5.3",
-    "weighted_avg_input_price_usd_per_1m": 0.1926,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1821,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5.3-20260816"
   },
   {
     "model_id": "z-ai/glm-5.3-flash",
-    "weighted_avg_input_price_usd_per_1m": 0.0433,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0444,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5.3-flash-20260826"
   },
@@ -4502,22 +4544,22 @@
   },
   {
     "model_id": "z-ai/glm-5.3-flashx",
-    "weighted_avg_input_price_usd_per_1m": 0.1066,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.0951,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5.3-flashx-20260918"
   },
   {
     "model_id": "z-ai/glm-5.3-flashx-legal",
-    "weighted_avg_input_price_usd_per_1m": 0.1291,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.1122,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5.3-flashx-legal-20261102"
   },
   {
     "model_id": "z-ai/glm-5.3-prime",
-    "weighted_avg_input_price_usd_per_1m": 0.7005,
-    "weighted_price_fetched_at": "2026-10-12T07:19:40Z",
+    "weighted_avg_input_price_usd_per_1m": 0.6832,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5.3-prime-20260921"
   },
@@ -4530,8 +4572,8 @@
   },
   {
     "model_id": "z-ai/glm-5v-turbo",
-    "weighted_avg_input_price_usd_per_1m": 0.4892,
-    "weighted_price_fetched_at": "2026-11-09T07:55:10Z",
+    "weighted_avg_input_price_usd_per_1m": 0.7152,
+    "weighted_price_fetched_at": "2026-11-16T07:57:12Z",
     "weighted_price_source": "openrouter_frontend_effective_pricing",
     "permaslug": "z-ai/glm-5v-turbo-20260401"
   },
