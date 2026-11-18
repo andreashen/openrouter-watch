@@ -91,6 +91,22 @@ Model ID、上下文、最大输出、输入价、加权输入价、输出价、
 - 部署网址：`https://andreashen.github.io/openrouter-watch/`（新标签，`noopener noreferrer`）。
 - GitHub 仓库 +「给项目点个 Star」引导。
 
+## Artificial Analysis 直连（内部）
+
+公开主榜的三项指数仍来自 OpenRouter `benchmarks.artificial_analysis`，derive 仍按「新值覆盖、空白回填上一版」合并。直连 AA 的每次完整抓取按 `aa_snapshot_id` 写入 `data/aa_internal/snapshots/`（不入库、不覆盖已有文件），`latest_snapshot.json` 只保存指向该文件的指针。`data/aa_join/publication.json` 把公开展示固定为 `openrouter`，并继续采集 OpenRouter benchmark。任何档位，包括 Commercial，都要有可打开的授权文书或合同定位，以及核验人姓名；`redistributable` 必须为真且未过期，公开切流才会放行。机器只查这些字段是否齐全。
+
+没有书面授权或 Commercial 覆盖时，展示开关和停采都不能打开。映射文件 `data/aa_join/mapping.json` 里，一对多 group 的每个成员都要有可复核身份依据；只把 id 写进成员列表不会产生展示边。
+
+内部命令：
+
+```bash
+python scripts/validate_aa_mapping.py
+AA_API_KEY=... python scripts/fetch_aa.py
+python scripts/aa_mapping_report.py
+```
+
+`fetch_aa.py` 不改 `models_latest.json`。版本徽章、空值「不可比」和排序排除旧版本的规则在 `web/src/lib/aaScoreDisplay.js`，主榜页面不引用它。
+
 ## 本地常用命令
 
 ```bash
